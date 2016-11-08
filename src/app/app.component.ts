@@ -5,10 +5,7 @@ import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/
 import { layoutPaths } from './theme/theme.constants';
 import { BaThemeConfig } from './theme/theme.config';
 
-/*
- * App Component
- * Top Level Component
- */
+
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,

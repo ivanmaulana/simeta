@@ -1,5 +1,5 @@
-import { PAGES_MENU } from './pages/pages.menu';
+import { MAHASISWA_MENU } from './mahasiswa/mahasiswa.menu';
 
 export const MENU = [
-  ...PAGES_MENU
+  ...MAHASISWA_MENU
 ];
