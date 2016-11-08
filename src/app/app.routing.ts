@@ -5,6 +5,7 @@ export const routes: Routes = [
   { path: 'auth', redirectTo: 'auth/signin'},
   { path: 'mahasiswa', redirectTo: 'mahasiswa/dashboard'},
   { path: 'dosen', redirectTo: 'dosen/dashboard'},
+  { path: 'admin', redirectTo: 'admin/dashboard'},
   // { path: '**', redirectTo: 'mahasiswa' }
 ];
 

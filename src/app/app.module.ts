@@ -19,6 +19,7 @@ import { NgaModule } from './theme/nga.module';
 import { MahasiswaModule } from './mahasiswa/mahasiswa.module';
 import { AuthModule } from './auth/auth.module';
 import { DosenModule } from './dosen/dosen.module';
+import { AdminModule } from './admin/admin.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -50,6 +51,7 @@ type StoreType = {
     MahasiswaModule,
     AuthModule,
     DosenModule,
+    AdminModule,
     routing
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
