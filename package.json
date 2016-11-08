@@ -1,9 +1,9 @@
 {
-  "name": "ng2-admin",
-  "version": "0.7.0",
-  "description": "Angular 2 and Bootstrap 4 Admin Template.",
-  "author": "akveo",
-  "homepage": "http://akveo.github.io/ng2-admin/",
+  "name": "simeta-ilkom",
+  "version": "0.1.0",
+  "description": "Sistem Informasi Manajemen Tugas Akhir Ilmu Komputer IPB",
+  "author": "ivan maulana",
+  "homepage": "http://github.com/ivanmaulana/simeta/",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "2.1.1",
@@ -156,10 +156,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akveo/ng2-admin.git"
+    "url": "https://github.com/ivanmaulana/simeta.git"
   },
   "bugs": {
-    "url": "https://github.com/akveo/ng2-admin/issues"
+    "url": "https://github.com/ivanmaulana/simeta/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

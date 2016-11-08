@@ -18,6 +18,7 @@ import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { MahasiswaModule } from './mahasiswa/mahasiswa.module';
 import { AuthModule } from './auth/auth.module';
+import { DosenModule } from './dosen/dosen.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,6 +49,7 @@ type StoreType = {
     NgaModule.forRoot(),
     MahasiswaModule,
     AuthModule,
+    DosenModule,
     routing
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

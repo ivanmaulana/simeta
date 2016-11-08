@@ -2,7 +2,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'mahasiswa'},
+  { path: 'auth', redirectTo: 'auth/signin'},
+  { path: 'mahasiswa', redirectTo: 'mahasiswa/dashboard'},
+  { path: 'dosen', redirectTo: 'dosen/dashboard'},
   // { path: '**', redirectTo: 'mahasiswa' }
 ];
 
