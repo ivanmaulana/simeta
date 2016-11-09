@@ -1,4 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {JwtHelper} from 'angular2-jwt';
 @Component({
   selector: 'dosen',
   encapsulation: ViewEncapsulation.None,
@@ -28,10 +31,20 @@ import {Component, ViewEncapsulation} from '@angular/core';
   `
 })
 export class Dosen {
+  jwtHelper: JwtHelper = new JwtHelper()
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('id_token')) {
+      let decode = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
+      let role = decode.role;
+
+      if (role === 3) {
+        this.router.navigate(['/mahasiswa']);
+      }
+      
+    }
   }
 }

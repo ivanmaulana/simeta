@@ -1,4 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {JwtHelper} from 'angular2-jwt';
 @Component({
   selector: 'admin',
   encapsulation: ViewEncapsulation.None,
@@ -28,10 +31,22 @@ import {Component, ViewEncapsulation} from '@angular/core';
   `
 })
 export class Admin {
+  jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('id_token')) {
+      let decode = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
+      let role = decode.role;
+
+      if (role === 3) {
+        this.router.navigate(['/mahasiswa']);
+      }
+      else if (role === 2) {
+        this.router.navigate(['/dosen']);
+      }
+    }
   }
 }
