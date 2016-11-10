@@ -48,5 +48,8 @@ export class Admin {
         this.router.navigate(['/dosen']);
       }
     }
+    else {
+      this.router.navigate(['/auth']);
+    }
   }
 }

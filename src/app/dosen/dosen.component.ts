@@ -44,7 +44,10 @@ export class Dosen {
       if (role === 3) {
         this.router.navigate(['/mahasiswa']);
       }
-      
+
     }
+    // else {
+    //   this.router.navigate(['/auth']);
+    // }
   }
 }

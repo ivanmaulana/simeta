@@ -15,6 +15,102 @@ export const MAHASISWA_MENU = [
         }
       },
       {
+        path: 'pengajuan',
+        data: {
+          menu: {
+            title: 'Pengajuan',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'log',
+        data: {
+          menu: {
+            title: 'Log',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'kolokium',
+        data: {
+          menu: {
+            title: 'Kolokium',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'praseminar',
+        data: {
+          menu: {
+            title: 'Praseminar',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'seminar',
+        data: {
+          menu: {
+            title: 'Seminar',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'sidang',
+        data: {
+          menu: {
+            title: 'Sidang',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'skl',
+        data: {
+          menu: {
+            title: 'SKL',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'profile',
+        data: {
+          menu: {
+            title: 'Profile',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'charts',
         data: {
           menu: {

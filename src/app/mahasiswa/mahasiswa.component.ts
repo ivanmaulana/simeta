@@ -53,6 +53,9 @@ export class Mahasiswa {
         this.router.navigate(['/admin'])
       }
     }
+    else {
+      this.router.navigate(['/auth']);
+    }
 
   }
 }
