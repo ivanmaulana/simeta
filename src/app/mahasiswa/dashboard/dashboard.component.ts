@@ -1,4 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {AuthHttp} from 'angular2-jwt';
+
+import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'dashboard',
@@ -8,7 +11,20 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class Dashboard {
 
-  constructor() {
+  constructor(public authHttp: AuthHttp, public toastr: ToastsManager) {
+
+  }
+
+  ngOnInit() {
+    this.authHttp.get('http://simak.apps.cs.ipb.ac.id:2016/dosen')
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+      })
+  }
+
+  showNoConn() {
+    this.toastr.warning("Error Connecting to Server", 'Error');
   }
 
 }

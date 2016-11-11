@@ -24,6 +24,7 @@ import { AdminModule } from './admin/admin.module';
 // librari
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { provideAuth } from 'angular2-jwt';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -62,7 +63,14 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    AUTH_PROVIDERS
+    AUTH_PROVIDERS,
+    provideAuth({
+      headerName: "Authorization",
+      headerPrefix: "",
+      globalHeaders: [{'Content-Type':'application/json'}],
+      noJwtError: true,
+      noTokenScheme: true
+    })
   ]
 })
 

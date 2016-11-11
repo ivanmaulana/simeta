@@ -3,14 +3,6 @@ import { Mahasiswa } from './mahasiswa.component';
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
-    path: 'login',
-    loadChildren: () => System.import('./login/login.module')
-  },
-  // {
-  //   path: 'register',
-  //   loadChildren: () => System.import('./register/register.module')
-  // },
-  {
     path: 'mahasiswa',
     component: Mahasiswa,
     children: [
