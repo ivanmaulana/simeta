@@ -23,8 +23,10 @@ import { AdminModule } from './admin/admin.module';
 
 // librari
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToastrModule } from 'toastr-ng2';
 import { provideAuth } from 'angular2-jwt';
+
+import { DataService } from './data/data.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -58,7 +60,7 @@ type StoreType = {
     DosenModule,
     AdminModule,
     routing,
-    ToastModule
+    ToastrModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

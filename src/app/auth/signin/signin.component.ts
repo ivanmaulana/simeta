@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
 import { AuthHttp, JwtHelper } from 'angular2-jwt';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'toastr-ng2';
 
 @Component({
   selector: 'signin',
@@ -23,7 +23,7 @@ export class Signin {
 
   private urlLogin = 'http://simak.apps.cs.ipb.ac.id/login/';
 
-  constructor(private authHttp: AuthHttp, private http: Http, private toastr: ToastsManager, private router: Router) {
+  constructor(private authHttp: AuthHttp, private http: Http, private toastr: ToastrService, private router: Router) {
 
   }
 

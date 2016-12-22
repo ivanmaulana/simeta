@@ -1,17 +1,19 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
-import {ToastsManager} from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'toastr-ng2';
+import {DataService} from '../../data/data.service';
 
 @Component({
   selector: 'dashboard',
   encapsulation: ViewEncapsulation.None,
+  providers: [DataService],
   styles: [require('./dashboard.scss')],
   template: require('./dashboard.html')
 })
 export class Dashboard {
 
-  constructor(public authHttp: AuthHttp, public toastr: ToastsManager) {
+  constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
 
