@@ -12,16 +12,31 @@ import {DataService} from '../../data/data.service';
   template: require('./dashboard.html')
 })
 export class Dashboard {
+  statusDaftar;
+  statusKolokium;
+  statusPrasminar;
+  statusProfile;
+  statusSeminar;
+  statusSidang;
+  statusSkl;
+  statusTa;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
 
   ngOnInit() {
-    this.authHttp.get('http://simak.apps.cs.ipb.ac.id:2016/dosen')
+    // this.authHttp.get('http://simak.apps.cs.ipb.ac.id:2016/dosen')
+    //   .map(res => res.json())
+    //   .subscribe(data => {
+    //     console.log(data);
+    //   })
+
+    this.authHttp.get(this.data.urlStatus)
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
+        this.statusDaftar = data[0].statusDaftar;
+        console.log('ini status daftar '+this.statusDaftar);
       })
   }
 
