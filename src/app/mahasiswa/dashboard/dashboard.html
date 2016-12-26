@@ -1,1 +1,161 @@
-Ini Dashboard
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">No Internet Connection</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="status">
+  <div class="row">
+
+  <div class="col-md-12">
+    <div class="alert alert-success" role="alert">
+      <h3 class="success">Selamat Datang di Sistem Informasi Manajemen Tugas Akhir Ilmu Komputer.</h3>
+    </div>
+  </div>
+
+  <div *ngIf="!statusProfile"  class="col-md-12">
+    <div class="alert alert-warning" role="alert">
+      Kamu belum melengkapi data diri kamu. Silahkan lengkapi <a href="#/mahasiswa/profile"><i>Disini</i></a>
+    </div>
+  </div>
+
+  <!-- PENGAJUAN -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/pengajuan">
+    <div class="small-box bg-green text-center">
+      <br />
+      <i class="icon-box ion-edit"></i>
+      <footer class="title-box text-left"><b>Pengajuan Topik</b></footer>
+    </div>
+    </a>
+
+
+  </div>
+
+  <!-- /LOG BIMBINGAN -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/log">
+    <div class="small-box bg-grey text-center">
+      <br />
+      <i class="icon-box ion-chatboxes"></i>
+      <footer class="title-box text-left"><b>Log Bimbingan</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- KOLOKIUM -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/kolokium">
+    <div class="small-box bg-blue text-center">
+      <br />
+      <i class="icon-box ion-document-text"></i>
+      <footer class="title-box text-left"><b>Kolokium</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- PRASEMINAR -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/praseminar">
+    <div class="small-box bg-purple text-center">
+      <br />
+      <i class="icon-box ion-code-working"></i>
+      <footer class="title-box text-left"><b>Praseminar</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- SEMINAR -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/seminar">
+    <div class="small-box bg-yellow text-center">
+      <br />
+      <i class="icon-box ion-person-stalker"></i>
+      <footer class="title-box text-left"><b>Seminar</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- SIDANG -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/sidang">
+    <div class="small-box bg-red text-center">
+      <br />
+      <i class="icon-box ion-ribbon-b"></i>
+      <footer class="title-box text-left"><b>Sidang</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- SKL -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/skl">
+    <div class="small-box bg-dark text-center">
+      <br />
+      <i class="icon-box ion-university"></i>
+      <footer class="title-box text-left"><b>SKL</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+  <!-- PROFILE -->
+  <div class="col-md-2 col-xs-6 col-sm-6">
+
+    <a href="#/mahasiswa/profile">
+    <div class="small-box bg-softgreen text-center">
+      <br />
+      <i class="icon-box ion-person"></i>
+      <footer class="title-box text-left"><b>Profile</b></footer>
+    </div>
+    </a>
+
+  </div>
+
+
+</div>
+
+</div>
+
+<!-- {{nama_ayah}} -->
+
+<!-- <div *ngIf="!statusProfile">
+  <div class="small-box bg-red">
+    Kamu Belum Melengkapi Data Profile Kamu.
+  </div>
+</div> -->
+
+<!-- <div class="col-md-3">
+  <div class="fd-tile detail clean tile-purple">
+    <div class="content"><h1 class="text-left">170</h1><p>New Visitors</p></div>
+    <a class="details" href="#">Jadwal Kolokium <span><i class="fa fa-arrow-circle-right pull-right"></i></span></a>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+  <ba-card title="Info / Pengumuman">
+
+  </ba-card>
+</div> -->

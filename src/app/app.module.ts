@@ -56,7 +56,7 @@ type StoreType = {
     routing,
     ToastrModule.forRoot()
   ],
-  providers: [ 
+  providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS,
     AUTH_PROVIDERS,
