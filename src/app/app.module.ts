@@ -18,6 +18,8 @@ import { AuthModule } from './auth/auth.module';
 import { DosenModule } from './dosen/dosen.module';
 import { AdminModule } from './admin/admin.module';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 // librari
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastrModule } from 'toastr-ng2';
@@ -49,6 +51,7 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
+    Ng2SmartTableModule,
     MahasiswaModule,
     AuthModule,
     DosenModule,

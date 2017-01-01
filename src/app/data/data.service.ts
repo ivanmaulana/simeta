@@ -43,12 +43,13 @@ export class DataService {
   // URL
   public urlTa = 'http://simak.apps.cs.ipb.ac.id:2016/ta/';
   public urlDataPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/';
-  public urlDosen = 'http://simak.apps.cs.ipb.ac.id:2016/dosen';
+  public urlDosen = 'http://simak.apps.cs.ipb.ac.id:2016/dosen/';
   public urlDaftarPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/pengajuan/';
   public urlProfile = 'http://simak.apps.cs.ipb.ac.id:2016/profile/';
   public urlSidang = 'http://simak.apps.cs.ipb.ac.id:2016/sidang/';
-  public urlStatus = 'http://simak.apps.cs.ipb.ac.id:2016/status';
-  public urlTest = 'http://simak.apps.cs.ipb.ac.id:2016/test';
+  public urlStatus = 'http://simak.apps.cs.ipb.ac.id:2016/status/';
+  public urlTest = 'http://simak.apps.cs.ipb.ac.id:2016/test/';
+  public urlLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

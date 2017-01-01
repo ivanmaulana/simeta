@@ -1,1 +1,300 @@
-Ini Log
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div class="row padding" *ngIf="status">
+  <div *ngIf="!statusTa">
+    <div class="alert alert-warning" role="alert">
+      <h4>Topik TA kamu <b>belum disetujui</b> <i>atau</i> Dosen Pembimbing kamu <b>belum ditentukan</b> oleh Departemen.</h4><br />
+        Silahkan tunggu sampai ada pengumuman berikutnya.
+    </div>
+  </div>
+
+  <div *ngIf="statusTa">
+
+    <div class="col-md-12">
+      <div class="alert alert-info" role="alert">
+        Jumlah Log Bimbingan yang Disetujui oleh Dosen Pembimbing Minimal adalah <b>10</b> Log Bimbingan
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <div class="alert alert-success" role="alert">
+          Jumlah Log Bimbingan = <b>{{total}}</b>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="alert alert-danger" role="alert">
+          Log Bimbingan Disetujui = <b>{{disetujui}} / 10</b>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-right">
+          <button *ngIf="!click" class="btn btn-primary btn-lg" (click)="tulis()"><i class="ion-edit"></i>
+            <span *ngIf="!click" style="padding-left:5px">Tulis Log</span>
+          </button>
+          <button *ngIf="click" class="btn btn-warning btn-lg" (click)="tulis()"><i class="ion-arrow-right-c"></i>
+            <span style="padding-left:5px">Tutup Tulis Log</span>
+          </button>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+
+  <div *ngIf="click">
+    <div class="col-md-12">
+      <ba-card title="Tulis Log Bimbingan" baCardClass="with-scroll">
+        <form class="row form-inline" (ngSubmit)="kirim()">
+
+          <!-- nama & nim-->
+          <div class="col-md-12 col-xs-12">
+            <div class="col-md-4 col-sm-12">
+              <div class="row">
+                <div class="col-md-2">
+                  <p>
+                    <b>Nama</b>
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <p>
+                    : {{data.nama}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <p>
+                    <b>NIM</b>
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <p>
+                    : {{data.nim}}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-sm-12">
+              <div class="row">
+                <div class="col-md-5">
+                  <p>
+                    <b>Pembimbing Ketua</b>
+                  </p>
+                </div>
+                <div class="col-md-7">
+                  <p>
+                    : {{dosen1}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  <p>
+                    <b>Pembimbing Anggota</b>
+                  </p>
+                </div>
+                <div class="col-md-7">
+                  <p>
+                    : {{dosen2}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br /><br />
+          </div>
+
+          <div class="col-md-12">
+            <!-- tanggal -->
+            <div class="col-sm-12 col-md-4 col-xs-12">
+              <label><b>Tanggal</b></label><br />
+              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px"/>
+            </div>
+
+            <!-- jam -->
+            <div class="col-sm-12 col-md-4 col-xs-12">
+              <label><b>Jam</b></label><br />
+              <input type="time" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px"/>
+            </div>
+
+            <!-- tempat -->
+            <div class="col-sm-12 col-md-4 col-xs-12">
+              <label><b>Tempat</b></label><br />
+              <input type="text" class="form-control" name="tempat" [(ngModel)]="tempat" style="height:34px"/>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br />
+            </div>
+
+            <!-- judul log bimbingan -->
+            <div class="form-group col-md-12 col-xs-12 ">
+                <label><b>Topik Log</b></label><br />
+                <input placeholder="Tulis progress kamu disini" class="form-control" style="width:100%" name="topik_log" [(ngModel)]="topik_log">
+            </div>
+
+            <!-- progress yang sudah dilakukan -->
+            <div class="form-group col-md-4 col-xs-12 has-success">
+                <br /><label><b>Progress</b></label><br />
+                <textarea placeholder="Tulis progress kamu disini" class="form-control" style="width:100%" name="progress" [(ngModel)]="progress"></textarea>
+            </div>
+
+            <!-- kendala yang dihadapi -->
+            <div class="form-group col-md-4 col-xs-12 has-error">
+                <br /><label><b>Kendala yang dihadapi</b></label><br />
+                <textarea placeholder="Tulis kendala yang kamu hadapi disini" class="form-control" style="width:100%" name="kendala" [(ngModel)]="kendala"></textarea>
+            </div><br />
+
+            <!-- tahap selanjutnya -->
+            <div class="form-group col-md-4 col-xs-12 has-warning">
+                <br /><label><b>Rencana Selanjutnya</b></label><br />
+                <textarea placeholder="Tulis apa yang akan kamu lakukan setelahnya" class="form-control" style="width:100%" name="rencana" [(ngModel)]="rencana"></textarea>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br />
+            </div>
+
+            <div class="form-group text-right col-md-12 col-xs-12 col-sm-12">
+              <button type="submit" class="btn btn-primary btn-lg">Tulis Log</button>
+            </div>
+          </div>
+
+        </form>
+      </ba-card>
+    </div>
+  </div>
+
+  <!-- List Log -->
+
+  <div>
+    <div class="col-lg-6 col-md-6">
+      <ba-card title="Log Bimbingan" baCardClass="with-scroll">
+        <div class="row" *ngFor="let res of response"><br />
+          <div class="col-md-6 col-sm-10 col-xs-9">
+            <span class="blue" ><a (click)="openBimbingan(res.id)">{{res.topik}}</a></span><br />
+            <span class="grey tanggal">{{res.tempat}}, {{data.ubahTanggal(changeTimeStamp(res.tanggal))}}</span>
+          </div>
+          <div class="col-md-2 col-sm-10 col-xs-12">
+            <br />
+            <span *ngIf="res.count" class="tanggal">{{res.count}} Jawaban</span>
+            <span *ngIf="!res.count" class="tanggal">0 Jawaban</span>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <button *ngIf="!res.approval" type="button" class="btn btn-warning btn-sm" (click)="openBimbingan(res.id)"><i class="ion-eye"></i> Belum Disetujui </button>
+            <button *ngIf="res.approval" type="button" class="btn btn-primary btn-sm" (click)="openBimbingan(res.id)"><i class="ion-eye"></i> Sudah Disetujui </button>
+          </div>
+        </div>
+
+      </ba-card>
+    </div>
+  </div>
+
+  <div *ngIf="res">
+    <div class="col-md-6">
+      <ba-card title="Detail Log Bimbingan" baCardClass="with-scroll">
+
+        <!-- DETAIL Mahasiswa -->
+        <div class="col-md-12" *ngFor="let res of resDetail">
+
+          <div *ngIf="res.approval" class="alert alert-info" role="alert">
+            Log Bimbingan Ini Sudah Disetujui
+          </div>
+
+          <div *ngIf="!res.approval" class="alert alert-danger" role="alert">
+            Log Bimbingan Ini Belum Disetujui
+          </div>
+
+          <div class="row">
+            <div class="col-md-10 col-sm-9 col-xs-12">
+              <strong>Topik Tugas Akhir :</strong> {{topik}}<br /><br />
+              <strong>Tempat :</strong> {{res.tempat}}<br />
+              <strong>Topik Bimbingan :</strong> {{res.topik}}<br /><br />
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+              <strong>progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br /><br />
+          </div>
+          <div class="row col-md-12">
+              <strong>kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br /><br />
+          </div>
+          <div class="row col-md-12">
+              <strong>rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4><br />
+          </div>
+
+        </div>
+
+        <div class="accent">
+          &nbsp;
+        </div>
+
+        <hr />
+        <!-- DETAIL Jawaban -->
+        <div class="col-md-12 section-block" *ngFor="let res of resJawaban">
+
+          <!-- Mahasiswa -->
+          <div *ngIf="res.nim">
+            <div class="accent text-right" style="padding-left:10%">
+              <h4 class="green">{{res.jawaban}}</h4>
+            </div>
+            <div class="text-right">
+              Mahasiswa : {{data.nama}}
+            </div>
+            <div class="text-right" *ngIf="res.timestamp">
+              {{data.ubahTanggal(res.timestamp)}}<br /><br />
+            </div>
+          </div>
+
+          <!-- Dosen -->
+          <div *ngIf="res.dosen_id">
+            <div class="accent text-left" style="padding-right:10%">
+              <h4 class="blue">{{res.jawaban}}</h4>
+            </div>
+            <div class="text-left">
+              Dosen : {{res.nama_dosen}}
+            </div>
+            <div class="text-left" *ngIf="res.timestamp">
+              {{data.ubahTanggal(res.timestamp)}}, {{res.timestamp}}<br /><br />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="accent">
+          &nbsp;
+        </div>
+
+        <hr />
+
+        <div class="col-md-12">
+          <textarea name="balasan" [(ngModel)]="balasan" style="height:150px;width:100%" class="form-control" placeholder="Ketik balasan"></textarea>
+        </div>
+
+        <div class="col-md-12 text-right">
+          <br /><button (click)="balas(id)" class="btn btn-md btn-primary">Balas</button>
+        </div>
+
+      </ba-card>
+    </div>
+  </div>
+
+
+</div>

@@ -1,1 +1,33 @@
-Ini Pengajuan
+<!-- <div class="alert alert-info" role="alert">
+  Fitur ini sedang dalam perbaikan.
+</div> -->
+
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <div *ngIf="statusTa">
+    <div class="alert alert-info" role="alert">
+      Pengajuan Topik Tugas Akhir Kamu Sudah Diterima dan Topik Serta Dosen Pembimbing Kamu Ditentukan
+    </div>
+  </div>
+
+  <div *ngIf="!statusTa">
+    <!-- <div class="alert alert-info" role="alert">
+      Fitur ini sedang dalam perbaikan.
+    </div> -->
+  </div>
+
+</div>

@@ -4,18 +4,15 @@
        <div class="news-image">  <img class="image" src="http://simak.apps.cs.ipb.ac.id/assets/img/ilkom.jpg" data-id="login-cover-image" alt=""> </div>
        <div class="news-caption">
           <p class="caption-title">Department of Computer Science</p>
-          <p> Faculty of Mathematics And Natural Science, Institut Pertanian Bogor </p>
+          <p class="light"> Faculty of Mathematics And Natural Science, Institut Pertanian Bogor </p>
        </div>
     </div>
     <div class="right-content">
        <div class="login-header">
-          <div class="brand"> <span class="logo"></span> SIMETA ILKOM <small>Sistem Informasi Manajemen Tugas Akhir ILKOM</small> </div>
+          <div class="brand"> <span class="logo"></span> <span class="dark">SIMETA ILKOM</span> <small> <span class="dark">Sistem Informasi Manajemen Tugas Akhir ILKOM</span></small> </div>
        </div>
        <div class="login-content">
           <form class="margin-bottom-0" (ngSubmit)="submit()">
-             <!-- <div class="form-group m-b-15"> <input class="form-control input-lg" type="text" [(ngModel)]="username" placeholder="Username"> </div> -->
-             <!-- <div class="form-group m-b-15"> <input type="password" class="form-control input-lg" [(ngModel)]="password" placeholder="Password"> </div> -->
-             <!-- <div class="login-buttons"> <button (click)="submit()" type="submit" [disabled]="!username || !password" class="btn btn-primary btn-block btn-lg btn-raised">Login</button> </div> -->
              <p>Username IPB</p>
              <input class="form-control" type="text" [(ngModel)]="username" name="username" placeholder="Username IPB" autofocus/>
              <br /><p>Password</p>
@@ -24,8 +21,9 @@
              <button type="submit" class="form-control btn btn-block btn-raised btn-primary btn-lg">Sign In</button>
              <hr>
              <p class="text-center text-inverse"> © 2016, Ivan Maulana </p><br /><br />
-             <h4>VISI :</h4> <br />
-              Pada tahun 2020 menjadi departemen terkemuka sebagai pelopor dalam bidang ilmu dan teknologi komputer untuk mendukung pertanian modern di tingkat regional (Asia Tenggara) dengan sistem pengelolaan yang berstandar internasional
+             <h4 class="dark">VISI :</h4> <br />
+            <p>Pada tahun 2020 menjadi departemen terkemuka sebagai pelopor dalam bidang ilmu dan teknologi komputer untuk mendukung pertanian modern di tingkat regional (Asia Tenggara) dengan sistem pengelolaan yang berstandar internasional
+            </p>
           </form>
        </div>
     </div>
