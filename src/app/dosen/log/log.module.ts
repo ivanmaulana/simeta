@@ -6,11 +6,15 @@ import { NgaModule } from '../../theme/nga.module';
 import { LogDosen } from './log.component';
 import { routing }       from './log.routing';
 
+import { ModalModule } from 'ng2-bootstrap/modal';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    ModalModule.forRoot(),
     routing
   ],
   declarations: [
@@ -19,4 +23,8 @@ import { routing }       from './log.routing';
   providers: [
   ]
 })
-export default class LogDosenModule {}
+export default class LogDosenModule {
+
+
+
+}

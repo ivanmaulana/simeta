@@ -24,8 +24,25 @@ export class LogDosen {
   log;
   mahasiswa = [];
 
+  logDetail = [];
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
+  }
+
+  lihatData(id) {
+    for (let i = 0; i < this.log.length; i++) {
+      if (this.log[i].id == id) {
+        return this.log[i];
+      }
+    }
+
+  }
+
+  lihat(id) {
+    this.logDetail = this.lihatData(id);
+    this.logDetail['tanggal'] = this.data.ubahTanggal(this.logDetail['tanggal']);
+    this.logDetail['jam'] = this.logDetail['jam'].substr(0,5);
   }
 
   onChange(deviceValue) {

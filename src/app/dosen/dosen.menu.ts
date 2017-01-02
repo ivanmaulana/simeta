@@ -19,7 +19,7 @@ export const DOSEN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'Log Bimbingan',
-            icon: 'ion-android-home',
+            icon: 'ion-chatboxes',
             selected: false,
             expanded: false,
             order: 0
