@@ -19,7 +19,6 @@ const routes: Routes = [
       { path: 'charts', loadChildren: () => System.import('./charts/charts.module') },
       { path: 'ui', loadChildren: () => System.import('./ui/ui.module') },
       { path: 'forms', loadChildren: () => System.import('./forms/forms.module') },
-      { path: 'tables', loadChildren: () => System.import('./tables/tables.module') }
     ]
   }
 ];

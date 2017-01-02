@@ -1,4 +1,4 @@
-export const DOSEN_MENU = [
+export const DOSEN_SIDEBAR_MENU = [
   {
     path: 'dosen',
     children: [
@@ -13,7 +13,19 @@ export const DOSEN_MENU = [
             order: 0
           }
         }
-      }
+      },
+      {
+        path: 'log',
+        data: {
+          menu: {
+            title: 'Log Bimbingan',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
     ]
-  }
+  },
 ];

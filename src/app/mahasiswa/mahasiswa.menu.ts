@@ -30,7 +30,7 @@ export const MAHASISWA_MENU = [
         path: 'log',
         data: {
           menu: {
-            title: 'Log',
+            title: 'Log Bimbingan',
             icon: 'ion-stats-bars',
             selected: false,
             expanded: false,

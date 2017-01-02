@@ -1,4 +1,4 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -18,14 +18,14 @@ import { AuthModule } from './auth/auth.module';
 import { DosenModule } from './dosen/dosen.module';
 import { AdminModule } from './admin/admin.module';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-
 // librari
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastrModule } from 'toastr-ng2';
 import { provideAuth } from 'angular2-jwt';
 
 import { DataService } from './data/data.service';
+
+
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -51,7 +51,6 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
-    Ng2SmartTableModule,
     MahasiswaModule,
     AuthModule,
     DosenModule,
@@ -70,7 +69,8 @@ type StoreType = {
       noJwtError: true,
       noTokenScheme: true
     })
-  ]
+  ],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 
 export class AppModule {
@@ -81,9 +81,7 @@ export class AppModule {
   hmrOnInit(store: StoreType) {
     if (!store || !store.state) return;
     console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
     this.appState._state = store.state;
-    // set input values
     if ('restoreInputValues' in store) {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
@@ -95,19 +93,14 @@ export class AppModule {
 
   hmrOnDestroy(store: StoreType) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // save state
     const state = this.appState._state;
     store.state = state;
-    // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
     store.restoreInputValues = createInputTransfer();
-    // remove styles
     removeNgStyles();
   }
 
   hmrAfterDestroy(store: StoreType) {
-    // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }

@@ -90,7 +90,17 @@ export class DataService {
     else if (bulan == 12) bulan = 'Desember';
 
     let kirim = tanggal+' '+bulan+' '+tahun;
+    return kirim;
+  }
 
+  tanggalSingkat(date) {
+    let tahun = date.substr(0,4);
+    let bulan = date.substr(5,2);
+    let tanggal = date.substr(8,2);
+
+    if (tanggal.substr(0,1) == 0) tanggal = tanggal.substr(1,1);
+
+    let kirim = tahun+'/'+bulan+'/'+tanggal;
     return kirim;
   }
 
