@@ -7,6 +7,7 @@ import { Kolokium } from './kolokium.component';
 import { routing }       from './kolokium.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { NgUploaderModule } from 'ngx-uploader';
     FormsModule,
     NgaModule,
     NgUploaderModule,
+    ProgressbarModule,
     AlertModule.forRoot(),
     routing
   ],

@@ -75,10 +75,11 @@ export class Kolokium {
   private response: any = {};
 
   options: NgUploaderOptions = {
-    url: 'http://api.ngx-uploader.com/upload',
-    allowedExtensions: ['image/jpeg', 'image/png'],
+    url: 'http://simak.apps.cs.ipb.ac.id:2016/upload/kolokium',
+    authToken: localStorage.getItem('id_token'),
+    authTokenPrefix: ''
   };
-  sizeLimit = 2000000;
+  sizeLimit = 20000000000;
 
   handleUpload(data: any): void {
     if (data && data.response) {

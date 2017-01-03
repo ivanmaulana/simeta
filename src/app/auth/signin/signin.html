@@ -18,7 +18,7 @@
              <br /><p>Password</p>
              <input class="form-control" type="password" [(ngModel)]="password" name="password" placeholder="Password" autofocus/>
              <br />
-             <button type="submit" class="form-control btn btn-block btn-raised btn-primary btn-lg">Sign In</button>
+             <button type="submit" class="form-control btn btn-block btn-raised btn-primary btn-lg" [disabled]="!username || !password">Sign In</button>
              <hr>
              <p class="text-center text-inverse"> © 2016, Ivan Maulana </p><br /><br />
              <h4 class="dark">VISI :</h4> <br />

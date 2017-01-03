@@ -121,25 +121,12 @@
                        (onUpload)="handleUpload($event)"
                        (beforeUpload)="beforeUpload($event)">
 
-                <!-- drag & drop file example-->
-                <style>
-                  .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-                </style>
-                <div ngFileDrop
-                     [options]="options"
-                     (onUpload)="handleUpload($event)"
-                     [ngClass]="{'file-over': hasBaseDropZoneOver}"
-                     (onFileOver)="fileOverBase($event)"
-                     (beforeUpload)="beforeUpload($event)">
-                </div>
-
                 <div>
                 response1: {{ uploadFile | json }}
                 </div>
-
-                progress : {{progress}}
+                <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress>
+                <!-- progress : {{progress}} -->
               </div>
-
 
             </form>
 

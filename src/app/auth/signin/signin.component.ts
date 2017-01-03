@@ -8,7 +8,7 @@ import { ToastrService } from 'toastr-ng2';
 @Component({
   selector: 'signin',
   encapsulation: ViewEncapsulation.None,
-  styles: [require('./signin.scss'),require('./style.css')],
+  styles: [require('./signin.scss'),require('./style.css'),require('./responsive.css')],
   template: require('./signin.html')
 })
 export class Signin {
