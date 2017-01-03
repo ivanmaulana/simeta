@@ -28,7 +28,17 @@
       </div>
     </div>
 
-    <div class="col-md-12">
+    <div>
+      <div class="col-md-4">
+        <div class="align-left">
+          <button *ngIf="!click" class="btn btn-primary btn-lg" (click)="tulis()"><i class="ion-edit"></i>
+            <span *ngIf="!click" style="padding-left:5px">Tulis Log</span>
+          </button>
+          <button *ngIf="click" class="btn btn-warning btn-lg" (click)="tulis()"><i class="ion-arrow-right-c"></i>
+            <span style="padding-left:5px">Tutup Tulis Log</span>
+          </button>
+        </div>
+      </div>
       <div class="col-md-4">
         <div class="alert alert-success" role="alert">
           Jumlah Log Bimbingan = <b>{{total}}</b>
@@ -36,17 +46,7 @@
       </div>
       <div class="col-md-4">
         <div class="alert alert-danger" role="alert">
-          Log Bimbingan Disetujui = <b>{{disetujui}} / 10</b>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="align-right">
-          <button *ngIf="!click" class="btn btn-primary btn-lg" (click)="tulis()"><i class="ion-edit"></i>
-            <span *ngIf="!click" style="padding-left:5px">Tulis Log</span>
-          </button>
-          <button *ngIf="click" class="btn btn-warning btn-lg" (click)="tulis()"><i class="ion-arrow-right-c"></i>
-            <span style="padding-left:5px">Tutup Tulis Log</span>
-          </button>
+          Log Bimbingan Disetujui = <b><span *ngIf="!disetujui">0</span>{{disetujui}} / 10</b>
         </div>
       </div>
       <br />

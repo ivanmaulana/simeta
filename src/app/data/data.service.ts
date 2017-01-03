@@ -50,6 +50,7 @@ export class DataService {
   public urlStatus = 'http://simak.apps.cs.ipb.ac.id:2016/status/';
   public urlTest = 'http://simak.apps.cs.ipb.ac.id:2016/test/';
   public urlLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/';
+  public urlKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/jadwalKolokium';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

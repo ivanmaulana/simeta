@@ -5,12 +5,16 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Kolokium } from './kolokium.component';
 import { routing }       from './kolokium.routing';
+import { AlertModule } from 'ng2-bootstrap/alert';
+import { NgUploaderModule } from 'ngx-uploader';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    NgUploaderModule,
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [

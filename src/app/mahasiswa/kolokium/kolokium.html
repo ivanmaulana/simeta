@@ -1,3 +1,163 @@
-<div class="alert alert-info" role="alert">
-  Fitur ini sedang dalam perbaikan.
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">No Internet Connection</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <div *ngIf="!statusTa">
+    <alert type="danger"><h4>Topik TA kamu <b>belum disetujui</b> <i>atau</i> Dosen Pembimbing kamu <b>belum ditentukan</b> oleh Departemen.</h4><br />
+      Silahkan tunggu sampai ada pengumuman berikutnya.
+    </alert>
+  </div>
+
+  <div *ngIf="statusTa">
+    <div *ngIf="response1">
+      <!-- Alert message -->
+      <alert type="success" *ngIf="active">
+        Perhatian ! Jadwal kolokium adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
+      </alert>
+      <alert type="danger" *ngIf="active">
+        Pengisian & Upload makalah kolokium akan dibuka sampai  {{data.ubahTanggal(deadline)}}
+      </alert>
+
+      <alert type="danger" *ngIf="!active">
+        Maaf. Laman kolokium tidak sedang dibuka.
+      </alert>
+
+      <div class="row" *ngIf="active">
+        <div class="col-md-12">
+
+          <ba-card title="Makalah Kolokium" baCardClass="with-scroll">
+            <form class="row form-inline" (onsubmit)="submit()">
+
+              <!-- nama & nim-->
+              <div class="col-md-12 col-xs-12">
+
+                <div class="col-md-4 col-sm-12">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <b>Nama</b>
+                    </div>
+                    <div class="col-md-8">
+                      : {{data.nama}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <b>NIM</b>
+                    </div>
+                    <div class="col-md-8">
+                      : {{data.nim}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <b>Pembimbing Ketua</b>
+                    </div>
+                    <div class="col-md-7">
+                      : {{dosen1}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-5">
+                      <b>Pembimbing Anggota</b>
+                    </div>
+                    <div class="col-md-7">
+                      : {{dosen2}}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br /><br />
+              </div>
+
+              <!-- judul topik -->
+              <div class="form-group col-md-12 col-xs-12">
+                  <label><p href primary><b>Topik kamu</b></p></label><br />
+                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br />
+              </div>
+
+              <div class="col-md-12 col-xs-12 col-sm-12 text-right">
+                <button class="btn btn-lg btn-primary" type="submit" (click)="simpan()">Ubah Topik</button>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br /><br />
+              </div>
+
+              <!-- upload makalah kolokium -->
+              <!-- <div class="form-group col-md-12 col-xs-12">
+                <label><p href primary>Upload makalah</p></label><br />
+                <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
+              </div> -->
+
+              <!-- app.component.html -->
+              <div class="col-md-12">
+                <input type="file"
+                       ngFileSelect
+                       [options]="options"
+                       (onUpload)="handleUpload($event)"
+                       (beforeUpload)="beforeUpload($event)">
+
+                <!-- drag & drop file example-->
+                <style>
+                  .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+                </style>
+                <div ngFileDrop
+                     [options]="options"
+                     (onUpload)="handleUpload($event)"
+                     [ngClass]="{'file-over': hasBaseDropZoneOver}"
+                     (onFileOver)="fileOverBase($event)"
+                     (beforeUpload)="beforeUpload($event)">
+                </div>
+
+                <div>
+                response1: {{ uploadFile | json }}
+                </div>
+
+                progress : {{progress}}
+              </div>
+
+
+            </form>
+
+          </ba-card>
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+
 </div>
