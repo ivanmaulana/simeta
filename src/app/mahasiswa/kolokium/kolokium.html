@@ -23,7 +23,7 @@
   <div *ngIf="statusTa">
     <div *ngIf="response1">
       <!-- Alert message -->
-      <alert type="success" *ngIf="active">
+      <alert type="info" *ngIf="active">
         Perhatian ! Jadwal kolokium adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
       </alert>
       <alert type="danger" *ngIf="active">
@@ -100,32 +100,34 @@
               </div>
 
               <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-                <button class="btn btn-lg btn-primary" type="submit" (click)="simpan()">Ubah Topik</button>
+                <button class="btn btn-primary" type="submit" (click)="simpan()">Ubah Topik</button>
               </div>
 
               <div class="col-sm-12 col-md-12 col-xs-12">
                 <br /><br />
               </div>
 
-              <!-- upload makalah kolokium -->
-              <!-- <div class="form-group col-md-12 col-xs-12">
-                <label><p href primary>Upload makalah</p></label><br />
-                <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
-              </div> -->
-
               <!-- app.component.html -->
               <div class="col-md-12">
-                <input type="file"
-                       ngFileSelect
-                       [options]="options"
-                       (onUpload)="handleUpload($event)"
-                       (beforeUpload)="beforeUpload($event)">
+                <label class="row col-md-12"><p href primary><b>Upload Makalah</b></p></label><br />
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
 
-                <div>
-                response1: {{ uploadFile | json }}
+                  <input class="button" type="file"
+                         ngFileSelect
+                         [options]="options"
+                         (onUpload)="handleUpload($event)"
+                         (beforeUpload)="beforeUpload($event)">
                 </div>
-                <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress>
-                <!-- progress : {{progress}} -->
+                <div class="col-md-4">
+                  <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress>
+                </div>
+                <div class="col-md-2"><br /></div>
+                <div class="col-md-12 text-center">
+                  <span *ngIf="preview">File Makalah Kolokium dapat <a target="_blank" href="{{preview}}">Dilihat Disini</a></span>
+
+                  <!-- response1: {{ uploadFile | json }} -->
+                </div>
               </div>
 
             </form>

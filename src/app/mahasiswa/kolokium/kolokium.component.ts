@@ -81,10 +81,15 @@ export class Kolokium {
   };
   sizeLimit = 20000000000;
 
+
+  preview = "";
   handleUpload(data: any): void {
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
+
+      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
+      this.showSelesai();
     }
 
     this.zone.run(() => {
@@ -98,8 +103,6 @@ export class Kolokium {
   }
 
   beforeUpload(uploadingFile): void {
-    console.log(uploadingFile);
-
     if (uploadingFile.size > this.sizeLimit) {
       uploadingFile.setAbort();
       alert('File is too large');
@@ -109,6 +112,10 @@ export class Kolokium {
       uploadingFile.setAbort();
       alert('File Harus Berekstensi PDF');
     }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
   }
 
 
