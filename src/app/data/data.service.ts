@@ -52,6 +52,9 @@ export class DataService {
   public urlLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/';
   public urlKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/jadwalKolokium';
 
+  public urlFileKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/kolokium';
+  public urlUploadKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/upload/kolokium';
+
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
 

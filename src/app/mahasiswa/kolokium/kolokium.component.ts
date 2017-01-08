@@ -75,11 +75,11 @@ export class Kolokium {
   private response: any = {};
 
   options: NgUploaderOptions = {
-    url: 'http://simak.apps.cs.ipb.ac.id:2016/upload/kolokium',
+    url: this.data.urlUploadKolokium,
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 20000000000;
+  sizeLimit = 30000000;
 
 
   preview = "";
@@ -105,7 +105,7 @@ export class Kolokium {
   beforeUpload(uploadingFile): void {
     if (uploadingFile.size > this.sizeLimit) {
       uploadingFile.setAbort();
-      alert('File is too large');
+      alert('File harus kurang dari 3 MB');
     }
 
     if (uploadingFile.originalName.search(".pdf") == -1) {
@@ -172,6 +172,8 @@ export class Kolokium {
   }
 
   getDataMahasiswa(){
+    this.getDataFile();
+
     this.authHttp.get(this.data.urlTa)
       .map(res => res.json())
       .subscribe(data => {
@@ -180,6 +182,14 @@ export class Kolokium {
         this.dosen2 = data[0]['dosen2'];
         this.dosen_1 = data[0]['dosen_1'];
         this.dosen_2 = data[0]['dosen_2'];
+      })
+  }
+
+  getDataFile() {
+    this.authHttp.get(this.data.urlFileKolokium)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
       })
   }
 
