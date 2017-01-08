@@ -123,8 +123,8 @@ export class Log {
   }
 
   ngOnInit() {
-    this.getConnection();
     this.getStatus();
+    this.getConnection();
   }
 
   getConnection() {
@@ -178,10 +178,8 @@ export class Log {
         for(let i = 0; i < data.length; i++) {
           if(data[i].approval) {
             this.diterima++;
-            console.log('ada');
           }
           this.total++;
-          console.log(this.total);
         }
       })
   }

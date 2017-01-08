@@ -1,3 +1,173 @@
-<div class="alert alert-info" role="alert">
-  Fitur ini sedang dalam perbaikan.
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <div *ngIf="!statusSeminar">
+    <alert type="danger"><h4>Kamu belum melaksanakan <b>Seminar</b>.</h4><br /  >
+      Silahkan laksanakan seminar terlebih dahulu untuk menggunakan fitur ini.
+    </alert>
+  </div>
+
+  <div *ngIf="statusSeminar">
+      <div class="row">
+        <div class="col-md-12">
+
+          <ba-card title="Pengajuan Sidang Tugas Akhir" baCardClass="with-scroll">
+            <form class="row form-inline" (ngSubmit)="submit()">
+
+              <!-- nama & nim-->
+              <div class="col-md-12 col-xs-12">
+
+                <div class="col-md-4 col-sm-12">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <b>Nama</b>
+                    </div>
+                    <div class="col-md-8">
+                      : {{data.nama}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <b>NIM</b>
+                    </div>
+                    <div class="col-md-8">
+                      : {{data.nim}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <b>Pembimbing Ketua</b>
+                    </div>
+                    <div class="col-md-7">
+                      : {{dosen1}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-5">
+                      <b>Pembimbing Anggota</b>
+                    </div>
+                    <div class="col-md-7">
+                      : {{dosen2}}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br /><br />
+              </div>
+
+              <alert type="info" class="col-md-12">
+                Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
+              </alert>
+              <!-- judul topik -->
+              <div class="form-group col-md-12 col-xs-12">
+                  <label><p href primary><b>Topik kamu</b></p></label><br />
+                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br />
+              </div>
+
+              <!-- Tempat -->
+              <div class="form-group col-md-3 col-sm-8 col-xs-12">
+                <label><b>Tanggal</b> {{tanggal}}</label><br /><br />
+                <input class="form-control" type="date" name="date" style="height:36px" [(ngModel)]="tanggal" required="required"/>
+              </div>
+
+              <div class="form-group col-md-3 col-sm-4 col-xs-12">
+                <label><b>Jam</b></label><br />
+                <timepicker name="mytime" [(ngModel)]="mytime" [showMeridian]="ismeridian" [showSpinners]="isArrow" required="required"></timepicker>
+                {{mytime  | date:'hh:mm' }}
+                <!-- <input class="form-control" type="time" name="konferensi" placeholder="10.00" style="height:35px" [(ngModel)]="jam"/> -->
+              </div>
+
+              <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                <label><b>Tempat</b></label><br /><br />
+                <input class="form-control" type="text" name="tempat" placeholder="Misalkan : R. Sidang Ilkom" [(ngModel)]="tempat" required="required"/>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br />
+              </div>
+
+
+              <!-- Submit -->
+              <div class="col-md-12 col-sm-12">
+                <div class="section-block text-right padding-right">
+                  <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br />
+              </div>
+
+              <!-- app.component.html -->
+              <div class="col-md-12">
+                <label class="row col-md-12"><p href primary><b>Upload Makalah</b></p></label><br />
+                <div class="col-md-3 text-center">
+                  <alert type="danger" *ngIf="!preview">
+                    Kamu belum upload file Sidang
+                  </alert>
+                  <alert type="success" *ngIf="preview">
+                    File Sidang bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                  </alert>
+                </div>
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input class="button" type="file"
+                             ngFileSelect
+                             [options]="options"
+                             (onUpload)="handleUpload($event)"
+                             (beforeUpload)="beforeUpload($event)">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <br />
+                    <div class="col-md-8">
+                      <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <alert type="info" *ngIf="preview">
+                    Silahkan Upload ulang jika ingin mengganti file makalah Sidang
+                  </alert>
+                </div>
+              </div>
+
+            </form>
+
+          </ba-card>
+
+        </div>
+
+      </div>
+
+
+  </div>
+
 </div>
