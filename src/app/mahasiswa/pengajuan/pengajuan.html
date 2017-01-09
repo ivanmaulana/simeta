@@ -1,7 +1,3 @@
-<!-- <div class="alert alert-info" role="alert">
-  Fitur ini sedang dalam perbaikan.
-</div> -->
-
 <div *ngIf="!status">
   <div class="spinner" *ngIf="!noConn">
     <div class="double-bounce1"></div>
@@ -18,16 +14,249 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="statusTa">
-    <div class="alert alert-info" role="alert">
-      Pengajuan Topik Tugas Akhir Kamu Sudah Diterima dan Topik Serta Dosen Pembimbing Kamu Ditentukan
-    </div>
+  <div *ngIf="!statusProfile">
+    <alert type="danger">
+      Kamu belum melengkapi data diri kamu. Silahkan lengkapi <a href="#/mahasiswa/profile"><i>Disini</i></a>
+    </alert>
   </div>
 
-  <div *ngIf="!statusTa">
-    <!-- <div class="alert alert-info" role="alert">
-      Fitur ini sedang dalam perbaikan.
-    </div> -->
+  <div *ngIf="statusProfile">
+    <div *ngIf="statusTa">
+      <div class="alert alert-info" role="alert">
+        Pengajuan Topik Tugas Akhir Kamu Sudah Diterima dan Topik Serta Dosen Pembimbing Kamu Ditentukan
+      </div>
+    </div>
+
+    <div *ngIf="!statusTa">
+      <!-- <div class="alert alert-info" role="alert">
+        Fitur ini sedang dalam perbaikan.
+      </div> -->
+
+      <ba-card title="Pengajuan Topik">
+        <form class="row form-inline">
+
+          <!-- nama & nim-->
+          <div class="form-group col-md-12 col-xs-12">
+            <div class="row">
+              <div class="col-md-2">
+                <b>Nama</b>
+              </div>
+              <div class="col-md-8">
+                : {{data.nama}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">
+                <b>NIM</b>
+              </div>
+              <div class="col-md-8">
+                : {{data.nim}}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <!-- judul topik yang diusulkan -->
+          <div class="form-group col-md-12 col-xs-12">
+            <label class="label"><b>Topik yang diusulkan</b></label><br />
+            <textarea required="required" placeholder="Topik yang diusulkan" name="topik" [(ngModel)]="topik" class="form-control" style="width:100%"></textarea>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <!-- pilihan lab -->
+          <div class="form-group col-md-6 col-xs-12">
+              <label class="label"><b>Pilihan Lab Keilmuan (Pilih salah satu)</b></label><br />
+              <div class="row col-md-12">
+                <label class="radio-inline custom-radio nowrap">
+                  <input type="radio" name="lab" [checked]="lab == 1" (click)="radioLab(1)" required="required">
+                  <span>Net-Centric Computation</span>
+                </label>
+              </div><br />
+              <div class="row col-md-12">
+                <label class="radio-inline custom-radio nowrap"><br />
+                  <input type="radio" name="lab" [checked]="lab == 2" (click)="radioLab(2)" required="required">
+                  <span>Applied Computational Intelligence</span>
+                </label>
+              </div><br />
+              <div class="row col-md-12">
+                <label class="radio-inline custom-radio nowrap"><br />
+                  <input type="radio" name="lab" [checked]="lab == 3" (click)="radioLab(3)" required="required">
+                  <span>Software Engineering & Information System</span>
+                </label>
+              </div>
+          </div>
+
+          <!-- perkembangan penelitian -->
+          <div class="form-group col-md-6 col-xs-12">
+              <label class="label"><b>Perkembangan penelitian (Boleh pilih lebih dari satu)</b></label><br />
+              <div class="row padding-left">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input name="progress_1" type="checkbox" [checked]="progress_1" (click)="checkbox(1)">
+                  <span>Belum melakukan apa-apa</span>
+                </label>
+              </div><br />
+              <div class="row padding-left">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input name="progress_2" [disabled]="!disableCheckbox" [checked]="progress_2" type="checkbox" (click)="checkbox(2)">
+                  <span>Telah membaca skripsi terkait</span>
+                </label>
+              </div><br />
+              <div class="row padding-left">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input name="progress_3" [disabled]="!disableCheckbox" [checked]="progress_3" type="checkbox" (click)="checkbox(3)">
+                  <span>Telah membaca paper dan referensi terkait</span>
+                </label>
+              </div><br />
+              <div class="row padding-left">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input name="progress_4" [disabled]="!disableCheckbox" [checked]="progress_4" type="checkbox" (click)="checkbox(4)">
+                  <span>Telah mendapatkan data yang diperlukan</span>
+                </label>
+              </div><br />
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+
+          <!-- dosen pembimbing -->
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <label class="label"><b>Dosen pembimbing yang diusulkan (prioritas berdasarkan urutan)</b></label><br /><br />
+          </div>
+
+          <div class="form-group col-sm-12 col-md-6 col-xs-12">
+
+            <div class="row">
+              <div class="col-md-3">
+                Pilihan 1
+              </div>
+
+              <!-- PILIHAN 1 -->
+              <div class="col-md-9">
+                <input name="dosen1" [(ngModel)]="query"
+                    [typeahead]="dosen"
+                    (typeaheadOnSelect)="typeaheadOnSelect1($event)"
+                    (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                    class="form-control"
+                    [typeaheadOptionsLimit]="5"
+                    placeholder="Dosen Pembimbing Pilihan 1">
+                   <div *ngIf="typeaheadNoResults===true" class="" style="">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="col-md-7">
+                <label for="pembimbing">Sudah pernah berkonsultasi ?</label><br />
+
+                <div class="col-md-3 col-sm-5 col-xs-5">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="konsultasi_1" [checked]="konsultasi_1" (click)=radio1(true) value="option1">
+                    <span>Ya</span>
+                  </label>
+                </div>
+
+                <div class="col-md-3 col-sm-7 col-xs-7">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="konsultasi_1" [checked]="!konsultasi_1" (click)=radio1(false) value="option1">
+                    <span>Tidak</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <label>Jumlah Pertemuan</label>
+                <input name="konsultasi_1" class="form-control" [disabled]="!konsultasi_1" [(ngModel)]="pertemuan_1" placeholder="Jumlah Pertemuan"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-12 col-md-6 col-xs-12">
+            <div class="row">
+              <div class="col-md-3">
+                Pilihan 2
+              </div>
+
+              <!-- PILIHAN 1 -->
+              <div class="col-md-9">
+                <input name="dosen2" [(ngModel)]="query2"
+                    [typeahead]="dosen"
+                    (typeaheadOnSelect)="typeaheadOnSelect2($event)"
+                    (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                    class="form-control"
+                    [typeaheadOptionsLimit]="5"
+                    placeholder="Dosen Pembimbing Pilihan 2">
+                   <div *ngIf="typeaheadNoResults===true" class="" style="">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="col-md-7">
+                <label for="pembimbing">Sudah pernah berkonsultasi ?</label><br />
+
+                <div class="col-md-3 col-sm-5 col-xs-5">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="konsultasi_2" [checked]="konsultasi_2" (click)=radio2(true) value="option1">
+                    <span>Ya</span>
+                  </label>
+                </div>
+
+                <div class="col-md-3 col-sm-7 col-xs-7">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="konsultasi_2" [checked]="!konsultasi_2" (click)=radio2(false) value="option1">
+                    <span>Tidak</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <label>Jumlah Pertemuan</label>
+                <input name="konsultasi_2" class="form-control" [disabled]="!konsultasi_2" [(ngModel)]="pertemuan_2" placeholder="Jumlah Pertemuan"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br /><br />
+          </div>
+
+          <div class="col-md-12 text-right" >
+            <p class="text-danger" *ngIf="!topik || !lab || !dosen_1">
+              Silahkan Isi Semua Form
+            </p>
+            <button [disabled]="!topik || !lab || !dosen_1" type="submit" class="btn btn-primary btn-lg" (click)="onSubmit()">Daftar</button>
+          </div>
+        </form>
+        <!-- nim : {{nim}}<br />
+        topik : {{topik}}<br />
+        lab : {{lab}}
+        progress : {{progress_1}}, {{progress_2}}, {{progress_3}}, {{progress_4}}<br />
+        dosen : {{query}}, {{query2}}<br />
+        konsultasi_1 : {{konsultasi_1}}, {{pertemuan_1}}<br />
+        konsultasi_2 : {{konsultasi_2}}, {{konsultasi_2}}<br /><br />
+        status : {{status}}<br />
+        message : {{message}} -->
+      </ba-card>
+    </div>
   </div>
 
 </div>
