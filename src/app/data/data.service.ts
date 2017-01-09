@@ -59,6 +59,8 @@ export class DataService {
   public urlFilePraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/praseminar';
   public urlUploadKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/upload/kolokium';
   public urlUploadPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/upload/praseminar';
+  public urlUploadSKL = 'http://simak.apps.cs.ipb.ac.id:2016/upload/skl';
+  public urlUploadTAFinal = 'http://simak.apps.cs.ipb.ac.id:2016/upload/final';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

@@ -1,3 +1,189 @@
-<div class="alert alert-info" role="alert">
-  Fitur ini sedang dalam perbaikan.
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <div *ngIf="!statusSidang">
+    <alert type="info">
+      <h4>Kamu belum melaksanakan <b>sidang</b></h4>
+    </alert>
+  </div>
+
+  <div *ngIf="statusSidang">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <ba-card title="Surat Keterangan Lulus" baCardClass="with-scroll">
+          <form class="row form-inline" (ngSubmit)="simpan()">
+
+            <!-- nama & nim-->
+            <div class="col-md-12 col-xs-12">
+
+              <div class="col-md-4 col-sm-12">
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>Nama</b>
+                  </div>
+                  <div class="col-md-8">
+                    : {{data.nama}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>NIM</b>
+                  </div>
+                  <div class="col-md-8">
+                    : {{data.nim}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-8 col-sm-12">
+                <div class="row">
+                  <div class="col-md-5">
+                    <b>Pembimbing Ketua</b>
+                  </div>
+                  <div class="col-md-7">
+                    : {{dosen1}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-5">
+                    <b>Pembimbing Anggota</b>
+                  </div>
+                  <div class="col-md-7">
+                    : {{dosen2}}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br /><br />
+            </div>
+
+            <alert type="info" class="col-md-12">
+              Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
+            </alert>
+            <!-- judul topik -->
+            <div class="form-group col-md-12 col-xs-12">
+                <label><p href primary><b>Topik kamu (Sesuai SKL)</b></p></label><br />
+                <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br />
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 text-right">
+              <button class="btn btn-primary" type="submit">Ubah Topik</button>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br /><br />
+            </div>
+
+            <final></final>
+            <!-- app.component.html -->
+            <!-- <div class="col-md-12">
+              <label class="row col-md-12"><p href primary><b>Upload Skripsi Final</b></p></label><br />
+              <div class="col-md-3 text-center">
+                <alert type="danger" *ngIf="!preview1">
+                  Kamu belum upload file skripsi final
+                </alert>
+                <alert type="success" *ngIf="preview1">
+                  File skripsi final bisa dilihat<br /><br /> <a target="_blank" href="{{preview1}}"><b>Disini</b></a>
+                </alert>
+              </div>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="button" type="file"
+                           ngFileSelect
+                           [options]="options1"
+                           (onUpload)="handleUpload1($event)"
+                           (beforeUpload)="beforeUpload($event)">
+                  </div>
+                </div>
+                <div class="row">
+                  <br />
+                  <div class="col-md-8">
+                    <progress class="progress progress-striped" value="{{progress1}}" max="100" type="warning">{{progress1}}%</progress><b *ngIf="progress1">{{progress1}}%</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <alert type="info" *ngIf="preview1">
+                  Silahkan Upload ulang jika ingin mengganti file skripsi final
+                </alert>
+              </div>
+            </div> -->
+
+
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br /><br />
+            </div>
+
+            <!-- app.component.html -->
+            <div class="col-md-12">
+              <label class="row col-md-12"><p href primary><b>Upload Scan SKL</b></p></label><br />
+              <div class="col-md-3 text-center">
+                <alert type="danger" *ngIf="!preview">
+                  Kamu belum upload Scan SKL
+                </alert>
+                <alert type="success" *ngIf="preview">
+                  File SKL Kamu final bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                </alert>
+              </div>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="button" type="file"
+                           ngFileSelect
+                           [options]="options"
+                           (onUpload)="handleUpload($event)"
+                           (beforeUpload)="beforeUpload($event)">
+                  </div>
+                </div>
+                <div class="row">
+                  <br />
+                  <div class="col-md-8">
+                    <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <alert type="info" *ngIf="preview">
+                  Silahkan Upload ulang jika ingin mengganti scan SKL
+                </alert>
+              </div>
+            </div>
+
+          </form>
+
+        </ba-card>
+      </div>
+    </div>
+
+
+  </div>
+
 </div>

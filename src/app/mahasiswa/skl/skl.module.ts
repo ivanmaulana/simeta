@@ -5,16 +5,24 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Skl } from './skl.component';
 import { routing }       from './skl.routing';
+import { AlertModule } from 'ng2-bootstrap/alert';
+import { NgUploaderModule } from 'ngx-uploader';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { Final } from './components/final';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    NgUploaderModule,
+    ProgressbarModule,
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [
-    Skl
+    Skl,
+    Final
   ],
   providers: [
   ]
