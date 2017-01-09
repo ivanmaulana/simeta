@@ -116,6 +116,7 @@ export class Log {
         this.statusProfile = data[0].statusProfile;
 
         if(this.statusTa) {
+          this.getApprovalCount();
           this.getDataMahasiswa();
           this.getDataLog();
         }
@@ -181,6 +182,16 @@ export class Log {
           }
           this.total++;
         }
+      })
+  }
+
+  disetujui;
+  getApprovalCount() {
+    this.authHttp.get(this.data.urlLogApproval)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+        this.disetujui = data[0].count;
       })
   }
 

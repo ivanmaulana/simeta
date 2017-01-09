@@ -62,6 +62,8 @@ export class DataService {
   public urlUploadSKL = 'http://simak.apps.cs.ipb.ac.id:2016/upload/skl';
   public urlUploadTAFinal = 'http://simak.apps.cs.ipb.ac.id:2016/upload/final';
 
+  public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
+
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
 

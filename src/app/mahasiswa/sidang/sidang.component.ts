@@ -60,7 +60,6 @@ export class Sidang {
       .subscribe(data => {
         console.log(data);
       })
-    // console.log('submit');
   }
 
   // -----------------------------
@@ -80,8 +79,6 @@ export class Sidang {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-        // console.log('status TA'+this.statusTa);
-
         if(this.statusTa) {
           this.getDataMahasiswa();
         }
@@ -89,6 +86,7 @@ export class Sidang {
   }
 
   private zone: NgZone;
+
   ngOnInit() {
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.getStatus();
@@ -126,8 +124,8 @@ export class Sidang {
   }
 
   refresh() {
-    this.getConnection();
     this.getStatus();
+    this.getConnection();
   }
 
   showNoConn() {
