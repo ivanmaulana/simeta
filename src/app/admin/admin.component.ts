@@ -7,7 +7,7 @@ import {JwtHelper} from 'angular2-jwt';
   encapsulation: ViewEncapsulation.None,
   styles: [],
   template: `
-    <ba-sidebar></ba-sidebar>
+    <ba-sidebar-admin></ba-sidebar-admin>
     <ba-page-top></ba-page-top>
     <div class="al-main">
       <div class="al-content">

@@ -18,13 +18,16 @@
 
     <div class="col-md-4 col-sm-12 col-xs-12">
       <div>
-        <img src="http://acvo.org.uk/wp-content/uploads/2014/12/blank-profile.png" class="picture" />
+        <img [src]="picture" class="picture text-center" />
         <div class="text-center">
-          <input class="button" type="file"
+          <br /><input class="button" type="file"
                  ngFileSelect
                  [options]="options"
                  (onUpload)="handleUpload($event)"
                  (beforeUpload)="beforeUpload($event)">
+        </div><br />
+        <div class="col-md-8 col-md-offset-2 text-center" *ngIf="progress">
+          <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
         </div>
       </div>
       <br />
@@ -110,7 +113,7 @@
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
             <label style="color: #2980b9"><b>No. HP Orang Tua</b></label>
             <input name="no_ortu" [(ngModel)]="no_ortu" class="form-control"/>
-            <label style="color: #2980b9"><br /><b>Telp. Rumah Orang Tua</b></label>
+            <label style="color: #2980b9"><br /><b>Telp. Rumah Orang Tua</b></label><span style="font-weight:5 px">(isi - jika tidak ada)</span>
             <input name="telp_ortu" [(ngModel)]="telp_ortu" class="form-control"/>
           </div>
 

@@ -61,6 +61,7 @@ export class DataService {
   public urlUploadPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/upload/praseminar';
   public urlUploadSKL = 'http://simak.apps.cs.ipb.ac.id:2016/upload/skl';
   public urlUploadTAFinal = 'http://simak.apps.cs.ipb.ac.id:2016/upload/final';
+  public urlUploadPhoto = 'http://simak.apps.cs.ipb.ac.id:2016/upload/photo';
 
   public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
 

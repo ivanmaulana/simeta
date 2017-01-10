@@ -31,9 +31,153 @@ export class Profile {
   private nim;
   private nama;
 
+  private no;
+  private alamat;
+  private email;
+  private nama_ayah;
+  private nama_ibu;
+  private no_ortu;
+  private telp_ortu;
+  private alamat_ortu;
+
+  private creds;
+  private message;
+
+  public picture = 'http://simak.apps.cs.ipb.ac.id/upload/filePhoto/foto-'+this.data.nim+'-'+this.data.nama+'.jpg';
+  public defaultPicture = 'assets/img/photo.png';
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
+  }
 
+  getProfile() {
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.authHttp.get(this.data.urlProfile)
+      .map(res => res.json())
+        .subscribe( data => {
+
+          this.no = data[0]['hp'];
+          this.email = data[0]['email'];
+          this.alamat = data[0]['alamat'];
+          this.nama_ayah = data[0]['namaayah'];
+          this.nama_ibu = data[0]['namaibu'];
+          this.alamat_ortu = data[0]['alamatortu'];
+          this.no_ortu = data[0]['noortu'];
+          this.telp_ortu = data[0]['telportu'];
+        })
+  }
+
+  simpan() {
+    let koneksi = 0;
+
+    this.authHttp.get(this.data.urlTest)
+      .map(res => res.json())
+      .subscribe(data => {
+        koneksi = data['status'];
+
+      })
+
+    this.creds = JSON.stringify({nim: this.nim, alamat: this.alamat, hp: this.no, email: this.email, namaayah: this.nama_ayah,
+    namaibu: this.nama_ibu, noortu: this.no_ortu, telportu: this.telp_ortu, alamatortu: this.alamat_ortu});
+
+    // console.log(this.creds);
+
+    if(!this.alamat || !this.email || !this.no || !this.nama_ayah || !this.nama_ibu || !this.no_ortu || !this.telp_ortu || !this.alamat_ortu) {
+      this.showKurang();
+    }
+    else {
+      this.authHttp.post(this.data.urlProfile, this.creds)
+        .map(res => res.json())
+        .subscribe(data => {
+          // console.log(data);
+          this.status = data['status'];
+          this.message = data['message'];
+
+          if (this.status) this.showSuccess();
+          else this.showError();
+        }
+      )
+    }
+
+    setTimeout(() => {
+      if (!koneksi) {
+        this.showNoConn();
+      }
+    }, 2000)
+
+  }
+
+  showError() {
+    this.toastr.error('Gagal Update Profile', 'Error!');
+  }
+
+  showKurang() {
+    this.toastr.error('Data Belum Lengkap', 'Error!');
+  }
+
+  showSuccess() {
+    this.toastr.success("Berhasil Update Profile", 'Success !');
+  }
+
+
+
+  // ---------------------------------
+  // UPLOAD
+
+  // ---------------------------
+  // FILE UPLOAD
+
+  private zone: NgZone;
+
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
+  private progress: number = 0;
+  private response: any = {};
+
+  options: NgUploaderOptions = {
+    url: this.data.urlUploadPhoto,
+    authToken: localStorage.getItem('id_token'),
+    allowedExtensions: ['image/png', 'image/jpg'],
+    authTokenPrefix: ''
+  };
+  sizeLimit = 20000000;
+
+
+  preview = "";
+  handleUpload(data: any): void {
+    if (data && data.response) {
+      let data1 = JSON.parse(data.response);
+      this.uploadFile = data1;
+
+      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+this.uploadFile[0].filename;
+      this.showSelesai();
+    }
+
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = Math.floor(data.progress.percent);
+    });
+  }
+
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File harus kurang dari 2 MB');
+    }
+
+    if (uploadingFile.originalName.search(".jpg") == -1) {
+      uploadingFile.setAbort();
+      alert('File Harus Berekstensi .jpg');
+    }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Foto", 'Success!');
   }
 
   // -----------------------------
@@ -56,6 +200,7 @@ export class Profile {
         // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
+          this.getProfile();
           // this.getDataMahasiswa();
         }
       })

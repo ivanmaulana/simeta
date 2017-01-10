@@ -1,6 +1,6 @@
-export const ADMIN_MENU = [
+export const ADMIN_SIDEBAR_MENU = [
   {
-    path: 'dosen',
+    path: 'admin',
     children: [
       {
         path: 'dashboard',
