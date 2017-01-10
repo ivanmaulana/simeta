@@ -1,3 +1,141 @@
-<div class="alert alert-info" role="alert">
-  Fitur ini sedang dalam perbaikan.
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <ba-card title="Profile" baCardClass="with-scroll">
+
+    <div class="col-md-4 col-sm-12 col-xs-12">
+      <div>
+        <img src="http://acvo.org.uk/wp-content/uploads/2014/12/blank-profile.png" class="picture" />
+        <div class="text-center">
+          <input class="button" type="file"
+                 ngFileSelect
+                 [options]="options"
+                 (onUpload)="handleUpload($event)"
+                 (beforeUpload)="beforeUpload($event)">
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <form class="form-inline" (onSubmit)="simpan()">
+      <div class="col-md-8 col-xs-12 col-sm-12">
+
+        <!-- Nama -->
+        <div class="form-group col-md-3 col-sm-5 col-xs-12" style="color: #2980b9">
+          <b>Nama</b>
+        </div>
+
+        <div class="form-group col-md-9 col-sm-7 col-xs-12">
+          : {{data.nama}}
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <br />
+        </div>
+
+        <!-- Nama -->
+        <div class="form-group col-md-3 col-sm-5 col-xs-12 padding-top" style="color: #2980b9">
+          <b>No. HP</b>
+        </div>
+
+        <div class="form-group col-md-9 col-sm-7 col-xs-12">
+          <input name="no" [(ngModel)]="no" class="form-control"/>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <br />
+        </div>
+
+        <!-- Alamat -->
+        <div class="form-group col-md-3 col-sm-5 col-xs-12" style="color: #2980b9">
+          <b>Alamat Sekarang</b>
+        </div>
+
+        <div class="form-group col-md-9 col-sm-7 col-xs-12">
+          <textarea class="form-control" name="alamat" [(ngModel)]="alamat" style="width:100%"></textarea>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <br />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group col-md-3 col-sm-5 col-xs-12" style="color: #2980b9">
+          <b>Email</b>
+        </div>
+
+        <div class="form-group col-md-9 col-sm-7 col-xs-12">
+          <input name="email" [(ngModel)]="email" class="form-control"/>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <br /><br /><br />        <hr />
+        </div>
+      </div>
+
+        <!-- PISAH -->
+
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <!-- Nama Ayah -->
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label style="color: #2980b9"><b>Nama Ayah</b></label>
+            <input name="nama_ayah" [(ngModel)]="nama_ayah" class="form-control"/>
+          </div>
+
+          <!-- Nama Ibu -->
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label style="color: #2980b9"><b>Nama Ibu</b></label>
+            <input name="nama_ibu" [(ngModel)]="nama_ibu" class="form-control"/>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <!-- Nama Ayah -->
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label style="color: #2980b9"><b>No. HP Orang Tua</b></label>
+            <input name="no_ortu" [(ngModel)]="no_ortu" class="form-control"/>
+            <label style="color: #2980b9"><br /><b>Telp. Rumah Orang Tua</b></label>
+            <input name="telp_ortu" [(ngModel)]="telp_ortu" class="form-control"/>
+          </div>
+
+          <!-- Alamat Ortu -->
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label style="color: #2980b9"><b>Alamat Orang Tua</b></label>
+            <textarea class="form-control" style="width: 100%" name="alamat_ortu" [(ngModel)]="alamat_ortu"></textarea>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <!-- submit -->
+          <div class="col-md-12 col-xs-12 col-sm-12 text-right">
+            <p class="text-danger" *ngIf="!alamat || !email || !no || !nama_ayah || !nama_ibu || !no_ortu || !telp_ortu || !alamat_ortu">
+              *Silahkan Isi Semua Form
+            </p>
+            <button [disabled]="!alamat || !email || !no || !nama_ayah || !nama_ibu || !no_ortu || !telp_ortu || !alamat_ortu" class="btn btn-lg btn-primary" type="submit" (click)="simpan()">Simpan</button>
+          </div>
+        </div>
+
+      </form>
+
+  </ba-card>
+
+
 </div>

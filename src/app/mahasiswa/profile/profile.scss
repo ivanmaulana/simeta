@@ -1,23 +1,23 @@
-@media screen and (min-width: 1620px) {
-  .row.shift-up {
-    > * {
-      margin-top: -573px;
-    }
-  }
+.btn-lg{
+  width: 175px;
 }
 
-@media screen and (max-width: 1620px) {
-  .card.feed-panel.large-card {
-    height: 824px;
-  }
+.padding-right{
+  padding-right: 15px;
 }
 
-.user-stats-card {
-  .card-title {
-    padding: 0 0 15px;
-  }
+.padding-top{
+  padding-top: 3px;
 }
 
-.blurCalendar {
-  height: 475px;
+.red {
+  color: #e74c3c;
+}
+
+.label {
+  color : #3498db;
+}
+
+.picture {
+  max-width: 200px;
 }
