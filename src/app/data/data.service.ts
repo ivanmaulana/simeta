@@ -65,6 +65,10 @@ export class DataService {
 
   public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
 
+
+  // ADMIN
+  public urlListPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/list';
+
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
 

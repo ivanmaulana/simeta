@@ -6,6 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { PengajuanAdmin } from './pengajuan.component';
 import { routing }       from './pengajuan.routing';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     FormsModule,
     NgaModule,
     Ng2SmartTableModule,
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [

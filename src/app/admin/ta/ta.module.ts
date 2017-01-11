@@ -5,12 +5,20 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { TaAdmin } from './ta.component';
 import { routing }       from './ta.routing';
+import { AlertModule } from 'ng2-bootstrap/alert';
+import { NgUploaderModule } from 'ngx-uploader';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    NgUploaderModule,
+    ProgressbarModule,
+    TypeaheadModule.forRoot(),
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [

@@ -1,1 +1,34 @@
-<ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" [source]="data"></ng2-smart-table>
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+  <ba-card title="Pengajuan TA" baCardClass="with-scroll">
+    <div *ngIf="pengajuan">
+
+      <div class="text-right">
+        <button class="btn btn-primary text-right">
+          <a href="{{excel}}" style="color:white">
+            Download As XLS
+          </a>
+        </button>
+
+        {{settings.count}}
+      </div>
+
+      <br />
+      <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" [source]="pengajuan"></ng2-smart-table>
+
+    </div>
+  </ba-card>
+</div>

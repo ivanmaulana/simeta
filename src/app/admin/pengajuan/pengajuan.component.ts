@@ -1,12 +1,79 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, NgZone} from '@angular/core';
+import {AuthHttp} from 'angular2-jwt';
+
+import { ToastrService } from 'toastr-ng2';
+import { DataService } from '../../data/data.service';
+
+import { NgUploaderOptions } from 'ngx-uploader';
 
 @Component({
   selector: 'pengajuan',
   encapsulation: ViewEncapsulation.None,
+  providers: [DataService],
   styles: [require('./pengajuan.scss')],
   template: require('./pengajuan.html')
 })
 export class PengajuanAdmin {
+
+  // cek koneksi
+  noConn;
+  status;
+
+  pengajuan;
+
+  private excel = 'http://simak.apps.cs.ipb.ac.id:2016/excel/'+localStorage.getItem('id_token');
+
+  constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
+  }
+
+  test(a) {
+    console.log(a.data);
+  }
+
+  // -----------------------------
+  // TEMPLATE
+
+  // DASHBOARD SERVICE
+  getDataPengajuan() {
+    this.authHttp.get(this.data.urlListPengajuan)
+      .map(res => res.json())
+      .subscribe( data => {
+        this.pengajuan = data;
+      })
+  }
+
+  ngOnInit() {
+    this.getDataPengajuan();
+    this.getConnection();
+  }
+
+  getConnection() {
+    this.noConn = 0;
+
+    this.authHttp.get(this.data.urlTest)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.status = data['status'];
+      })
+
+    setTimeout(() => {
+      if (!this.status) {
+        this.status = 0;
+        this.noConn = 1;
+        this.showNoConn();
+      }
+    }, 5000)
+  }
+
+  refresh() {
+    this.getConnection();
+    this.getDataPengajuan();
+  }
+
+  showNoConn() {
+    this.toastr.warning("Error Connecting to Server", 'Error');
+  }
+
   settings = {
     columns: {
       nim: {
@@ -18,42 +85,22 @@ export class PengajuanAdmin {
       topik: {
         title: 'Topik TA'
       },
-      lab: {
-        title: 'Lab'
+      dosen1: {
+        title: 'Pembimbing 1'
       },
-      pembimbing: {
-        title: 'Pembimbing'
+      dosen2: {
+        title: 'Pembimbing 2'
       }
+
     },
     actions: {
       add: false,
       edit: false,
       delete: false
+    },
+    setPaging: {
+      perPage: 7
     }
   };
-
-  data = [
-    {
-      nim: 'G64130076',
-      nama: "Ivan Maulana Putra",
-      topik: "Samuel L Ipsum is a Lorem Ipsum Generator, it uses quotes from films which Samuel L Jackson has starred in place of the standard ipsum text.",
-      lab: 1,
-      pembimbing: "Imas Sitanggang",
-    },
-    {
-      nim: 'G64130080',
-      nama: "Ivan Maulana Putra",
-      topik: "Samuel L Ipsum is a Lorem Ipsum Generator, it uses quotes from films which Samuel L Jackson has starred in place of the standard ipsum text.",
-      lab: 1,
-      pembimbing: "Imas Sitanggang",
-    },
-  ];
-
-  constructor() {
-  }
-
-  test(a) {
-    console.log(a.data);
-  }
 
 }
