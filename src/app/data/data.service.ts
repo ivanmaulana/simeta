@@ -62,8 +62,11 @@ export class DataService {
   public urlUploadSKL = 'http://simak.apps.cs.ipb.ac.id:2016/upload/skl';
   public urlUploadTAFinal = 'http://simak.apps.cs.ipb.ac.id:2016/upload/final';
   public urlUploadPhoto = 'http://simak.apps.cs.ipb.ac.id:2016/upload/photo';
+  public urlUploadJadwalKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/upload/jadwal/kolokium';
 
   public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
+
+  public urlAllMakalah = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium';
 
 
   // ADMIN

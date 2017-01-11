@@ -8,6 +8,7 @@ import { routing }       from './kolokium.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
     FormsModule,
     NgaModule,
     NgUploaderModule,
+    Ng2SmartTableModule,
     ProgressbarModule,
     AlertModule.forRoot(),
     routing

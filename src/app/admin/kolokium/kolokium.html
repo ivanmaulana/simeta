@@ -1,1 +1,109 @@
-Ini kolokium Dosen
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="status">
+  <div class="row col-md-12">
+    <div class="col-md-12">
+      <ba-card title="Penentuan Kolokium" baCardClass="with-scroll table-panel">
+        <div class="row form-group">
+          <div class="col-md-3 padding-top"><b>Aktifkan Fitur Kolokium</b></div>
+          <div class="col-md-2">
+            <button type="button" *ngIf="active" (click)="activate()" class="btn btn-primary">Aktif</button>
+            <button type="button" *ngIf="!active" (click)="activate()" class="btn btn-default">Tidak Aktif</button>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-3 padding-top"><b>Jadwal Kolokium</b></div>
+          <div class="col-md-4">
+            <input type="date" name="jadwal" class="form-control" [(ngModel)]="jadwal" style="height:33px"/>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-3 padding-top"><b>Deadline Upload Makalah</b></div>
+          <div class="col-md-4">
+            <input type="date" name="deadline" class="form-control" [(ngModel)]="deadline" style="height:33px"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <br />
+        </div>
+
+        <!-- upload makalah kolokium -->
+        <div class="row form-group">
+          <div class="col-md-12 col-xs-12">
+            <label><p href primary><b>Upload File Jadwal Kolokium</b></p></label><br />
+            <div class="col-md-3 text-center">
+              <alert type="danger" *ngIf="!preview">
+                Kamu belum upload Jadwal Kolokium
+              </alert>
+              <alert type="success" *ngIf="preview">
+                Jadwal Kolokium bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+              </alert>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-12">
+                  <input class="button" type="file"
+                         ngFileSelect
+                         [options]="options"
+                         (onUpload)="handleUpload($event)"
+                         (beforeUpload)="beforeUpload($event)">
+                </div>
+              </div>
+              <div class="row">
+                <br />
+                <div class="col-md-8">
+                  <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12 col-sm-12 align-right padding-right">
+            <button type="button" class="btn btn-primary btn-lg" (click)="simpan()">Simpan</button>
+          </div>
+        </div>
+      </ba-card>
+    </div>
+  </div>
+
+  <div class="row col-md-12">
+
+    <ba-card title="Rekap File Kolokium" class="col-md-12" baCardClass="with-scroll table-panel">
+
+      <!-- <div class="row">
+        <div class="col-md-2 padding-top">
+          <b>Pilih Tahun Masuk</b>
+        </div>
+        <div class="col-md-2 text-left">
+          <select [(ngModel)]="pilih_tahun" class="form-control" style="height:35px" required (change)="onChange($event)">
+            <option *ngFor="let i of forTahun" value="{{i}}">{{i}}</option>
+          </select>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <br />
+      </div>
+
+      <div class="row col-md-12" *ngIf="list">
+        <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+      </div>
+    </ba-card>
+
+  </div>
+</div>

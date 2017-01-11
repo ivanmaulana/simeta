@@ -63,7 +63,7 @@ export const ADMIN_SIDEBAR_MENU = [
         }
       },
       {
-        path: 'Seminar',
+        path: 'seminar',
         data: {
           menu: {
             title: 'Seminar',
