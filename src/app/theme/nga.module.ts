@@ -14,7 +14,6 @@ import {
 import {
   BaBackTop,
   BaCard,
-  BaChartistChart,
   BaCheckbox,
   BaContentTop,
   BaMenuItem,
@@ -55,7 +54,6 @@ import {
 const NGA_COMPONENTS = [
   BaBackTop,
   BaCard,
-  BaChartistChart,
   BaCheckbox,
   BaContentTop,
   BaMenuItem,

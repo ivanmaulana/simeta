@@ -35,7 +35,9 @@ export class kolokiumAdmin {
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     var temp = new Date();
-    this.tahun = temp.getFullYear() - 3;
+    this.tahun = temp.getFullYear() - 4;
+
+    console.log(this.tahun);
 
     this.pilih_tahun = this.tahun;
 
@@ -202,6 +204,8 @@ export class kolokiumAdmin {
 
   tahun_awal;
   forTahun = [];
+
+  rangkuman = [];
   getListKolokium() {
     this.authHttp.get(this.data.urlAllMakalah)
       .map(res => res.json())
@@ -210,11 +214,32 @@ export class kolokiumAdmin {
         this.temp = data;
         this.tahun_awal = data[0].tahun_masuk;
 
-        for(this.tahun_awal; this.tahun_awal < this.tahun; this.tahun_awal++) {
+        if (this.tahun_awal < this.tahun - 2) {
+          this.tahun_awal = this.tahun - 2;
+        }
+
+        for(this.tahun_awal; this.tahun_awal < this.tahun + 1; this.tahun_awal++) {
           this.forTahun.push(this.tahun_awal);
         };
 
-        console.log(this.forTahun);
+        for (let i = 0; i < this.forTahun.length; i++) {
+          let temp = 0;
+          let Cmakalah = 0;
+          for (let j = 0; j < data.length; j++) {
+            if (this.forTahun[i] == data[j].tahun_masuk) {
+              temp++;
+
+              if (data[j].makalah != null) {
+                Cmakalah++;
+              }
+            }
+          }
+
+          this.rangkuman[this.forTahun[i]] = {total: temp, sudah: Cmakalah};
+        }
+
+        console.log(this.rangkuman);
+
       })
   }
 
