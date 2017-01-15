@@ -36,10 +36,6 @@
           </div>
         </div>
 
-        <div class="row">
-          <br />
-        </div>
-
         <!-- upload makalah kolokium -->
         <div class="row form-group">
           <div class="col-md-12 col-xs-12">
@@ -85,15 +81,15 @@
     <ba-card title="Rekapitulasi" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="tampil">
         <div *ngFor="let i of forTahun" class="col-md-6 text-center">
+          <br />
           <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
           <canvas baseChart
                   [data]="rangkuman[i]"
                   [labels]="dataLabel"
-                  [chartType]="pieChartType"
-                  (chartHover)="chartHovered($event)">
+                  [chartType]="pieChartType">
           </canvas><br />
           <b>Sudah Upload : {{rangkuman[i][0]}}</b><br />
-          <b>Belum Upload : {{rangkuman[i][1]}}</b>
+          <b>Belum Upload : {{rangkuman[i][1] - rangkuman[i][0]}}</b>
         </div>
       </div>
       <br />

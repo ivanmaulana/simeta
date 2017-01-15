@@ -32,33 +32,20 @@ export class kolokiumAdmin {
 
   today;
   tahun;
-
   pilih_tahun;
-
-
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     var temp = new Date();
     this.tahun = temp.getFullYear() - 4;
 
-    // console.log(this.tahun);
-
     this.pilih_tahun = this.tahun;
-
   }
 
-  public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-  public pieChartData:number[] = [300, 500, 100];
-  public pieChartType:string = 'pie';
-
-  public chartHovered(e:any):void {
-    // console.log(e);
-  }
 
 
   // --------------------------------
-  // CHARTS
-
+  // TABLE
+  public pieChartType:string = 'pie';
   temp;
 
   checkNim(value, year) {
@@ -66,15 +53,11 @@ export class kolokiumAdmin {
   }
 
   onChange(e) {
-    // console.log(e.target.value);
     var y = e.target.value.substr(2,2);
-    // console.log(y);
 
     this.list = [];
-
     for(let i = 0; i < this.temp.length; i++) {
       var x = this.temp[i].nim.substr(3,2);
-      // console.log('tengah nim :'+x);
       if(y == x) {
         this.list.push(this.temp[i]);
       }
@@ -224,7 +207,7 @@ export class kolokiumAdmin {
   getListKolokium() {
     this.tampil = 0;
 
-    this.authHttp.get(this.data.urlAllMakalah)
+    this.authHttp.get(this.data.urlAllMakalahKolokium)
       .map(res => res.json())
       .subscribe(data => {
         this.list = data;

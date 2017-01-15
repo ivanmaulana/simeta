@@ -75,18 +75,6 @@ export const ADMIN_SIDEBAR_MENU = [
         }
       },
       {
-        path: 'skl',
-        data: {
-          menu: {
-            title: 'SKL',
-            icon: 'ion-android-home',
-            selected: false,
-            expanded: false,
-            order: 0
-          }
-        }
-      },
-      {
         path: 'sidang',
         data: {
           menu: {
@@ -98,6 +86,19 @@ export const ADMIN_SIDEBAR_MENU = [
           }
         }
       },
+      {
+        path: 'skl',
+        data: {
+          menu: {
+            title: 'SKL',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+
     ]
   }
 ];

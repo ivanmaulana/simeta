@@ -9,10 +9,7 @@ import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
-// import { Chart } from 'chart.js';
 
 @NgModule({
   imports: [
@@ -27,8 +24,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     routing
   ],
   declarations: [
-    kolokiumAdmin,
-    // Chart
+    kolokiumAdmin
   ],
   providers: [
   ]
