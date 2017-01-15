@@ -10,6 +10,10 @@ import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
+// import { Chart } from 'chart.js';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,10 +23,12 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     Ng2SmartTableModule,
     ProgressbarModule,
     AlertModule.forRoot(),
+    ChartsModule,
     routing
   ],
   declarations: [
-    kolokiumAdmin
+    kolokiumAdmin,
+    // Chart
   ],
   providers: [
   ]

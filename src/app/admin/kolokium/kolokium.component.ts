@@ -6,6 +6,8 @@ import { DataService } from '../../data/data.service';
 
 import { NgUploaderOptions } from 'ngx-uploader';
 
+let Chart = require('chart.js');
+
 @Component({
   selector: 'kolokium',
   encapsulation: ViewEncapsulation.None,
@@ -33,15 +35,29 @@ export class kolokiumAdmin {
 
   pilih_tahun;
 
+
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     var temp = new Date();
     this.tahun = temp.getFullYear() - 4;
 
-    console.log(this.tahun);
+    // console.log(this.tahun);
 
     this.pilih_tahun = this.tahun;
 
   }
+
+  public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartData:number[] = [300, 500, 100];
+  public pieChartType:string = 'pie';
+
+  public chartHovered(e:any):void {
+    // console.log(e);
+  }
+
+
+  // --------------------------------
+  // CHARTS
 
   temp;
 
@@ -50,17 +66,15 @@ export class kolokiumAdmin {
   }
 
   onChange(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     var y = e.target.value.substr(2,2);
-    console.log(y);
-
-    // if (e.target.value == )
+    // console.log(y);
 
     this.list = [];
 
     for(let i = 0; i < this.temp.length; i++) {
       var x = this.temp[i].nim.substr(3,2);
-      console.log('tengah nim :'+x);
+      // console.log('tengah nim :'+x);
       if(y == x) {
         this.list.push(this.temp[i]);
       }
@@ -201,12 +215,15 @@ export class kolokiumAdmin {
   // TEMPLATE
 
   // DASHBOARD SERVICE
-
   tahun_awal;
   forTahun = [];
 
   rangkuman = [];
+  dataLabel = ['Sudah Upload', 'Belum Upload'];
+  tampil;
   getListKolokium() {
+    this.tampil = 0;
+
     this.authHttp.get(this.data.urlAllMakalah)
       .map(res => res.json())
       .subscribe(data => {
@@ -222,6 +239,7 @@ export class kolokiumAdmin {
           this.forTahun.push(this.tahun_awal);
         };
 
+
         for (let i = 0; i < this.forTahun.length; i++) {
           let temp = 0;
           let Cmakalah = 0;
@@ -235,10 +253,10 @@ export class kolokiumAdmin {
             }
           }
 
-          this.rangkuman[this.forTahun[i]] = {total: temp, sudah: Cmakalah};
-        }
+          this.rangkuman[this.forTahun[i]] = [Cmakalah, temp];
 
-        console.log(this.rangkuman);
+          this.tampil = 1;
+        }
 
       })
   }
