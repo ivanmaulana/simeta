@@ -69,6 +69,7 @@ export class DataService {
 
   public urlAllMakalahKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium';
   public urlAllMakalahPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar';
+  public urlAllMakalahSidang = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang';
 
 
   // ADMIN

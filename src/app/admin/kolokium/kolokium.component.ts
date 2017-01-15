@@ -41,8 +41,6 @@ export class kolokiumAdmin {
     this.pilih_tahun = this.tahun;
   }
 
-
-
   // --------------------------------
   // TABLE
   public pieChartType:string = 'pie';
