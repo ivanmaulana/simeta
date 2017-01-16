@@ -3,6 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+let Chart = require('chart.js');
 
 @Component({
   selector: 'sidang',
@@ -30,6 +31,12 @@ export class sidangAdmin {
     this.tahun = temp.getFullYear() - 4;
 
     this.pilih_tahun = this.tahun;
+  }
+
+  dataModal = {"nim":"G64130076","nama":"IVAN MAULANA PUTRA","tahun_masuk":2013,"makalah":"<a target='_blank' href='http://simak.apps.cs.ipb.ac.id/upload/fileSidang/sidang_G64130076.pdf'>Lihat Makalah</a>","tanggal":"2017-03-01","jam":"10:00:00","penguji_1":2,"penguji_2":3,"tempat":"Ruang Sidang","timestamp":"2017-01-16T15:11:58.000Z","dosen1":"Dr. Imas Sukaesih Sitanggang, S.Si, M.Kom","penguji1":"Annisa, S.Kom, M.Kom","penguji2":"Aziz Kustiyo, S.Si, M.Kom","status":"<span class='text-success'>Sudah Upload</span>"};
+  test(a) {
+    console.log(JSON.stringify(a.data));
+    this.dataModal = a.data;
   }
 
   // --------------------------------
@@ -72,10 +79,6 @@ export class sidangAdmin {
       status: {
         title: 'Status',
         type: 'html'
-      },
-      makalah: {
-        title: 'Lihat',
-        type: 'html'
       }
     },
     actions: {
@@ -98,6 +101,7 @@ export class sidangAdmin {
   rangkuman = [];
   dataLabel = ['Sudah Upload', 'Belum Upload'];
   tampil;
+
   getListSidang() {
     this.tampil = 0;
 
@@ -136,6 +140,7 @@ export class sidangAdmin {
         }
 
       })
+
   }
 
   ngOnInit() {

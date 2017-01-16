@@ -9,6 +9,8 @@ import { AlertModule } from 'ng2-bootstrap/alert';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
+import { ModalModule } from 'ng2-bootstrap/modal';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +18,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     NgaModule,
     Ng2SmartTableModule,
     AlertModule.forRoot(),
+    ModalModule.forRoot(),
     ChartsModule,
     routing
   ],

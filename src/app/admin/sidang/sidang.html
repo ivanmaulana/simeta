@@ -1,1 +1,108 @@
-Ini sidang Dosen
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="status">
+  <div class="col-md-12">
+    <ba-card title="Penentuan Praseminar" baCardClass="with-scroll table-panel">
+      <div *ngIf="tampil">
+        <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" (userRowSelect)="lgModal.show()"  [source]="list"></ng2-smart-table>
+      </div>
+    </ba-card>
+  </div>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Sidang</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row modal-body">
+        <div class="row col-md-12" *ngIf="dataModal">
+          <div class="row col-md-12">
+            <div class="col-md-3">
+              <b>NIM</b>
+            </div>
+            <div class="col-md-9">
+              : {{dataModal.nim}}
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-3">
+              <b>Nama</b>
+            </div>
+            <div class="col-md-9">
+              : {{dataModal.nama}}
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-3">
+              <b>Pembimbing Tugas Akhir</b>
+            </div>
+            <div class="col-md-6">
+              : {{dataModal.dosen1}}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <hr />
+          </div>
+
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <b>Tempat</b>
+            </div>
+            <div class="col-md-6">
+              : <input type="text" class="form-control" [(ngModel)]="dataModal.tempat"/>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <b>Waktu</b>
+            </div>
+            <div class="col-md-6">
+              : <input type="date" class="form-control" [(ngModel)]="dataModal.tanggal" />,  <input type="text" class="form-control" [(ngModel)]="dataModal.jam"/>
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-3">
+              <b>Penguji 1</b>
+            </div>
+            <div class="col-md-6">
+              : <input type="text" class="form-control" [(ngModel)]="dataModal.penguji1"/>
+            </div>
+          </div>
+
+          <div class="row col-md-12" *ngIf="dataModal.penguji2">
+            <div class="col-md-3">
+              <b>Penguji 2</b>
+            </div>
+            <div class="col-md-6">
+              : <input type="text" class="form-control" [(ngModel)]="dataModal.penguji2"/>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
