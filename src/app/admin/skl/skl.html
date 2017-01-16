@@ -1,1 +1,23 @@
-Ini skl Dosen
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="status">
+  <div class="col-md-12">
+    <ba-card title="REKAPITULASI SKL" baCardClass="with-scroll table-panel">
+      <div *ngIf="tampil">
+        <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+      </div>
+    </ba-card>
+  </div>
+</div>
