@@ -14,7 +14,7 @@
 
 <div class="row" *ngIf="status">
   <div class="col-md-12">
-    <ba-card title="Penentuan Praseminar" baCardClass="with-scroll table-panel">
+    <ba-card title="REKAPITULASI SIDANG" baCardClass="with-scroll table-panel">
       <div *ngIf="tampil">
         <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" (userRowSelect)="lgModal.show()"  [source]="list"></ng2-smart-table>
       </div>
@@ -65,41 +65,63 @@
           </div>
 
           <div class="col-md-12">
-            <div class="col-md-3">
-              <b>Tempat</b>
+            <div class="col-md-4">
+              <b>Tempat :</b>
+              <input type="text" class="form-control" [(ngModel)]="dataModal.tempat"/>
             </div>
-            <div class="col-md-6">
-              : <input type="text" class="form-control" [(ngModel)]="dataModal.tempat"/>
+            <div class="col-md-4">
+              <b>Waktu :</b>
+              <input type="text" class="form-control" [(ngModel)]="dataModal.jam" />
+            </div>
+            <div class="col-md-4">
+              <b>Tanggal</b>
+              <input type="date" class="form-control" [(ngModel)]="dataModal.tanggal" />
             </div>
           </div>
 
           <div class="col-md-12">
-            <div class="col-md-3">
-              <b>Waktu</b>
+            <br />
+          </div>
+
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <b>Penguji 1 :</b>
+              <!-- <input type="text" class="form-control" [(ngModel)]="dataModal.penguji1"/> -->
+              <input name="dosen1" [(ngModel)]="dataModal.penguji1"
+                  [typeahead]="dosen"
+                  (typeaheadOnSelect)="selectDosen1($event)"
+                  class="form-control"
+                  [typeaheadOptionsLimit]="5"
+                  placeholder="Penguji 1" required>
             </div>
             <div class="col-md-6">
-              : <input type="date" class="form-control" [(ngModel)]="dataModal.tanggal" />,  <input type="text" class="form-control" [(ngModel)]="dataModal.jam"/>
+              <b>Penguji 2 :</b>
+              <!-- <input type="text" class="form-control" [(ngModel)]="dataModal.penguji2"/> -->
+              <input name="dosen1" [(ngModel)]="dataModal.penguji2"
+                  [typeahead]="dosen"
+                  (typeaheadOnSelect)="selectDosen2($event)"
+                  class="form-control"
+                  [typeaheadOptionsLimit]="5"
+                  placeholder="Penguji 1" required>
             </div>
           </div>
 
-          <div class="row col-md-12">
-            <div class="col-md-3">
-              <b>Penguji 1</b>
-            </div>
-            <div class="col-md-6">
-              : <input type="text" class="form-control" [(ngModel)]="dataModal.penguji1"/>
-            </div>
+          <div class="col-md-12">
+            <br />
           </div>
 
-          <div class="row col-md-12" *ngIf="dataModal.penguji2">
-            <div class="col-md-3">
-              <b>Penguji 2</b>
+          <div class="col-md-12">
+            <div class="col-md-3 text-left">
+              <div class="text-left">
+                <b>Lihat File Sidang :</b>
+                <alert type="info" *ngIf="dataModal.makalah"><span [innerHtml]="dataModal.makalah"></span></alert>
+                <alert type="danger" *ngIf="!dataModal.makalah">Mahasiswa Belum Upload Makalah</alert>
+              </div>
             </div>
-            <div class="col-md-6">
-              : <input type="text" class="form-control" [(ngModel)]="dataModal.penguji2"/>
+            <div class="col-md-9 text-right">
+              <button class="btn btn-lg btn-primary" (click)="simpan()">Simpan</button>
             </div>
           </div>
-
 
         </div>
       </div>
