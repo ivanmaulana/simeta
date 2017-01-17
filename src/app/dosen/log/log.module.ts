@@ -7,6 +7,10 @@ import { LogDosen } from './log.component';
 import { routing }       from './log.routing';
 
 import { ModalModule } from 'ng2-bootstrap/modal';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 
 @NgModule({
@@ -15,6 +19,10 @@ import { ModalModule } from 'ng2-bootstrap/modal';
     FormsModule,
     NgaModule,
     ModalModule.forRoot(),
+    Ng2SmartTableModule,
+    ProgressbarModule,
+    AlertModule.forRoot(),
+    ChartsModule,
     routing
   ],
   declarations: [

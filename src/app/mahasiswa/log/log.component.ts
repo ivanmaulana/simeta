@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+  import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';

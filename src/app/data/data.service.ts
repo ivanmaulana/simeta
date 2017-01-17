@@ -66,11 +66,13 @@ export class DataService {
   public urlUploadJadwalPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/upload/jadwal/praseminar';
 
   public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
+  public urlApproveLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/approve';
 
   public urlAllMakalahKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium';
   public urlAllMakalahPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar';
   public urlAllMakalahSidang = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang';
   public urlAllMakalahSKL = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl';
+  public urlAllMakalahBimbingan = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/bimbingan';
 
 
   // ADMIN
@@ -125,7 +127,7 @@ export class DataService {
 
     if (tanggal.substr(0,1) == 0) tanggal = tanggal.substr(1,1);
 
-    let kirim = tahun+'/'+bulan+'/'+tanggal;
+    let kirim = tanggal+'/'+bulan+'/'+tahun;
     return kirim;
   }
 
