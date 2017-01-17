@@ -38,6 +38,9 @@ export class Dosen {
       if (role === 3) {
         this.router.navigate(['/mahasiswa']);
       }
+      else if( role === 1) {
+        this.router.navigate(['/admin']);
+      }
 
     }
     // else {

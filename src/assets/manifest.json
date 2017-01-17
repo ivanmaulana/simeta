@@ -1,0 +1,14 @@
+{
+  "name": "simeta",
+  "display": "standalone",
+  "background_color": "#209e91",
+  "description": "Sistem Informasi Manajemen Tugas Akhir",
+  "icons": [{
+    "src": "assets/icon/logo.png",
+    "type": "image/png"
+  }],
+  "related_applications": [{
+    "platform": "web",
+    "url": "http://simak.apps.cs.ipb.ac.id"
+  }]
+}

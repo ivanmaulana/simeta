@@ -5,6 +5,7 @@ import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 
 import { ModalDirective } from 'ng2-bootstrap';
+import swal, { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
   selector: 'log',
@@ -29,6 +30,12 @@ export class LogDosen {
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
+
+  // test() {
+  //   swal('Oops...',
+  //     'Something went wrong!',
+  //     'error'); // the function itself
+  // }
 
   lihatData(id) {
     for (let i = 0; i < this.log.length; i++) {
