@@ -1,12 +1,8 @@
-import {Component, ViewEncapsulation, NgZone} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
-
-import { NgUploaderOptions } from 'ngx-uploader';
-
-let Chart = require('chart.js');
 
 @Component({
   selector: 'kolokium',
@@ -15,7 +11,7 @@ let Chart = require('chart.js');
   styles: [require('./kolokium.scss')],
   template: require('./kolokium.html')
 })
-export class kolokiumAdmin {
+export class kolokiumDosen {
 
   // cek koneksi
   noConn;
@@ -33,13 +29,15 @@ export class kolokiumAdmin {
   today;
   tahun;
   pilih_tahun;
+  preview;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-    var temp = new Date();
+    let temp = new Date();
     this.tahun = temp.getFullYear() - 4;
 
     this.pilih_tahun = this.tahun;
   }
+
 
   // --------------------------------
   // TABLE
@@ -72,6 +70,9 @@ export class kolokiumAdmin {
       dosen1: {
         title: 'Pembimbing 1'
       },
+      dosen2: {
+        title: 'Pembimbing 2'
+      },
       status: {
         title: 'Status',
         type: 'html'
@@ -92,97 +93,6 @@ export class kolokiumAdmin {
   };
 
   // -----------------------------
-
-  simpan(){
-    let creds = JSON.stringify({active: this.active, jadwal_kolokium: this.jadwal, deadline: this.deadline});
-
-    this.authHttp.put("http://simak.apps.cs.ipb.ac.id:2016/jadwalKolokium", creds)
-      .map(res => res.json())
-      .subscribe(data => {
-        this.response1 = data[0].status;
-        this.message = data[0].message;
-
-        if(this.response1) {
-          this.showSuccess();
-        }
-
-      }
-    )
-  }
-
-
-  activate(){
-    this.active = !this.active;
-  }
-
-  showError() {
-    this.toastr.error('Update Topik Gagal', 'Error!');
-  }
-
-  showSuccess() {
-    this.toastr.success("Update Kolokium Berhasil", 'Success !');
-  }
-
-
-  // --------------------------------
-  // UPLOAD
-
-  // ---------------------------
-  // FILE UPLOAD
-
-  private zone: NgZone;
-
-  uploadFile: any;
-  hasBaseDropZoneOver: boolean = false;
-
-  private progress: number = 0;
-  private response: any = {};
-
-  options: NgUploaderOptions = {
-    url: this.data.urlUploadJadwalKolokium,
-    authToken: localStorage.getItem('id_token'),
-    authTokenPrefix: ''
-  };
-  sizeLimit = 30000000;
-
-
-  preview = "";
-  handleUpload(data: any): void {
-    if (data && data.response) {
-      let data1 = JSON.parse(data.response);
-      this.uploadFile = data1;
-
-      this.preview = "http://simak.apps.cs.ipb.ac.id/file/"+this.uploadFile[0].filename;
-      this.showSelesai();
-    }
-
-    this.zone.run(() => {
-      this.response = data;
-      this.progress = Math.floor(data.progress.percent);
-    });
-  }
-
-  fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  beforeUpload(uploadingFile): void {
-    if (uploadingFile.size > this.sizeLimit) {
-      uploadingFile.setAbort();
-      alert('File harus kurang dari 3 MB');
-    }
-
-    if (uploadingFile.originalName.search(".pdf") == -1) {
-      uploadingFile.setAbort();
-      alert('File Harus Berekstensi PDF');
-    }
-  }
-
-  showSelesai() {
-    this.toastr.success("Berhasil Upload Jadwal Kolokium", 'Success!');
-  }
-
-  // -----------------------------
   // TEMPLATE
 
   // DASHBOARD SERVICE
@@ -195,7 +105,7 @@ export class kolokiumAdmin {
   getListKolokium() {
     this.tampil = 0;
 
-    this.authHttp.get(this.data.urlAllMakalahKolokium)
+    this.authHttp.get(this.data.urlAllMakalahKolokiumDosen)
       .map(res => res.json())
       .subscribe(data => {
         this.list = data;
@@ -232,24 +142,9 @@ export class kolokiumAdmin {
       })
   }
 
-  getDataKolokium() {
-    this.authHttp.get(this.data.urlKolokium)
-      .map(res => res.json())
-      .subscribe(data => {
-        this.active = data[0]['active'];
-        this.jadwal = data[0]['jadwal_kolokium'];
-        this.deadline = data[0]['deadline'];
-
-        this.preview = "http://simak.apps.cs.ipb.ac.id/"+data[0]['file'];
-      })
-
-  }
-
   ngOnInit() {
     this.pilih_tahun = this.tahun;
 
-    this.zone = new NgZone({ enableLongStackTrace: false });
-    this.getDataKolokium();
     this.getListKolokium();
     this.getConnection();
   }
@@ -273,7 +168,6 @@ export class kolokiumAdmin {
   }
 
   refresh() {
-    this.getDataKolokium();
     this.getListKolokium();
     this.getConnection();
   }

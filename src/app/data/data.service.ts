@@ -69,9 +69,13 @@ export class DataService {
   public urlApproveLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/approve';
 
   public urlAllMakalahKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium';
+  public urlAllMakalahKolokiumDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium/dosen';
   public urlAllMakalahPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar';
+  public urlAllMakalahPraseminarDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar/dosen';
   public urlAllMakalahSidang = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang';
+  public urlAllMakalahSidangDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang/dosen';
   public urlAllMakalahSKL = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl';
+  public urlAllMakalahSKLDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl/dosen';
   public urlAllMakalahBimbingan = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/bimbingan';
 
 

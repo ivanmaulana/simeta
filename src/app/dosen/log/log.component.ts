@@ -60,8 +60,10 @@ export class LogDosen {
       .subscribe(data => {
         this.resJawaban = data;
       })
+
   }
 
+  balasan;
   balas(id){
     let creds = JSON.stringify({topikId: id, jawaban: this.balasan});
 
