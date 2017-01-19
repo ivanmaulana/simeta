@@ -35,15 +35,24 @@ export class Log {
   private topik;
 
   // TULIS LOG
-  private topik_log = "ini topik log";
-  private dosen_1 = 25;
-  private dosen_2 = 24;
-  private tempat = "mulmed";
-  private jam = "10:30";
-  private date = "2016-08-09";
-  private progress = "ini progress";
-  private kendala = "ini kendala";
-  private rencana = "ini rencana";
+  // private topik_log = "ini topik log";
+  // private dosen_1 = 25;
+  // private dosen_2 = 24;
+  // private tempat = "mulmed";
+  // private jam = "10:30";
+  // private date = "2016-08-09";
+  // private progress = "ini progress";
+  // private kendala = "ini kendala";
+  // private rencana = "ini rencana";
+  private topik_log;
+  private dosen_1;
+  private dosen_2;
+  private tempat;
+  private jam;
+  private date;
+  private progress;
+  private kendala;
+  private rencana;
   private statusKirim;
   private messageKirim;
   private creds2;
@@ -175,6 +184,7 @@ export class Log {
     this.authHttp.get(this.data.urlLog)
       .map(res => res.json())
       .subscribe(data => {
+        this.total = 0;
         this.response = data;
         for(let i = 0; i < data.length; i++) {
           if(data[i].approval) {
@@ -190,7 +200,6 @@ export class Log {
     this.authHttp.get(this.data.urlLogApproval)
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
         this.disetujui = data[0].count;
       })
   }

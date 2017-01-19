@@ -46,7 +46,7 @@
       </div>
       <div class="col-md-4">
         <div class="alert alert-danger" role="alert">
-          Log Bimbingan Disetujui = <b><span *ngIf="!disetujui">0</span>{{disetujui}} / 10</b>
+          Log Bimbingan Disetujui = <b>{{disetujui}} / 10</b>
         </div>
       </div>
       <br />
@@ -123,21 +123,21 @@
 
           <div class="col-md-12">
             <!-- tanggal -->
-            <div class="col-sm-12 col-md-4 col-xs-12">
+            <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Tanggal</b></label><br />
-              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px"/>
+              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px" required/>
             </div>
 
             <!-- jam -->
-            <div class="col-sm-12 col-md-4 col-xs-12">
+            <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Jam</b></label><br />
-              <input type="time" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px"/>
+              <input type="time" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px" required/>
             </div>
 
             <!-- tempat -->
-            <div class="col-sm-12 col-md-4 col-xs-12">
+            <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Tempat</b></label><br />
-              <input type="text" class="form-control" name="tempat" [(ngModel)]="tempat" style="height:34px"/>
+              <input type="text" class="form-control" name="tempat" [(ngModel)]="tempat" style="height:34px" required/>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -146,26 +146,26 @@
 
             <!-- judul log bimbingan -->
             <div class="form-group col-md-12 col-xs-12 ">
-                <label><b>Topik Log</b></label><br />
-                <input placeholder="Tulis progress kamu disini" class="form-control" style="width:100%" name="topik_log" [(ngModel)]="topik_log">
+                <label><b>Topik Bimbingan</b></label><br />
+                <input placeholder="Topik Bimbingan" class="form-control" style="width:100%" name="topik_log" [(ngModel)]="topik_log" required>
             </div>
 
             <!-- progress yang sudah dilakukan -->
             <div class="form-group col-md-4 col-xs-12 has-success">
                 <br /><label><b>Progress</b></label><br />
-                <textarea placeholder="Tulis progress kamu disini" class="form-control" style="width:100%" name="progress" [(ngModel)]="progress"></textarea>
+                <textarea placeholder="Tulis progress kamu disini" class="form-control" style="width:100%" name="progress" [(ngModel)]="progress" required></textarea>
             </div>
 
             <!-- kendala yang dihadapi -->
             <div class="form-group col-md-4 col-xs-12 has-error">
                 <br /><label><b>Kendala yang dihadapi</b></label><br />
-                <textarea placeholder="Tulis kendala yang kamu hadapi disini" class="form-control" style="width:100%" name="kendala" [(ngModel)]="kendala"></textarea>
+                <textarea placeholder="Tulis kendala yang kamu hadapi disini" class="form-control" style="width:100%" name="kendala" [(ngModel)]="kendala" required></textarea>
             </div><br />
 
             <!-- tahap selanjutnya -->
             <div class="form-group col-md-4 col-xs-12 has-warning">
                 <br /><label><b>Rencana Selanjutnya</b></label><br />
-                <textarea placeholder="Tulis apa yang akan kamu lakukan setelahnya" class="form-control" style="width:100%" name="rencana" [(ngModel)]="rencana"></textarea>
+                <textarea placeholder="Tulis apa yang akan kamu lakukan setelahnya" class="form-control" style="width:100%" name="rencana" [(ngModel)]="rencana" required></textarea>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -231,13 +231,13 @@
           </div>
 
           <div class="row col-md-12">
-              <strong>progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br /><br />
+              <strong>progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br />
           </div>
           <div class="row col-md-12">
-              <strong>kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br /><br />
+              <strong>kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br />
           </div>
           <div class="row col-md-12">
-              <strong>rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4><br />
+              <strong>rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4>
           </div>
 
         </div>
@@ -246,17 +246,18 @@
           &nbsp;
         </div>
 
-        <hr />
+
         <!-- DETAIL Jawaban -->
         <div class="col-md-12 section-block" *ngFor="let res of resJawaban">
-
+          <hr />
+          <span class="text-center col-md-12">Diskusi</span>
           <!-- Mahasiswa -->
           <div *ngIf="res.nim">
             <div class="accent text-right" style="padding-left:10%">
               <h4 class="green">{{res.jawaban}}</h4>
             </div>
             <div class="text-right">
-              Mahasiswa : {{data.nama}}
+              Mahasiswa : <b>{{data.nama}}</b>
             </div>
             <div class="text-right" *ngIf="res.timestamp">
               {{data.ubahTanggal(res.timestamp)}}<br /><br />
@@ -269,27 +270,27 @@
               <h4 class="blue">{{res.jawaban}}</h4>
             </div>
             <div class="text-left">
-              Dosen : {{res.nama_dosen}}
+              Dosen : <b>{{res.nama_dosen}}</b>
             </div>
             <div class="text-left" *ngIf="res.timestamp">
-              {{data.ubahTanggal(res.timestamp)}}, {{res.timestamp}}<br /><br />
+              {{data.ubahTanggal(res.timestamp)}}<br /><br />
             </div>
           </div>
-
+          <hr />
         </div>
 
         <div class="accent">
           &nbsp;
         </div>
 
-        <hr />
+
 
         <div class="col-md-12">
-          <textarea name="balasan" [(ngModel)]="balasan" style="height:150px;width:100%" class="form-control" placeholder="Ketik balasan"></textarea>
+          <textarea name="balasan" [(ngModel)]="balasan" style="height:150px;width:100%" class="form-control" placeholder="Diskusi"></textarea>
         </div>
 
         <div class="col-md-12 text-right">
-          <br /><button (click)="balas(id)" class="btn btn-md btn-primary">Balas</button>
+          <br /><button (click)="balas(id)" class="btn btn-md btn-primary">Diskusi</button>
         </div>
 
       </ba-card>
