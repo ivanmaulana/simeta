@@ -5,7 +5,6 @@ import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 
 import { NgUploaderOptions } from 'ngx-uploader';
-
 let Chart = require('chart.js');
 
 @Component({

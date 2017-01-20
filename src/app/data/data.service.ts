@@ -78,6 +78,12 @@ export class DataService {
   public urlAllMakalahSKLDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl/dosen';
   public urlAllMakalahBimbingan = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/bimbingan';
 
+  public urlAdminKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/admin/kolokium';
+  public urlAdminPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/admin/praseminar';
+  public urlAdminSidang = 'http://simak.apps.cs.ipb.ac.id:2016/admin/sidang';
+  public urlAdminSKL = 'http://simak.apps.cs.ipb.ac.id:2016/admin/skl';
+  public urlAdminSummary = 'http://simak.apps.cs.ipb.ac.id:2016/admin/summary';
+
 
   // ADMIN
   public urlListPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/list';
