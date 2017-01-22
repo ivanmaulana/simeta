@@ -70,9 +70,35 @@ export const MAHASISWA_MENU = [
             icon: 'ion-stats-bars',
             selected: false,
             expanded: false,
-            order: 0
+            order: 200,
           }
-        }
+        },
+        children: [
+          {
+            path: 'nasional',
+            data: {
+              menu: {
+                title: 'Seminar Nasional',
+              }
+            }
+          },
+          {
+            path: 'micon',
+            data: {
+              menu: {
+                title: 'Mini Conferece',
+              }
+            }
+          },
+          {
+            path: 'mandiri',
+            data: {
+              menu: {
+                title: 'Seminar Mandiri',
+              }
+            }
+          }
+        ]
       },
       {
         path: 'sidang',
@@ -110,28 +136,7 @@ export const MAHASISWA_MENU = [
           }
         }
       },
-      // {
-      //   path: 'charts',
-      //   data: {
-      //     menu: {
-      //       title: 'Charts',
-      //       icon: 'ion-stats-bars',
-      //       selected: false,
-      //       expanded: false,
-      //       order: 200,
-      //     }
-      //   },
-      //   children: [
-      //     {
-      //       path: 'chartist-js',
-      //       data: {
-      //         menu: {
-      //           title: 'Chartist.Js',
-      //         }
-      //       }
-      //     }
-      //   ]
-      // },
+
       // {
       //   path: 'ui',
       //   data: {

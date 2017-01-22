@@ -78,6 +78,25 @@ export class Log {
 
   }
 
+  delete(id) {
+    let creds = {id: id};
+
+    this.authHttp.put(this.data.urlDeleteLog, creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        if(data.status){
+          this.getDataLog();
+          this.showDeleteSuccess();
+        }
+
+      })
+
+  }
+
+  showDeleteSuccess() {
+    this.toastr.success("Berhasil Hapus Log", 'Success !');
+  }
+
   getDataMahasiswa(){
     this.authHttp.get(this.data.urlTa)
       .map(res => res.json())

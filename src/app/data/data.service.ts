@@ -41,52 +41,53 @@ export class DataService {
   private aaa = 'aaa';
 
   // URL
-  public urlTa = 'http://simak.apps.cs.ipb.ac.id:2016/ta/';
-  public urlDataPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/';
-  public urlDosen = 'http://simak.apps.cs.ipb.ac.id:2016/dosen/';
-  public urlDaftarPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/pengajuan/';
-  public urlProfile = 'http://simak.apps.cs.ipb.ac.id:2016/profile/';
-  public urlSidang = 'http://simak.apps.cs.ipb.ac.id:2016/sidang/';
-  public urlStatus = 'http://simak.apps.cs.ipb.ac.id:2016/status/';
-  public urlTest = 'http://simak.apps.cs.ipb.ac.id:2016/test/';
-  public urlLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/';
-  public urlKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/jadwalKolokium';
-  public urlPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/jadwalPraseminar';
+  public urlTa = 'http://localhost:2016/ta/';
+  public urlDataPengajuan = 'http://localhost:2016/ta/daftar/';
+  public urlDosen = 'http://localhost:2016/dosen/';
+  public urlDaftarPengajuan = 'http://localhost:2016/ta/pengajuan/';
+  public urlProfile = 'http://localhost:2016/profile/';
+  public urlSidang = 'http://localhost:2016/sidang/';
+  public urlStatus = 'http://localhost:2016/status/';
+  public urlTest = 'http://localhost:2016/test/';
+  public urlLog = 'http://localhost:2016/log/';
+  public urlKolokium = 'http://localhost:2016/jadwalKolokium';
+  public urlPraseminar = 'http://localhost:2016/jadwalPraseminar';
 
-  public urlUpdateTa = 'http://simak.apps.cs.ipb.ac.id:2016/ta/update/';
+  public urlUpdateTa = 'http://localhost:2016/ta/update/';
 
-  public urlFileKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/kolokium';
-  public urlFilePraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/praseminar';
-  public urlUploadKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/upload/kolokium';
-  public urlUploadPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/upload/praseminar';
-  public urlUploadSKL = 'http://simak.apps.cs.ipb.ac.id:2016/upload/skl';
-  public urlUploadTAFinal = 'http://simak.apps.cs.ipb.ac.id:2016/upload/final';
-  public urlUploadPhoto = 'http://simak.apps.cs.ipb.ac.id:2016/upload/photo';
-  public urlUploadJadwalKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/upload/jadwal/kolokium';
-  public urlUploadJadwalPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/upload/jadwal/praseminar';
+  public urlFileKolokium = 'http://localhost:2016/kolokium';
+  public urlFilePraseminar = 'http://localhost:2016/praseminar';
+  public urlUploadKolokium = 'http://localhost:2016/upload/kolokium';
+  public urlUploadPraseminar = 'http://localhost:2016/upload/praseminar';
+  public urlUploadSKL = 'http://localhost:2016/upload/skl';
+  public urlUploadTAFinal = 'http://localhost:2016/upload/final';
+  public urlUploadPhoto = 'http://localhost:2016/upload/photo';
+  public urlUploadJadwalKolokium = 'http://localhost:2016/upload/jadwal/kolokium';
+  public urlUploadJadwalPraseminar = 'http://localhost:2016/upload/jadwal/praseminar';
 
-  public urlLogApproval = 'http://simak.apps.cs.ipb.ac.id:2016/log/approval';
-  public urlApproveLog = 'http://simak.apps.cs.ipb.ac.id:2016/log/approve';
+  public urlLogApproval = 'http://localhost:2016/log/approval';
+  public urlApproveLog = 'http://localhost:2016/log/approve';
+  public urlDeleteLog = 'http://localhost:2016/log/delete';
 
-  public urlAllMakalahKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium';
-  public urlAllMakalahKolokiumDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/kolokium/dosen';
-  public urlAllMakalahPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar';
-  public urlAllMakalahPraseminarDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/praseminar/dosen';
-  public urlAllMakalahSidang = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang';
-  public urlAllMakalahSidangDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/sidang/dosen';
-  public urlAllMakalahSKL = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl';
-  public urlAllMakalahSKLDosen = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/skl/dosen';
-  public urlAllMakalahBimbingan = 'http://simak.apps.cs.ipb.ac.id:2016/mahasiswa/bimbingan';
+  public urlAllMakalahKolokium = 'http://localhost:2016/mahasiswa/kolokium';
+  public urlAllMakalahKolokiumDosen = 'http://localhost:2016/mahasiswa/kolokium/dosen';
+  public urlAllMakalahPraseminar = 'http://localhost:2016/mahasiswa/praseminar';
+  public urlAllMakalahPraseminarDosen = 'http://localhost:2016/mahasiswa/praseminar/dosen';
+  public urlAllMakalahSidang = 'http://localhost:2016/mahasiswa/sidang';
+  public urlAllMakalahSidangDosen = 'http://localhost:2016/mahasiswa/sidang/dosen';
+  public urlAllMakalahSKL = 'http://localhost:2016/mahasiswa/skl';
+  public urlAllMakalahSKLDosen = 'http://localhost:2016/mahasiswa/skl/dosen';
+  public urlAllMakalahBimbingan = 'http://localhost:2016/mahasiswa/bimbingan';
 
-  public urlAdminKolokium = 'http://simak.apps.cs.ipb.ac.id:2016/admin/kolokium';
-  public urlAdminPraseminar = 'http://simak.apps.cs.ipb.ac.id:2016/admin/praseminar';
-  public urlAdminSidang = 'http://simak.apps.cs.ipb.ac.id:2016/admin/sidang';
-  public urlAdminSKL = 'http://simak.apps.cs.ipb.ac.id:2016/admin/skl';
-  public urlAdminSummary = 'http://simak.apps.cs.ipb.ac.id:2016/admin/summary';
+  public urlAdminKolokium = 'http://localhost:2016/admin/kolokium';
+  public urlAdminPraseminar = 'http://localhost:2016/admin/praseminar';
+  public urlAdminSidang = 'http://localhost:2016/admin/sidang';
+  public urlAdminSKL = 'http://localhost:2016/admin/skl';
+  public urlAdminSummary = 'http://localhost:2016/admin/summary';
 
 
   // ADMIN
-  public urlListPengajuan = 'http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/list';
+  public urlListPengajuan = 'http://localhost:2016/ta/daftar/list';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

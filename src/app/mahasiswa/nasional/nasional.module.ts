@@ -3,20 +3,22 @@ import { CommonModule }  from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 
-import { Seminar } from './seminar.component';
-import { routing }       from './seminar.routing';
+import { nasional } from './nasional.component';
+import { routing }       from './nasional.routing';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [
-    Seminar
+    nasional
   ],
   providers: [
   ]
 })
-export default class SeminarModule {}
+export default class nasionalModule {}

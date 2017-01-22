@@ -15,7 +15,7 @@
 <div class="row padding" *ngIf="status">
   <div *ngIf="!statusTa">
     <div class="alert alert-warning" role="alert">
-      <h4>Topik TA kamu <b>belum disetujui</b> <i>atau</i> Dosen Pembimbing kamu <b>belum ditentukan</b> oleh Departemen.</h4><br />
+      <h4>Judul TA kamu <b>belum disetujui</b> <i>atau</i> Dosen Pembimbing kamu <b>belum ditentukan</b> oleh Departemen.</h4><br />
         Silahkan tunggu sampai ada pengumuman berikutnya.
     </div>
   </div>
@@ -46,7 +46,7 @@
       </div>
       <div class="col-md-4">
         <div class="alert alert-danger" role="alert">
-          Log Bimbingan Disetujui = <b>{{disetujui}} / 10</b>
+          Log Bimbingan Disetujui = <b>{{disetujui}} dari 10</b>
         </div>
       </div>
       <br />
@@ -185,21 +185,25 @@
   <!-- List Log -->
 
   <div *ngIf="statusTa">
-    <div class="col-lg-6 col-md-6">
+    <div class="col-md-6">
       <ba-card title="Log Bimbingan" baCardClass="with-scroll">
         <div class="row" *ngFor="let res of response"><br />
           <div class="col-md-6 col-sm-10 col-xs-9">
             <span class="blue" ><a (click)="openBimbingan(res.id)">{{res.topik}}</a></span><br />
             <span class="grey tanggal">{{res.tempat}}, {{data.ubahTanggal(changeTimeStamp(res.tanggal))}}</span>
           </div>
-          <div class="col-md-2 col-sm-10 col-xs-12">
+          <div class="col-md-1 col-sm-10 col-xs-12 text-center">
+            <span *ngIf="res.count" class="blue text-center">{{res.count}}</span>
+            <span *ngIf="!res.count" class="red text-center">0</span>
             <br />
-            <span *ngIf="res.count" class="tanggal">{{res.count}} Jawaban</span>
-            <span *ngIf="!res.count" class="tanggal">0 Jawaban</span>
+            <span class="tanggal">Reply</span>
           </div>
           <div class="col-md-3 col-xs-12">
             <button *ngIf="!res.approval" type="button" class="btn btn-warning btn-sm" (click)="openBimbingan(res.id)"><i class="ion-eye"></i> Belum Disetujui </button>
             <button *ngIf="res.approval" type="button" class="btn btn-primary btn-sm" (click)="openBimbingan(res.id)"><i class="ion-eye"></i> Sudah Disetujui </button>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-sm btn-danger" (click)="delete(res.id)">Hapus</button>
           </div>
         </div>
 
@@ -224,20 +228,20 @@
 
           <div class="row">
             <div class="col-md-10 col-sm-9 col-xs-12">
-              <strong>Topik Tugas Akhir :</strong> {{topik}}<br /><br />
+              <strong>Judul Tugas Akhir :</strong> {{topik}}<br /><br />
               <strong>Tempat :</strong> {{res.tempat}}<br />
               <strong>Topik Bimbingan :</strong> {{res.topik}}<br /><br />
             </div>
           </div>
 
           <div class="row col-md-12">
-              <strong>progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br />
+              <strong>Progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br />
           </div>
           <div class="row col-md-12">
-              <strong>kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br />
+              <strong>Kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br />
           </div>
           <div class="row col-md-12">
-              <strong>rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4>
+              <strong>Rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4>
           </div>
 
         </div>
@@ -247,10 +251,12 @@
         </div>
 
 
+        <div class="col-md-12">
+          <hr>
+          <span class="text-center col-md-12">Diskusi</span>
+        </div>
         <!-- DETAIL Jawaban -->
         <div class="col-md-12 section-block" *ngFor="let res of resJawaban">
-          <hr />
-          <span class="text-center col-md-12">Diskusi</span>
           <!-- Mahasiswa -->
           <div *ngIf="res.nim">
             <div class="accent text-right" style="padding-left:10%">
