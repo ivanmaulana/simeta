@@ -6,12 +6,16 @@ import { NgaModule } from '../../theme/nga.module';
 import { micon } from './micon.component';
 import { routing }       from './micon.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
+import { NgUploaderModule } from 'ngx-uploader';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    NgUploaderModule,
+    ProgressbarModule,
     AlertModule.forRoot(),
     routing
   ],

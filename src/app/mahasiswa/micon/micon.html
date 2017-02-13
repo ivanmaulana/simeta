@@ -1,1 +1,157 @@
-Ini Seminar Micon
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+  <div *ngIf="!statusKolokium">
+    <alert type="danger">
+      <h4> Kamu belum melaksanakan Kolokium. </h4>
+    </alert>
+  </div>
+
+  <div class="row" *ngIf="statusKolokium">
+    <div class="col-md-12">
+
+      <!-- Alert message -->
+      <alert type="info" *ngIf="active">
+        Perhatian ! Jadwal Mini Conference adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
+      </alert>
+      <alert type="danger" *ngIf="active">
+        Pengisian & Upload File Mini Conference akan dibuka sampai  {{data.ubahTanggal(deadline)}}
+      </alert>
+
+      <alert type="danger" *ngIf="!active">
+        Maaf. Laman Mini Conference tidak sedang dibuka.
+      </alert>
+
+      <ba-card title="Mini Conference" baCardClass="with-scroll">
+        <form class="row form-inline">
+
+          <!-- nama & nim-->
+          <div class="col-md-12 col-xs-12">
+
+            <div class="col-md-4 col-sm-12">
+              <div class="row">
+                <div class="col-md-2">
+                  <b>Nama</b>
+                </div>
+                <div class="col-md-8">
+                  : {{data.nama}}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <b>NIM</b>
+                </div>
+                <div class="col-md-8">
+                  : {{data.nim}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-sm-12">
+              <div class="row">
+                <div class="col-md-5">
+                  <b>Pembimbing Ketua</b>
+                </div>
+                <div class="col-md-7">
+                  : {{dosen1}}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  <b>Pembimbing Anggota</b>
+                </div>
+                <div class="col-md-7">
+                  : {{dosen2}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <alert type="info" class="col-md-12">
+            Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
+          </alert>
+
+          <!-- Judul Paper -->
+          <div class="form-group col-md-12 col-xs-12">
+            <label><p href primary><b>Topik</b></p></label><br />
+            <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu"></textarea>
+          </div>
+
+          <div class="section-block col-md-12 text-right">
+            <label padding-left for="pembimbing">&nbsp;</label><br />
+            <button type="submit" class="btn btn-primary btn-lg">Daftar</button>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <!-- app.component.html -->
+          <div class="col-md-12">
+            <label class="row col-md-12"><p href primary><b>Upload File Mini Conference</b></p></label><br />
+
+            <alert type="info">
+              <h4> File Mini Conference Terdiri dari 2 berkas yang di-<i>compress</i> menggunakan ekstensi <i>.zip</i> :</h4><br>
+              1. Makalah Mini Conference yang dikumpulkan <i>(format : Seminar_Micon_Makalah_NIM.pdf)</i><br>
+              2. Poster untuk Makalah Mini Conference dengan <i><b>ukuran A1</b></i> <i>(format : Seminar_Micon_Poster_NIM.jpg)</i><br>
+            </alert>
+
+            <div class="col-md-3 text-center">
+              <alert type="danger" *ngIf="!preview">
+                Kamu belum upload File Mini Conference
+              </alert>
+              <alert type="success" *ngIf="preview">
+                File Mini Conference bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+              </alert>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-12">
+                  <input class="button" type="file"
+                         ngFileSelect
+                         [options]="options"
+                         (onUpload)="handleUpload($event)"
+                         (beforeUpload)="beforeUpload($event)">
+                </div>
+              </div>
+              <div class="row">
+                <br />
+                <div class="col-md-8">
+                  <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <alert type="info" *ngIf="preview">
+                Silahkan Upload ulang jika ingin mengganti File Mini Conference
+              </alert>
+            </div>
+          </div>
+        </form>
+      </ba-card>
+    </div>
+  </div>
+
+
+</div>
