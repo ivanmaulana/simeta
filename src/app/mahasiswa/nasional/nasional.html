@@ -23,8 +23,35 @@
   <div *ngIf="statusKolokium">
     <div class="row">
       <div class="col-md-12">
-        <ba-card title="Konferensi Nasional / Internasional" baCardClass="with-scroll">
-          <form class="row form-inline">
+
+        <alert type="info">
+          <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4><br>
+          <p> Silahkan pilih salah satu pilihan seminar yang kamu lakukan.</p>
+        </alert>
+
+        <div *ngIf="dataSeminar">
+          <div *ngIf="dataSeminar.seminar.jenis_seminar == 3">
+            <alert type="danger">
+              <h4>Kamu telah memilih Seminar Mandiri</h4>
+              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
+            </alert>
+          </div>
+        </div>
+
+
+        <div *ngIf="dataSeminar">
+          <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
+            <alert type="danger">
+              <h4>Kamu telah memilih Seminar Mini Conference</h4>
+              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
+            </alert>
+          </div>
+        </div>
+
+        <div *ngIf="dataSeminar">
+          <div *ngIf="dataSeminar.seminar.jenis_seminar == 1">
+            <ba-card title="Konferensi Nasional / Internasional" baCardClass="with-scroll">
+          <form class="row form-inline" (ngSubmit)="submit()">
 
             <!-- nama & nim-->
             <div class="col-md-12 col-xs-12">
@@ -78,7 +105,7 @@
             <!-- Nama Konferensi -->
             <div class="form-group col-md-12 col-xs-12">
               <label><p href primary><b>Nama Konferensi</b></p></label><br />
-              <input class="form-control" type="text" name="konferensi" placeholder="Nama konferensi"/>
+              <input class="form-control" type="text" name="nama_konferensi" [(ngModel)]="nama_konferensi" placeholder="Nama konferensi" required/>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -88,7 +115,7 @@
             <!-- Judul Paper -->
             <div class="form-group col-md-12 col-xs-12">
               <label><p href primary><b>Judul Paper</b></p></label><br />
-              <textarea class="form-control" style="width:100%" name="seminarNasional" [(ngModel)]="seminarBersama" placeholder="Judul paper kamu"></textarea>
+              <textarea class="form-control" style="width:100%" name="judul_paperl" [(ngModel)]="judul_paper" placeholder="Judul paper kamu" required></textarea>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -98,13 +125,13 @@
             <!-- Tempat -->
             <div class="form-group col-md-6 col-sm-12 col-xs-12">
               <label><p href primary><b>Tempat</b></p></label><br />
-              <input class="form-control" type="text" name="konferensi" placeholder="Bogor, Institut Pertanian Bogor"/>
+              <input class="form-control" type="text" name="tempat" [(ngModel)]="tempat" placeholder="Bogor, Institut Pertanian Bogor" required/>
             </div>
 
             <!-- Tanggal -->
             <div class="form-group col-md-6 col-sm-12 col-xs-12">
               <label><p href primary><b>Tanggal</b></p></label><br />
-              <input type="date" name="date" [(ngModel)]="date" class="form-control" style="height:36px"/>
+              <input type="date" name="date" [(ngModel)]="tanggal" class="form-control" style="height:36px" required/>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -112,7 +139,7 @@
             </div>
 
             <div class="col-md-12 text-right">
-              <button type="submit" (click)="submit()" class="btn btn-primary btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -164,6 +191,8 @@
 
           </form>
         </ba-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>

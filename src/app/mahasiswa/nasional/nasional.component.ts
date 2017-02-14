@@ -41,6 +41,102 @@ export class nasional {
 
   }
 
+  submit() {
+    let creds = JSON.stringify({nama_konferensi: this.nama_konferensi, judul_paper: this.judul_paper, tempat: this.tempat, tanggal: this.tanggal});
+
+    this.authHttp.post(this.data.urlSeminarKonferensi, creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        if(data.status) {
+          this.showSuccess();
+        }
+      })
+  }
+
+  showSuccess() {
+    this.toastr.success("Berhasil Update Seminar Mandiri", 'Success!');
+  }
+
+  dataSeminar;
+  show = false;
+  nama_konferensi;
+  judul_paper;
+  tempat;
+  tanggal;
+  berkas;
+  getDataSeminar() {
+    this.authHttp.get(this.data.urlSeminarData)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.dataSeminar = data;
+
+        if(this.dataSeminar.seminar.jenis_seminar == 1) {
+          this.show = true;
+        }
+
+        this.nama_konferensi = data.data.nama_konferensi;
+        this.judul_paper = data.data.judul_paper;
+        this.tempat = data.data.tempat;
+        this.tanggal = data.data.tanggal.substr(0,10);
+        this.berkas = data.data.berkas;
+      })
+  }
+
+  // ---------------------------
+  // FILE UPLOAD
+
+  private zone: NgZone;
+
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
+  private progress: number = 0;
+  private response: any = {};
+
+  options: NgUploaderOptions = {
+    url: this.data.urlUploadKolokium,
+    authToken: localStorage.getItem('id_token'),
+    authTokenPrefix: ''
+  };
+  sizeLimit = 30000000;
+
+
+  preview = "";
+  handleUpload(data: any): void {
+    if (data && data.response) {
+      let data1 = JSON.parse(data.response);
+      this.uploadFile = data1;
+
+      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
+      this.showSelesai();
+    }
+
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = Math.floor(data.progress.percent);
+    });
+  }
+
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File harus kurang dari 3 MB');
+    }
+
+    if (uploadingFile.originalName.search(".zip") == -1) {
+      uploadingFile.setAbort();
+      alert('File Harus Berekstensi .zip');
+    }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
+  }
+
   // -----------------------------
   // TEMPLATE
 
@@ -58,8 +154,6 @@ export class nasional {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-        // console.log('status TA'+this.statusTa);
-
         if(this.statusTa) {
           this.getDataMahasiswa();
         }
@@ -67,7 +161,9 @@ export class nasional {
   }
 
   ngOnInit() {
+    this.zone = new NgZone({ enableLongStackTrace: false });
     this.getStatus();
+    this.getDataSeminar();
     this.getConnection();
   }
 
@@ -103,6 +199,7 @@ export class nasional {
   }
 
   refresh() {
+    this.getDataSeminar();
     this.getConnection();
     this.getStatus();
   }

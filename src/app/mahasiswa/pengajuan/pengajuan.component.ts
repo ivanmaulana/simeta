@@ -92,7 +92,7 @@ export class Pengajuan {
   }
 
   getDataPengajuan(){
-    this.authHttp.get('http://simak.apps.cs.ipb.ac.id:2016/ta/daftar/detail/')
+    this.authHttp.get(this.data.urlTaPengajuan)
       .map(res => res.json())
         .subscribe( data => {
           this.topik = data[0]['topik'];

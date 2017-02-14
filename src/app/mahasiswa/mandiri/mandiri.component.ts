@@ -42,6 +42,51 @@ export class Mandiri {
 
   }
 
+  submit() {
+    let creds = JSON.stringify({topik: this.topik, pembahas_1: this.pembahas_1, pembahas_2: this.pembahas_2, pembahas_3: this.pembahas_3, tempat: this.tempat, jam: this.jam, tanggal: this.tanggal});
+
+    this.authHttp.post(this.data.urlSeminarMandiri, creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        if(data.status) {
+          this.showSuccess();
+        }
+      })
+  }
+
+  showSuccess() {
+    this.toastr.success("Berhasil Update Seminar Mandiri", 'Success!');
+  }
+
+  dataSeminar;
+  show = false;
+  pembahas_1;
+  pembahas_2;
+  pembahas_3;
+  tempat;
+  jam;
+  tanggal;
+  berkas;
+  getDataSeminar() {
+    this.authHttp.get(this.data.urlSeminarData)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.dataSeminar = data;
+
+        if(this.dataSeminar.seminar.jenis_seminar == 3) {
+          this.show = true;
+        }
+
+        this.pembahas_1 = data.data.pembahas_1;
+        this.pembahas_2 = data.data.pembahas_2;
+        this.pembahas_3 = data.data.pembahas_3;
+        this.tempat = data.data.tempat;
+        this.jam = data.data.jam;
+        this.tanggal = data.data.tanggal.substr(0,10);
+        this.berkas = data.data.berkas;
+      })
+  }
+
   // -----------------------------
   // TEMPLATE
 
@@ -59,8 +104,6 @@ export class Mandiri {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-        // console.log('status TA'+this.statusTa);
-
         if(this.statusTa) {
           this.getDataMahasiswa();
         }
@@ -69,6 +112,7 @@ export class Mandiri {
 
   ngOnInit() {
     this.getStatus();
+    this.getDataSeminar();
     this.getConnection();
   }
 
@@ -105,6 +149,7 @@ export class Mandiri {
 
   refresh() {
     this.getConnection();
+    this.getDataSeminar();
     this.getStatus();
   }
 

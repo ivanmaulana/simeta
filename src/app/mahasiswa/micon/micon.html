@@ -23,6 +23,11 @@
   <div class="row" *ngIf="statusKolokium">
     <div class="col-md-12">
 
+      <alert type="info">
+        <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4><br>
+        <p> Silahkan pilih salah satu pilihan seminar yang kamu lakukan.</p>
+      </alert>
+
       <!-- Alert message -->
       <alert type="info" *ngIf="active">
         Perhatian ! Jadwal Mini Conference adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>

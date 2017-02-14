@@ -54,6 +54,7 @@ export class DataService {
   public urlPraseminar = 'http://localhost:2016/jadwalPraseminar';
 
   public urlUpdateTa = 'http://localhost:2016/ta/update/';
+  public urlTaPengajuan = 'http://localhost:2016/ta/daftar/detail/';
 
   public urlFileKolokium = 'http://localhost:2016/kolokium';
   public urlFilePraseminar = 'http://localhost:2016/praseminar';
@@ -84,6 +85,10 @@ export class DataService {
   public urlAdminSidang = 'http://localhost:2016/admin/sidang';
   public urlAdminSKL = 'http://localhost:2016/admin/skl';
   public urlAdminSummary = 'http://localhost:2016/admin/summary';
+
+  public urlSeminarData = 'http://localhost:2016/seminar';
+  public urlSeminarMandiri = 'http://localhost:2016/seminar/mandiri';
+  public urlSeminarKonferensi = 'http://localhost:2016/seminar/konferensi';
 
 
   // ADMIN
