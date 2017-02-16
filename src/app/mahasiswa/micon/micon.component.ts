@@ -47,6 +47,46 @@ export class micon {
 
   }
 
+  submit() {
+    let creds = JSON.stringify({topik: this.topik});
+
+    this.authHttp.put(this.data.urlUpdateTa, creds)
+      .map(res => res.json())
+      .subscribe(data => {
+
+          if(this.status) this.showSuccess();
+          else this.showError();
+
+        }
+      )
+  }
+
+  showError() {
+    this.toastr.error('Update Topik Gagal', 'Error!');
+  }
+
+  showSuccess() {
+    this.toastr.success("Update Topik Berhasil", 'Success !');
+  }
+
+  dataSeminar;
+  show = false;
+  berkas;
+
+  getDataSeminar() {
+    this.authHttp.get(this.data.urlSeminarData)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.dataSeminar = data;
+
+        if(this.dataSeminar.seminar.jenis_seminar == 2) {
+          this.show = true;
+        }
+
+        this.berkas = data.data.berkas;
+      })
+  }
+
   // -----------------------------
   // TEMPLATE
 
@@ -73,6 +113,7 @@ export class micon {
   }
 
   ngOnInit() {
+    this.getDataSeminar();
     this.getStatus();
     this.getConnection();
   }
@@ -109,6 +150,7 @@ export class micon {
   }
 
   refresh() {
+    this.getDataSeminar();
     this.getConnection();
     this.getStatus();
   }

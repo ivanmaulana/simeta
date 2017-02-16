@@ -75,15 +75,16 @@ export class Mandiri {
 
         if(this.dataSeminar.seminar.jenis_seminar == 3) {
           this.show = true;
+          this.pembahas_1 = data.data.pembahas_1;
+          this.pembahas_2 = data.data.pembahas_2;
+          this.pembahas_3 = data.data.pembahas_3;
+          this.tempat = data.data.tempat;
+          this.jam = data.data.jam;
+          this.tanggal = data.data.tanggal.substr(0,10);
+          this.berkas = data.data.berkas;
         }
 
-        this.pembahas_1 = data.data.pembahas_1;
-        this.pembahas_2 = data.data.pembahas_2;
-        this.pembahas_3 = data.data.pembahas_3;
-        this.tempat = data.data.tempat;
-        this.jam = data.data.jam;
-        this.tanggal = data.data.tanggal.substr(0,10);
-        this.berkas = data.data.berkas;
+
       })
   }
 

@@ -72,13 +72,15 @@ export class nasional {
 
         if(this.dataSeminar.seminar.jenis_seminar == 1) {
           this.show = true;
+
+          this.nama_konferensi = data.data.nama_konferensi;
+          this.judul_paper = data.data.judul_paper;
+          this.tempat = data.data.tempat;
+          this.tanggal = data.data.tanggal.substr(0,10);
+          this.berkas = data.data.berkas;
         }
 
-        this.nama_konferensi = data.data.nama_konferensi;
-        this.judul_paper = data.data.judul_paper;
-        this.tempat = data.data.tempat;
-        this.tanggal = data.data.tanggal.substr(0,10);
-        this.berkas = data.data.berkas;
+
       })
   }
 
