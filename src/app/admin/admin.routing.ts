@@ -13,9 +13,12 @@ const routes: Routes = [
       { path: 'kolokium', loadChildren: () => System.import('./kolokium/kolokium.module') },
       { path: 'praseminar', loadChildren: () => System.import('./praseminar/praseminar.module') },
       { path: 'ta', loadChildren: () => System.import('./penguji/penguji.module') },
-      { path: 'seminar', loadChildren: () => System.import('./seminar/seminar.module') },
+      { path: 'seminar/ringkasan', loadChildren: () => System.import('./seminar/seminar.module') },
       { path: 'skl', loadChildren: () => System.import('./skl/skl.module') },
       { path: 'sidang', loadChildren: () => System.import('./sidang/sidang.module') },
+      { path: 'seminar/mandiri', loadChildren: () => System.import('./mandiri/mandiri.module') },
+      { path: 'seminar/micon', loadChildren: () => System.import('./micon/micon.module') },
+      { path: 'seminar/konferensi', loadChildren: () => System.import('./konferensi/konferensi.module') },
     ]
   }
 ];

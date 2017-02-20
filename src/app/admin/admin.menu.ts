@@ -79,13 +79,59 @@ export const ADMIN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'Seminar',
-            icon: 'ion-android-home',
+            icon: 'ion-stats-bars',
             selected: false,
             expanded: false,
-            order: 0
+            order: 200,
           }
-        }
+        },
+        children: [
+          {
+            path: 'ringkasan',
+            data: {
+              menu: {
+                title: 'Ringkasan Seminar',
+              }
+            }
+          },
+          {
+            path: 'konferensi',
+            data: {
+              menu: {
+                title: 'Seminar Nasional',
+              }
+            }
+          },
+          {
+            path: 'micon',
+            data: {
+              menu: {
+                title: 'Mini Conferece',
+              }
+            }
+          },
+          {
+            path: 'mandiri',
+            data: {
+              menu: {
+                title: 'Seminar Mandiri',
+              }
+            }
+          }
+        ]
       },
+      // {
+      //   path: 'seminar',
+      //   data: {
+      //     menu: {
+      //       title: 'Seminar',
+      //       icon: 'ion-android-home',
+      //       selected: false,
+      //       expanded: false,
+      //       order: 0
+      //     }
+      //   }
+      // },
       {
         path: 'sidang',
         data: {
