@@ -106,7 +106,7 @@
       </div>
 
       <div class="row col-md-12" *ngIf="list">
-        <ng2-smart-table (userRowSelect)="test($event)" (userRowSelect)="smModal.show()"  [settings]="settings" [source]="source"></ng2-smart-table>
+        <ng2-smart-table (userRowSelect)="test($event)" (userRowSelect)="smModal.show()" [settings]="settings" [source]="source"></ng2-smart-table>
       </div>
     </ba-card>
 
@@ -127,7 +127,7 @@
           <button class="btn btn-primary" (click)="confirm(1)" (click)="smModal.hide()">Konfirmasi Sudah Kolokium</button>
         </div>
         <div *ngIf="konfirmasi == 0">
-          <button class="btn btn-danger" (click)="confirm(0)" (click)="smModal.hide()">Batalkan Konfirmasi</button>
+          <button class="btn btn-danger" (click)="confirm(0)" (click)="smModal.hide()">Batalkan Konfirmasi Kolokium</button>
         </div>
         <div *ngIf="konfirmasi == 2">
           <b danger>Belum Upload</b>

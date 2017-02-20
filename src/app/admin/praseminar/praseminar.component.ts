@@ -5,6 +5,7 @@ import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 
 import { NgUploaderOptions } from 'ngx-uploader';
+import { LocalDataSource } from 'ng2-smart-table';
 let Chart = require('chart.js');
 
 @Component({
@@ -39,6 +40,63 @@ export class praseminarAdmin {
 
     this.pilih_tahun = this.tahun;
   }
+
+  source: LocalDataSource;
+
+  konfirmasi = 0;
+  nimKonfirmasi = '';
+  dataChange;
+  test(e) {
+    this.nimKonfirmasi = e.data.nim;
+    this.dataChange = e.data;
+
+    if(e.data.konfirmasi) {
+      if(e.data.konfirmasi.search("Sudah Dikonfirmasi") == -1) {
+        this.konfirmasi = 1;
+      }
+      else {
+        this.konfirmasi = 0;
+      }
+    }
+    else {
+      this.konfirmasi = 2;
+    }
+  }
+
+  show = true;
+  confirm(num) {
+    let creds = JSON.stringify({nim: this.nimKonfirmasi, data: this.konfirmasi});
+
+    this.authHttp.put('http://localhost:2016/konfirmasi/praseminar', creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        let dataChange1 = this.dataChange;
+
+        if(data.status) {
+          this.showKonfirmasiSuccess();
+          for(let i = 0; i < this.list.length; i++) {
+            if (this.list[i].nim == this.nimKonfirmasi) {
+              if(num) {
+                dataChange1.konfirmasi = "<span class='text-success'>Sudah Dikonfirmasi</span>";
+              }
+              else {
+                dataChange1.konfirmasi = "<span class='text-danger'>Belum Dikonfirmasi</span>";
+              }
+            }
+          }
+
+          this.source.update(this.dataChange, dataChange1);
+        }
+      });
+
+    this.konfirmasi = 0;
+  }
+
+  showKonfirmasiSuccess() {
+    this.toastr.success("Konfirmasi Berhasil", 'Success !');
+  }
+
+
 
   // --------------------------------
   // TABLE
@@ -80,8 +138,8 @@ export class praseminarAdmin {
         title: 'Status',
         type: 'html'
       },
-      makalah: {
-        title: 'Lihat',
+      konfirmasi: {
+        title: 'Konfirmasi',
         type: 'html'
       }
     },
@@ -206,6 +264,7 @@ export class praseminarAdmin {
       this.authHttp.get(this.data.urlAllMakalahPraseminar)
         .map(res => res.json())
         .subscribe(data => {
+          this.source = new LocalDataSource(data);
           this.list = data;
           this.temp = data;
           this.tahun_awal = data[0].tahun_masuk;

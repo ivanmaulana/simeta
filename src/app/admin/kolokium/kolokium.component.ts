@@ -34,8 +34,6 @@ export class kolokiumAdmin {
   tahun;
   pilih_tahun;
 
-  source: LocalDataSource;
-
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     var temp = new Date();
     this.tahun = temp.getFullYear() - 4;
@@ -43,6 +41,7 @@ export class kolokiumAdmin {
     this.pilih_tahun = this.tahun;
   }
 
+  source: LocalDataSource;
   konfirmasi = 0;
   nimKonfirmasi = '';
   dataChange;
