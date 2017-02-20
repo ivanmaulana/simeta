@@ -56,6 +56,11 @@ export class DataService {
   public urlUpdateTa = 'http://localhost:2016/ta/update/';
   public urlTaPengajuan = 'http://localhost:2016/ta/daftar/detail/';
 
+  public urlTaPenentuan = 'http://localhost:2016/ta/penentuan';
+  public urlTaEdit = 'http://localhost:2016/ta/edit/';
+
+  public urlJadwalKolokium = 'http://localhost:2016/jadwalKolokium';
+
   public urlFileKolokium = 'http://localhost:2016/kolokium';
   public urlFilePraseminar = 'http://localhost:2016/praseminar';
   public urlUploadKolokium = 'http://localhost:2016/upload/kolokium';

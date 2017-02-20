@@ -60,7 +60,7 @@ export class TaAdmin {
 
     let creds = JSON.stringify({nama: e.value});
 
-    this.authHttp.post('http://simak.apps.cs.ipb.ac.id:2016/ta/penentuan', creds)
+    this.authHttp.post(this.data.urlTaPenentuan, creds)
       .map(res => res.json())
       .subscribe(data => {
         this.click = true;
@@ -94,7 +94,7 @@ export class TaAdmin {
     let creds;
     creds = JSON.stringify({nim: this.nim, topik: this.topik, lab: this.lab, dosen_1: this.dosen_1, dosen_2: this.dosen_2});
 
-    this.authHttp.put("http://simak.apps.cs.ipb.ac.id:2016/ta/edit/", creds)
+    this.authHttp.put(this.data.urlTaEdit, creds)
       .map(res => res.json())
       .subscribe(data => {
         this.response = data[0].status;

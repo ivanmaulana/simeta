@@ -3,6 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+import { LocalDataSource } from 'ng2-smart-table';
 
 import { NgUploaderOptions } from 'ngx-uploader';
 let Chart = require('chart.js');
@@ -33,11 +34,66 @@ export class kolokiumAdmin {
   tahun;
   pilih_tahun;
 
+  source: LocalDataSource;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     var temp = new Date();
     this.tahun = temp.getFullYear() - 4;
 
     this.pilih_tahun = this.tahun;
+  }
+
+  konfirmasi = 0;
+  nimKonfirmasi = '';
+  dataChange;
+  test(e) {
+    this.nimKonfirmasi = e.data.nim;
+    this.dataChange = e.data;
+
+    if(e.data.konfirmasi) {
+      if(e.data.konfirmasi.search("Sudah Dikonfirmasi") == -1) {
+        this.konfirmasi = 1;
+      }
+      else {
+        this.konfirmasi = 0;
+      }
+    }
+    else {
+      this.konfirmasi = 2;
+    }
+  }
+
+  show = true;
+  confirm(num) {
+    let creds = JSON.stringify({nim: this.nimKonfirmasi, data: this.konfirmasi});
+
+    this.authHttp.put('http://localhost:2016/konfirmasi/kolokium', creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        let dataChange1 = this.dataChange;
+
+        if(data.status) {
+          this.showKonfirmasiSuccess();
+          for(let i = 0; i < this.list.length; i++) {
+            if (this.list[i].nim == this.nimKonfirmasi) {
+              if(num) {
+                dataChange1.konfirmasi = "<span class='text-success'>Sudah Dikonfirmasi</span>";
+              }
+              else {
+                dataChange1.konfirmasi = "<span class='text-danger'>Belum Dikonfirmasi</span>";
+              }
+            }
+          }
+
+          this.source.update(this.dataChange, dataChange1);
+        }
+      });
+
+    this.konfirmasi = 0;
+  }
+
+  showKonfirmasiSuccess() {
+    this.toastr.success("Konfirmasi Berhasil", 'Success !');
   }
 
   // --------------------------------
@@ -75,8 +131,8 @@ export class kolokiumAdmin {
         title: 'Status',
         type: 'html'
       },
-      makalah: {
-        title: 'Lihat',
+      konfirmasi: {
+        title: 'Konfirmasi',
         type: 'html'
       }
     },
@@ -95,7 +151,7 @@ export class kolokiumAdmin {
   simpan(){
     let creds = JSON.stringify({active: this.active, jadwal_kolokium: this.jadwal, deadline: this.deadline});
 
-    this.authHttp.put("http://simak.apps.cs.ipb.ac.id:2016/jadwalKolokium", creds)
+    this.authHttp.put(this.data.urlJadwalKolokium, creds)
       .map(res => res.json())
       .subscribe(data => {
         this.response1 = data[0].status;
@@ -151,7 +207,7 @@ export class kolokiumAdmin {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/file/"+this.uploadFile[0].filename;
+      this.preview = this.data.urlFileKolokium+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -197,6 +253,7 @@ export class kolokiumAdmin {
     this.authHttp.get(this.data.urlAllMakalahKolokium)
       .map(res => res.json())
       .subscribe(data => {
+        this.source = new LocalDataSource(data);
         this.list = data;
         this.temp = data;
         this.tahun_awal = data[0].tahun_masuk;
@@ -239,7 +296,7 @@ export class kolokiumAdmin {
         this.jadwal = data[0]['jadwal_kolokium'];
         this.deadline = data[0]['deadline'];
 
-        this.preview = "http://simak.apps.cs.ipb.ac.id/"+data[0]['file'];
+        this.preview = "http://simeta.apps.cs.ipb.ac.id/"+data[0]['file'];
       })
 
   }
