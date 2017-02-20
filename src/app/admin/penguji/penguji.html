@@ -1,0 +1,139 @@
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+
+    <ba-card title="Penentuan Topik dan Pembimbing" baCardClass="table-panel">
+
+      <div class="row">
+        <div class="col-md-3 padding-top">
+          <b>Cari Berdasarkan Nama</b>
+        </div>
+
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            [(ngModel)]="selected"
+            [typeahead]="pengajuan"
+            (typeaheadOnSelect)="typeaheadOnSelect($event)"
+            [typeaheadOptionsLimit]="7"
+            [typeaheadOptionField]="'nama'">
+        </div>
+      </div>
+
+      <div class="row col-md-12" *ngIf="selected !== '' && click == true">
+        <br /><hr />
+      </div>
+
+      <div class="row" *ngIf="selected !== '' && click == true">
+        <div class="col-md-6">
+
+          <div class="col-md-12">
+            <label><b>Topik</b></label>
+            <textarea name="topik" [(ngModel)]="topik" class="form-control" required></textarea>
+          </div>
+
+          <div class="row col-md-12">
+            <br />
+          </div>
+
+          <div class="col-md-12">
+            <label><b>Lab</b></label>
+            <select [(ngModel)]="lab" class="form-control" style="height:35px" required>
+              <option value="1">Net Centric Computing</option>
+              <option value="2">Applied & Computational Intelligence</option>
+              <option value="3">Software Engineering & Information System</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="col-md-12">
+            <label><b>Pembimbing 1</b></label>
+
+            <input name="dosen1" [(ngModel)]="dosen1"
+                [typeahead]="dosen"
+                (typeaheadOnSelect)="selectDosen1($event)"
+                class="form-control"
+                [typeaheadOptionsLimit]="5"
+                placeholder="Dosen Pembimbing Pilihan 1" required>
+          </div>
+
+          <div class="row col-md-12">
+            <br />
+          </div>
+
+          <div class="col-md-12">
+            <label><b>Pembimbing 2</b></label>
+
+            <input name="dosen2" [(ngModel)]="dosen2"
+                [typeahead]="dosen"
+                (typeaheadOnSelect)="selectDosen2($event)"
+                class="form-control"
+                [typeaheadOptionsLimit]="5"
+                placeholder="Dosen Pembimbing Pilihan 2">
+          </div>
+
+          <div class="row col-md-12">
+            <br />
+          </div>
+
+          <div class="col-md-12">
+            <label><b>Penguji 1</b></label>
+
+            <input name="dosen2" [(ngModel)]="penguji1"
+                [typeahead]="dosen"
+                (typeaheadOnSelect)="selectDosen3($event)"
+                class="form-control"
+                [typeaheadOptionsLimit]="5"
+                placeholder="Dosen Penguji 1">
+          </div>
+
+          <div class="row col-md-12">
+            <br />
+          </div>
+
+          <div class="col-md-12" *ngIf="!dosen2">
+            <label><b>Penguji 2</b></label>
+
+            <input name="dosen2" [(ngModel)]="penguji2"
+                [typeahead]="dosen"
+                (typeaheadOnSelect)="selectDosen4($event)"
+                class="form-control"
+                [typeaheadOptionsLimit]="5"
+                placeholder="Dosen Penguji 2">
+          </div>
+
+          <div class="row col-md-12">
+            <br />
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf="selected !== '' && click == true">
+        <div class="col-md-12 text-right">
+          <div class="form-group col-md-12 col-sm-12 align-right padding-right">
+            <button type="button" class="btn btn-primary btn-lg" (click)="simpan()">Simpan</button>
+          </div>
+        </div>
+      </div>
+
+
+    </ba-card>
+
+</div>

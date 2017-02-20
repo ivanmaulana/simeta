@@ -38,6 +38,18 @@ export const ADMIN_SIDEBAR_MENU = [
           }
         }
       },
+      // {
+      //   path: 'ta',
+      //   data: {
+      //     menu: {
+      //       title: 'Penentuan TA',
+      //       icon: 'ion-android-home',
+      //       selected: false,
+      //       expanded: false,
+      //       order: 0
+      //     }
+      //   }
+      // },
       {
         path: 'kolokium',
         data: {
