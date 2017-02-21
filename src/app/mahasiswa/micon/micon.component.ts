@@ -80,12 +80,69 @@ export class micon {
         this.dataSeminar = data;
 
         if(this.dataSeminar.seminar.jenis_seminar == 2) {
+          this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/micon/"+data.data.berkas;
           this.show = true;
         }
 
-        this.berkas = data.data.berkas;
       })
   }
+
+
+  // ---------------------------
+  // FILE UPLOAD
+
+  private zone: NgZone;
+
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
+  private progress: number = 0;
+  private response: any = {};
+
+  options: NgUploaderOptions = {
+    url: this.data.urlUploadMicon,
+    authToken: localStorage.getItem('id_token'),
+    authTokenPrefix: ''
+  };
+  sizeLimit = 5000000;
+
+
+  preview = "";
+  handleUpload(data: any): void {
+    if (data && data.response) {
+      let data1 = JSON.parse(data.response);
+      this.uploadFile = data1;
+
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/micon/"+this.uploadFile[0].filename;
+      this.showSelesai();
+    }
+
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = Math.floor(data.progress.percent);
+    });
+  }
+
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File harus kurang dari 5 MB');
+    }
+
+    if (uploadingFile.originalName.search(".zip") == -1) {
+      uploadingFile.setAbort();
+      alert('File Harus Berekstensi .zip');
+    }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
+  }
+
 
   // -----------------------------
   // TEMPLATE
@@ -104,7 +161,6 @@ export class micon {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-        // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
           this.getDataMahasiswa();
@@ -113,6 +169,7 @@ export class micon {
   }
 
   ngOnInit() {
+    this.zone = new NgZone({ enableLongStackTrace: false });
     this.getDataSeminar();
     this.getStatus();
     this.getConnection();

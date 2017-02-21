@@ -50,16 +50,86 @@ export class Sidang {
 
   }
 
-  submit() {
-    let creds = JSON.stringify({topik: this.topik, tempat: this.tempat, tanggal: this.tanggal, jam: this.mytime.toTimeString().substr(0,5)});
+  getDataSidang() {
+    this.authHttp.get(this.data.urlSidang)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.tempat = data[0].tempat;
+        this.tanggal = data[0].tanggal.substr(0,10);
+        this.jam = data[0].jam;
+        this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+      })
+  }
 
-    console.log(creds);
+  submit() {
+    let creds = JSON.stringify({topik: this.topik, tempat: this.tempat, tanggal: this.tanggal, jam: this.jam});
 
     this.authHttp.post(this.data.urlSidang, creds)
-      .map(res => res.json)
+      .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
+        if(data.status) {
+          this.showSuccess();
+        }
       })
+  }
+
+  showSuccess() {
+    this.toastr.success("Pendaftaran Sidang Berhasil", 'Success!');
+  }
+
+  // ---------------------------
+  // FILE UPLOAD
+
+  private zone: NgZone;
+
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
+  private progress: number = 0;
+  private response: any = {};
+
+  options: NgUploaderOptions = {
+    url: this.data.urlUploadSidang,
+    authToken: localStorage.getItem('id_token'),
+    authTokenPrefix: ''
+  };
+  sizeLimit = 30000000;
+
+  makalah;
+  handleUpload(data: any): void {
+    if (data && data.response) {
+      let data1 = JSON.parse(data.response);
+      this.uploadFile = data1;
+
+      this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+this.uploadFile[0].filename;
+      this.showSelesai();
+    }
+
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = Math.floor(data.progress.percent);
+    });
+  }
+
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File harus kurang dari 3 MB');
+    }
+
+    if (uploadingFile.originalName.search(".pdf") == -1) {
+      uploadingFile.setAbort();
+      alert('File Harus Berekstensi PDF');
+    }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
   }
 
   // -----------------------------
@@ -85,10 +155,9 @@ export class Sidang {
       })
   }
 
-  private zone: NgZone;
-
   ngOnInit() {
     this.zone = new NgZone({ enableLongStackTrace: false });
+    this.getDataSidang();
     this.getStatus();
     this.getConnection();
   }
@@ -124,6 +193,7 @@ export class Sidang {
   }
 
   refresh() {
+    this.getDataSidang();
     this.getStatus();
     this.getConnection();
   }

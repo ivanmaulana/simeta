@@ -157,11 +157,11 @@
               </alert>
 
               <div class="col-md-3 text-center">
-                <alert type="danger" *ngIf="!preview">
+                <alert type="danger" *ngIf="!berkas">
                   Kamu belum upload File Seminar Konferensi
                 </alert>
-                <alert type="success" *ngIf="preview">
-                  File Seminar Konferensi kamu bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                <alert type="success" *ngIf="berkas">
+                  File Seminar Konferensi kamu bisa dilihat<br /><br /> <a target="_blank" href="{{berkas}}"><b>Disini</b></a>
                 </alert>
               </div>
               <div class="col-md-9">
@@ -183,7 +183,7 @@
               </div>
 
               <div class="col-md-12">
-                <alert type="info" *ngIf="preview">
+                <alert type="info" *ngIf="berkas">
                   Silahkan Upload ulang jika ingin mengganti File Seminar Konferensi
                 </alert>
               </div>

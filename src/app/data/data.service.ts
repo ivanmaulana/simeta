@@ -63,6 +63,8 @@ export class DataService {
 
   public urlFileKolokium = 'http://localhost:2016/kolokium';
   public urlFilePraseminar = 'http://localhost:2016/praseminar';
+
+
   public urlUploadKolokium = 'http://localhost:2016/upload/kolokium';
   public urlUploadPraseminar = 'http://localhost:2016/upload/praseminar';
   public urlUploadSKL = 'http://localhost:2016/upload/skl';
@@ -70,6 +72,11 @@ export class DataService {
   public urlUploadPhoto = 'http://localhost:2016/upload/photo';
   public urlUploadJadwalKolokium = 'http://localhost:2016/upload/jadwal/kolokium';
   public urlUploadJadwalPraseminar = 'http://localhost:2016/upload/jadwal/praseminar';
+
+  public urlUploadMandiri = 'http://localhost:2016/upload/seminar/mandiri';
+  public urlUploadKonferensi = 'http://localhost:2016/upload/seminar/konferensi';
+  public urlUploadMicon = 'http://localhost:2016/upload/seminar/micon';
+  public urlUploadSidang = 'http://localhost:2016/upload/sidang';
 
   public urlLogApproval = 'http://localhost:2016/log/approval';
   public urlApproveLog = 'http://localhost:2016/log/approve';

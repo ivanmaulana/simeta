@@ -63,7 +63,6 @@ export class nasional {
   judul_paper;
   tempat;
   tanggal;
-  berkas;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
@@ -77,10 +76,8 @@ export class nasional {
           this.judul_paper = data.data.judul_paper;
           this.tempat = data.data.tempat;
           this.tanggal = data.data.tanggal.substr(0,10);
-          this.berkas = data.data.berkas;
+          this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+data.data.berkas;
         }
-
-
       })
   }
 
@@ -96,20 +93,21 @@ export class nasional {
   private response: any = {};
 
   options: NgUploaderOptions = {
-    url: this.data.urlUploadKolokium,
+    url: this.data.urlUploadKonferensi,
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 30000000;
+  sizeLimit = 5000000;
 
 
   preview = "";
+  berkas;
   handleUpload(data: any): void {
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -126,7 +124,7 @@ export class nasional {
   beforeUpload(uploadingFile): void {
     if (uploadingFile.size > this.sizeLimit) {
       uploadingFile.setAbort();
-      alert('File harus kurang dari 3 MB');
+      alert('File harus kurang dari 5 MB');
     }
 
     if (uploadingFile.originalName.search(".zip") == -1) {

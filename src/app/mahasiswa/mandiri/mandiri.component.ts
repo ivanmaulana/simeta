@@ -67,6 +67,7 @@ export class Mandiri {
   jam;
   tanggal;
   berkas;
+  makalah;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
@@ -82,10 +83,65 @@ export class Mandiri {
           this.jam = data.data.jam;
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = data.data.berkas;
+          this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+data.data.makalah;
         }
 
 
       })
+  }
+
+  // ---------------------------
+  // FILE UPLOAD
+
+  private zone: NgZone;
+
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
+  private progress: number = 0;
+  private response: any = {};
+
+  options: NgUploaderOptions = {
+    url: this.data.urlUploadMandiri,
+    authToken: localStorage.getItem('id_token'),
+    authTokenPrefix: ''
+  };
+  sizeLimit = 30000000;
+
+  preview = "";
+  handleUpload(data: any): void {
+    if (data && data.response) {
+      let data1 = JSON.parse(data.response);
+      this.uploadFile = data1;
+
+      this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+this.uploadFile[0].filename;
+      this.showSelesai();
+    }
+
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = Math.floor(data.progress.percent);
+    });
+  }
+
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File harus kurang dari 3 MB');
+    }
+
+    if (uploadingFile.originalName.search(".pdf") == -1) {
+      uploadingFile.setAbort();
+      alert('File Harus Berekstensi PDF');
+    }
+  }
+
+  showSelesai() {
+    this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
   }
 
   // -----------------------------
@@ -112,6 +168,7 @@ export class Mandiri {
   }
 
   ngOnInit() {
+    this.zone = new NgZone({ enableLongStackTrace: false });
     this.getStatus();
     this.getDataSeminar();
     this.getConnection();

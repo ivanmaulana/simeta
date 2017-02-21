@@ -172,11 +172,11 @@
                   <label class="row col-md-12"><p href primary><b>Upload Makalah Seminar Mandiri</b></p></label><br />
 
                   <div class="col-md-3 text-center">
-                    <alert type="danger" *ngIf="!preview">
+                    <alert type="danger" *ngIf="!makalah">
                       Kamu belum upload Makalah Seminar Mandiri
                     </alert>
-                    <alert type="success" *ngIf="preview">
-                      Makalah Seminar Mandiri kamu bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                    <alert type="success" *ngIf="makalah">
+                      Makalah Seminar Mandiri kamu bisa dilihat<br /><br /> <a target="_blank" href="{{makalah}}"><b>Disini</b></a>
                     </alert>
                   </div>
                   <div class="col-md-9">
@@ -198,7 +198,7 @@
                   </div>
 
                   <div class="col-md-12">
-                    <alert type="info" *ngIf="preview">
+                    <alert type="info" *ngIf="makalah">
                       Silahkan Upload ulang jika ingin mengganti Makalah Seminar Mandiri
                     </alert>
                   </div>
