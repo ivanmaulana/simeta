@@ -85,8 +85,6 @@ export class Mandiri {
           this.berkas = data.data.berkas;
           this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+data.data.makalah;
         }
-
-
       })
   }
 
@@ -170,8 +168,8 @@ export class Mandiri {
   ngOnInit() {
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.getStatus();
-    this.getDataSeminar();
     this.getConnection();
+    this.getDataSeminar();
   }
 
   getConnection() {
@@ -192,6 +190,8 @@ export class Mandiri {
     }, 5000)
   }
 
+  penguji1;
+  penguji2;
   getDataMahasiswa(){
 
     this.authHttp.get(this.data.urlTa)
@@ -202,13 +202,15 @@ export class Mandiri {
         this.dosen2 = data[0]['dosen2'];
         this.dosen_1 = data[0]['dosen_1'];
         this.dosen_2 = data[0]['dosen_2'];
+        this.penguji1 = data[0]['penguji1'];
+        this.penguji2 = data[0]['penguji2'];
       })
   }
 
   refresh() {
+    this.getStatus();
     this.getConnection();
     this.getDataSeminar();
-    this.getStatus();
   }
 
   showNoConn() {
