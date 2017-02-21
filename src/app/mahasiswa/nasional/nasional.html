@@ -49,7 +49,7 @@
         </div>
 
         <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 1">
+          <div *ngIf="dataSeminar.seminar.jenis_seminar == 1 || dataSeminar.seminar == false">
             <ba-card title="Konferensi Nasional / Internasional" baCardClass="with-scroll">
           <form class="row form-inline" (ngSubmit)="submit()">
 

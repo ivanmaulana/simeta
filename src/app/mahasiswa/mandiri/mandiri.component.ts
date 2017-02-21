@@ -210,6 +210,7 @@ export class Mandiri {
   refresh() {
     this.getStatus();
     this.getConnection();
+    this.getConnection();
     this.getDataSeminar();
   }
 

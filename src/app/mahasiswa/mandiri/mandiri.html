@@ -50,7 +50,7 @@
         </div>
 
         <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 3">
+          <div *ngIf="dataSeminar.seminar.jenis_seminar == 3 || dataSeminar.seminar == false">
             <ba-card title="Seminar Mandiri" baCardClass="with-scroll">
               <form class="row form-inline" (ngSubmit)="submit()">
 

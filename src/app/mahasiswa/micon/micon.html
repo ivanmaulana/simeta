@@ -48,7 +48,7 @@
       </div>
 
       <div *ngIf="dataSeminar">
-        <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
+        <div *ngIf="dataSeminar.seminar.jenis_seminar == 2 || dataSeminar.seminar == false">
           <!-- Alert message -->
           <alert type="info" *ngIf="active">
             Perhatian ! Jadwal Mini Conference adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
