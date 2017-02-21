@@ -28,21 +28,30 @@ export class Skl {
   noConn;
   status;
 
-  private nim;
-  private nama;
   private dosen1;
   private dosen_1;
   private dosen2;
   private dosen_2;
-  private timestamp;
   private topik;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
 
-  simpan(){
-    let creds = JSON.stringify({topik: this.topik});
+  tanggal;
+  berkas;
+
+  getDataSKL() {
+    this.authHttp.get(this.data.urlSKL)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.tanggal = data[0].tanggal;
+        this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+data[0].berkas;
+      })
+  }
+
+  simpan() {
+    let creds = JSON.stringify({topik: this.topik, tanggal: this.tanggal});
 
     this.authHttp.put(this.data.urlUpdateTa, creds)
       .map(res => res.json())
@@ -51,8 +60,7 @@ export class Skl {
         if(this.status) this.showSuccess();
         else this.showError();
 
-      }
-    )
+      })
   }
 
   showError() {
@@ -81,14 +89,13 @@ export class Skl {
     authTokenPrefix: ''
   };
 
-  preview = "";
   handleUpload(data: any): void {
     console.log('handel biasa');
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileSKL/"+this.uploadFile[0].filename;
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -147,6 +154,7 @@ export class Skl {
 
   ngOnInit() {
     this.zone = new NgZone({ enableLongStackTrace: false });
+    this.getDataSKL();
     this.getStatus();
     this.getConnection();
   }
@@ -182,6 +190,7 @@ export class Skl {
   }
 
   refresh() {
+    this.getDataSKL();
     this.getConnection();
     this.getStatus();
   }

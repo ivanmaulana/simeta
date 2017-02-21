@@ -50,6 +50,7 @@ export class DataService {
   public urlStatus = 'http://localhost:2016/status/';
   public urlTest = 'http://localhost:2016/test/';
   public urlLog = 'http://localhost:2016/log/';
+  public urlSKL = 'http://localhost:2016/skl/';
   public urlKolokium = 'http://localhost:2016/jadwalKolokium';
   public urlPraseminar = 'http://localhost:2016/jadwalPraseminar';
 

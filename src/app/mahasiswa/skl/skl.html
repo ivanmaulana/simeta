@@ -91,7 +91,7 @@
             </div>
 
             <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-              <button class="btn btn-primary" type="submit">Ubah Topik</button>
+              <button class="btn btn-lg btn-primary" type="submit">Ubah Topik</button>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -104,11 +104,11 @@
             <div class="col-md-12">
               <label class="row col-md-12"><p href primary><b>Upload Scan SKL</b></p></label><br />
               <div class="col-md-3 text-center">
-                <alert type="danger" *ngIf="!preview">
+                <alert type="danger" *ngIf="!berkas">
                   Kamu belum upload Scan SKL
                 </alert>
-                <alert type="success" *ngIf="preview">
-                  File SKL Kamu final bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                <alert type="success" *ngIf="berkas">
+                  File SKL Kamu final bisa dilihat<br /><br /> <a target="_blank" href="{{berkas}}"><b>Disini</b></a>
                 </alert>
               </div>
               <div class="col-md-6">
@@ -130,7 +130,7 @@
               </div>
 
               <div class="col-md-12">
-                <alert type="info" *ngIf="preview">
+                <alert type="info" *ngIf="berkas">
                   Silahkan Upload ulang jika ingin mengganti scan SKL
                 </alert>
               </div>
