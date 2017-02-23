@@ -177,7 +177,10 @@ export class Skl {
     }, 5000)
   }
 
+  penguji1;
+  penguji2;
   getDataMahasiswa(){
+
     this.authHttp.get(this.data.urlTa)
       .map(res => res.json())
       .subscribe(data => {
@@ -186,6 +189,8 @@ export class Skl {
         this.dosen2 = data[0]['dosen2'];
         this.dosen_1 = data[0]['dosen_1'];
         this.dosen_2 = data[0]['dosen_2'];
+        this.penguji1 = data[0]['penguji1'];
+        this.penguji2 = data[0]['penguji2'];
       })
   }
 

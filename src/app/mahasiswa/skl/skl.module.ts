@@ -8,7 +8,6 @@ import { routing }       from './skl.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
-import { Final } from './components/final';
 
 @NgModule({
   imports: [
@@ -21,8 +20,7 @@ import { Final } from './components/final';
     routing
   ],
   declarations: [
-    Skl,
-    Final
+    Skl
   ],
   providers: [
   ]

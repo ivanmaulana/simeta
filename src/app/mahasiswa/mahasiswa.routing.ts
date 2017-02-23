@@ -15,11 +15,9 @@ const routes: Routes = [
       { path: 'sidang', loadChildren: () => System.import('./sidang/sidang.module') },
       { path: 'skl', loadChildren: () => System.import('./skl/skl.module') },
       { path: 'profile', loadChildren: () => System.import('./profile/profile.module') },
-      { path: 'ui', loadChildren: () => System.import('./ui/ui.module') },
       { path: 'seminar/mandiri', loadChildren: () => System.import('./mandiri/mandiri.module') },
       { path: 'seminar/micon', loadChildren: () => System.import('./micon/micon.module') },
       { path: 'seminar/nasional', loadChildren: () => System.import('./nasional/nasional.module') },
-      { path: 'forms', loadChildren: () => System.import('./forms/forms.module') },
     ]
   }
 ];
