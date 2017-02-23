@@ -42,6 +42,18 @@ export class Mandiri {
 
   }
 
+  delete() {
+    this.authHttp.get(this.data.urlDeleteSeminar)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+        if(data.status) {
+          this.refresh();
+        }
+      })
+  }
+
+
   submit() {
     let creds = JSON.stringify({topik: this.topik, pembahas_1: this.pembahas_1, pembahas_2: this.pembahas_2, pembahas_3: this.pembahas_3, tempat: this.tempat, jam: this.jam, tanggal: this.tanggal});
 

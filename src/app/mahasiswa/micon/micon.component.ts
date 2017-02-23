@@ -47,6 +47,18 @@ export class micon {
 
   }
 
+  delete() {
+    this.authHttp.get(this.data.urlDeleteSeminar)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+        if(data.status) {
+          this.refresh();
+        }
+      })
+  }
+
+
   submit() {
     let creds = JSON.stringify({topik: this.topik});
 

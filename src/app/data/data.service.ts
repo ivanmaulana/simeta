@@ -103,6 +103,8 @@ export class DataService {
   public urlSeminarMandiri = 'http://localhost:2016/seminar/mandiri';
   public urlSeminarKonferensi = 'http://localhost:2016/seminar/konferensi';
 
+  public urlDeleteSeminar = 'http://localhost:2016/seminar/delete';
+
 
   // ADMIN
   public urlListPengajuan = 'http://localhost:2016/ta/daftar/list';

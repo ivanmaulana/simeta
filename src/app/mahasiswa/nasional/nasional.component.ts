@@ -41,6 +41,17 @@ export class nasional {
 
   }
 
+  delete() {
+    this.authHttp.get(this.data.urlDeleteSeminar)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+        if(data.status) {
+          this.refresh();
+        }
+      })
+  }
+
   submit() {
     let creds = JSON.stringify({nama_konferensi: this.nama_konferensi, judul_paper: this.judul_paper, tempat: this.tempat, tanggal: this.tanggal});
 
@@ -49,6 +60,7 @@ export class nasional {
       .subscribe(data => {
         if(data.status) {
           this.showSuccess();
+          this.getDataSeminar();
         }
       })
   }
@@ -70,13 +82,17 @@ export class nasional {
         this.dataSeminar = data;
 
         if(this.dataSeminar.seminar.jenis_seminar == 1) {
-          this.show = true;
+          if(data.data.berkas) {
+            this.show = true;
+          }
 
           this.nama_konferensi = data.data.nama_konferensi;
           this.judul_paper = data.data.judul_paper;
           this.tempat = data.data.tempat;
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+data.data.berkas;
+
+          console.log(this.show);
         }
       })
   }
@@ -107,6 +123,9 @@ export class nasional {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
+      if(this.uploadFile[0].filename) {
+        this.show = true;
+      }
       this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+this.uploadFile[0].filename;
       this.showSelesai();
     }

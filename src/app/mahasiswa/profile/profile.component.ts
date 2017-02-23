@@ -43,7 +43,7 @@ export class Profile {
   private creds;
   private message;
 
-  public picture = 'http://simak.apps.cs.ipb.ac.id/upload/filePhoto/foto-'+this.data.nim+'-'+this.data.nama+'.jpg';
+  public picture = 'http://simeta.apps.cs.ipb.ac.id/upload/filePhoto/foto-'+this.data.nim+'-'+this.data.nama+'.jpg';
   public defaultPicture = 'assets/img/photo.png';
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
@@ -150,7 +150,7 @@ export class Profile {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/filePraseminar/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

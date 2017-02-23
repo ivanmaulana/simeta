@@ -56,7 +56,7 @@ export class Kolokium {
         this.active = data[0]['active'];
         this.jadwal = data[0]['jadwal_kolokium'];
         this.deadline = data[0]['deadline'];
-        this.link = 'http://simak.apps.cs.ipb.ac.id/'+data[0]['file'];
+        this.link = 'http://simeta.apps.cs.ipb.ac.id/'+data[0]['file'];
 
         if (this.jadwal) this.response1 = true;
       })
@@ -110,7 +110,7 @@ export class Kolokium {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -210,7 +210,7 @@ export class Kolokium {
     this.authHttp.get(this.data.urlFileKolokium)
       .map(res => res.json())
       .subscribe(data => {
-        this.preview = "http://simak.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
+        this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
       })
   }
 

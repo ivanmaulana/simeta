@@ -35,6 +35,14 @@
               <h4>Kamu telah memilih Seminar Mandiri</h4>
               <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
             </alert>
+
+            <br>
+
+            <div class="col-md-12 text-center">
+              <button (click)="delete()" class="btn btn-danger">
+                Hapus Data Seminar
+              </button>
+            </div>
           </div>
         </div>
 
@@ -45,6 +53,14 @@
               <h4>Kamu telah memilih Seminar Mini Conference</h4>
               <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
             </alert>
+
+            <br>
+
+            <div class="col-md-12 text-center">
+              <button (click)="delete()" class="btn btn-danger">
+                Hapus Data Seminar
+              </button>
+            </div>
           </div>
         </div>
 
@@ -115,6 +131,13 @@
               <br />
             </div>
 
+            <!-- app.component.html -->
+            <div *ngIf="!dataSeminar.seminar" class="col-md-12">
+              <alert type="danger">
+                Silahkan isi form seminar untuk <b>Upload file makalah / berkas seminar</b>
+              </alert>
+            </div>
+
             <!-- Nama Konferensi -->
             <div class="form-group col-md-12 col-xs-12">
               <label><p href primary><b>Nama Konferensi</b></p></label><br />
@@ -152,15 +175,14 @@
             </div>
 
             <div class="col-md-12 text-right">
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
               <br />
             </div>
 
-            <!-- app.component.html -->
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="dataSeminar.seminar">
               <label class="row col-md-12"><p href primary><b>Upload File Seminar Konferensi</b></p></label><br />
 
               <alert type="info">
@@ -170,10 +192,10 @@
               </alert>
 
               <div class="col-md-3 text-center">
-                <alert type="danger" *ngIf="!berkas">
+                <alert type="danger" *ngIf="!show">
                   Kamu belum upload File Seminar Konferensi
                 </alert>
-                <alert type="success" *ngIf="berkas">
+                <alert type="success" *ngIf="show">
                   File Seminar Konferensi kamu bisa dilihat<br /><br /> <a target="_blank" href="{{berkas}}"><b>Disini</b></a>
                 </alert>
               </div>
@@ -196,7 +218,7 @@
               </div>
 
               <div class="col-md-12">
-                <alert type="info" *ngIf="berkas">
+                <alert type="info" *ngIf="show">
                   Silahkan Upload ulang jika ingin mengganti File Seminar Konferensi
                 </alert>
               </div>
