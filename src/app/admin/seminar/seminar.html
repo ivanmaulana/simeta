@@ -1,1 +1,68 @@
-Ini Seminar Admin
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status" class="row">
+
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Seminar" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSeminar">
+        <div *ngFor="let i of tahunSeminar" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataSeminar[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Seminar : <b>{{dataSeminar[i][0]}}</b><br />
+          Belum Seminar : <b>{{dataSeminar[i][1] - dataSeminar[i][0]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Jenis Seminar" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSeminar">
+        <div *ngFor="let i of tahunSeminar" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="jenisSeminar[i]"
+                  [labels]="dataLabelJenis"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Belum Seminar : <b>{{jenisSeminar[i][0]}}</b><br />
+          Seminar Konferensi : <b>{{jenisSeminar[i][1]}}</b><br />
+          Mini Conference : <b>{{jenisSeminar[i][2]}}</b><br />
+          Seminar Mandiri : <b>{{jenisSeminar[i][3]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
+  <ba-card title="Rekap File Kolokium" class="col-md-12" baCardClass="with-scroll table-panel">
+
+    <div class="row">
+      <br />
+    </div>
+
+    <div class="row col-md-12" *ngIf="dataSeminarAll">
+      <ng2-smart-table [settings]="settings" [source]="dataSeminarAll"></ng2-smart-table>
+    </div>
+  </ba-card>
+
+</div>

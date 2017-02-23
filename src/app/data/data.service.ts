@@ -95,6 +95,7 @@ export class DataService {
 
   public urlAdminKolokium = 'http://localhost:2016/admin/kolokium';
   public urlAdminPraseminar = 'http://localhost:2016/admin/praseminar';
+  public urlAdminSeminar = 'http://localhost:2016/admin/seminar';
   public urlAdminSidang = 'http://localhost:2016/admin/sidang';
   public urlAdminSKL = 'http://localhost:2016/admin/skl';
   public urlAdminSummary = 'http://localhost:2016/admin/summary';
@@ -102,6 +103,7 @@ export class DataService {
   public urlSeminarData = 'http://localhost:2016/seminar';
   public urlSeminarMandiri = 'http://localhost:2016/seminar/mandiri';
   public urlSeminarKonferensi = 'http://localhost:2016/seminar/konferensi';
+  public urlSeminarAll = 'http://localhost:2016/mahasiswa/seminar/all';
 
   public urlDeleteSeminar = 'http://localhost:2016/seminar/delete';
 
