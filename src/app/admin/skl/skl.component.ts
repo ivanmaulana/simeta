@@ -22,16 +22,23 @@ export class sklAdmin {
 
   list;
 
-  today;
-  tahun;
-  pilih_tahun;
-  temp;
-
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-    var temp = new Date();
-    this.tahun = temp.getFullYear() - 4;
 
-    this.pilih_tahun = this.tahun;
+  }
+
+  public pieChartType:string = 'pie';
+  dataLabel = ['Sudah SKL', 'Belum SKL'];
+
+  tahunSKL;
+  dataSKL;
+  getDataSKL() {
+    this.authHttp.get(this.data.urlAdminSKL)
+      .map(res => res.json())
+      .subscribe(data => {
+
+        this.tahunSKL = data.tahun;
+        this.dataSKL = data.data;
+      })
   }
 
   // --------------------
@@ -78,57 +85,21 @@ export class sklAdmin {
   // TEMPLATE
 
   // DASHBOARD SERVICE
-  tahun_awal;
-  forTahun = [];
-
-  rangkuman = [];
-  dataLabel = ['Sudah Upload', 'Belum Upload'];
-  tampil;
 
   getListSidang() {
-    this.tampil = 0;
 
     this.authHttp.get(this.data.urlAllMakalahSKL)
       .map(res => res.json())
       .subscribe(data => {
         this.list = data;
-        this.temp = data;
-        this.tahun_awal = data[0].tahun_masuk;
-
-        if (this.tahun_awal < this.tahun - 2) {
-          this.tahun_awal = this.tahun - 2;
-        }
-
-        for(this.tahun_awal; this.tahun_awal < this.tahun + 1; this.tahun_awal++) {
-          this.forTahun.push(this.tahun_awal);
-        };
-
-        for (let i = 0; i < this.forTahun.length; i++) {
-          let temp = 0;
-          let Cmakalah = 0;
-          for (let j = 0; j < data.length; j++) {
-            if (this.forTahun[i] == data[j].tahun_masuk) {
-              temp++;
-
-              if (data[j].makalah != null) {
-                Cmakalah++;
-              }
-            }
-          }
-
-          this.rangkuman[this.forTahun[i]] = [Cmakalah, temp];
-
-          this.tampil = 1;
-        }
-
       })
 
   }
 
   ngOnInit() {
-    this.pilih_tahun = this.tahun;
-    this.getListSidang();
     this.getConnection();
+    this.getListSidang();
+    this.getDataSKL();
   }
 
   getConnection() {
@@ -150,8 +121,9 @@ export class sklAdmin {
   }
 
   refresh() {
-    this.getListSidang();
     this.getConnection();
+    this.getListSidang();
+    this.getDataSKL();
   }
 
   showNoConn() {

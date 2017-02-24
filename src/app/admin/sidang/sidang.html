@@ -13,118 +13,31 @@
 </div>
 
 <div class="row" *ngIf="status">
-  <div class="col-md-12">
-    <ba-card title="REKAPITULASI SIDANG" baCardClass="with-scroll table-panel">
-      <div *ngIf="tampil">
-        <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" (userRowSelect)="lgModal.show()"  [source]="list"></ng2-smart-table>
-      </div>
-    </ba-card>
-  </div>
-</div>
 
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Sidang</h4>
-        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="row modal-body">
-        <div class="row col-md-12" *ngIf="dataModal">
-          <div class="row col-md-12">
-            <div class="col-md-3">
-              <b>NIM</b>
-            </div>
-            <div class="col-md-9">
-              : {{dataModal.nim}}
-            </div>
-          </div>
-
-          <div class="row col-md-12">
-            <div class="col-md-3">
-              <b>Nama</b>
-            </div>
-            <div class="col-md-9">
-              : {{dataModal.nama}}
-            </div>
-          </div>
-
-          <div class="row col-md-12">
-            <div class="col-md-3">
-              <b>Pembimbing Tugas Akhir</b>
-            </div>
-            <div class="col-md-6">
-              : {{dataModal.dosen1}}
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <hr />
-          </div>
-
-          <div class="col-md-12">
-            <div class="col-md-4">
-              <b>Tempat :</b>
-              <input type="text" class="form-control" [(ngModel)]="dataModal.tempat"/>
-            </div>
-            <div class="col-md-4">
-              <b>Waktu :</b>
-              <input type="text" class="form-control" [(ngModel)]="dataModal.jam" />
-            </div>
-            <div class="col-md-4">
-              <b>Tanggal</b>
-              <input type="date" class="form-control" [(ngModel)]="dataModal.tanggal" />
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <br />
-          </div>
-
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <b>Penguji 1 :</b>
-              <!-- <input type="text" class="form-control" [(ngModel)]="dataModal.penguji1"/> -->
-              <input name="dosen1" [(ngModel)]="dataModal.penguji1"
-                  [typeahead]="dosen"
-                  (typeaheadOnSelect)="selectDosen1($event)"
-                  class="form-control"
-                  [typeaheadOptionsLimit]="5"
-                  placeholder="Penguji 1" required>
-            </div>
-            <div class="col-md-6">
-              <b>Penguji 2 :</b>
-              <!-- <input type="text" class="form-control" [(ngModel)]="dataModal.penguji2"/> -->
-              <input name="dosen1" [(ngModel)]="dataModal.penguji2"
-                  [typeahead]="dosen"
-                  (typeaheadOnSelect)="selectDosen2($event)"
-                  class="form-control"
-                  [typeaheadOptionsLimit]="5"
-                  placeholder="Penguji 1" required>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <br />
-          </div>
-
-          <div class="col-md-12">
-            <div class="col-md-3 text-left">
-              <div class="text-left">
-                <b>Lihat File Sidang :</b>
-                <alert type="info" *ngIf="dataModal.makalah"><span [innerHtml]="dataModal.makalah"></span></alert>
-                <alert type="danger" *ngIf="!dataModal.makalah">Mahasiswa Belum Upload Makalah</alert>
-              </div>
-            </div>
-            <div class="col-md-9 text-right">
-              <button class="btn btn-lg btn-primary" (click)="simpan()" (click)="lgModal.hide()">Simpan</button>
-            </div>
-          </div>
-
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Sidang" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSidang">
+        <div *ngFor="let i of tahunSidang" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataSidang[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Sidang : <b>{{dataSidang[i][0]}}</b><br />
+          Belum Sidang : <b>{{dataSidang[i][1] - dataSidang[i][0]}}</b>
         </div>
       </div>
-    </div>
+      <br />
+    </ba-card>
+  </div>
+
+  <div class="col-md-12">
+    <ba-card title="REKAPITULASI SIDANG" baCardClass="with-scroll table-panel">
+      <div *ngIf="list">
+        <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+      </div>
+    </ba-card>
   </div>
 </div>
