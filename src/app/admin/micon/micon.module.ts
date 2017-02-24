@@ -5,12 +5,24 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { miconAdmin } from './micon.component';
 import { routing }       from './micon.routing';
+import { AlertModule } from 'ng2-bootstrap/alert';
+import { NgUploaderModule } from 'ngx-uploader';
+import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ModalModule } from 'ng2-bootstrap/modal';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
+    NgUploaderModule,
+    Ng2SmartTableModule,
+    ProgressbarModule,
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
+    ChartsModule,
     routing
   ],
   declarations: [

@@ -54,6 +54,8 @@ export class DataService {
   public urlKolokium = 'http://localhost:2016/jadwalKolokium';
   public urlPraseminar = 'http://localhost:2016/jadwalPraseminar';
 
+  public urlJadwalMicon = 'http://localhost:2016/jadwalMicon';
+
   public urlUpdateTa = 'http://localhost:2016/ta/update/';
   public urlTaPengajuan = 'http://localhost:2016/ta/daftar/detail/';
 
@@ -73,6 +75,7 @@ export class DataService {
   public urlUploadPhoto = 'http://localhost:2016/upload/photo';
   public urlUploadJadwalKolokium = 'http://localhost:2016/upload/jadwal/kolokium';
   public urlUploadJadwalPraseminar = 'http://localhost:2016/upload/jadwal/praseminar';
+  public urlUploadJadwalMicon = 'http://localhost:2016/upload/jadwal/micon';
 
   public urlUploadMandiri = 'http://localhost:2016/upload/seminar/mandiri';
   public urlUploadKonferensi = 'http://localhost:2016/upload/seminar/konferensi';

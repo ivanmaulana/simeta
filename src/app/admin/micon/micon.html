@@ -1,1 +1,81 @@
-Ini micon Admin
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="status">
+  <div class="row col-md-6">
+    <div class="col-md-12">
+
+      <ba-card title="Penentuan Kolokium" baCardClass="with-scroll table-panel">
+        <div class="row form-group">
+          <div class="col-md-6 padding-top"><b>Aktifkan Fitur Kolokium</b></div>
+          <div class="col-md-6">
+            <button type="button" *ngIf="active" (click)="activate()" class="btn btn-primary">Aktif</button>
+            <button type="button" *ngIf="!active" (click)="activate()" class="btn btn-default">Tidak Aktif</button>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6 padding-top"><b>Jadwal Kolokium</b></div>
+          <div class="col-md-6">
+            <input type="date" name="jadwal" class="form-control" [(ngModel)]="jadwal" style="height:33px"/>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6 padding-top"><b>Deadline Upload Makalah</b></div>
+          <div class="col-md-6">
+            <input type="date" name="deadline" class="form-control" [(ngModel)]="deadline" style="height:33px"/>
+          </div>
+        </div>
+
+        <!-- upload makalah kolokium -->
+        <div class="row form-group">
+          <div class="col-md-12 col-xs-12">
+            <label><p href primary><b>Upload File Jadwal Kolokium</b></p></label><br />
+            <div class="col-md-6 text-center">
+              <alert type="danger" *ngIf="!preview">
+                Belum upload Jadwal Kolokium
+              </alert>
+              <alert type="success" *ngIf="preview">
+                Jadwal Kolokium bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+              </alert>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <input class="button" type="file"
+                         ngFileSelect
+                         [options]="options"
+                         (onUpload)="handleUpload($event)"
+                         (beforeUpload)="beforeUpload($event)">
+                </div>
+              </div>
+              <div class="row">
+                <br />
+                <div class="col-md-12">
+                  <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12 col-sm-12 align-right padding-right">
+            <button type="button" class="btn btn-primary btn-lg" (click)="simpan()">Simpan</button>
+          </div>
+        </div>
+      </ba-card>
+
+    </div>
+  </div>
+</div>
