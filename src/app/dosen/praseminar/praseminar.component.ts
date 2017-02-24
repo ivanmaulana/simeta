@@ -3,6 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+let Chart = require('chart.js');
 
 @Component({
   selector: 'praseminar',
@@ -37,11 +38,24 @@ export class praseminarDosen {
     this.pilih_tahun = this.tahun;
   }
 
+  dataLabel = ['Sudah Praseminar','Belum Praseminar'];
+  public pieChartType:string = 'pie';
+
+  tahunPraseminar;
+  dataPraseminar;
+  getDataSeminar() {
+    this.authHttp.get(this.data.urlDosenPraseminar)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.tahunPraseminar = data.tahun;
+        this.dataPraseminar = data.data;
+      })
+  }
+
 
 
   // --------------------------------
   // TABLE
-  public pieChartType:string = 'pie';
   temp;
 
   onChange(e) {
@@ -100,7 +114,6 @@ export class praseminarDosen {
   forTahun = [];
 
   rangkuman = [];
-  dataLabel = ['Sudah Upload', 'Belum Upload'];
   tampil;
   getListKolokium() {
     this.tampil = 0;
@@ -144,9 +157,9 @@ export class praseminarDosen {
 
   ngOnInit() {
     this.pilih_tahun = this.tahun;
-
-    this.getListKolokium();
     this.getConnection();
+    this.getListKolokium();
+    this.getDataSeminar();
   }
 
   getConnection() {
@@ -168,8 +181,9 @@ export class praseminarDosen {
   }
 
   refresh() {
-    this.getListKolokium();
     this.getConnection();
+    this.getDataSeminar();
+    this.getListKolokium();
   }
 
   showNoConn() {

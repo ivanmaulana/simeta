@@ -13,6 +13,26 @@
 </div>
 
 <div class="row" *ngIf="status">
+
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Praseminar" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataPraseminar">
+        <div *ngFor="let i of tahunPraseminar" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataPraseminar[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Praseminar : <b>{{dataPraseminar[i][0]}}</b><br />
+          Belum Praseminar : <b>{{dataPraseminar[i][1] - dataPraseminar[i][0]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
   <ba-card title="Praseminar Mahasiswa Bimbingan" class="col-md-12" baCardClass="with-scroll table-panel">
     <div class="row">
       <br />

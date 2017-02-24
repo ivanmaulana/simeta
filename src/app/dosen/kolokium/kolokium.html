@@ -13,6 +13,27 @@
 </div>
 
 <div class="row" *ngIf="status">
+
+
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Kolokium" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataKolokium">
+        <div *ngFor="let i of tahunKolokium" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataKolokium[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Kolokium : <b>{{dataKolokium[i][0]}}</b><br />
+          Belum Kolokium : <b>{{dataKolokium[i][1] - dataKolokium[i][0]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
   <ba-card title="Kolokium Mahasiswa Bimbingan" class="col-md-12" baCardClass="with-scroll table-panel">
     <div class="row">
       <br />

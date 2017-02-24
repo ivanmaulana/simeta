@@ -103,10 +103,17 @@ export class DataService {
   public urlAdminSKL = 'http://localhost:2016/admin/skl';
   public urlAdminSummary = 'http://localhost:2016/admin/summary';
 
+  public urlDosenKolokium = 'http://localhost:2016/dosen/kolokium';
+  public urlDosenPraseminar = 'http://localhost:2016/dosen/praseminar';
+  public urlDosenSeminar = 'http://localhost:2016/dosen/seminar';
+  public urlDosenSidang = 'http://localhost:2016/dosen/sidang';
+  public urlDosenSKL = 'http://localhost:2016/dosen/skl';
+
   public urlSeminarData = 'http://localhost:2016/seminar';
   public urlSeminarMandiri = 'http://localhost:2016/seminar/mandiri';
   public urlSeminarKonferensi = 'http://localhost:2016/seminar/konferensi';
   public urlSeminarAll = 'http://localhost:2016/mahasiswa/seminar/all';
+  public urlSeminarDosen = 'http://localhost:2016/mahasiswa/seminar/dosen';
 
   public urlDeleteSeminar = 'http://localhost:2016/seminar/delete';
 
