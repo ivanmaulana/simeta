@@ -112,6 +112,7 @@ export class DataService {
   public urlSeminarData = 'http://localhost:2016/seminar';
   public urlSeminarMandiri = 'http://localhost:2016/seminar/mandiri';
   public urlSeminarKonferensi = 'http://localhost:2016/seminar/konferensi';
+
   public urlSeminarAll = 'http://localhost:2016/mahasiswa/seminar/all';
   public urlSeminarDosen = 'http://localhost:2016/mahasiswa/seminar/dosen';
 

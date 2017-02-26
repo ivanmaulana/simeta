@@ -13,13 +13,31 @@
 </div>
 
 <div class="row" *ngIf="status">
-  <ba-card title="Sidang Mahasiswa Bimbingan" class="col-md-12" baCardClass="with-scroll table-panel">
-    <div class="row">
-      <br />
-    </div>
 
-    <div class="row col-md-12" *ngIf="list">
-      <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
-    </div>
-  </ba-card>
+  <div class="col-md-6">
+    <ba-card title="Rekapitulasi Sidang" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSidang">
+        <div *ngFor="let i of tahunSidang" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataSidang[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Sidang : <b>{{dataSidang[i][0]}}</b><br />
+          Belum Sidang : <b>{{dataSidang[i][1] - dataSidang[i][0]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
+  <div class="col-md-12">
+    <ba-card title="REKAPITULASI SIDANG" baCardClass="with-scroll table-panel">
+      <div *ngIf="list">
+        <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+      </div>
+    </ba-card>
+  </div>
 </div>

@@ -3,6 +3,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+let Chart = require('chart.js');
 
 @Component({
   selector: 'sidang',
@@ -16,11 +17,7 @@ export class sidangDosen {
   noConn;
   status;
 
-  active;
-  deadline;
-  jadwal;
-
-  response1;
+  response;
   message;
 
   list;
@@ -28,7 +25,10 @@ export class sidangDosen {
   today;
   tahun;
   pilih_tahun;
-  preview;
+
+  dosen = [];
+  dosen1;
+  dosen2;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     let temp = new Date();
@@ -37,29 +37,29 @@ export class sidangDosen {
     this.pilih_tahun = this.tahun;
   }
 
-
-  // --------------------------------
-  // TABLE
+  dataLabel = ['Sudah Sidang', 'Belum Sidang'];
   public pieChartType:string = 'pie';
-  temp;
 
-  onChange(e) {
-    var y = e.target.value.substr(2,2);
+  tahunSidang;
+  dataSidang;
+  getDataSidang() {
+    this.authHttp.get(this.data.urlDosenSidang)
+      .map(res => res.json())
+      .subscribe(data => {
 
-    this.list = [];
-    for(let i = 0; i < this.temp.length; i++) {
-      var x = this.temp[i].nim.substr(3,2);
-      if(y == x) {
-        this.list.push(this.temp[i]);
-      }
-    }
+        this.tahunSidang = data.tahun;
+        this.dataSidang = data.data;
+      })
+  }
+
+  //--------------------------
+
+  showSuccess() {
+    this.toastr.success("Penentuan TA Berhasil", 'Success !');
   }
 
   settings = {
     columns: {
-      tahun_masuk: {
-        title: 'Angkatan'
-      },
       nim: {
         title: 'NIM'
       },
@@ -72,13 +72,18 @@ export class sidangDosen {
       dosen2: {
         title: 'Pembimbing 2'
       },
+      penguji1: {
+        title: 'Penguji 1'
+      },
+      penguji2: {
+        title: 'Penguji 2'
+      },
       status: {
         title: 'Status',
         type: 'html'
       },
-      makalah: {
-        title: 'Lihat',
-        type: 'html'
+      tanggal: {
+        title: 'Tanggal Sidang'
       }
     },
     actions: {
@@ -94,58 +99,19 @@ export class sidangDosen {
   // -----------------------------
   // TEMPLATE
 
-  // DASHBOARD SERVICE
-  tahun_awal;
-  forTahun = [];
-
-  rangkuman = [];
-  dataLabel = ['Sudah Upload', 'Belum Upload'];
-  tampil;
-  getListKolokium() {
-    this.tampil = 0;
-
-    this.authHttp.get(this.data.urlAllMakalahPraseminarDosen)
+  getListSidang() {
+    this.authHttp.get(this.data.urlAllMakalahSidangDosen)
       .map(res => res.json())
       .subscribe(data => {
         this.list = data;
-        this.temp = data;
-        this.tahun_awal = data[0].tahun_masuk;
-
-        if (this.tahun_awal < this.tahun - 2) {
-          this.tahun_awal = this.tahun - 2;
-        }
-
-        for(this.tahun_awal; this.tahun_awal < this.tahun + 1; this.tahun_awal++) {
-          this.forTahun.push(this.tahun_awal);
-        };
-
-
-        for (let i = 0; i < this.forTahun.length; i++) {
-          let temp = 0;
-          let Cmakalah = 0;
-          for (let j = 0; j < data.length; j++) {
-            if (this.forTahun[i] == data[j].tahun_masuk) {
-              temp++;
-
-              if (data[j].makalah != null) {
-                Cmakalah++;
-              }
-            }
-          }
-
-          this.rangkuman[this.forTahun[i]] = [Cmakalah, temp];
-
-          this.tampil = 1;
-        }
-
       })
   }
 
   ngOnInit() {
     this.pilih_tahun = this.tahun;
-
-    this.getListKolokium();
     this.getConnection();
+    this.getDataSidang();
+    this.getListSidang();
   }
 
   getConnection() {
@@ -167,8 +133,9 @@ export class sidangDosen {
   }
 
   refresh() {
-    this.getListKolokium();
     this.getConnection();
+    this.getDataSidang();
+    this.getListSidang();
   }
 
   showNoConn() {
