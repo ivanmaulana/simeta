@@ -132,6 +132,14 @@
                   <br />
                 </div>
 
+
+                <!-- app.component.html -->
+                <div *ngIf="!dataSeminar.seminar" class="col-md-12">
+                  <alert type="danger">
+                    Silahkan isi form seminar terlebih dahulu untuk <b>Upload file makalah / berkas seminar</b>
+                  </alert>
+                </div>
+
                 <!-- Judul Paper -->
                 <div class="form-group col-md-12 col-xs-12">
                   <label><p href primary><b>Topik</b></p></label><br />
@@ -197,7 +205,7 @@
                 </div>
 
                 <!-- app.component.html -->
-                <div class="col-md-12">
+                <div class="col-md-12" *ngIf="dataSeminar.seminar">
                   <label class="row col-md-12"><p href primary><b>Upload Makalah Seminar Mandiri</b></p></label><br />
 
                   <div class="col-md-3 text-center">

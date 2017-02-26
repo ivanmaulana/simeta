@@ -90,11 +90,11 @@
               </div>
 
               <alert type="info" class="col-md-12">
-                Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
+                Jika kamu ingin mengubah judul tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah</b>
               </alert>
               <!-- judul topik -->
               <div class="form-group col-md-12 col-xs-12">
-                  <label><p href primary><b>Topik kamu</b></p></label><br />
+                  <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
                   <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
               </div>
 
@@ -103,22 +103,22 @@
               </div>
 
               <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-                <button class="btn btn-primary" type="submit" (click)="simpan()">Ubah Topik</button>
+                <button class="btn btn-primary btn-lg" type="submit" (click)="simpan()">Ubah</button>
               </div>
 
               <div class="col-sm-12 col-md-12 col-xs-12">
-                <br /><br />
+                <br />
               </div>
 
               <!-- app.component.html -->
               <div class="col-md-12">
-                <label class="row col-md-12"><p href primary><b>Upload Makalah</b></p></label><br />
+                <label class="row col-md-12"><p href primary><b>Upload Makalah Praseminar</b></p></label><br />
                 <div class="col-md-3 text-center">
                   <alert type="danger" *ngIf="!preview">
-                    Kamu belum upload file Praseminar.
+                    Kamu belum upload makalah praseminar.
                   </alert>
                   <alert type="success" *ngIf="preview">
-                    File praseminar bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
+                    File makalah praseminar bisa dilihat<br /><br /> <a target="_blank" href="{{preview}}"><b>Disini</b></a>
                   </alert>
                 </div>
                 <div class="col-md-9">

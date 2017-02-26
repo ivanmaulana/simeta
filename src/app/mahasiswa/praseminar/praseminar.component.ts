@@ -80,7 +80,9 @@ export class Praseminar {
     this.authHttp.get(this.data.urlFilePraseminar)
       .map(res => res.json())
       .subscribe(data => {
-        this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+data[0].makalah;
+        if(data.length > 0) {
+          this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+data[0].makalah;
+        }
       })
   }
 

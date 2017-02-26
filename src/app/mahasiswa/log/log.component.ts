@@ -204,6 +204,7 @@ export class Log {
       .map(res => res.json())
       .subscribe(data => {
         this.total = 0;
+        this.diterima = 0;
         this.response = data;
         for(let i = 0; i < data.length; i++) {
           if(data[i].approval) {
@@ -220,13 +221,6 @@ export class Log {
       .map(res => res.json())
       .subscribe(data => {
         this.disetujui = data[0].count;
-      })
-  }
-
-  getLogCount(id){
-    return this.authHttp.get(this.data.urlLog+'count/'+id)
-      .map(res => res.json())
-      .subscribe(data => {
       })
   }
 

@@ -45,7 +45,6 @@ export class nasional {
     this.authHttp.get(this.data.urlDeleteSeminar)
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
         if(data.status) {
           this.refresh();
         }
@@ -91,8 +90,6 @@ export class nasional {
           this.tempat = data.data.tempat;
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+data.data.berkas;
-
-          console.log(this.show);
         }
       })
   }

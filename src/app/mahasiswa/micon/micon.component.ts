@@ -51,7 +51,6 @@ export class micon {
     this.authHttp.get(this.data.urlDeleteSeminar)
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
         if(data.status) {
           this.refresh();
         }

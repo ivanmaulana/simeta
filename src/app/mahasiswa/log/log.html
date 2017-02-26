@@ -186,10 +186,10 @@
 
   <div *ngIf="statusTa">
     <div class="col-md-6">
-      <ba-card title="Log Bimbingan" baCardClass="with-scroll">
+      <ba-card title="Log Bimbingan" baCardClass="with-scroll" *ngIf="total">
         <div class="row" *ngFor="let res of response"><br />
           <div class="col-md-6 col-sm-10 col-xs-9">
-            <span class="blue" ><a (click)="openBimbingan(res.id)">{{res.topik}}</a></span><br />
+            <span class="blue" ><a (click)="openBimbingan(res.id)"><b>{{res.topik}}</b></a></span><br />
             <span class="grey tanggal">{{res.tempat}}, {{data.ubahTanggal(changeTimeStamp(res.tanggal))}}</span>
           </div>
           <div class="col-md-1 col-sm-10 col-xs-12 text-center">

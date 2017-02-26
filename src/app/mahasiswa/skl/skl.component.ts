@@ -45,8 +45,10 @@ export class Skl {
     this.authHttp.get(this.data.urlSKL)
       .map(res => res.json())
       .subscribe(data => {
-        this.tanggal = data[0].tanggal;
-        this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+data[0].berkas;
+        if(data.length > 0) {
+          this.tanggal = data[0].tanggal;
+          this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+data[0].berkas;
+        }
       })
   }
 

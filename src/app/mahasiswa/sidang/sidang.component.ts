@@ -54,10 +54,12 @@ export class Sidang {
     this.authHttp.get(this.data.urlSidang)
       .map(res => res.json())
       .subscribe(data => {
-        this.tempat = data[0].tempat;
-        this.tanggal = data[0].tanggal.substr(0,10);
-        this.jam = data[0].jam;
-        this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+        if(data.length > 0) {
+          this.tempat = data[0].tempat;
+          this.tanggal = data[0].tanggal.substr(0,10);
+          this.jam = data[0].jam;
+          this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+        }
       })
   }
 

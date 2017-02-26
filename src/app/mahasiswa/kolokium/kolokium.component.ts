@@ -210,7 +210,9 @@ export class Kolokium {
     this.authHttp.get(this.data.urlFileKolokium)
       .map(res => res.json())
       .subscribe(data => {
-        this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
+        if(data.length > 0) {
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
+        }
       })
   }
 
