@@ -40,12 +40,13 @@ export class Skl {
 
   tanggal;
   berkas;
-
+  show = false;
   getDataSKL() {
     this.authHttp.get(this.data.urlSKL)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
+          this.show = true;
           this.tanggal = data[0].tanggal;
           this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+data[0].berkas;
         }
@@ -55,11 +56,14 @@ export class Skl {
   simpan() {
     let creds = JSON.stringify({topik: this.topik, tanggal: this.tanggal});
 
-    this.authHttp.put(this.data.urlUpdateTa, creds)
+    this.authHttp.post(this.data.urlSKL, creds)
       .map(res => res.json())
       .subscribe(data => {
 
-        if(this.status) this.showSuccess();
+        if(this.status) {
+          this.show = true;
+          this.showSuccess();
+        }
         else this.showError();
 
       })

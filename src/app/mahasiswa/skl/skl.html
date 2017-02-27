@@ -91,29 +91,39 @@
               <br />
             </div>
 
-            <alert type="info" class="col-md-12">
-              Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
-            </alert>
+            <!-- app.component.html -->
+            <div *ngIf="!show" class="col-md-12">
+              <alert type="danger">
+                Silahkan isi tanggal penerbitan SKL terlebih dahulu untuk <b>Upload file scan SKL</b>
+              </alert>
+            </div>
+
             <!-- judul topik -->
             <div class="form-group col-md-12 col-xs-12">
                 <label><p href primary><b>Topik kamu (Sesuai SKL)</b></p></label><br />
-                <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+                <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control" required></textarea>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <div class="form-group col-md-8">
+                <div class="col-md-4 text-left" style="padding-top: 10px">
+                  <br><label><p href primary><b>Tanggal Penerbitan SKL</b></p></label>
+                </div>
+                <div class="col-md-4 text-left">
+                  <br><input type="date" name="tanggal" [(ngModel)]="tanggal" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-4 text-right">
+                <br><button class="btn btn-lg btn-primary" type="submit">Simpan</button>
+              </div>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
               <br />
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-              <button class="btn btn-lg btn-primary" type="submit">Ubah Topik</button>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br /><br />
-            </div>
-
             <!-- app.component.html -->
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="show">
               <label class="row col-md-12"><p href primary><b>Upload Scan SKL</b></p></label><br />
               <div class="col-md-3 text-center">
                 <alert type="danger" *ngIf="!berkas">

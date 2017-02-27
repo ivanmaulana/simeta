@@ -61,6 +61,7 @@ export class Mandiri {
       .subscribe(data => {
         if(data.status) {
           this.showSuccess();
+          this.getDataSeminar();
         }
       })
   }
@@ -94,7 +95,9 @@ export class Mandiri {
           this.jam = data.data.jam;
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = data.data.berkas;
-          this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+data.data.makalah;
+          if(data.data.makalah) {
+            this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+data.data.makalah;
+          }
         }
       })
   }

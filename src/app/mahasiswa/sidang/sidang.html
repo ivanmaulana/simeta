@@ -89,12 +89,16 @@
                 <br />
               </div>
 
-              <alert type="info" class="col-md-12">
-                Jika kamu ingin mengubah topik tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah Topik</b>
-              </alert>
+              <!-- app.component.html -->
+              <div *ngIf="!show" class="col-md-12">
+                <alert type="danger">
+                  Silahkan isi form sidang terlebih dahulu untuk <b>Upload file makalah sidang</b>
+                </alert>
+              </div>
+
               <!-- judul topik -->
               <div class="form-group col-md-12 col-xs-12">
-                  <label><p href primary><b>Topik kamu</b></p></label><br />
+                  <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
                   <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
               </div>
 
@@ -136,7 +140,7 @@
               </div>
 
               <!-- app.component.html -->
-              <div class="col-md-12">
+              <div class="col-md-12" *ngIf="show">
                 <label class="row col-md-12"><p href primary><b>Upload Makalah</b></p></label><br />
                 <div class="col-md-3 text-center">
                   <alert type="danger" *ngIf="!makalah">

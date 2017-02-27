@@ -50,15 +50,19 @@ export class Sidang {
 
   }
 
+  show = false;
   getDataSidang() {
     this.authHttp.get(this.data.urlSidang)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
+          this.show = true;
           this.tempat = data[0].tempat;
-          this.tanggal = data[0].tanggal.substr(0,10);
+          this.tanggal = data[0].tanggal;
           this.jam = data[0].jam;
-          this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+          if(data[0].makalah) {
+            this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+          }
         }
       })
   }
@@ -69,8 +73,9 @@ export class Sidang {
     this.authHttp.post(this.data.urlSidang, creds)
       .map(res => res.json())
       .subscribe(data => {
-        // console.log(data);
         if(data.status) {
+          this.getDataSidang();
+          this.show = true;
           this.showSuccess();
         }
       })
