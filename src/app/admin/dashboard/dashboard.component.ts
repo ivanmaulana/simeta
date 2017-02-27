@@ -17,19 +17,6 @@ export class DashboardAdmin {
   noConn;
   status;
 
-  active;
-  deadline;
-  jadwal;
-
-  response1;
-  message;
-
-  list;
-
-  today;
-  tahun;
-  pilih_tahun;
-
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
 

@@ -100,6 +100,7 @@ export class DataService {
   public urlAdminSidang = 'http://localhost:2016/admin/sidang';
   public urlAdminSKL = 'http://localhost:2016/admin/skl';
   public urlAdminSummary = 'http://localhost:2016/admin/summary';
+  public urlDosenSummary = 'http://localhost:2016/dosen/summary';
 
   public urlDosenKolokium = 'http://localhost:2016/dosen/kolokium';
   public urlDosenPraseminar = 'http://localhost:2016/dosen/praseminar';

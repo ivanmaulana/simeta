@@ -140,6 +140,7 @@ export class LogDosen {
         if(data.status) {
           this.getLogAfterApprove(nim);
           this.showSuccessApprove();
+          this.getLog();
         }
       })
   }

@@ -33,7 +33,7 @@ export class sklDosen {
   tahunSKL;
   dataSKL;
   getDataSKL() {
-    this.authHttp.get(this.data.urlAdminSKL)
+    this.authHttp.get(this.data.urlDosenSKL)
       .map(res => res.json())
       .subscribe(data => {
 
@@ -89,7 +89,7 @@ export class sklDosen {
 
   getListSidang() {
 
-    this.authHttp.get(this.data.urlAllMakalahSKL)
+    this.authHttp.get(this.data.urlAllMakalahSKLDosen)
       .map(res => res.json())
       .subscribe(data => {
         this.list = data;
@@ -130,5 +130,5 @@ export class sklDosen {
   showNoConn() {
     this.toastr.warning("Error Connecting to Server", 'Error');
   }
-  
+
 }
