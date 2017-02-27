@@ -35,10 +35,6 @@ export class kolokiumAdmin {
   pilih_tahun;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-    var temp = new Date();
-    this.tahun = temp.getFullYear() - 4;
-
-    this.pilih_tahun = this.tahun;
   }
 
   source: LocalDataSource;
@@ -240,50 +236,26 @@ export class kolokiumAdmin {
   // TEMPLATE
 
   // DASHBOARD SERVICE
-  tahun_awal;
-  forTahun = [];
-
-  rangkuman = [];
   dataLabel = ['Sudah Upload', 'Belum Upload'];
-  tampil;
   getListKolokium() {
-    this.tampil = 0;
-
     this.authHttp.get(this.data.urlAllMakalahKolokium)
       .map(res => res.json())
       .subscribe(data => {
         this.source = new LocalDataSource(data);
         this.list = data;
         this.temp = data;
-        this.tahun_awal = data[0].tahun_masuk;
+      })
+  }
 
-        if (this.tahun_awal < this.tahun - 2) {
-          this.tahun_awal = this.tahun - 2;
-        }
+  tahunKolokium;
+  dataKolokium;
+  getSummaryKolokium() {
+    this.authHttp.get(this.data.urlAdminKolokium)
+      .map(res => res.json())
+      .subscribe(data => {
 
-        for(this.tahun_awal; this.tahun_awal < this.tahun + 1; this.tahun_awal++) {
-          this.forTahun.push(this.tahun_awal);
-        };
-
-
-        for (let i = 0; i < this.forTahun.length; i++) {
-          let temp = 0;
-          let Cmakalah = 0;
-          for (let j = 0; j < data.length; j++) {
-            if (this.forTahun[i] == data[j].tahun_masuk) {
-              temp++;
-
-              if (data[j].makalah != null) {
-                Cmakalah++;
-              }
-            }
-          }
-
-          this.rangkuman[this.forTahun[i]] = [Cmakalah, temp];
-
-          this.tampil = 1;
-        }
-
+        this.tahunKolokium = data.tahun;
+        this.dataKolokium = data.data;
       })
   }
 
@@ -306,6 +278,7 @@ export class kolokiumAdmin {
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.getDataKolokium();
     this.getListKolokium();
+    this.getSummaryKolokium();
     this.getConnection();
   }
 
@@ -330,6 +303,7 @@ export class kolokiumAdmin {
   refresh() {
     this.getDataKolokium();
     this.getListKolokium();
+    this.getSummaryKolokium();
     this.getConnection();
   }
 

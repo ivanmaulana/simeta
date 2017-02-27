@@ -4,15 +4,10 @@
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
 
   <div class="text-right">
-    <div class="search" (updateTime)="updateMyTime()">
+    <div class="search">
       <i style="padding-left:10px" class="ion-calendar"></i>{{date | date: "EEEE, d MMMM yyyy"}}
     </div>
   </div>
-
-  <!-- <div class="search">
-    <i class="ion-ios-search-strong" ng-click="startSearch()"></i>
-    <input id="searchInput" type="text" placeholder="Search for...">
-  </div> -->
 
   <div class="user-profile clearfix">
     <div class="dropdown al-user-profile">

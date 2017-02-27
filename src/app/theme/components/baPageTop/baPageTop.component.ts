@@ -25,10 +25,6 @@ export class BaPageTop {
     });
 
     this.date = new Date();
-
-    setInterval(() => {
-      this.date = new Date();
-    }, 1000);
   }
 
   private token;

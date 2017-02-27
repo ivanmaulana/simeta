@@ -29,16 +29,7 @@ export class praseminarAdmin {
 
   list;
 
-  today;
-  tahun;
-
-  pilih_tahun;
-
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-    var temp = new Date();
-    this.tahun = temp.getFullYear() - 4;
-
-    this.pilih_tahun = this.tahun;
   }
 
   source: LocalDataSource;
@@ -267,35 +258,6 @@ export class praseminarAdmin {
           this.source = new LocalDataSource(data);
           this.list = data;
           this.temp = data;
-          this.tahun_awal = data[0].tahun_masuk;
-
-          if (this.tahun_awal < this.tahun - 2) {
-            this.tahun_awal = this.tahun - 2;
-          }
-
-          for(this.tahun_awal; this.tahun_awal < this.tahun + 1; this.tahun_awal++) {
-            this.forTahun.push(this.tahun_awal);
-          };
-
-
-          for (let i = 0; i < this.forTahun.length; i++) {
-            let temp = 0;
-            let Cmakalah = 0;
-            for (let j = 0; j < data.length; j++) {
-              if (this.forTahun[i] == data[j].tahun_masuk) {
-                temp++;
-
-                if (data[j].makalah != null) {
-                  Cmakalah++;
-                }
-              }
-            }
-
-            this.rangkuman[this.forTahun[i]] = [Cmakalah, temp];
-
-            this.tampil = 1;
-          }
-
         })
     }
 
@@ -312,12 +274,23 @@ export class praseminarAdmin {
 
     }
 
-    ngOnInit() {
-      this.pilih_tahun = this.tahun;
+  tahunPraseminar;
+  dataPraseminar;
+  getSummaryPraseminar() {
+    this.authHttp.get(this.data.urlAdminPraseminar)
+      .map(res => res.json())
+      .subscribe(data => {
 
+        this.tahunPraseminar = data.tahun;
+        this.dataPraseminar = data.data;
+      })
+  }
+
+    ngOnInit() {
       this.zone = new NgZone({ enableLongStackTrace: false });
       this.getDataPraseminar();
       this.getListPraseminar();
+      this.getSummaryPraseminar();
       this.getConnection();
     }
 
@@ -342,6 +315,7 @@ export class praseminarAdmin {
     refresh() {
       this.getDataPraseminar();
       this.getListPraseminar();
+      this.getSummaryPraseminar();
       this.getConnection();
     }
 

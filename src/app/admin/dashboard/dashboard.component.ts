@@ -46,7 +46,7 @@ export class DashboardAdmin {
     responsive: true
   };
 
-  public barChartLabels:string[] = ['TA', 'Kolokium', 'Praseminar', 'Seminar', 'Sidang', 'SKL'];
+  public barChartLabels:string[] = ['Belum TA', 'TA', 'Kolokium', 'Praseminar', 'Seminar', 'Sidang', 'SKL'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
@@ -76,6 +76,18 @@ export class DashboardAdmin {
 
         this.tahunPraseminar = data.tahun;
         this.dataPraseminar = data.data;
+    })
+  }
+
+  tahunSeminar;
+  dataSeminar;
+  getDataSeminar() {
+    this.authHttp.get(this.data.urlAdminSeminar)
+      .map(res => res.json())
+      .subscribe(data => {
+
+        this.tahunSeminar = data.tahun;
+        this.dataSeminar = data.data;
     })
   }
 
@@ -123,12 +135,13 @@ export class DashboardAdmin {
   }
 
   ngOnInit() {
+    this.getConnection();
     this.getDataSummary();
     this.getDataPraseminar();
+    this.getDataSeminar();
     this.getDataKolokium();
     this.getDataSidang();
     this.getDataSKL();
-    this.getConnection();
   }
 
   getConnection() {
@@ -150,12 +163,13 @@ export class DashboardAdmin {
   }
 
   refresh() {
+    this.getConnection();
     this.getDataSummary();
     this.getDataPraseminar();
+    this.getDataSeminar();
     this.getDataKolokium();
     this.getDataSidang();
     this.getDataSKL();
-    this.getConnection();
   }
 
   showNoConn() {

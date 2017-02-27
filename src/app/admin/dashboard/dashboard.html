@@ -14,7 +14,7 @@
 
 <div *ngIf="status" class="row">
 
-  <div class="col-md-12">
+  <div class="col-md-8">
     <ba-card title="Summary" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataSummary">
         <canvas baseChart
@@ -27,7 +27,7 @@
     </ba-card>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <ba-card title="Rekapitulasi Kolokium" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataKolokium">
         <div *ngFor="let i of tahunKolokium" class="col-md-6 text-center">
@@ -46,7 +46,7 @@
     </ba-card>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <ba-card title="Rekapitulasi Praseminar" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataPraseminar">
         <div *ngFor="let i of tahunPraseminar" class="col-md-6 text-center">
@@ -65,7 +65,26 @@
     </ba-card>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
+    <ba-card title="Rekapitulasi Seminar" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSeminar">
+        <div *ngFor="let i of tahunSeminar" class="col-md-6 text-center">
+          <br />
+          <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
+          <canvas baseChart
+                  [data]="dataSeminar[i]"
+                  [labels]="dataLabel"
+                  [chartType]="pieChartType">
+          </canvas><br />
+          Sudah Upload : <b>{{dataSeminar[i][0]}}</b><br />
+          Belum Upload : <b>{{dataSeminar[i][1] - dataSeminar[i][0]}}</b>
+        </div>
+      </div>
+      <br />
+    </ba-card>
+  </div>
+
+  <div class="col-md-4">
     <ba-card title="Rekapitulasi Sidang" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataSidang">
         <div *ngFor="let i of tahunSidang" class="col-md-6 text-center">
@@ -84,7 +103,7 @@
     </ba-card>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <ba-card title="Rekapitulasi SKL" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataSKL">
         <div *ngFor="let i of tahunSKL" class="col-md-6 text-center">

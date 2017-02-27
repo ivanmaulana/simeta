@@ -117,35 +117,14 @@ a.collapse-menu-link {
 .search {
   text-shadow: none;
   font-size: 13px;
+  color: $sidebar-text;
   line-height: 25px;
   transition: all 0.5s ease;
   white-space: nowrap;
   overflow: hidden;
-  width: 162px;
+  width: 200px;
   float: left;
   margin: 20px 0 0 30px;
-
-  label {
-    cursor: pointer;
-  }
-  i {
-    width: 16px;
-    display: inline-block;
-    cursor: pointer;
-    padding-left: 1px;
-    font-size: 16px;
-    margin-right: 13px;
-  }
-  input {
-    color: $sidebar-text;
-    background: none;
-    border: none;
-    outline: none;
-    width: 120px;
-    padding: 0;
-    margin: 0 0 0 -3px;
-    height: 27px;
-  }
 }
 
 @media screen and (max-width: $resS) {
