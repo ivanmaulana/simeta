@@ -8,10 +8,21 @@
 }
 
 .card-header {
-  background-color: #209e91;
+  background-color: #3498db;
 }
 
 .card-title {
   color: white;
   font-weight: bold;
+}
+
+.logo {
+  border: 14px solid transparent;
+  border-color: #4DCACA #31A3A3 #1D8888;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  font-size: 0;
+  margin-right: 10px;
+  top: -9px
 }

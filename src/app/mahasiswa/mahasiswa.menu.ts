@@ -19,7 +19,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Pengajuan',
-            icon: 'ion-stats-bars',
+            icon: 'ion-edit',
             selected: false,
             expanded: false,
             order: 0
@@ -31,7 +31,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Log Bimbingan',
-            icon: 'ion-stats-bars',
+            icon: 'ion-chatboxes',
             selected: false,
             expanded: false,
             order: 0
@@ -43,7 +43,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Kolokium',
-            icon: 'ion-stats-bars',
+            icon: 'ion-document-text',
             selected: false,
             expanded: false,
             order: 0
@@ -55,7 +55,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Praseminar',
-            icon: 'ion-stats-bars',
+            icon: 'ion-code-working',
             selected: false,
             expanded: false,
             order: 0
@@ -67,7 +67,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Seminar',
-            icon: 'ion-stats-bars',
+            icon: 'ion-person-stalker',
             selected: false,
             expanded: false,
             order: 200,
@@ -105,7 +105,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Sidang',
-            icon: 'ion-stats-bars',
+            icon: 'ion-ribbon-b',
             selected: false,
             expanded: false,
             order: 0
@@ -117,7 +117,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'SKL',
-            icon: 'ion-stats-bars',
+            icon: 'ion-university',
             selected: false,
             expanded: false,
             order: 0
@@ -129,7 +129,7 @@ export const MAHASISWA_MENU = [
         data: {
           menu: {
             title: 'Profile',
-            icon: 'ion-stats-bars',
+            icon: 'ion-person',
             selected: false,
             expanded: false,
             order: 0

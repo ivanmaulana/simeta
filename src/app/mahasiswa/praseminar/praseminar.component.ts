@@ -56,7 +56,7 @@ export class Praseminar {
         this.active = data[0]['active'];
         this.jadwal = data[0]['jadwal_praseminar'];
         this.deadline = data[0]['deadline'];
-        this.link = 'http://simak.apps.cs.ipb.ac.id/'+data[0]['file'];
+        this.link = 'http://simeta.apps.cs.ipb.ac.id/'+data[0]['file'];
 
         if (this.jadwal) this.response1 = true;
       })
@@ -81,7 +81,7 @@ export class Praseminar {
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
-          this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+data[0].makalah;
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/filePraseminar/"+data[0].makalah;
         }
       })
   }

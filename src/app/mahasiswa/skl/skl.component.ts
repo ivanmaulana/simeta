@@ -96,7 +96,6 @@ export class Skl {
   };
 
   handleUpload(data: any): void {
-    console.log('handel biasa');
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;

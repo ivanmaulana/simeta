@@ -1,7 +1,13 @@
 <div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
      [ngClass]="{scrolled: isScrolled}">
-  <a routerLink="/pages/dashboard" class="al-logo clearfix"><span>simeta </span>kom</a>
+  <a routerLink="/pages/dashboard" class="al-logo clearfix"><span>simeta kom</span></a>
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+
+  <div class="text-right">
+    <div class="search" (updateTime)="updateMyTime()">
+      <i style="padding-left:10px" class="ion-calendar"></i>{{date | date: "EEEE, d MMMM yyyy"}}
+    </div>
+  </div>
 
   <!-- <div class="search">
     <i class="ion-ios-search-strong" ng-click="startSearch()"></i>
@@ -15,6 +21,8 @@
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
         <li class="dropdown-item"><i class="dropdown-arr"></i></li>
+        <li class="dropdown-item" *ngIf="role == 4"><a href="#/admin"><i class="fa fa-user"></i>Admin Panel</a></li>
+        <li class="dropdown-item" *ngIf="role == 4"><a href="#/dosen"><i class="fa fa-user"></i>Dosen Panel</a></li>
         <!-- <li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li> -->
         <!-- <li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li> -->
         <li class="dropdown-item"><a href class="signout" (click)="logout()"><i class="fa fa-power-off"></i>Sign out</a></li>

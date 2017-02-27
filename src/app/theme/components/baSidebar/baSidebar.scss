@@ -83,9 +83,9 @@ a.al-sidebar-list-link {
   overflow: hidden;
   cursor: pointer;
   &:hover {
-    color: $primary;
+    color: #2980b9;
     b {
-      color: $primary;
+      color: #2980b9;
     }
   }
   i {
@@ -151,7 +151,7 @@ a.al-sidebar-list-link {
       height: auto;
       line-height: 29px;
       &:hover {
-        color: $primary;
+          color: #2980b9;
       }
     }
     &.selected:not(.with-sub-menu) > a {

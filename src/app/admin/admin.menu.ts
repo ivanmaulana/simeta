@@ -19,7 +19,7 @@ export const ADMIN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'Pengajuan TA',
-            icon: 'ion-android-home',
+            icon: 'ion-edit',
             selected: false,
             expanded: false,
             order: 0
@@ -38,24 +38,12 @@ export const ADMIN_SIDEBAR_MENU = [
           }
         }
       },
-      // {
-      //   path: 'ta',
-      //   data: {
-      //     menu: {
-      //       title: 'Penentuan TA',
-      //       icon: 'ion-android-home',
-      //       selected: false,
-      //       expanded: false,
-      //       order: 0
-      //     }
-      //   }
-      // },
       {
         path: 'kolokium',
         data: {
           menu: {
             title: 'Kolokium',
-            icon: 'ion-android-home',
+            icon: 'ion-document-text',
             selected: false,
             expanded: false,
             order: 0
@@ -67,7 +55,7 @@ export const ADMIN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'Praseminar',
-            icon: 'ion-android-home',
+            icon: 'ion-code-working',
             selected: false,
             expanded: false,
             order: 0
@@ -79,7 +67,7 @@ export const ADMIN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'Seminar',
-            icon: 'ion-stats-bars',
+            icon: 'ion-person-stalker',
             selected: false,
             expanded: false,
             order: 200,
@@ -95,49 +83,21 @@ export const ADMIN_SIDEBAR_MENU = [
             }
           },
           {
-            path: 'konferensi',
-            data: {
-              menu: {
-                title: 'Seminar Nasional',
-              }
-            }
-          },
-          {
             path: 'micon',
             data: {
               menu: {
                 title: 'Mini Conferece',
               }
             }
-          },
-          {
-            path: 'mandiri',
-            data: {
-              menu: {
-                title: 'Seminar Mandiri',
-              }
-            }
           }
         ]
       },
-      // {
-      //   path: 'seminar',
-      //   data: {
-      //     menu: {
-      //       title: 'Seminar',
-      //       icon: 'ion-android-home',
-      //       selected: false,
-      //       expanded: false,
-      //       order: 0
-      //     }
-      //   }
-      // },
       {
         path: 'sidang',
         data: {
           menu: {
             title: 'Sidang',
-            icon: 'ion-android-home',
+            icon: 'ion-ribbon-b',
             selected: false,
             expanded: false,
             order: 0
@@ -149,7 +109,7 @@ export const ADMIN_SIDEBAR_MENU = [
         data: {
           menu: {
             title: 'SKL',
-            icon: 'ion-android-home',
+            icon: 'ion-university',
             selected: false,
             expanded: false,
             order: 0

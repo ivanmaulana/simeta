@@ -35,8 +35,6 @@ export class DataService {
   public tanggal;
   public jam;
   public tempat;
-  public penguji_ketua;
-  public penguji_anggota;
 
   private aaa = 'aaa';
 
