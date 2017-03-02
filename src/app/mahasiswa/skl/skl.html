@@ -14,14 +14,21 @@
 
 <div *ngIf="status">
 
+  <div *ngIf="!statusSeminar">
+    <alert type="danger">
+      <h4>Kamu belum melaksanakan <b>Seminar</b></h4>
+      Silahkan laksanakan seminar terlebih dahulu untuk menggunakan fitur ini.
+    </alert>
+  </div>
+
   <div *ngIf="!statusSidang">
     <alert type="danger">
-      <h4>Kamu belum melaksanakan <b>sidang</b></h4>
+      <h4>Kamu belum melaksanakan <b>Sidang</b></h4>
       Silahkan laksanakan sidang terlebih dahulu untuk menggunakan fitur ini.
     </alert>
   </div>
 
-  <div *ngIf="statusSidang">
+  <div *ngIf="statusSidang && statusSeminar">
 
     <div class="row">
       <div class="col-md-12">
