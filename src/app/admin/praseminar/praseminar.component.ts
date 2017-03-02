@@ -209,7 +209,7 @@ export class praseminarAdmin {
         let data1 = JSON.parse(data.response);
         this.uploadFile = data1;
 
-        this.preview = "http://simeta.apps.cs.ipb.ac.id/"+this.uploadFile[0].filename;
+        this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/"+this.uploadFile[0].filename;
         this.showSelesai();
       }
 
@@ -269,7 +269,7 @@ export class praseminarAdmin {
           this.jadwal = data[0]['jadwal_praseminar'];
           this.deadline = data[0]['deadline'];
 
-          this.preview = "http://simeta.apps.cs.ipb.ac.id/"+data[0]['file'];
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/"+data[0]['file'];
         })
 
     }

@@ -80,7 +80,7 @@ export class miconAdmin {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simeta.apps.cs.ipb.ac.id/"+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -120,7 +120,7 @@ export class miconAdmin {
         this.jadwal = data[0]['jadwal_micon'];
         this.deadline = data[0]['deadline'];
 
-        this.preview = "http://simeta.apps.cs.ipb.ac.id/"+data[0]['file'];
+        this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/"+data[0]['file'];
       })
 
   }

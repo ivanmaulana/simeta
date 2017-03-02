@@ -56,7 +56,7 @@ export class Praseminar {
         this.active = data[0]['active'];
         this.jadwal = data[0]['jadwal_praseminar'];
         this.deadline = data[0]['deadline'];
-        this.link = 'http://simeta.apps.cs.ipb.ac.id/'+data[0]['file'];
+        this.link = 'http://simeta.apps.cs.ipb.ac.id/uploads/'+data[0]['file'];
 
         if (this.jadwal) this.response1 = true;
       })

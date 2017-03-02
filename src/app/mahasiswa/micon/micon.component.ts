@@ -164,7 +164,6 @@ export class micon {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-
         if(this.statusTa) {
           this.getDataMahasiswa();
         }
