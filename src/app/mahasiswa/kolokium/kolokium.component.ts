@@ -28,13 +28,10 @@ export class Kolokium {
   noConn;
   status;
 
-  private nim;
-  private nama;
   private dosen1;
   private dosen_1;
   private dosen2;
   private dosen_2;
-  private timestamp;
   private topik;
 
 
@@ -101,7 +98,7 @@ export class Kolokium {
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 30000000;
+  sizeLimit = 3000000;
 
 
   preview = "";
@@ -110,7 +107,7 @@ export class Kolokium {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -140,8 +137,6 @@ export class Kolokium {
     this.toastr.success("Berhasil Upload Makalah Kolokium", 'Success!');
   }
 
-
-
   // -----------------------------
   // TEMPLATE
 
@@ -158,8 +153,6 @@ export class Kolokium {
         this.statusSidang = data[0].statusSidang;
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
-
-        // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
           this.getDataMahasiswa();
@@ -211,7 +204,7 @@ export class Kolokium {
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
-          this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/fileKolokium/"+data[0].makalah;
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+data[0].makalah;
         }
       })
   }

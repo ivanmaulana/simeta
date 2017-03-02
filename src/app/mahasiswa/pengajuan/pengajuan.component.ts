@@ -70,8 +70,6 @@ export class Pengajuan {
     this.creds = JSON.stringify({nim: this.data.nim, topik: this.topik, lab: this.lab, dosen_1: this.dosen_1, dosen_2: this.dosen_2, konsultasi_1: this.konsultasi_1, konsultasi_2: this.konsultasi_2,
     pertemuan_1: this.pertemuan_1, pertemuan_2: this.pertemuan_2, progress_1: this.progress_1, progress_2: this.progress_2, progress_3: this.progress_3, progress_4: this.progress_4});
 
-    // console.log(this.creds);
-
     this.authHttp.post(this.data.urlDaftarPengajuan, this.creds)
       .map(res => res.json())
       .subscribe(data => {

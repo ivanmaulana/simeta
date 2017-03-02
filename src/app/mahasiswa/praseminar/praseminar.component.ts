@@ -81,7 +81,7 @@ export class Praseminar {
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
-          this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/filePraseminar/"+data[0].makalah;
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/filePraseminar/"+data[0].makalah;
         }
       })
   }
@@ -111,7 +111,7 @@ export class Praseminar {
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 30000000;
+  sizeLimit = 3000000;
 
 
   preview = "";
@@ -120,7 +120,7 @@ export class Praseminar {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/upload/filePraseminar/"+this.uploadFile[0].filename;
+      this.preview = "http://simak.apps.cs.ipb.ac.id/uploads/filePraseminar/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -168,8 +168,6 @@ export class Praseminar {
         this.statusSidang = data[0].statusSidang;
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
-
-        // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
           this.getDataMahasiswa();

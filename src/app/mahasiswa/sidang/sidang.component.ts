@@ -61,7 +61,7 @@ export class Sidang {
           this.tanggal = data[0].tanggal;
           this.jam = data[0].jam;
           if(data[0].makalah) {
-            this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+data[0].makalah;
+            this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSidang/"+data[0].makalah;
           }
         }
       })
@@ -109,7 +109,7 @@ export class Sidang {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSidang/"+this.uploadFile[0].filename;
+      this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSidang/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

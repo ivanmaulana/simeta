@@ -154,7 +154,7 @@ export class praseminarAdmin {
   simpan(){
     let creds = JSON.stringify({active: this.active, jadwal_praseminar: this.jadwal, deadline: this.deadline});
 
-    this.authHttp.put("http://simak.apps.cs.ipb.ac.id:2016/jadwalPraseminar", creds)
+    this.authHttp.put(this.data.urlPraseminar, creds)
       .map(res => res.json())
       .subscribe(data => {
         this.response1 = data[0].status;
@@ -209,7 +209,7 @@ export class praseminarAdmin {
         let data1 = JSON.parse(data.response);
         this.uploadFile = data1;
 
-        this.preview = "http://simak.apps.cs.ipb.ac.id/file/"+this.uploadFile[0].filename;
+        this.preview = "http://simeta.apps.cs.ipb.ac.id/"+this.uploadFile[0].filename;
         this.showSelesai();
       }
 
@@ -269,7 +269,7 @@ export class praseminarAdmin {
           this.jadwal = data[0]['jadwal_praseminar'];
           this.deadline = data[0]['deadline'];
 
-          this.preview = "http://simak.apps.cs.ipb.ac.id/"+data[0]['file'];
+          this.preview = "http://simeta.apps.cs.ipb.ac.id/"+data[0]['file'];
         })
 
     }

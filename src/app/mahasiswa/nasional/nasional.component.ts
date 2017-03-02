@@ -89,7 +89,7 @@ export class nasional {
           this.judul_paper = data.data.judul_paper;
           this.tempat = data.data.tempat;
           this.tanggal = data.data.tanggal.substr(0,10);
-          this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+data.data.berkas;
+          this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/konferensi/"+data.data.berkas;
         }
       })
   }
@@ -123,7 +123,7 @@ export class nasional {
       if(this.uploadFile[0].filename) {
         this.show = true;
       }
-      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/konferensi/"+this.uploadFile[0].filename;
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/konferensi/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

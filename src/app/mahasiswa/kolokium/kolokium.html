@@ -128,8 +128,9 @@
                       <input class="button" type="file"
                              ngFileSelect
                              [options]="options"
+                             (beforeUpload)="beforeUpload($event)"
                              (onUpload)="handleUpload($event)"
-                             (beforeUpload)="beforeUpload($event)">
+                             >
                     </div>
                   </div>
                   <div class="row">

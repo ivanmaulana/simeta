@@ -27,23 +27,10 @@ export class Log {
   noConn;
   status;
 
-  private nim;
-  private nama;
   private dosen1;
   private dosen2;
-  private timestamp;
   private topik;
 
-  // TULIS LOG
-  // private topik_log = "ini topik log";
-  // private dosen_1 = 25;
-  // private dosen_2 = 24;
-  // private tempat = "mulmed";
-  // private jam = "10:30";
-  // private date = "2016-08-09";
-  // private progress = "ini progress";
-  // private kendala = "ini kendala";
-  // private rencana = "ini rencana";
   private topik_log;
   private dosen_1;
   private dosen_2;

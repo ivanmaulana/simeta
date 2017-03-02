@@ -116,6 +116,7 @@ export class DataService {
   public urlSeminarDosen = 'http://simeta-api.apps.cs.ipb.ac.id/mahasiswa/seminar/dosen';
 
   public urlDeleteSeminar = 'http://simeta-api.apps.cs.ipb.ac.id/seminar/delete';
+  public urlKonfirmasiKolokium = 'http://simeta-api.apps.cs.ipb.ac.id/konfirmasi/kolokium';
 
 
   // ADMIN

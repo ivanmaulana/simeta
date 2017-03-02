@@ -62,7 +62,7 @@ export class kolokiumAdmin {
   confirm(num) {
     let creds = JSON.stringify({nim: this.nimKonfirmasi, data: this.konfirmasi});
 
-    this.authHttp.put('http://localhost:2016/konfirmasi/kolokium', creds)
+    this.authHttp.put(this.data.urlKonfirmasiKolokium, creds)
       .map(res => res.json())
       .subscribe(data => {
         let dataChange1 = this.dataChange;
@@ -202,7 +202,7 @@ export class kolokiumAdmin {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = this.data.urlFileKolokium+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

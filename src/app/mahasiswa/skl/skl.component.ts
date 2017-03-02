@@ -48,7 +48,7 @@ export class Skl {
         if(data.length > 0) {
           this.show = true;
           this.tanggal = data[0].tanggal;
-          this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+data[0].berkas;
+          this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSKL/"+data[0].berkas;
         }
       })
   }
@@ -100,7 +100,7 @@ export class Skl {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSKL/"+this.uploadFile[0].filename;
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSKL/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -148,8 +148,6 @@ export class Skl {
         this.statusSidang = data[0].statusSidang;
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
-
-        // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
           this.getDataMahasiswa();

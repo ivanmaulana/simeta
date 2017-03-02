@@ -29,13 +29,10 @@ export class Mandiri {
   noConn;
   status;
 
-  private nim;
-  private nama;
   private dosen1;
   private dosen_1;
   private dosen2;
   private dosen_2;
-  private timestamp;
   private topik;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
@@ -96,7 +93,7 @@ export class Mandiri {
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = data.data.berkas;
           if(data.data.makalah) {
-            this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+data.data.makalah;
+            this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/mandiri/"+data.data.makalah;
           }
         }
       })
@@ -118,7 +115,7 @@ export class Mandiri {
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 30000000;
+  sizeLimit = 3000000;
 
   preview = "";
   handleUpload(data: any): void {
@@ -126,7 +123,7 @@ export class Mandiri {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.makalah = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/mandiri/"+this.uploadFile[0].filename;
+      this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/mandiri/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

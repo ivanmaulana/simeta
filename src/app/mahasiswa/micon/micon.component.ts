@@ -28,20 +28,12 @@ export class micon {
   noConn;
   status;
 
-  private nim;
-  private nama;
   private dosen1;
   private dosen_1;
   private dosen2;
   private dosen_2;
-  private timestamp;
   private topik;
 
-  private active;
-  private deadline;
-  private jadwal;
-  private response1;
-  private link;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
@@ -91,7 +83,7 @@ export class micon {
         this.dataSeminar = data;
 
         if(this.dataSeminar.seminar.jenis_seminar == 2) {
-          this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/micon/"+data.data.berkas;
+          this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/micon/"+data.data.berkas;
           this.show = true;
         }
 
@@ -115,7 +107,7 @@ export class micon {
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: ''
   };
-  sizeLimit = 5000000;
+  sizeLimit = 8000000;
 
 
   preview = "";
@@ -124,7 +116,7 @@ export class micon {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.berkas = "http://simeta.apps.cs.ipb.ac.id/upload/fileSeminar/micon/"+this.uploadFile[0].filename;
+      this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/micon/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -141,7 +133,7 @@ export class micon {
   beforeUpload(uploadingFile): void {
     if (uploadingFile.size > this.sizeLimit) {
       uploadingFile.setAbort();
-      alert('File harus kurang dari 5 MB');
+      alert('File harus kurang dari 8 MB');
     }
 
     if (uploadingFile.originalName.search(".zip") == -1) {

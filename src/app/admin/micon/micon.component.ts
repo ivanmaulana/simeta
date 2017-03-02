@@ -80,7 +80,7 @@ export class miconAdmin {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = this.data.urlFileKolokium+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 

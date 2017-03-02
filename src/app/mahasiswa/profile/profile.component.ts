@@ -80,8 +80,6 @@ export class Profile {
     this.creds = JSON.stringify({nim: this.nim, alamat: this.alamat, hp: this.no, email: this.email, namaayah: this.nama_ayah,
     namaibu: this.nama_ibu, noortu: this.no_ortu, telportu: this.telp_ortu, alamatortu: this.alamat_ortu});
 
-    // console.log(this.creds);
-
     if(!this.alamat || !this.email || !this.no || !this.nama_ayah || !this.nama_ibu || !this.no_ortu || !this.telp_ortu || !this.alamat_ortu) {
       this.showKurang();
     }
@@ -119,8 +117,6 @@ export class Profile {
     this.toastr.success("Berhasil Update Profile", 'Success !');
   }
 
-
-
   // ---------------------------------
   // UPLOAD
 
@@ -141,7 +137,7 @@ export class Profile {
     allowedExtensions: ['image/png', 'image/jpg'],
     authTokenPrefix: ''
   };
-  sizeLimit = 20000000;
+  sizeLimit = 2000000;
 
 
   preview = "";
@@ -150,7 +146,7 @@ export class Profile {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simeta.apps.cs.ipb.ac.id/upload/filePraseminar/"+this.uploadFile[0].filename;
+      this.preview = 'http://simeta.apps.cs.ipb.ac.id/upload/filePhoto/'+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
@@ -197,11 +193,9 @@ export class Profile {
         this.statusSkl = data[0].statusSkl;
         this.statusProfile = data[0].statusProfile;
 
-        // console.log('status TA'+this.statusTa);
 
         if(this.statusTa) {
           this.getProfile();
-          // this.getDataMahasiswa();
         }
       })
   }
