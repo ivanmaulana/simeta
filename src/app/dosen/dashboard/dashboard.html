@@ -17,23 +17,25 @@
   <div class="col-md-12">
     <div class="text-center">
       <button class="btn btn-primary">
-        <h3>Download Ringkasan TA Bimbingan</h3>
+        <a href="{{link}}" style="font-color:white">
+          <h3>Download Ringkasan TA Bimbingan</h3>
+        </a>
       </button>
     </div><br><br>
   </div>
 
-  <!--<div class="col-md-8">-->
-    <!--<ba-card title="Summary" baCardClass="with-scroll table-panel">-->
-      <!--<div style="display: block" *ngIf="dataSummary">-->
-        <!--<canvas baseChart-->
-                <!--[datasets]="barChartData"-->
-                <!--[labels]="barChartLabels"-->
-                <!--[options]="barChartOptions"-->
-                <!--[legend]="barChartLegend"-->
-                <!--[chartType]="barChartType"></canvas>-->
-      <!--</div>-->
-    <!--</ba-card>-->
-  <!--</div>-->
+  <div class="col-md-8">
+    <ba-card title="Summary" baCardClass="with-scroll table-panel">
+      <div style="display: block" *ngIf="dataSummary">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+      </div>
+    </ba-card>
+  </div>
 
   <div class="col-md-4">
     <ba-card title="Rekapitulasi Kolokium" baCardClass="with-scroll table-panel">

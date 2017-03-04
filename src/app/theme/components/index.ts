@@ -8,5 +8,3 @@ export * from './baMenu';
 export * from './baContentTop';
 export * from './baCard';
 export * from './baBackTop';
-export * from './baCheckbox';
-export * from './baMultiCheckbox';

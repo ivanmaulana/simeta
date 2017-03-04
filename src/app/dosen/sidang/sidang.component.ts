@@ -31,10 +31,7 @@ export class sidangDosen {
   dosen2;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-    let temp = new Date();
-    this.tahun = temp.getFullYear() - 4;
 
-    this.pilih_tahun = this.tahun;
   }
 
   dataLabel = ['Sudah Sidang', 'Belum Sidang'];

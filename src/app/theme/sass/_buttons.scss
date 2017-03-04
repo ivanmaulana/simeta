@@ -35,30 +35,6 @@ $hover: 24;
   }
 }
 
-@mixin openDropdownButton($color, $dark-color) {
-  @include styleButton($color, $color - $hover);
-  background-color: $dark-color;
-  border-color: $dark-color;
-}
-
-.open > .btn.dropdown-toggle {
-  &.btn.btn-primary {
-    @include openDropdownButton($primary, $primary-dark)
-  }
-  &.btn-success {
-    @include openDropdownButton($success, $success-dark)
-  }
-  &.btn-info {
-    @include openDropdownButton($info, $info-dark)
-  }
-  &.btn-warning {
-    @include openDropdownButton($warning, $warning-dark)
-  }
-  &.btn-danger {
-    @include openDropdownButton($danger, $danger-dark)
-  }
-}
-
 button.btn.btn-primary {
   @include buttonColor($primary, $primary);
   &:active, &:target {
@@ -153,14 +129,6 @@ button.btn.btn-inverse {
   }
 }
 
-.btn-toolbar {
-  display: inline-block;
-}
-
-.btn .caret {
-  margin-left: 2px;
-}
-
 @mixin progressButtonColor($btnColor) {
   border-radius: 0;
   .content {
@@ -194,45 +162,6 @@ button.btn.btn-inverse {
       background-color: $btnColor;
     }
   }
-}
-
-button.progress-button {
-
-  .progress {
-    margin-bottom: 0;
-    border-radius: 0;
-  }
-  &:hover {
-    transform: none;
-  }
-
-  &.btn.btn-primary {
-    @include progressButtonColor($primary);
-  }
-
-  &.btn.btn-default {
-    @include progressButtonColor($default);
-  }
-
-  &.btn.btn-success {
-    @include progressButtonColor($success);
-  }
-
-  &.btn.btn-info {
-    @include progressButtonColor($info);
-  }
-
-  &.btn.btn-warning {
-    @include progressButtonColor($warning);
-  }
-
-  &.btn.btn-danger {
-    @include progressButtonColor($danger);
-  }
-}
-
-.btn-raised {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.35);
 }
 
 .btn-mm {
@@ -279,17 +208,5 @@ button.progress-button {
     &:focus, &:active {
       background-color: transparent;
     }
-  }
-}
-
-.bootstrap-select {
-  .dropdown-toggle:focus {
-    outline: none !important;
-  }
-  button.btn-default:focus {
-    color: $default;
-  }
-  .btn {
-    transition: none;
   }
 }

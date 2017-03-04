@@ -17,6 +17,8 @@ export class DashboardDosen {
   noConn;
   status;
 
+  link = 'http://simeta-api.apps.cs.ipb.ac.id/summary/dosen/'+localStorage.getItem('id_token');
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }

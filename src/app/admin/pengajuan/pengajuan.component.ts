@@ -21,7 +21,7 @@ export class PengajuanAdmin {
 
   pengajuan;
 
-  private excel = 'http://simak.apps.cs.ipb.ac.id:2016/excel/'+localStorage.getItem('id_token');
+  private excel = 'http://simeta-api.apps.cs.ipb.ac.id/excel/'+localStorage.getItem('id_token');
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
   }
