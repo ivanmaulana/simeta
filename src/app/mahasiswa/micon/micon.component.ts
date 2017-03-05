@@ -34,6 +34,8 @@ export class micon {
   private dosen_2;
   private topik;
 
+  link = 'http://simeta.apps.cs.ipb.ac.id/uploads/jadwal_micon.pdf';
+
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 

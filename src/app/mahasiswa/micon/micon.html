@@ -65,16 +65,9 @@
 
       <div *ngIf="dataSeminar">
         <div *ngIf="dataSeminar.seminar.jenis_seminar == 2 || dataSeminar.seminar == false">
-          <!-- Alert message -->
-          <alert type="info" *ngIf="active">
-            Perhatian ! Jadwal Mini Conference adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
-          </alert>
-          <alert type="danger" *ngIf="active">
-            Pengisian & Upload File Mini Conference akan dibuka sampai  {{data.ubahTanggal(deadline)}}
-          </alert>
 
-          <alert type="danger" *ngIf="!active">
-            Maaf. Laman Mini Conference tidak sedang dibuka.
+          <alert type="info">
+            Untuk melihat jadwal Mini Conference Bersama. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download Disini</i></b></a>
           </alert>
 
           <ba-card title="Mini Conference" baCardClass="with-scroll">
