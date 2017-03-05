@@ -57,6 +57,7 @@ export class DashboardAdmin {
   }
 
   tahunPraseminar;
+  aaa;
   dataPraseminar;
   getDataPraseminar() {
     this.authHttp.get(this.data.urlAdminPraseminar)

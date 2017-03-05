@@ -59,10 +59,11 @@ export class Kolokium {
       })
   }
 
-  simpan(){
-    let creds = JSON.stringify({topik: this.topik});
+  date;
+  submit(){
+    let creds = JSON.stringify({topik: this.topik, tanggal: this.date});
 
-    this.authHttp.put(this.data.urlUpdateTa, creds)
+    this.authHttp.post(this.data.urlFileKolokium, creds)
       .map(res => res.json())
       .subscribe(data => {
 
@@ -205,6 +206,7 @@ export class Kolokium {
       .subscribe(data => {
         if(data.length > 0) {
           this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+data[0].makalah;
+          this.date = data[0].tanggal;
         }
       })
   }

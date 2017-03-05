@@ -124,20 +124,20 @@
           <div class="col-md-12">
             <!-- tanggal -->
             <div class="form group col-sm-12 col-md-4 col-xs-12">
-              <label><b>Tanggal</b></label><br />
-              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px" required/>
+              <label><b>Tanggal </b>(format: 2017-01-01)</label><br />
+              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px" required placeholder="2017-01-01"/><br>
             </div>
 
             <!-- jam -->
             <div class="form group col-sm-12 col-md-4 col-xs-12">
-              <label><b>Jam</b></label><br />
-              <input type="time" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px" required/>
+              <label><b>Jam </b>(format: 24:00)</label><br />
+              <input type="text" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px" required placeholder="20:30"/>
             </div>
 
             <!-- tempat -->
             <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Tempat</b></label><br />
-              <input type="text" class="form-control" name="tempat" [(ngModel)]="tempat" style="height:34px" required/>
+              <input type="text" class="form-control" name="tempat" [(ngModel)]="tempat" style="height:34px" required placeholder="Tempat"/>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">

@@ -23,22 +23,15 @@
   <div *ngIf="statusTa">
     <div *ngIf="response1">
       <!-- Alert message -->
-      <alert type="info" *ngIf="active">
-        Perhatian ! Jadwal kolokium adalah {{data.ubahTanggal(jadwal)}}. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download jadwal disini</i></b></a>
-      </alert>
-      <alert type="danger" *ngIf="active">
-        Pengisian & Upload makalah kolokium akan dibuka sampai  {{data.ubahTanggal(deadline)}}
+      <alert type="info">
+        Untuk melihat jadwal Kolokium Bersama. Silahkan  <a target="_blank" href="{{link}}"><b><i>Download Disini</i></b></a>
       </alert>
 
-      <alert type="danger" *ngIf="!active">
-        Maaf. Laman kolokium tidak sedang dibuka.
-      </alert>
-
-      <div class="row" *ngIf="active">
+      <div class="row">
         <div class="col-md-12">
 
           <ba-card title="Makalah Kolokium" baCardClass="with-scroll">
-            <form class="row form-inline" (onsubmit)="submit()">
+            <form class="row form-inline" (ngSubmit)="submit()">
 
               <!-- nama & nim-->
               <div class="col-md-12 col-xs-12">
@@ -86,29 +79,40 @@
               </div>
 
               <div class="col-sm-12 col-md-12 col-xs-12">
-                <br /><br />
+                <br />
               </div>
-
-              <alert type="info" class="col-md-12">
-                Jika kamu ingin mengubah judul tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah</b>
-              </alert>
 
               <!-- judul topik -->
-              <div class="form-group col-md-12 col-xs-12">
+              <div class="col-md-12">
+                <div class="form-group col-md-12 col-xs-12">
                   <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
-                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control" required></textarea>
+                </div>
               </div>
 
               <div class="col-sm-12 col-md-12 col-xs-12">
                 <br />
               </div>
 
-              <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-                <button class="btn btn-primary btn-lg" type="submit" (click)="simpan()">Ubah</button>
+              <div class="col-md-8">
+                <div class="col-md-4" style="padding-top: 10px">
+                  <label><p href primary><b>Tanggal Kolokium</b></p></label><br />
+                  (format: 2017-01-01)
+                </div>
+                <div class="col-md-8">
+                  <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01">
+                </div>
               </div>
 
+              <div class="col-md-4 text-right">
+                <br>
+                <button class="btn btn-primary btn-lg" type="submit">Simpan</button>
+              </div>
+            </form>
+
+
               <div class="col-sm-12 col-md-12 col-xs-12">
-                <br />
+                <br /><br>
               </div>
 
               <!-- app.component.html -->
@@ -147,7 +151,6 @@
                   </alert>
                 </div>
               </div>
-            </form>
           </ba-card>
         </div>
       </div>

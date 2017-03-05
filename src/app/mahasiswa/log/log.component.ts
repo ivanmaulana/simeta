@@ -3,6 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'log',
@@ -12,6 +13,7 @@ import { DataService } from '../../data/data.service';
   template: require('./log.html')
 })
 export class Log {
+  public dt: Date = new Date();
 
   // status
   statusDaftar;
@@ -74,6 +76,8 @@ export class Log {
         if(data.status){
           this.getDataLog();
           this.showDeleteSuccess();
+          this.res = false;
+          this.getApprovalCount();
         }
 
       })

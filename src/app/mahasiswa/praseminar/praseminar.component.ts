@@ -62,10 +62,10 @@ export class Praseminar {
       })
   }
 
-  simpan(){
-    let creds = JSON.stringify({topik: this.topik});
+  submit(){
+    let creds = JSON.stringify({topik: this.topik, tanggal: this.date});
 
-    this.authHttp.put(this.data.urlUpdateTa, creds)
+    this.authHttp.post(this.data.urlFilePraseminar, creds)
       .map(res => res.json())
       .subscribe(data => {
 
@@ -76,12 +76,14 @@ export class Praseminar {
     )
   }
 
+  date;
   getDataFile() {
     this.authHttp.get(this.data.urlFilePraseminar)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
           this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/filePraseminar/"+data[0].makalah;
+          this.date = data[0].tanggal;
         }
       })
   }
