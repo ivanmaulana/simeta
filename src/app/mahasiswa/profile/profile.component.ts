@@ -43,7 +43,7 @@ export class Profile {
   private creds;
   private message;
 
-  public picture = 'http://simeta.apps.cs.ipb.ac.id/upload/filePhoto/foto-'+this.data.nim+'-'+this.data.nama+'.jpg';
+  public picture = 'http://simeta.apps.cs.ipb.ac.id/uploads/filePhoto/foto-'+this.data.nim+'-'+this.data.nama+'.jpg';
   public defaultPicture = 'assets/img/photo.png';
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {

@@ -122,7 +122,7 @@ export class Praseminar {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
 
-      this.preview = "http://simak.apps.cs.ipb.ac.id/uploads/filePraseminar/"+this.uploadFile[0].filename;
+      this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/filePraseminar/"+this.uploadFile[0].filename;
       this.showSelesai();
     }
 
