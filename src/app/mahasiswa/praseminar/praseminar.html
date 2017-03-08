@@ -14,13 +14,13 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="!statusTa">
-    <alert type="danger"><h4>Topik TA kamu <b>belum disetujui</b> <i>atau</i> Dosen Pembimbing kamu <b>belum ditentukan</b> oleh Departemen.</h4><br />
-      Silahkan tunggu sampai ada pengumuman berikutnya.
+  <div *ngIf="!statusKolokium">
+    <alert type="danger">
+      <h4> Kamu belum melaksanakan Kolokium. </h4>
     </alert>
   </div>
 
-  <div *ngIf="statusTa">
+  <div *ngIf="statusKolokium">
     <div>
       <!-- Alert message -->
       <alert type="info">
@@ -86,7 +86,7 @@
               <div class="col-md-12">
                 <div class="form-group col-md-12 col-xs-12">
                   <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
-                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control"></textarea>
+                  <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control" required></textarea>
                 </div>
               </div>
 
@@ -100,7 +100,7 @@
                   (format: 2017-01-01)
                 </div>
                 <div class="col-md-8">
-                  <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01">
+                  <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01" required>
                 </div>
               </div>
 

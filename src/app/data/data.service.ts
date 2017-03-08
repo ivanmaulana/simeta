@@ -118,6 +118,8 @@ export class DataService {
   public urlDeleteSeminar = 'http://localhost:2016/seminar/delete';
   public urlKonfirmasiKolokium = 'http://localhost:2016/konfirmasi/kolokium';
 
+  public urlBalasDosen = 'http://localhost:2016/log/balas/dosen/';
+  public urlExcelSeminarSidang = 'http://localhost:2016/seminar/excel/';
 
   // ADMIN
   public urlListPengajuan = 'http://localhost:2016/ta/daftar/list';

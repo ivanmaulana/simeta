@@ -14,13 +14,13 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="!statusKolokium">
+  <div *ngIf="!statusPraseminar">
     <alert type="danger">
-      <h4> Kamu belum melaksanakan Kolokium. </h4>
+      <h4> Kamu belum melaksanakan Praseminar </h4>
     </alert>
   </div>
 
-  <div class="row" *ngIf="statusKolokium">
+  <div class="row" *ngIf="statusPraseminar">
     <div class="col-md-12">
 
       <alert type="info">
@@ -142,7 +142,7 @@
               <!-- Judul Paper -->
               <div class="form-group col-md-12 col-xs-12">
                 <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
-                <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu"></textarea>
+                <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu" required></textarea>
               </div>
 
               <div class="section-block col-md-12 text-right">

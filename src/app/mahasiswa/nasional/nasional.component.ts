@@ -51,8 +51,9 @@ export class nasional {
       })
   }
 
+  jam;
   submit() {
-    let creds = JSON.stringify({nama_konferensi: this.nama_konferensi, judul_paper: this.judul_paper, tempat: this.tempat, tanggal: this.tanggal});
+    let creds = JSON.stringify({nama_konferensi: this.nama_konferensi, jam: this.jam,  judul_paper: this.judul_paper, tempat: this.tempat, tanggal: this.tanggal});
 
     this.authHttp.post(this.data.urlSeminarKonferensi, creds)
       .map(res => res.json())

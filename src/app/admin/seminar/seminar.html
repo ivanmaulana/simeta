@@ -14,6 +14,16 @@
 
 <div *ngIf="status" class="row">
 
+  <div class="col-md-12">
+    <div class="text-center">
+      <button class="btn btn-primary">
+        <a href="{{link}}" target="_blank" style="color:white">
+          <h3>Download Ringkasan Seminar</h3>
+        </a>
+      </button>
+    </div><br><br>
+  </div>
+
   <div class="col-md-6">
     <ba-card title="Rekapitulasi Seminar" baCardClass="with-scroll table-panel">
       <div style="display: block" *ngIf="dataSeminar">

@@ -67,7 +67,7 @@ export class LogDosen {
   balas(id){
     let creds = JSON.stringify({topikId: id, jawaban: this.balasan});
 
-    this.authHttp.post("http://simak.apps.cs.ipb.ac.id:2016/log/balas/dosen/", creds)
+    this.authHttp.post(this.data.urlBalasDosen, creds)
       .map(res => res.json())
       .subscribe(data => {
           if(data.status) {

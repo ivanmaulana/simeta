@@ -228,20 +228,20 @@
 
           <div class="row">
             <div class="col-md-10 col-sm-9 col-xs-12">
-              <strong>Judul Tugas Akhir :</strong> {{topik}}<br /><br />
+              <strong>Judul Tugas Akhir :</strong><br>{{topik}}<br /><br />
               <strong>Tempat :</strong> {{res.tempat}}<br />
-              <strong>Topik Bimbingan :</strong> {{res.topik}}<br /><br />
+              <strong>Topik Bimbingan :</strong><br>{{res.topik}}<br /><br />
             </div>
           </div>
 
           <div class="row col-md-12">
-              <strong>Progress :</strong> <br /><h4 class="green">{{res.progress}}</h4><br />
+              <strong>Progress :</strong> <br /><p>{{res.progress}}</p><br />
           </div>
           <div class="row col-md-12">
-              <strong>Kendala :</strong> <br /><h4 class="red">{{res.kendala}}</h4><br />
+              <strong>Kendala :</strong> <br /><p>{{res.kendala}}</p><br />
           </div>
           <div class="row col-md-12">
-              <strong>Rencana :</strong> <br /><h4 class="orange">{{res.rencana}}</h4>
+              <strong>Rencana :</strong> <br /><p>{{res.rencana}}</p>
           </div>
 
         </div>
@@ -296,7 +296,7 @@
         </div>
 
         <div class="col-md-12 text-right">
-          <br /><button (click)="balas(id)" class="btn btn-md btn-primary">Diskusi</button>
+          <br /><button (click)="balas(id)" class="btn btn-md btn-primary" [disabled]="!balasan">Diskusi</button>
         </div>
 
       </ba-card>

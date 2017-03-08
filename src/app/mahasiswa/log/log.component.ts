@@ -79,9 +79,7 @@ export class Log {
           this.res = false;
           this.getApprovalCount();
         }
-
       })
-
   }
 
   showDeleteSuccess() {

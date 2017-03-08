@@ -14,13 +14,13 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="!statusKolokium">
+  <div *ngIf="!statusPraseminar">
     <alert type="danger">
-      <h4> Kamu belum melaksanakan Kolokium. </h4>
+      <h4> Kamu belum melaksanakan Praseminar. </h4>
     </alert>
   </div>
 
-  <div *ngIf="statusKolokium">
+  <div *ngIf="statusPraseminar">
     <div class="row">
       <div class="col-md-12">
 
@@ -141,7 +141,7 @@
             <!-- Nama Konferensi -->
             <div class="form-group col-md-12 col-xs-12">
               <label><p href primary><b>Nama Konferensi</b></p></label><br />
-              <input class="form-control" type="text" name="nama_konferensi" [(ngModel)]="nama_konferensi" placeholder="Nama konferensi" required/>
+              <input class="form-control" type="text" style="width:100%" name="nama_konferensi" [(ngModel)]="nama_konferensi" placeholder="Nama konferensi" required/>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -159,14 +159,20 @@
             </div>
 
             <!-- Tempat -->
-            <div class="form-group col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group col-md-4 col-sm-12 col-xs-12">
               <label><p href primary><b>Tempat</b></p></label><br />
               <input class="form-control" type="text" name="tempat" [(ngModel)]="tempat" placeholder="Bogor, Institut Pertanian Bogor" required/>
             </div>
 
+            <!-- JAM-->
+            <div class="form-group col-md-4 col-sm-12 col-xs-12">
+              <label><p href primary><b>Jam</b> (format: 24:00)</p></label><br />
+              <input class="form-control" type="text" name="tempat" [(ngModel)]="jam" placeholder="24:00" required/>
+            </div>
+
             <!-- Tanggal -->
-            <div class="form-group col-md-6 col-sm-12 col-xs-12">
-              <label><p href primary><b>Tanggal</b></p></label><br />
+            <div class="form-group col-md-4 col-sm-12 col-xs-12">
+              <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p> </label><br />
               <input type="date" name="date" [(ngModel)]="tanggal" class="form-control" style="height:36px" required/>
             </div>
 

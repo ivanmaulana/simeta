@@ -17,6 +17,8 @@ export class seminarAdmin {
   noConn;
   status;
 
+  link = this.data.urlExcelSeminarSidang+localStorage.getItem('id_token');
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
