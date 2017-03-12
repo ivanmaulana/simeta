@@ -57,6 +57,7 @@ export class Mandiri {
       .map(res => res.json())
       .subscribe(data => {
         if(data.status) {
+          this.upload = 1;
           this.showSuccess();
           this.getDataSeminar();
         }
@@ -77,6 +78,7 @@ export class Mandiri {
   tanggal;
   berkas;
   makalah;
+  upload = 0;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
@@ -84,6 +86,7 @@ export class Mandiri {
         this.dataSeminar = data;
 
         if(this.dataSeminar.seminar.jenis_seminar == 3) {
+          this.upload = 1;
           this.show = true;
           this.pembahas_1 = data.data.pembahas_1;
           this.pembahas_2 = data.data.pembahas_2;

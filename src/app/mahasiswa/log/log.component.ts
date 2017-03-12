@@ -63,6 +63,8 @@ export class Log {
   private diterima : number = 0;
   private total : number = 0;
 
+  private linkLog = this.data.urlGenerateLogPDF;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }

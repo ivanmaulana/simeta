@@ -41,14 +41,16 @@ export class Skl {
   tanggal;
   berkas;
   show = false;
+  upload = 0;
   getDataSKL() {
     this.authHttp.get(this.data.urlSKL)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
+          this.upload = 1;
           this.show = true;
           this.tanggal = data[0].tanggal;
-          this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSKL/"+data[0].berkas;
+          if(data[0].berkas) this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSKL/"+data[0].berkas;
         }
       })
   }
@@ -61,6 +63,7 @@ export class Skl {
       .subscribe(data => {
 
         if(this.status) {
+          this.upload = 1;
           this.show = true;
           this.showSuccess();
         }

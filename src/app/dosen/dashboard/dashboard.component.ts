@@ -24,6 +24,50 @@ export class DashboardDosen {
   }
 
 
+  settings = {
+    columns: {
+      tahun_masuk: {
+        title: 'Angkatan'
+      },
+      nim: {
+        title: 'NIM'
+      },
+      nama: {
+        title: 'Nama Mahasiswa'
+      },
+      dosen1: {
+        title: 'Pembimbing 1'
+      },
+      dosen2: {
+        title: 'Pembimbing 2'
+      },
+      tanggal_kolokium: {
+        title: 'Tgl Kolokium',
+      },
+      tanggal_praseminar: {
+        title: 'Tgl Praseminar',
+      },
+      tanggal_seminar: {
+        title: 'Tgl Seminar',
+      },
+      tanggal_sidang: {
+        title: 'Tgl Sidang',
+      },
+      tanggal_skl: {
+        title: 'Tgl SKL',
+      }
+    },
+    actions: {
+      add: false,
+      edit: false,
+      delete: false
+    },
+    setPaging: {
+      perPage: 7
+    }
+  };
+
+
   public pieChartType:string = 'pie';
   dataLabel = ['Sudah Upload', 'Belum Upload'];
 

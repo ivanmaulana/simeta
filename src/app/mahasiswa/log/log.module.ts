@@ -5,14 +5,14 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Log } from './log.component';
 import { routing } from './log.routing';
-import { DatepickerModule } from 'ng2-bootstrap/datepicker';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
-    DatepickerModule.forRoot(),
+    AlertModule.forRoot(),
     routing
   ],
   declarations: [

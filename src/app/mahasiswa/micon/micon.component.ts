@@ -51,15 +51,19 @@ export class micon {
       })
   }
 
-
+  date;
+  jam;
   submit() {
-    let creds = JSON.stringify({topik: this.topik});
+    let creds = JSON.stringify({topik: this.topik, tanggal: this.date, jam: this.jam});
 
-    this.authHttp.put(this.data.urlUpdateTa, creds)
+    this.authHttp.post(this.data.urlFileMicon, creds)
       .map(res => res.json())
       .subscribe(data => {
 
-          if(this.status) this.showSuccess();
+          if(this.status) {
+            this.showSuccess();
+            this.upload = 1;
+          }
           else this.showError();
 
         }
@@ -78,6 +82,8 @@ export class micon {
   show = false;
   berkas;
 
+
+  upload = 0;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
@@ -85,8 +91,11 @@ export class micon {
         this.dataSeminar = data;
 
         if(this.dataSeminar.seminar.jenis_seminar == 2) {
-          this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/micon/"+data.data.berkas;
+          if(data.data.berkas) this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/micon/"+data.data.berkas;
           this.show = true;
+          this.jam = data.data.jam;
+          this.date = data.data.tanggal;
+          this.upload = 1;
         }
 
       })

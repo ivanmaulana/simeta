@@ -111,12 +111,18 @@
             </form>
 
 
-              <div class="col-sm-12 col-md-12 col-xs-12">
-                <br /><br>
-              </div>
+            <div class="col-sm-12 col-md-12 col-xs-12">
+              <br /><br>
+            </div>
+
+            <div class="col-md-12">
+              <alert type="danger" *ngIf="!upload">
+                Silahkan isi tanggal kolokium kamu dan <b>Simpan</b> untuk melakukan upload makalah kolokium.
+              </alert>
+            </div>
 
               <!-- app.component.html -->
-              <div class="col-md-12">
+              <div class="col-md-12" *ngIf="upload">
                 <label class="row col-md-12"><p href primary><b>Upload Makalah Kolokium</b></p></label><br />
                 <div class="col-md-3 text-center">
                   <alert type="danger" *ngIf="!preview">

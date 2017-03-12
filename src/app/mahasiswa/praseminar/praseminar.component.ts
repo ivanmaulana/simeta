@@ -69,7 +69,10 @@ export class Praseminar {
       .map(res => res.json())
       .subscribe(data => {
 
-        if(this.status) this.showSuccess();
+        if(this.status) {
+          this.showSuccess();
+          this.upload = 1;
+        }
         else this.showError();
 
       }
@@ -77,13 +80,17 @@ export class Praseminar {
   }
 
   date;
+  upload = 0;
+
   getDataFile() {
     this.authHttp.get(this.data.urlFilePraseminar)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
-          this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/filePraseminar/"+data[0].makalah;
+          if(data[0].makalah != null) this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/filePraseminar/"+data[0].makalah;
           this.date = data[0].tanggal;
+
+          if(data[0].makalah != null) this.upload = 1;
         }
       })
   }

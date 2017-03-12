@@ -18,10 +18,16 @@
     <div class="text-center">
       <button class="btn btn-primary">
         <a href="{{link}}" style="font-color:white">
-          <h3>Download Ringkasan TA Bimbingan</h3>
+          <h3 style="color:white">Download Ringkasan TA Bimbingan</h3>
         </a>
       </button>
     </div><br><br>
+  </div>
+
+  <div class="col-md-12">
+    <ba-card title="Ringkasan Mahasiswa" baCardClass="with-scroll table-panel">
+      <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+    </ba-card>
   </div>
 
   <div class="col-md-8">

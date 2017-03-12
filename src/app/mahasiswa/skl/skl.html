@@ -99,7 +99,7 @@
             </div>
 
             <!-- app.component.html -->
-            <div *ngIf="!show" class="col-md-12">
+            <div *ngIf="!upload" class="col-md-12">
               <alert type="danger">
                 Silahkan isi tanggal penerbitan SKL terlebih dahulu untuk <b>Upload file scan SKL</b>
               </alert>
@@ -111,18 +111,16 @@
                 <textarea name="topik" [(ngModel)]="topik" style="width: 100%" class="form-control" required></textarea>
             </div>
 
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <div class="form-group col-md-8">
-                <div class="col-md-4 text-left" style="padding-top: 10px">
-                  <br><label><p href primary><b>Tanggal Penerbitan SKL</b><br> (format: 2017-01-01)</p></label>
-                </div>
-                <div class="col-md-4 text-left">
-                  <br><input type="date" name="tanggal" [(ngModel)]="tanggal" class="form-control" required>
-                </div>
+            <div class="form-group col-md-8">
+              <div class="col-md-4 text-left" style="padding-top: 10px">
+                <br><label><p href primary><b>Tanggal Penerbitan SKL</b><br> (format: 2017-01-01)</p></label>
               </div>
-              <div class="col-md-4 text-right">
-                <br><button class="btn btn-lg btn-primary" type="submit">Simpan</button>
+              <div class="col-md-4 text-left">
+                <br><input type="date" name="tanggal" [(ngModel)]="tanggal" class="form-control" required>
               </div>
+            </div>
+            <div class="col-md-4 text-right">
+              <br><button class="btn btn-lg btn-primary" type="submit">Simpan</button>
             </div>
 
             <div class="col-sm-12 col-md-12 col-xs-12">
@@ -130,7 +128,7 @@
             </div>
 
             <!-- app.component.html -->
-            <div class="col-md-12" *ngIf="show">
+            <div class="col-md-12" *ngIf="upload">
               <label class="row col-md-12"><p href primary><b>Upload Scan SKL</b></p></label><br />
               <div class="col-md-3 text-center">
                 <alert type="danger" *ngIf="!berkas">

@@ -18,6 +18,7 @@ export class DashboardAdmin {
   status;
 
   link = 'http://simeta-api.apps.cs.ipb.ac.id/summary/all/'+localStorage.getItem('id_token');
+  linkSeminar = this.data.urlExcelSeminarSidang+localStorage.getItem('id_token');
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 

@@ -67,7 +67,10 @@ export class Kolokium {
       .map(res => res.json())
       .subscribe(data => {
 
-        if(this.status) this.showSuccess();
+        if(this.status) {
+          this.showSuccess();
+          this.upload = 1;
+        }
         else this.showError();
 
       }
@@ -200,13 +203,16 @@ export class Kolokium {
       })
   }
 
+  upload = 0;
   getDataFile() {
     this.authHttp.get(this.data.urlFileKolokium)
       .map(res => res.json())
       .subscribe(data => {
         if(data.length > 0) {
-          this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+data[0].makalah;
+          if(data[0].makalah != null) this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+data[0].makalah;
           this.date = data[0].tanggal;
+
+          if(data[0].tanggal) this.upload = 1;
         }
       })
   }

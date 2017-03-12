@@ -135,27 +135,44 @@
                 <br />
               </div>
 
-              <alert type="info" class="col-md-12">
-                Jika kamu ingin mengubah judul tugas akhir kamu, silahkan ubah disini dan klik <b>Ubah</b>
-              </alert>
-
               <!-- Judul Paper -->
               <div class="form-group col-md-12 col-xs-12">
                 <label><p href primary><b>Judul Tugas Akhir</b></p></label><br />
                 <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu" required></textarea>
               </div>
 
-              <div class="section-block col-md-12 text-right">
-                <label padding-left for="pembimbing">&nbsp;</label><br />
-                <button type="submit" class="btn btn-primary btn-lg">Ubah</button>
-              </div>
-
               <div class="col-sm-12 col-md-12 col-xs-12">
                 <br />
               </div>
 
-              <!-- app.component.html -->
+              <div class="col-md-8">
+                <div class="col-md-4" style="padding-top: 10px">
+                  <label><p href primary><b>Tanggal</b></p></label> (format: 2017-01-01)<br>
+                  <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01">
+                </div>
+                <div class="col-md-4" style="padding-top: 10px">
+                  <label><p href primary><b>Jam</b></p></label> (format: 24:00)<br>
+                  <input type="text" class="form-control" [(ngModel)]="jam" name="jam" required placeholder="24:00">
+                </div>
+              </div>
+
+              <div class="col-md-4 text-right">
+                <label padding-left for="pembimbing">&nbsp;</label><br />
+                <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-xs-12">
+                <br /><br>
+              </div>
+
               <div class="col-md-12">
+                <alert type="danger" *ngIf="!upload">
+                  Silahkan isi tanggal dan jam Mini Conference kamu kemudian <b>Simpan</b> untuk melakukan upload makalah kolokium.
+                </alert>
+              </div>
+
+              <!-- app.component.html -->
+              <div class="col-md-12" *ngIf="upload">
                 <label class="row col-md-12"><p href primary><b>Upload File Mini Conference</b></p></label><br />
 
                 <alert type="info">

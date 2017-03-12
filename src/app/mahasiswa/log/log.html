@@ -186,6 +186,11 @@
 
   <div *ngIf="statusTa">
     <div class="col-md-6">
+
+      <alert type="info" *ngIf="disetujui > 9">
+        Unduh Surat Keterangan Log Bimbingan <a href="linkLog"><b>Disini</b></a>
+      </alert>
+
       <ba-card title="Log Bimbingan" baCardClass="with-scroll" *ngIf="total">
         <div class="row" *ngFor="let res of response"><br />
           <div class="col-md-6 col-sm-10 col-xs-9">

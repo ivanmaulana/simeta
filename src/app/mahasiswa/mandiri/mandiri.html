@@ -27,7 +27,7 @@
 
         <alert type="info">
           <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4>
-          <p> Silahkan pilih salah satu pilihan seminar yang kamu lakukan.</p>
+          Silahkan pilih salah satu pilihan seminar yang kamu lakukan.
         </alert>
 
         <div *ngIf="dataSeminar">
@@ -137,12 +137,12 @@
 
                 <div class="col-md-12">
                   <alert type="info">
-                    <p><b>Perhatian ! Sebelum mengisi form berikut, silahkan hubungi Dosen Pembimbing dan Penguji untuk Konfirmasi kehadiran di Seminar kamu.</b><br></p>
+                    <p><b>Perhatian ! Sebelum mengisi form berikut, silahkan hubungi Dosen Pembimbing dan Penguji untuk persetujuan kehadiran di Seminar kamu.</b><br></p>
                     <p>Informasi yang kamu isi di formulir dibawah ini harus merupakan kesepakatan antara Kamu, Dosen Pembimbing, Penguji, dan Pembahas.</p>
                   </alert>
                 </div>
 
-                <div *ngIf="!dataSeminar.seminar" class="col-md-12">
+                <div *ngIf="!upload" class="col-md-12">
                   <alert type="danger">
                     Silahkan isi form seminar terlebih dahulu untuk <b>Upload file makalah / berkas seminar</b>
                   </alert>
@@ -214,7 +214,7 @@
                 </div>
 
                 <!-- app.component.html -->
-                <div class="col-md-12" *ngIf="dataSeminar.seminar">
+                <div class="col-md-12" *ngIf="upload">
                   <label class="row col-md-12"><p href primary><b>Upload Makalah Seminar Mandiri</b></p></label><br />
 
                   <div class="col-md-3 text-center">
