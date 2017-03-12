@@ -173,6 +173,19 @@
                     Silahkan Upload ulang jika ingin mengganti file makalah Sidang
                   </alert>
                 </div>
+
+                <div class="col-md-12" *ngIf="pengumuman">
+                  <alert type="success">
+                    <h4><b>Setelah mengisi form dan upload makalah sidang kamu, silahkan persiapkan dokumen-dokumen berikut dan berikan ke petugas TU Departemen Ilmu Komputer :</b><br></h4>
+                    <p>1. Formulir kesiapan tugas akhir. Formulir dapat diunduh <a [href]="sidangPDF" target="_blank"><b>Disini</b></a></p>
+                    <p>2. Formulir Kelengkapan ujian tugas akhir. Dokumen dapat diunduh <a [href]="kelengkapanPDF" target="_blank"><b>Disini</b></a></p>
+                    <p>3. 4 makalah sidang yang ditanda-tangani Dosen Pembimbing 1.</p>
+                    <p>4. Salinan nilai Seminar.</p>
+                    <p>5. Salinan nilai PKL.</p>
+                    <p>6. Salinan transkrip seluruh semester.</p>
+                    <p>7. Salinan bukti pembayaran SPP.</p>
+                  </alert>
+                </div>
               </div>
 
             </form>

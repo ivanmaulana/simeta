@@ -84,11 +84,13 @@ export class micon {
 
 
   upload = 0;
+  log = 0;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
       .subscribe(data => {
         this.dataSeminar = data;
+        this.log = data.log;
 
         if(this.dataSeminar.seminar.jenis_seminar == 2) {
           if(data.data.berkas) this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/micon/"+data.data.berkas;

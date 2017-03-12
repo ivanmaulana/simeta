@@ -35,6 +35,9 @@ export class Mandiri {
   private dosen_2;
   private topik;
 
+  private logPDF = this.data.urlLogPDF;
+  private seminarPDF = this.data.urlSeminarPDF;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
@@ -48,7 +51,6 @@ export class Mandiri {
         }
       })
   }
-
 
   submit() {
     let creds = JSON.stringify({topik: this.topik, pembahas_1: this.pembahas_1, pembahas_2: this.pembahas_2, pembahas_3: this.pembahas_3, tempat: this.tempat, jam: this.jam, tanggal: this.tanggal});
@@ -79,6 +81,9 @@ export class Mandiri {
   berkas;
   makalah;
   upload = 0;
+
+  pengumuman = 0;
+  log;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
@@ -87,6 +92,7 @@ export class Mandiri {
 
         if(this.dataSeminar.seminar.jenis_seminar == 3) {
           this.upload = 1;
+          this.log = data.log;
           this.show = true;
           this.pembahas_1 = data.data.pembahas_1;
           this.pembahas_2 = data.data.pembahas_2;
@@ -96,6 +102,7 @@ export class Mandiri {
           this.tanggal = data.data.tanggal.substr(0,10);
           this.berkas = data.data.berkas;
           if(data.data.makalah) {
+            this.pengumuman = 1;
             this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/mandiri/"+data.data.makalah;
           }
         }
@@ -125,7 +132,7 @@ export class Mandiri {
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
-
+      this.pengumuman = 1;
       this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/mandiri/"+this.uploadFile[0].filename;
       this.showSelesai();
     }

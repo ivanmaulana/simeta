@@ -46,11 +46,15 @@ export class Sidang {
   private jam;
   private tempat;
 
+  private sidangPDF = this.data.urlSidangPDF;
+  private kelengkapanPDF = this.data.urlKelengkapanPDF;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }
 
   show = false;
+  pengumuman = 0;
   getDataSidang() {
     this.authHttp.get(this.data.urlSidang)
       .map(res => res.json())
@@ -61,6 +65,7 @@ export class Sidang {
           this.tanggal = data[0].tanggal;
           this.jam = data[0].jam;
           if(data[0].makalah) {
+            this.pengumuman = 1;
             this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSidang/"+data[0].makalah;
           }
         }
@@ -108,6 +113,7 @@ export class Sidang {
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
+      this.pengumuman = 1;
 
       this.makalah = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSidang/"+this.uploadFile[0].filename;
       this.showSelesai();

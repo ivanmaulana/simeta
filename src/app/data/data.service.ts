@@ -128,6 +128,11 @@ export class DataService {
 
   public urlSummaryDosen = 'http://simeta-api.apps.cs.ipb.ac.id/summary/dosen';
 
+  public urlLogPDF = 'http://simeta-api.apps.cs.ipb.ac.id/pdf/log/'+localStorage.getItem('id_token');
+  public urlSeminarPDF = 'http://simeta-api.apps.cs.ipb.ac.id/generate/pdf/'+localStorage.getItem('id_token');
+  public urlSidangPDF = 'http://simeta-api.apps.cs.ipb.ac.id/sidang/pdf/'+localStorage.getItem('id_token');
+  public urlKelengkapanPDF = 'http://simeta-api.apps.cs.ipb.ac.id/keterangan/pdf/'+localStorage.getItem('id_token');
+
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
 

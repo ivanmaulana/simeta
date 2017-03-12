@@ -14,228 +14,239 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="!statusPraseminar">
+  <div class="row" *ngIf="log < 10">
     <alert type="danger">
-      <h4> Kamu belum melaksanakan Praseminar. </h4>
+      <h4>Maaf, kamu belum mengisi Log Bimbingan minimal 10 kali atau log bimbingan kamu belum disetujui oleh dosen pembimbing.</h4>
+      <p>Silahkan hubungi dosen pembimbing untuk menyetujui log bimbingan kamu.</p>
     </alert>
   </div>
 
-  <div *ngIf="statusPraseminar">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="row" *ngIf="log >= 10">
 
-        <alert type="info">
-          <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4>
-          Silahkan pilih salah satu pilihan seminar yang kamu lakukan.
-        </alert>
+    <div *ngIf="!statusPraseminar">
+      <alert type="danger">
+        <h4> Kamu belum melaksanakan Praseminar. </h4>
+      </alert>
+    </div>
 
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 3">
-            <alert type="danger">
-              <h4>Kamu telah memilih Seminar Mandiri</h4>
-              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
-            </alert>
+    <div *ngIf="statusPraseminar">
+      <div class="row">
+        <div class="col-md-12">
 
-            <br>
+          <alert type="info">
+            <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4>
+            Silahkan pilih salah satu pilihan seminar yang kamu lakukan.
+          </alert>
 
-            <div class="col-md-12 text-center">
-              <button (click)="delete()" class="btn btn-danger">
-                Hapus Data Seminar
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
-            <alert type="danger">
-              <h4>Kamu telah memilih Seminar Mini Conference</h4>
-              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
-            </alert>
-
-            <br>
-
-            <div class="col-md-12 text-center">
-              <button (click)="delete()" class="btn btn-danger">
-                Hapus Data Seminar
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 1 || dataSeminar.seminar == false">
-            <ba-card title="Konferensi Nasional / Internasional" baCardClass="with-scroll">
-          <form class="row form-inline" (ngSubmit)="submit()">
-
-            <!-- nama & nim-->
-            <div class="col-md-12 col-xs-12">
-
-              <div class="col-md-4 col-sm-12">
-                <div class="row">
-                  <div class="col-md-2">
-                    <b>Nama</b>
-                  </div>
-                  <div class="col-md-8">
-                    : {{data.nama}}
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-2">
-                    <b>NIM</b>
-                  </div>
-                  <div class="col-md-8">
-                    : {{data.nim}}
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-8 col-sm-12">
-                <div class="row">
-                  <div class="col-md-5">
-                    <b>Pembimbing Ketua</b>
-                  </div>
-                  <div class="col-md-7">
-                    : {{dosen1}}
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-5">
-                    <b>Pembimbing Anggota</b>
-                  </div>
-                  <div class="col-md-7">
-                    : {{dosen2}}
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-md-12">
-              <hr>
-            </div>
-
-            <div class="col-md-12">
-              <div class="col-md-5">
-                <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji1}}</p>
-              </div>
-              <div class="col-md-7" *ngIf="penguji2">
-                <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji2}}</p>
-              </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br />
-            </div>
-
-            <!-- app.component.html -->
-            <div *ngIf="!dataSeminar.seminar" class="col-md-12">
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 3">
               <alert type="danger">
-                Silahkan isi form seminar terlebih dahulu untuk melakukan <b>Upload file makalah / berkas seminar</b>
-              </alert>
-            </div>
-
-            <!-- Nama Konferensi -->
-            <div class="form-group col-md-12 col-xs-12">
-              <label><p href primary><b>Nama Konferensi</b></p></label><br />
-              <input class="form-control" type="text" style="width:100%" name="nama_konferensi" [(ngModel)]="nama_konferensi" placeholder="Nama konferensi" required/>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br />
-            </div>
-
-            <!-- Judul Paper -->
-            <div class="form-group col-md-12 col-xs-12">
-              <label><p href primary><b>Judul Paper</b></p></label><br />
-              <textarea class="form-control" style="width:100%" name="judul_paperl" [(ngModel)]="judul_paper" placeholder="Judul paper kamu" required></textarea>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br />
-            </div>
-
-            <!-- Tempat -->
-            <div class="form-group col-md-4 col-sm-12 col-xs-12">
-              <label><p href primary><b>Tempat</b></p></label><br />
-              <input class="form-control" type="text" name="tempat" [(ngModel)]="tempat" placeholder="Bogor, Institut Pertanian Bogor" required/>
-            </div>
-
-            <!-- JAM-->
-            <div class="form-group col-md-4 col-sm-12 col-xs-12">
-              <label><p href primary><b>Jam</b> (format: 24:00)</p></label><br />
-              <input class="form-control" type="text" name="tempat" [(ngModel)]="jam" placeholder="24:00" required/>
-            </div>
-
-            <!-- Tanggal -->
-            <div class="form-group col-md-4 col-sm-12 col-xs-12">
-              <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p> </label><br />
-              <input type="date" name="date" [(ngModel)]="tanggal" class="form-control" style="height:36px" required/>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br />
-            </div>
-
-            <div class="col-md-12 text-right">
-              <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <br />
-            </div>
-
-            <div class="col-md-12" *ngIf="dataSeminar.seminar">
-              <label class="row col-md-12"><p href primary><b>Upload File Seminar Konferensi</b></p></label><br />
-
-              <alert type="info">
-                <h4> File Konferensi Terdiri dari 2 berkas yang di-<i>compress</i> menggunakan ekstensi <i>.zip</i> :</h4><br>
-                1. Makalah Konferensi yang dikumpulkan kepada panitia Konferensi <i>(format : Seminar_Konferensi_Makalah_NIM.pdf)</i><br>
-                2. Sertifikat Sebagai Pembicara Konferensi <i>(format : Seminar_Konferensi_Sertifikat_NIM.pdf)</i><br>
+                <h4>Kamu telah memilih Seminar Mandiri</h4>
+                <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
               </alert>
 
-              <div class="col-md-3 text-center">
-                <alert type="danger" *ngIf="!show">
-                  Kamu belum upload File Seminar Konferensi
-                </alert>
-                <alert type="success" *ngIf="show">
-                  File Seminar Konferensi kamu bisa dilihat<br /><br /> <a target="_blank" href="{{berkas}}"><b>Disini</b></a>
-                </alert>
+              <br>
+
+              <div class="col-md-12 text-center">
+                <button (click)="delete()" class="btn btn-danger">
+                  Hapus Data Seminar
+                </button>
               </div>
-              <div class="col-md-9">
-                <div class="row">
+            </div>
+          </div>
+
+
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
+              <alert type="danger">
+                <h4>Kamu telah memilih Seminar Mini Conference</h4>
+                <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
+              </alert>
+
+              <br>
+
+              <div class="col-md-12 text-center">
+                <button (click)="delete()" class="btn btn-danger">
+                  Hapus Data Seminar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 1 || dataSeminar.seminar == false">
+              <ba-card title="Konferensi Nasional / Internasional" baCardClass="with-scroll">
+                <form class="row form-inline" (ngSubmit)="submit()">
+
+                  <!-- nama & nim-->
+                  <div class="col-md-12 col-xs-12">
+
+                    <div class="col-md-4 col-sm-12">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <b>Nama</b>
+                        </div>
+                        <div class="col-md-8">
+                          : {{data.nama}}
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-2">
+                          <b>NIM</b>
+                        </div>
+                        <div class="col-md-8">
+                          : {{data.nim}}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-sm-12">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <b>Pembimbing Ketua</b>
+                        </div>
+                        <div class="col-md-7">
+                          : {{dosen1}}
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <b>Pembimbing Anggota</b>
+                        </div>
+                        <div class="col-md-7">
+                          : {{dosen2}}
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
                   <div class="col-md-12">
-                    <input class="button" type="file"
-                           ngFileSelect
-                           [options]="options"
-                           (onUpload)="handleUpload($event)"
-                           (beforeUpload)="beforeUpload($event)">
+                    <hr>
                   </div>
-                </div>
-                <div class="row">
-                  <br />
-                  <div class="col-md-8">
-                    <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-md-12">
-                <alert type="info" *ngIf="show">
-                  Silahkan Upload ulang jika ingin mengganti File Seminar Konferensi
-                </alert>
-              </div>
+                  <div class="col-md-12">
+                    <div class="col-md-5">
+                      <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji1}}</p>
+                    </div>
+                    <div class="col-md-7" *ngIf="penguji2">
+                      <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji2}}</p>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- app.component.html -->
+                  <div *ngIf="!dataSeminar.seminar" class="col-md-12">
+                    <alert type="danger">
+                      Silahkan isi form seminar terlebih dahulu untuk melakukan <b>Upload file makalah / berkas seminar</b>
+                    </alert>
+                  </div>
+
+                  <!-- Nama Konferensi -->
+                  <div class="form-group col-md-12 col-xs-12">
+                    <label><p href primary><b>Nama Konferensi</b></p></label><br />
+                    <input class="form-control" type="text" style="width:100%" name="nama_konferensi" [(ngModel)]="nama_konferensi" placeholder="Nama konferensi" required/>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- Judul Paper -->
+                  <div class="form-group col-md-12 col-xs-12">
+                    <label><p href primary><b>Judul Paper</b></p></label><br />
+                    <textarea class="form-control" style="width:100%" name="judul_paperl" [(ngModel)]="judul_paper" placeholder="Judul paper kamu" required></textarea>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- Tempat -->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Tempat</b></p></label><br />
+                    <input class="form-control" type="text" name="tempat" [(ngModel)]="tempat" placeholder="Bogor, Institut Pertanian Bogor" required/>
+                  </div>
+
+                  <!-- JAM-->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Jam</b> (format: 24:00)</p></label><br />
+                    <input class="form-control" type="text" name="tempat" [(ngModel)]="jam" placeholder="24:00" required/>
+                  </div>
+
+                  <!-- Tanggal -->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p> </label><br />
+                    <input type="date" name="date" [(ngModel)]="tanggal" class="form-control" style="height:36px" required/>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <div class="col-md-12" *ngIf="dataSeminar.seminar">
+                    <label class="row col-md-12"><p href primary><b>Upload File Seminar Konferensi</b></p></label><br />
+
+                    <alert type="info">
+                      <h4> File Konferensi Terdiri dari 2 berkas yang di-<i>compress</i> menggunakan ekstensi <i>.zip</i> :</h4><br>
+                      1. Makalah Konferensi yang dikumpulkan kepada panitia Konferensi <i>(format : Seminar_Konferensi_Makalah_NIM.pdf)</i><br>
+                      2. Sertifikat Sebagai Pembicara Konferensi <i>(format : Seminar_Konferensi_Sertifikat_NIM.pdf)</i><br>
+                    </alert>
+
+                    <div class="col-md-3 text-center">
+                      <alert type="danger" *ngIf="!show">
+                        Kamu belum upload File Seminar Konferensi
+                      </alert>
+                      <alert type="success" *ngIf="show">
+                        File Seminar Konferensi kamu bisa dilihat<br /><br /> <a target="_blank" href="{{berkas}}"><b>Disini</b></a>
+                      </alert>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <input class="button" type="file"
+                                 ngFileSelect
+                                 [options]="options"
+                                 (onUpload)="handleUpload($event)"
+                                 (beforeUpload)="beforeUpload($event)">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <br />
+                        <div class="col-md-8">
+                          <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <alert type="info" *ngIf="show">
+                        Silahkan Upload ulang jika ingin mengganti File Seminar Konferensi
+                      </alert>
+                    </div>
+                  </div>
+
+                </form>
+              </ba-card>
             </div>
-
-          </form>
-        </ba-card>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 
 </div>

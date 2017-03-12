@@ -22,7 +22,14 @@
 
   <div *ngIf="statusPraseminar">
 
-    <div class="row">
+    <div class="row" *ngIf="log < 10">
+      <alert type="danger">
+        <h4>Maaf, kamu belum mengisi Log Bimbingan minimal 10 kali atau log bimbingan kamu belum disetujui oleh dosen pembimbing.</h4>
+        <p>Silahkan hubungi dosen pembimbing untuk menyetujui log bimbingan kamu.</p>
+      </alert>
+    </div>
+
+    <div class="row" *ngIf="log >= 10">
       <div class="col-md-12">
 
         <alert type="info">
@@ -144,7 +151,7 @@
 
                 <div *ngIf="!upload" class="col-md-12">
                   <alert type="danger">
-                    Silahkan isi form seminar terlebih dahulu untuk <b>Upload file makalah / berkas seminar</b>
+                    Silahkan isi form seminar terlebih dahulu untuk melakukan <b>Upload file makalah / berkas seminar</b>
                   </alert>
                 </div>
 
@@ -248,6 +255,18 @@
                       Silahkan Upload ulang jika ingin mengganti Makalah Seminar Mandiri
                     </alert>
                   </div>
+
+                  <div class="col-md-12" *ngIf="pengumuman">
+                    <alert type="success">
+                      <h4><b>Setelah mengisi form dan upload makalah seminar kamu, silahkan persiapkan dokumen-dokumen berikut dan berikan ke petugas TU Departemen Ilmu Komputer :</b><br></h4>
+                      <p>1. Formulir pendaftaran seminar yang ditanda-tangani Dosen Pembimbing 1. Formulir dapat diunduh <a [href]="seminarPDF" target="_blank"><b>Disini</b></a></p>
+                      <p>2. Dokumen Log Bimbingan yang ditanda-tangani Dosen Pembimbing 1. Dokumen dapat diunduh <a [href]="logPDF" target="_blank"><b>Disini</b></a></p>
+                      <p>3. 4 makalah seminar yang ditanda-tangani Dosen Pembimbing 1.</p>
+                      <p>4. Kartu kehadiran Seminar yang berwarna kuning.</p>
+                      <p>5. Kumpulkan dokumen-dokumen tersebut dalam map biru.</p>
+                    </alert>
+                  </div>
+
                 </div>
 
               </form>

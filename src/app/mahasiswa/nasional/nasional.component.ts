@@ -75,11 +75,13 @@ export class nasional {
   judul_paper;
   tempat;
   tanggal;
+  log = 0;
   getDataSeminar() {
     this.authHttp.get(this.data.urlSeminarData)
       .map(res => res.json())
       .subscribe(data => {
         this.dataSeminar = data;
+        this.log = data.log;
 
         if(this.dataSeminar.seminar.jenis_seminar == 1) {
           if(data.data.berkas) {
