@@ -35,12 +35,6 @@ export class DashboardDosen {
       nama: {
         title: 'Nama Mahasiswa'
       },
-      dosen1: {
-        title: 'Pembimbing 1'
-      },
-      dosen2: {
-        title: 'Pembimbing 2'
-      },
       tanggal_kolokium: {
         title: 'Tgl Kolokium',
       },
@@ -66,6 +60,15 @@ export class DashboardDosen {
       perPage: 7
     }
   };
+
+  source;
+  dosenSummary() {
+    this.authHttp.get(this.data.urlSummaryDosen)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.source = data;
+      })
+  }
 
 
   public pieChartType:string = 'pie';
@@ -169,6 +172,7 @@ export class DashboardDosen {
 
   ngOnInit() {
     this.getConnection();
+    this.dosenSummary();
     this.getDataSummary();
     this.getDataPraseminar();
     this.getDataSeminar();
@@ -197,6 +201,7 @@ export class DashboardDosen {
 
   refresh() {
     this.getConnection();
+    this.dosenSummary();
     this.getDataSummary();
     this.getDataPraseminar();
     this.getDataSeminar();

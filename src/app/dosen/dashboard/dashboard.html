@@ -24,9 +24,9 @@
     </div><br><br>
   </div>
 
-  <div class="col-md-12">
-    <ba-card title="Ringkasan Mahasiswa" baCardClass="with-scroll table-panel">
-      <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+  <div class="col-md-12" *ngIf="source">
+    <ba-card title="Ringkasan Mahasiswa Bimbingan" baCardClass="with-scroll table-panel">
+      <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
     </ba-card>
   </div>
 
