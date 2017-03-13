@@ -14,11 +14,13 @@
 
 <div *ngIf="status">
 
-  <div class="row" *ngIf="log < 10">
-    <alert type="danger">
-      <h4>Maaf, kamu belum mengisi Log Bimbingan minimal 10 kali atau log bimbingan kamu belum disetujui oleh dosen pembimbing.</h4>
-      <p>Silahkan hubungi dosen pembimbing untuk menyetujui log bimbingan kamu.</p>
-    </alert>
+  <div class="row" *ngIf="log < 10 || !log">
+    <div class="col-md-12">
+      <alert type="danger">
+        <h4>Maaf, kamu belum mengisi Log Bimbingan minimal 10 kali atau log bimbingan kamu belum disetujui oleh dosen pembimbing.</h4>
+        <p>Silahkan hubungi dosen pembimbing untuk menyetujui log bimbingan kamu.</p>
+      </alert>
+    </div>
   </div>
 
   <div class="row" *ngIf="log >= 10">

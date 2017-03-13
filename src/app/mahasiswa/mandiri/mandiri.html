@@ -14,270 +14,275 @@
 
 <div *ngIf="status">
 
-  <div *ngIf="!statusPraseminar">
-    <alert type="danger">
-      <h4> Kamu belum melaksanakan Praseminar. </h4>
-    </alert>
-  </div>
 
-  <div *ngIf="statusPraseminar">
-
-    <div class="row" *ngIf="log < 10">
+  <div class="row" *ngIf="log < 10 || !log">
+    <div class="col-md-12">
       <alert type="danger">
         <h4>Maaf, kamu belum mengisi Log Bimbingan minimal 10 kali atau log bimbingan kamu belum disetujui oleh dosen pembimbing.</h4>
         <p>Silahkan hubungi dosen pembimbing untuk menyetujui log bimbingan kamu.</p>
       </alert>
     </div>
+  </div>
 
-    <div class="row" *ngIf="log >= 10">
-      <div class="col-md-12">
+  <div *ngIf="log >= 10">
 
-        <alert type="info">
-          <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4>
-          Silahkan pilih salah satu pilihan seminar yang kamu lakukan.
-        </alert>
+    <div *ngIf="!statusPraseminar">
+      <alert type="danger">
+        <h4> Kamu belum melaksanakan Praseminar. </h4>
+      </alert>
+    </div>
 
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 1">
-            <alert type="danger">
-              <h4>Kamu telah memilih Seminar Konferensi Nasional / Internasional</h4>
-              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
-            </alert>
+    <div *ngIf="statusPraseminar">
 
-            <br>
+      <div class="row" *ngIf="log >= 10">
+        <div class="col-md-12">
 
-            <div class="col-md-12 text-center">
-              <button (click)="delete()" class="btn btn-danger">
-                Hapus Data Seminar
-              </button>
+          <alert type="info">
+            <h4> Pilihan Seminar : Konferensi Nasional / Internasional, Seminar Mini Conference, Seminar Mandiri.</h4>
+            Silahkan pilih salah satu pilihan seminar yang kamu lakukan.
+          </alert>
+
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 1">
+              <alert type="danger">
+                <h4>Kamu telah memilih Seminar Konferensi Nasional / Internasional</h4>
+                <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
+              </alert>
+
+              <br>
+
+              <div class="col-md-12 text-center">
+                <button (click)="delete()" class="btn btn-danger">
+                  Hapus Data Seminar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
-            <alert type="danger">
-              <h4>Kamu telah memilih Seminar Mini Conference</h4>
-              <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
-            </alert>
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 2">
+              <alert type="danger">
+                <h4>Kamu telah memilih Seminar Mini Conference</h4>
+                <p>Silahkan hapus terlebih dahulu data seminar sebelumnya untuk mengisi Form Ini.</p>
+              </alert>
 
-            <br>
+              <br>
 
-            <div class="col-md-12 text-center">
-              <button (click)="delete()" class="btn btn-danger">
-                Hapus Data Seminar
-              </button>
+              <div class="col-md-12 text-center">
+                <button (click)="delete()" class="btn btn-danger">
+                  Hapus Data Seminar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div *ngIf="dataSeminar">
-          <div *ngIf="dataSeminar.seminar.jenis_seminar == 3 || dataSeminar.seminar == false">
-            <ba-card title="Seminar Mandiri" baCardClass="with-scroll">
-              <form class="row form-inline" (ngSubmit)="submit()">
+          <div *ngIf="dataSeminar">
+            <div *ngIf="dataSeminar.seminar.jenis_seminar == 3 || dataSeminar.seminar == false">
+              <ba-card title="Seminar Mandiri" baCardClass="with-scroll">
+                <form class="row form-inline" (ngSubmit)="submit()">
 
-                <!-- nama & nim-->
-                <div class="col-md-12 col-xs-12">
+                  <!-- nama & nim-->
+                  <div class="col-md-12 col-xs-12">
 
-                  <div class="col-md-4 col-sm-12">
-                    <div class="row">
-                      <div class="col-md-2">
-                        <b>Nama</b>
+                    <div class="col-md-4 col-sm-12">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <b>Nama</b>
+                        </div>
+                        <div class="col-md-8">
+                          : {{data.nama}}
+                        </div>
                       </div>
-                      <div class="col-md-8">
-                        : {{data.nama}}
-                      </div>
-                    </div>
 
-                    <div class="row">
-                      <div class="col-md-2">
-                        <b>NIM</b>
-                      </div>
-                      <div class="col-md-8">
-                        : {{data.nim}}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-8 col-sm-12">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <b>Pembimbing Ketua</b>
-                      </div>
-                      <div class="col-md-7">
-                        : {{dosen1}}
+                      <div class="row">
+                        <div class="col-md-2">
+                          <b>NIM</b>
+                        </div>
+                        <div class="col-md-8">
+                          : {{data.nim}}
+                        </div>
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-md-5">
-                        <b>Pembimbing Anggota</b>
+                    <div class="col-md-8 col-sm-12">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <b>Pembimbing Ketua</b>
+                        </div>
+                        <div class="col-md-7">
+                          : {{dosen1}}
+                        </div>
                       </div>
-                      <div class="col-md-7">
-                        : {{dosen2}}
-                      </div>
-                    </div>
-                  </div>
 
-                </div>
-
-                <div class="col-md-12">
-                  <hr>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="col-md-5">
-                    <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji1}}</p>
-                  </div>
-                  <div class="col-md-7" *ngIf="penguji2">
-                    <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji2}}</p>
-                  </div>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <br />
-                </div>
-
-
-                <!-- app.component.html -->
-
-                <div class="col-md-12">
-                  <alert type="info">
-                    <p><b>Perhatian ! Sebelum mengisi form berikut, silahkan hubungi Dosen Pembimbing dan Penguji untuk persetujuan kehadiran di Seminar kamu.</b><br></p>
-                    <p>Informasi yang kamu isi di formulir dibawah ini harus merupakan kesepakatan antara Kamu, Dosen Pembimbing, Penguji, dan Pembahas.</p>
-                  </alert>
-                </div>
-
-                <div *ngIf="!upload" class="col-md-12">
-                  <alert type="danger">
-                    Silahkan isi form seminar terlebih dahulu untuk melakukan <b>Upload file makalah / berkas seminar</b>
-                  </alert>
-                </div>
-
-
-                <!-- Judul Paper -->
-                <div class="form-group col-md-12 col-xs-12">
-                  <label><p href primary><b>Topik</b></p></label><br />
-                  <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu" required></textarea>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <br />
-                </div>
-
-                <!-- Pembahas 1 -->
-                <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                  <label><p href primary><b>NIM Pembahas 1</b></p></label><br />
-                  <input class="form-control" type="text" name="pembahas_1" [(ngModel)]="pembahas_1" placeholder="NIM Pembahas 1" required/>
-                </div>
-
-                <!-- Pembahas 2 -->
-                <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                  <label><p href primary><b>NIM Pembahas 2</b></p></label><br />
-                  <input class="form-control" type="text" name="pembahas_2" [(ngModel)]="pembahas_2" placeholder="NIM Pembahas 2" required/>
-                </div>
-
-                <!-- Pembahas 3 -->
-                <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                  <label><p href primary><b>NIM Pembahas 3</b></p></label><br />
-                  <input class="form-control" type="text" name="pembahas_3" [(ngModel)]="pembahas_3" placeholder="NIM Pembahas 3" required/>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <br />
-                </div>
-
-                <!-- Tempat -->
-                <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                  <label><p href primary><b>Tempat</b></p></label><br />
-                  <input class="form-control" type="text" name="tempat"  required [(ngModel)]="tempat" placeholder="Ruang Sidang Dept. Ilmu Komputer"/>
-                </div>
-
-                <!-- Tempat -->
-                <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                  <label><p href primary><b>Jam</b> (format: 24:00)</p></label><br />
-                  <input class="form-control" type="text" name="jam"  required [(ngModel)]="jam" placeholder="24:00"/>
-                </div>
-
-                <!-- Tanggal -->
-                <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                  <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p></label><br />
-                  <input type="date" name="tanggal" class="form-control" required  [(ngModel)]="tanggal" style="height:36px"/>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <br />
-                </div>
-
-                <!-- Submit -->
-                <div class="section-block col-md-12 text-right">
-                  <label padding-left for="pembimbing">&nbsp;</label><br />
-                  <button type="submit" class="btn btn-primary btn-lg">Daftar</button>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <br />
-                </div>
-
-                <!-- app.component.html -->
-                <div class="col-md-12" *ngIf="upload">
-                  <label class="row col-md-12"><p href primary><b>Upload Makalah Seminar Mandiri</b></p></label><br />
-
-                  <div class="col-md-3 text-center">
-                    <alert type="danger" *ngIf="!makalah">
-                      Kamu belum upload Makalah Seminar Mandiri
-                    </alert>
-                    <alert type="success" *ngIf="makalah">
-                      Makalah Seminar Mandiri kamu bisa dilihat<br /><br /> <a target="_blank" href="{{makalah}}"><b>Disini</b></a>
-                    </alert>
-                  </div>
-                  <div class="col-md-9">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <input class="button" type="file"
-                               ngFileSelect
-                               [options]="options"
-                               (onUpload)="handleUpload($event)"
-                               (beforeUpload)="beforeUpload($event)">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <b>Pembimbing Anggota</b>
+                        </div>
+                        <div class="col-md-7">
+                          : {{dosen2}}
+                        </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <br />
-                      <div class="col-md-8">
-                        <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
-                      </div>
-                    </div>
+
                   </div>
 
                   <div class="col-md-12">
-                    <alert type="info" *ngIf="makalah">
-                      Silahkan Upload ulang jika ingin mengganti Makalah Seminar Mandiri
+                    <hr>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-5">
+                      <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji1}}</p>
+                    </div>
+                    <div class="col-md-7" *ngIf="penguji2">
+                      <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji2}}</p>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+
+                  <!-- app.component.html -->
+
+                  <div class="col-md-12">
+                    <alert type="info">
+                      <p><b>Perhatian ! Sebelum mengisi form berikut, silahkan hubungi Dosen Pembimbing dan Penguji untuk persetujuan kehadiran di Seminar kamu.</b><br></p>
+                      <p>Informasi yang kamu isi di formulir dibawah ini harus merupakan kesepakatan antara Kamu, Dosen Pembimbing, Penguji, dan Pembahas.</p>
                     </alert>
                   </div>
 
-                  <div class="col-md-12" *ngIf="pengumuman">
-                    <alert type="success">
-                      <h4><b>Setelah mengisi form dan upload makalah seminar kamu, silahkan persiapkan dokumen-dokumen berikut dan berikan ke petugas TU Departemen Ilmu Komputer :</b><br></h4>
-                      <p>1. Formulir pendaftaran seminar yang ditanda-tangani Dosen Pembimbing 1. Formulir dapat diunduh <a [href]="seminarPDF" target="_blank"><b>Disini</b></a></p>
-                      <p>2. Dokumen Log Bimbingan yang ditanda-tangani Dosen Pembimbing 1. Dokumen dapat diunduh <a [href]="logPDF" target="_blank"><b>Disini</b></a></p>
-                      <p>3. 4 makalah seminar yang ditanda-tangani Dosen Pembimbing 1.</p>
-                      <p>4. Kartu kehadiran Seminar yang berwarna kuning.</p>
-                      <p>5. Kumpulkan dokumen-dokumen tersebut dalam map biru.</p>
+                  <div *ngIf="!upload" class="col-md-12">
+                    <alert type="danger">
+                      Silahkan isi form seminar terlebih dahulu untuk melakukan <b>Upload file makalah / berkas seminar</b>
                     </alert>
                   </div>
 
-                </div>
 
-              </form>
+                  <!-- Judul Paper -->
+                  <div class="form-group col-md-12 col-xs-12">
+                    <label><p href primary><b>Topik</b></p></label><br />
+                    <textarea class="form-control" style="width:100%" name="topik" [(ngModel)]="topik" placeholder="Judul paper kamu" required></textarea>
+                  </div>
 
-            </ba-card>
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- Pembahas 1 -->
+                  <div class="form-group col-md-4 col-sm-6 col-xs-12">
+                    <label><p href primary><b>NIM Pembahas 1</b></p></label><br />
+                    <input class="form-control" type="text" name="pembahas_1" [(ngModel)]="pembahas_1" placeholder="NIM Pembahas 1" required/>
+                  </div>
+
+                  <!-- Pembahas 2 -->
+                  <div class="form-group col-md-4 col-sm-6 col-xs-12">
+                    <label><p href primary><b>NIM Pembahas 2</b></p></label><br />
+                    <input class="form-control" type="text" name="pembahas_2" [(ngModel)]="pembahas_2" placeholder="NIM Pembahas 2" required/>
+                  </div>
+
+                  <!-- Pembahas 3 -->
+                  <div class="form-group col-md-4 col-sm-6 col-xs-12">
+                    <label><p href primary><b>NIM Pembahas 3</b></p></label><br />
+                    <input class="form-control" type="text" name="pembahas_3" [(ngModel)]="pembahas_3" placeholder="NIM Pembahas 3" required/>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- Tempat -->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Tempat</b></p></label><br />
+                    <input class="form-control" type="text" name="tempat"  required [(ngModel)]="tempat" placeholder="Ruang Sidang Dept. Ilmu Komputer"/>
+                  </div>
+
+                  <!-- Tempat -->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Jam</b> (format: 24:00)</p></label><br />
+                    <input class="form-control" type="text" name="jam"  required [(ngModel)]="jam" placeholder="24:00"/>
+                  </div>
+
+                  <!-- Tanggal -->
+                  <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                    <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p></label><br />
+                    <input type="date" name="tanggal" class="form-control" required  [(ngModel)]="tanggal" style="height:36px"/>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="section-block col-md-12 text-right">
+                    <label padding-left for="pembimbing">&nbsp;</label><br />
+                    <button type="submit" class="btn btn-primary btn-lg">Daftar</button>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-xs-12">
+                    <br />
+                  </div>
+
+                  <!-- app.component.html -->
+                  <div class="col-md-12" *ngIf="upload">
+                    <label class="row col-md-12"><p href primary><b>Upload Makalah Seminar Mandiri</b></p></label><br />
+
+                    <div class="col-md-3 text-center">
+                      <alert type="danger" *ngIf="!makalah">
+                        Kamu belum upload Makalah Seminar Mandiri
+                      </alert>
+                      <alert type="success" *ngIf="makalah">
+                        Makalah Seminar Mandiri kamu bisa dilihat<br /><br /> <a target="_blank" href="{{makalah}}"><b>Disini</b></a>
+                      </alert>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <input class="button" type="file"
+                                 ngFileSelect
+                                 [options]="options"
+                                 (onUpload)="handleUpload($event)"
+                                 (beforeUpload)="beforeUpload($event)">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <br />
+                        <div class="col-md-8">
+                          <progress class="progress progress-striped" value="{{progress}}" max="100" type="warning">{{progress}}%</progress><b *ngIf="progress">{{progress}}%</b>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <alert type="info" *ngIf="makalah">
+                        Silahkan Upload ulang jika ingin mengganti Makalah Seminar Mandiri
+                      </alert>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="pengumuman">
+                      <alert type="success">
+                        <h4><b>Setelah mengisi form dan upload makalah seminar kamu, silahkan persiapkan dokumen-dokumen berikut dan berikan ke petugas TU Departemen Ilmu Komputer :</b><br></h4>
+                        <p>1. Formulir pendaftaran seminar yang ditanda-tangani Dosen Pembimbing 1. Formulir dapat diunduh <a [href]="seminarPDF" target="_blank"><b>Disini</b></a></p>
+                        <p>2. Dokumen Log Bimbingan yang ditanda-tangani Dosen Pembimbing 1. Dokumen dapat diunduh <a [href]="logPDF" target="_blank"><b>Disini</b></a></p>
+                        <p>3. 4 makalah seminar yang ditanda-tangani Dosen Pembimbing 1.</p>
+                        <p>4. Kartu kehadiran Seminar yang berwarna kuning.</p>
+                        <p>5. Kumpulkan dokumen-dokumen tersebut dalam map biru.</p>
+                      </alert>
+                    </div>
+
+                  </div>
+
+                </form>
+
+              </ba-card>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
-
-
   </div>
 
 </div>
