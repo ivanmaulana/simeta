@@ -89,10 +89,10 @@ export class Mandiri {
       .map(res => res.json())
       .subscribe(data => {
         this.dataSeminar = data;
+        this.log = data.log;
 
         if(this.dataSeminar.seminar.jenis_seminar == 3) {
           this.upload = 1;
-          this.log = data.log;
           this.show = true;
           this.pembahas_1 = data.data.pembahas_1;
           this.pembahas_2 = data.data.pembahas_2;
