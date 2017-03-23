@@ -70,6 +70,17 @@ export class PengujiAdmin {
 
   nama;
   no;
+  tahun_masuk;
+  tempat_lahir;
+  tanggal_lahir;
+  alamat;
+  alamat_ortu;
+  nama_ayah;
+  nama_ibu;
+  no_ortu;
+  telp_ortu;
+  email;
+  gambar;
   public typeaheadOnSelect(e:TypeaheadMatch):void {
     this.topik = '';
     this.lab = 0;
@@ -86,6 +97,17 @@ export class PengujiAdmin {
     this.nim = e.item.nim;
     this.nama = e.item.nama;
     this.no = e.item.hp;
+    this.tahun_masuk = e.item.tahunmasuk;
+    this.alamat = e.item.alamat;
+    this.alamat_ortu = e.item.alamatortu;
+    this.tempat_lahir = e.item.tempatlahir;
+    this.tanggal_lahir = e.item.tgllahir;
+    this.nama_ayah = e.item.namaayah;
+    this.nama_ibu = e.item.namaibu;
+    this.no_ortu = e.item.noortu;
+    this.telp_ortu = e.item.telportu;
+    this.email = e.item.email;
+    this.gambar = 'http://simeta-api.apps.cs.ipb.ac.id/uploads/filePhoto/foto-'+this.nim+'-'+this.nama+'.png';
 
     let creds = JSON.stringify({nama: e.value});
 

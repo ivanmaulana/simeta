@@ -37,6 +37,19 @@
       </div>
 
       <div class="row" *ngIf="selected !== '' && click == true">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <label><b>NIM</b></label> : {{nim}}
+          </div>
+          <div class="col-md-4">
+            <label><b>Nama</b></label> : {{nama}}
+          </div>
+          <div class="col-md-4">
+            <label><b>Tahun Masuk</b></label> : {{tahun_masuk}}
+          </div>
+          <br><br>
+        </div>
+
         <div class="col-md-6">
 
           <div class="col-md-12">
@@ -130,18 +143,90 @@
         </div>
 
         <div class="col-md-12">
+          <h2 class="primary-text">Profil</h2>
           <hr>
         </div>
 
         <div class="col-md-12">
-          <div class="col-md-4">
-            NIM = {{nim}}
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Tempat Lahir</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{tempat_lahir}}
+            </div>
           </div>
-          <div class="col-md-4">
-            Nama = {{nama}}
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Tanggal Lahir</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{tanggal_lahir.substr(0,11)}}
+            </div>
           </div>
-          <div class="col-md-4">
-            No. HP = {{no}}
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>No. HP</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{no}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Email</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{email}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Nama Ayah</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{nama_ayah}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Nama Ibu</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{nama_ibu}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>No. Telp Orang Tua</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{telp_ortu}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>No. HP Orang Tua</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{hp_ortu}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Alamat Sekarang</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{alamat}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-4">
+              <label><b>Alamat Orang Tua</b></label>
+            </div>
+            <div class="col-md-8">
+              : {{alamat_ortu}}
+            </div>
           </div>
         </div>
       </div>
