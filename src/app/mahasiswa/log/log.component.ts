@@ -1,9 +1,10 @@
-  import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 import * as moment from 'moment';
+import {IMyOptions} from 'mydatepicker';
 
 @Component({
   selector: 'log',
@@ -66,7 +67,24 @@ export class Log {
   private linkLog = this.data.urlGenerateLogPDF;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
+    this.d = new Date();
+    this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
 
+  }
+
+
+
+  private myDatePickerOptions: IMyOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    editableDateField: false,
+    width: '220px',
+  };
+
+  d;
+  dateFormat;
+
+  onDateChanged(e) {
+    this.date = e.formatted;
   }
 
   delete(id) {

@@ -125,13 +125,15 @@
             <!-- tanggal -->
             <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Tanggal </b>(format: 2017-01-01)</label><br />
-              <input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px" required placeholder="2017-01-01"/><br>
+              <!--<input type="date" class="form-control" name="date" [(ngModel)]="date" style="height:34px" required placeholder="2017-01-01"/><br>-->
+              <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                              [(ngModel)]="dateFormat" (dateChanged)="onDateChanged($event)" required></my-date-picker>
             </div>
 
             <!-- jam -->
             <div class="form group col-sm-12 col-md-4 col-xs-12">
               <label><b>Jam </b>(format: 24:00)</label><br />
-              <input type="text" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px" required placeholder="20:30"/>
+              <input type="text" class="form-control" name="jam" [(ngModel)]="jam" style="height:34px" required placeholder="10:00"/>
             </div>
 
             <!-- tempat -->

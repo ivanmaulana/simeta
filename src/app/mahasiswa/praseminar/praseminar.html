@@ -100,7 +100,8 @@
                   (format: 2017-01-01)
                 </div>
                 <div class="col-md-8">
-                  <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01" required>
+                  <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                  [(ngModel)]="dateFormat" (dateChanged)="onDateChanged($event)" required></my-date-picker>
                 </div>
               </div>
 

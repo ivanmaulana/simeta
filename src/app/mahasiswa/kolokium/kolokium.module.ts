@@ -8,6 +8,7 @@ import { routing }       from './kolokium.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
     NgaModule,
     NgUploaderModule,
     ProgressbarModule,
+    MyDatePickerModule,
     AlertModule.forRoot(),
     routing
   ],

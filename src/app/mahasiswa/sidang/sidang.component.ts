@@ -3,7 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
-
+import {IMyOptions} from 'mydatepicker';
 import { NgUploaderOptions } from 'ngx-uploader';
 
 @Component({
@@ -50,7 +50,22 @@ export class Sidang {
   private kelengkapanPDF = this.data.urlKelengkapanPDF;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
+    this.d = new Date();
+    this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
 
+  }
+
+  private myDatePickerOptions: IMyOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    editableDateField: false,
+    width: '220px',
+  };
+
+  d;
+  dateFormat;
+
+  onDateChanged(e) {
+    this.tanggal = e.formatted;
   }
 
   show = false;
@@ -63,6 +78,10 @@ export class Sidang {
           this.show = true;
           this.tempat = data[0].tempat;
           this.tanggal = data[0].tanggal;
+
+          this.dateFormat = new Date(data[0].tanggal);
+          this.dateFormat = <Object> {date: {year: this.dateFormat.getFullYear(), month: this.dateFormat.getMonth() + 1, day: this.dateFormat.getDate()}};
+
           this.jam = data[0].jam;
           if(data[0].makalah) {
             this.pengumuman = 1;

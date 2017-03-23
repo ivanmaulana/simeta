@@ -116,7 +116,9 @@
                 <br><label><p href primary><b>Tanggal Penerbitan SKL</b><br> (format: 2017-01-01)</p></label>
               </div>
               <div class="col-md-4 text-left">
-                <br><input type="date" name="tanggal" [(ngModel)]="tanggal" class="form-control" required>
+                <br>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                [(ngModel)]="dateFormat" (dateChanged)="onDateChanged($event)" required></my-date-picker>
               </div>
             </div>
             <div class="col-md-4 text-right">

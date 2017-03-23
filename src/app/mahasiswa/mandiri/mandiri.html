@@ -208,7 +208,9 @@
                   <!-- Tanggal -->
                   <div class="form-group col-md-4 col-sm-12 col-xs-12">
                     <label><p href primary><b>Tanggal</b> (format: 2017-01-01)</p></label><br />
-                    <input type="date" name="tanggal" class="form-control" required  [(ngModel)]="tanggal" style="height:36px"/>
+                    <!--<input type="date" name="tanggal" class="form-control" required  [(ngModel)]="tanggal" style="height:36px"/>-->
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                    [(ngModel)]="dateFormat" (dateChanged)="onDateChanged($event)" required></my-date-picker>
                   </div>
 
                   <div class="col-sm-12 col-md-12 col-xs-12">

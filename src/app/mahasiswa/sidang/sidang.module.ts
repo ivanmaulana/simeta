@@ -8,7 +8,7 @@ import { routing }       from './sidang.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
-import { TimepickerModule } from 'ng2-bootstrap/timepicker';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { TimepickerModule } from 'ng2-bootstrap/timepicker';
     NgaModule,
     NgUploaderModule,
     ProgressbarModule,
-    TimepickerModule.forRoot(),
+    MyDatePickerModule,
     AlertModule.forRoot(),
     routing
   ],

@@ -3,7 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
-
+import {IMyOptions} from 'mydatepicker';
 import { NgUploaderOptions } from 'ngx-uploader';
 
 @Component({
@@ -14,6 +14,7 @@ import { NgUploaderOptions } from 'ngx-uploader';
   template: require('./kolokium.html')
 })
 export class Kolokium {
+
   // status
   statusDaftar;
   statusKolokium;
@@ -43,7 +44,23 @@ export class Kolokium {
 
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
+    this.d = new Date();
+    this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
 
+  }
+
+
+  private myDatePickerOptions: IMyOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    editableDateField: false,
+    width: '220px',
+  };
+
+  d;
+  dateFormat;
+
+  onDateChanged(e) {
+    this.date = e.formatted;
   }
 
   getDataKolokium(){
@@ -211,6 +228,8 @@ export class Kolokium {
         if(data.length > 0) {
           if(data[0].makalah != null) this.preview = "http://simeta.apps.cs.ipb.ac.id/uploads/fileKolokium/"+data[0].makalah;
           this.date = data[0].tanggal;
+          this.dateFormat = new Date(data[0].tanggal);
+          this.dateFormat = <Object> {date: {year: this.dateFormat.getFullYear(), month: this.dateFormat.getMonth() + 1, day: this.dateFormat.getDate()}};
 
           if(data[0].tanggal) this.upload = 1;
         }

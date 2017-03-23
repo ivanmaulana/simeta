@@ -158,7 +158,9 @@
                 <div class="col-md-8">
                   <div class="col-md-4" style="padding-top: 10px">
                     <label><p href primary><b>Tanggal</b></p></label> (format: 2017-01-01)<br>
-                    <input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01">
+                    <!--<input type="date" class="form-control" [(ngModel)]="date" name="date" required placeholder="2017-01-01">-->
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                    [(ngModel)]="dateFormat" (dateChanged)="onDateChanged($event)" required></my-date-picker>
                   </div>
                   <div class="col-md-4" style="padding-top: 10px">
                     <label><p href primary><b>Jam</b></p></label> (format: 24:00)<br>

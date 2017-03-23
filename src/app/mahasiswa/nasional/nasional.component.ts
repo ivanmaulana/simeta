@@ -3,7 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
-
+import {IMyOptions} from 'mydatepicker';
 import { NgUploaderOptions } from 'ngx-uploader';
 
 @Component({
@@ -38,7 +38,22 @@ export class nasional {
   private topik;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
+    this.d = new Date();
+    this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
 
+  }
+
+  private myDatePickerOptions: IMyOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    editableDateField: false,
+    width: '220px',
+  };
+
+  d;
+  dateFormat;
+
+  onDateChanged(e) {
+    this.tanggal = e.formatted;
   }
 
   delete() {
@@ -92,6 +107,10 @@ export class nasional {
           this.judul_paper = data.data.judul_paper;
           this.tempat = data.data.tempat;
           this.tanggal = data.data.tanggal.substr(0,10);
+
+          this.dateFormat = new Date(data.data.tanggal.substr(0,10));
+          this.dateFormat = <Object> {date: {year: this.dateFormat.getFullYear(), month: this.dateFormat.getMonth() + 1, day: this.dateFormat.getDate()}};
+
           this.berkas = this.berkas = "http://simeta.apps.cs.ipb.ac.id/uploads/fileSeminar/konferensi/"+data.data.berkas;
         }
       })
