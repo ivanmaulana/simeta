@@ -40,7 +40,7 @@
         <div class="col-md-6">
 
           <div class="col-md-12">
-            <label><b>Topik</b></label>
+            <label><b>Judul Tugas Akhir</b></label>
             <textarea name="topik" [(ngModel)]="topik" class="form-control" required></textarea>
           </div>
 
@@ -121,18 +121,30 @@
             <br />
           </div>
 
+          <div class="col-md-12 text-right">
+            <div class="form-group col-md-12 col-sm-12 align-right padding-right">
+              <button type="button" class="btn btn-primary btn-lg" (click)="simpan()">Simpan</button>
+            </div>
+          </div>
+
         </div>
-      </div>
 
+        <div class="col-md-12">
+          <hr>
+        </div>
 
-      <div class="row" *ngIf="selected !== '' && click == true">
-        <div class="col-md-12 text-right">
-          <div class="form-group col-md-12 col-sm-12 align-right padding-right">
-            <button type="button" class="btn btn-primary btn-lg" (click)="simpan()">Simpan</button>
+        <div class="col-md-12">
+          <div class="col-md-4">
+            NIM = {{nim}}
+          </div>
+          <div class="col-md-4">
+            Nama = {{nama}}
+          </div>
+          <div class="col-md-4">
+            No. HP = {{no}}
           </div>
         </div>
       </div>
-
 
     </ba-card>
 

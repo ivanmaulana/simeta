@@ -100,20 +100,20 @@ export class TaAdmin {
         this.response = data[0].status;
         this.message = data[0].message;
 
-        if(this.response) {
+        if (this.response) {
           this.showSuccess();
         }
-      })
+      });
 
   }
 
   showSuccess() {
-    this.toastr.success("Penentuan TA Berhasil", 'Success !');
+    this.toastr.success('Penentuan TA Berhasil', 'Success !');
   }
 
-  getIdDosen(nama){
+  getIdDosen(nama) {
     let id;
-    for (var i = 0; i < this.dosen_raw.length; i++){
+    for (let i = 0; i < this.dosen_raw.length; i++) {
       if (nama === this.dosen_raw[i]['nama']) {
         id =  this.dosen_raw[i]['id'];
       }
@@ -129,20 +129,21 @@ export class TaAdmin {
         for (let i = 0; i < data.length; i++) {
           this.dosen.push(data[i].nama);
         }
-      })
+      });
   }
 
   // -----------------------------
   // TEMPLATE
 
+
   // DASHBOARD SERVICE
   getDataPengajuan() {
-    this.authHttp.get(this.data.urlListPengajuan)
+    this.authHttp.get(this.data.urlMahasiswaAll)
       .map(res => res.json())
       .subscribe( data => {
         this.pengajuan = data;
-
-      })
+        console.log(data);
+      });
   }
 
   ngOnInit() {
@@ -158,7 +159,7 @@ export class TaAdmin {
       .map(res => res.json())
       .subscribe(data => {
         this.status = data['status'];
-      })
+      });
 
     setTimeout(() => {
       if (!this.status) {
@@ -166,7 +167,7 @@ export class TaAdmin {
         this.noConn = 1;
         this.showNoConn();
       }
-    }, 5000)
+    }, 5000);
   }
 
   refresh() {
@@ -176,7 +177,7 @@ export class TaAdmin {
   }
 
   showNoConn() {
-    this.toastr.warning("Error Connecting to Server", 'Error');
+    this.toastr.warning('Error Connecting to Server', 'Error');
   }
 
 }

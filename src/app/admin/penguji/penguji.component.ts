@@ -28,14 +28,14 @@ export class PengujiAdmin {
   dosen1;
   dosen2;
 
-  dosen_1;
-  dosen_2;
+  dosen_1 = 0;
+  dosen_2 = 0;
 
   penguji1;
   penguji2;
 
-  penguji_1;
-  penguji_2;
+  penguji_1 = 0;
+  penguji_2 = 0;
 
   dosen = [];
   dosen_raw;
@@ -68,7 +68,24 @@ export class PengujiAdmin {
     this.penguji_2 = this.getIdDosen(e.value);
   }
 
+  nama;
+  no;
   public typeaheadOnSelect(e:TypeaheadMatch):void {
+    this.topik = '';
+    this.lab = 0;
+    this.dosen_1 = 0;
+    this.dosen_2 = 0;
+    this.dosen1 = '';
+    this.dosen2 = '';
+    this.penguji_1 = 0;
+    this.penguji_2 = 0;
+    this.penguji1 = '';
+    this.penguji2 = '';
+    this.click = false;
+
+    this.nim = e.item.nim;
+    this.nama = e.item.nama;
+    this.no = e.item.hp;
 
     let creds = JSON.stringify({nama: e.value});
 
@@ -77,7 +94,6 @@ export class PengujiAdmin {
       .subscribe(data => {
         this.click = true;
 
-        this.nim = data[0]['nim'];
         this.topik = data[0]['topik'];
         this.lab = data[0]['lab'];
         this.dosen_1 = data[0]['dosen_1'];
@@ -99,7 +115,6 @@ export class PengujiAdmin {
   }
 
   simpan() {
-
     if(this.dosen1 == "") {
       this.dosen_1 = 0;
     }
@@ -160,7 +175,7 @@ export class PengujiAdmin {
 
   // DASHBOARD SERVICE
   getDataPengajuan() {
-    this.authHttp.get(this.data.urlListPengajuan)
+    this.authHttp.get(this.data.urlMahasiswaAll)
       .map(res => res.json())
       .subscribe( data => {
         this.pengajuan = data;
