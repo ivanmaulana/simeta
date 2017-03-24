@@ -4,7 +4,6 @@ import {AuthHttp} from 'angular2-jwt';
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 
-import { NgUploaderOptions } from 'ngx-uploader';
 import { TypeaheadMatch } from 'ng2-bootstrap/typeahead';
 
 @Component({

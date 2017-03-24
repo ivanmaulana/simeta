@@ -3,7 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
-
+import { TypeaheadMatch } from 'ng2-bootstrap/typeahead';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
@@ -89,44 +89,38 @@ export class LogDosen {
   // -----------------------
   // APPROVAL
 
+  nim;
+  penguji1;
+  penguji2;
   sudahApprove;
   belumApprove;
-  onChange(deviceValue) {
+  public typeaheadOnSelect(e:TypeaheadMatch):void {
+    this.nim = e.item.nim;
+    this.nama = e.item.nama;
+    this.topik = e.item.topik;
+    this.dosen1 = e.item.dosen1;
+    this.dosen2 = e.item.dosen2;
+    this.penguji1 = e.item.penguji1;
+    this.penguji2 = e.item.penguji2;
+
     this.sudahApprove = 0;
     this.belumApprove = 0;
     this.log = [];
 
-    if (deviceValue != 0) {
-      for(let i = 0; i < this.temp.length; i++) {
-        if (this.temp[i].nama == deviceValue) {
-          this.log.push(this.temp[i]);
-        }
+    for(let i = 0; i < this.temp.length; i++) {
+      if (this.temp[i].nama == this.nama) {
+        this.log.push(this.temp[i]);
       }
-
-      for(let i = 0; i < this.bimbingan.length; i++) {
-        if(this.bimbingan[i].nama == deviceValue) {
-          this.nama = this.bimbingan[i].nama;
-          this.topik = this.bimbingan[i].topik;
-          this.dosen1 = this.bimbingan[i].dosen1;
-          this.dosen2 = this.bimbingan[i].dosen2;
-        }
-      }
-
-      for(let i = 0; i < this.log.length; i++) {
-        if(this.log[i].approval == 1) {
-          this.sudahApprove++;
-        }
-        else {
-          this.belumApprove++;
-        }
-      }
-
-    }
-    else {
-      this.log = this.temp;
-      this.nama = '';
     }
 
+    for(let i = 0; i < this.log.length; i++) {
+      if(this.log[i].approval == 1) {
+        this.sudahApprove++;
+      }
+      else {
+        this.belumApprove++;
+      }
+    }
   }
 
   approve(id, nim,  status) {

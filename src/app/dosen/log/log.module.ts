@@ -11,6 +11,7 @@ import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AlertModule } from 'ng2-bootstrap/alert';
+import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AlertModule } from 'ng2-bootstrap/alert';
     ModalModule.forRoot(),
     Ng2SmartTableModule,
     ProgressbarModule,
+    TypeaheadModule.forRoot(),
     AlertModule.forRoot(),
     ChartsModule,
     routing

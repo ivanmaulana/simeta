@@ -13,81 +13,101 @@
 </div>
 
 <div *ngIf="status">
-  <div class="row">
-    <ba-card title="Pilih Mahasiswa" baCardClass="with-scroll">
-      <div class="row col-md-12">
-        <div class="col-md-4 padding-top">
-          <b>Pilih Mahasiswa Bimbingan</b>
-        </div>
-        <div class="col-md-6">
-          <select name="mahasiswa" class="form-control" (change)="onChange($event.target.value)">
-            <option value="0">
-              Semua Mahasiswa Bimbingan
-            </option>
-            <option *ngFor="let opt of bimbinganMahasiswa" value="{{opt}}">
-              {{opt}}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row col-md-12" *ngIf="nama">
-        <hr>
-      </div>
-
-      <div class="row col-md-12" *ngIf="nama">
+  <div class="row" style="position: static; z-index: 99 !important;">
+    <ba-card title="Pilih Mahasiswa">
+      <div class="row">
         <div class="row col-md-12">
-          <div class="col-md-2">
-            <b>Nama</b>
+          <div class="col-md-4 padding-top">
+            <b>Cari Mahasiswa Bimbingan</b>
           </div>
-          <div class="col-md-10">
-            : {{nama}}
-          </div>
-        </div>
-
-        <div class="row col-md-12">
-          <div class="col-md-2">
-            <b>Topik Tugas Akhir</b>
-          </div>
-          <div class="col-md-10">
-            : {{topik}}
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              style="position: absolute; z-index: 99 !important;"
+              [(ngModel)]="selected"
+              [typeahead]="bimbingan"
+              (typeaheadOnSelect)="typeaheadOnSelect($event)"
+              [typeaheadOptionsLimit]="7"
+              [typeaheadOptionField]="'nama'">
           </div>
         </div>
 
-        <div class="row col-md-12">
-          <div class="col-md-2">
-            <b>Pembimbing 1</b>
-          </div>
-          <div class="col-md-10">
-            : {{dosen1}}
-          </div>
+        <div class="row col-md-12" *ngIf="nama">
+          <hr>
         </div>
 
-        <div class="row col-md-12" *ngIf="dosen2">
-          <div class="col-md-2">
-            <b>Pembimbing 2</b>
+        <div class="row col-md-12" *ngIf="nama">
+          <div class="row col-md-12">
+            <div class="col-md-2">
+              <b>Nama</b>
+            </div>
+            <div class="col-md-10">
+              : {{nama}}
+            </div>
           </div>
-          <div class="col-md-10">
-            : {{dosen2}}
+
+          <div class="row col-md-12">
+            <div class="col-md-2">
+              <b>Topik Tugas Akhir</b>
+            </div>
+            <div class="col-md-10">
+              : {{topik}}
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-12 col-xs-12">
-          <br />
-        </div>
+          <div class="row col-md-12">
+            <div class="col-md-2">
+              <b>Pembimbing 1</b>
+            </div>
+            <div class="col-md-10">
+              : {{dosen1}}
+            </div>
+          </div>
 
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-3"><alert type="info" class="text-center"><b>Sudah Disetujui :</b> <h3>{{sudahApprove}}</h3></alert></div>
-          <div class="col-md-3"><alert type="danger" class="text-center"><b>Belum Disetujui :</b> <h3>{{belumApprove}}</h3></alert></div>
-          <div class="col-md-3"></div>
-        </div>
+          <div class="row col-md-12" *ngIf="dosen2">
+            <div class="col-md-2">
+              <b>Pembimbing 2</b>
+            </div>
+            <div class="col-md-10">
+              : {{dosen2}}
+            </div>
+          </div>
 
+          <div class="row col-md-12" *ngIf="penguji1">
+            <div class="col-md-2">
+              <b>Penguji 1</b>
+            </div>
+            <div class="col-md-10">
+              : {{penguji1}}
+            </div>
+          </div>
+
+          <div class="row col-md-12" *ngIf="penguji2">
+            <div class="col-md-2">
+              <b>Penguji 2</b>
+            </div>
+            <div class="col-md-10">
+              : {{penguji2}}
+            </div>
+          </div>
+
+          <div class="col-md-12 col-xs-12">
+            <br />
+          </div>
+
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><alert type="info" class="text-center"><b>Sudah Disetujui :</b> <h3>{{sudahApprove}}</h3></alert></div>
+            <div class="col-md-3"><alert type="danger" class="text-center"><b>Belum Disetujui :</b> <h3>{{belumApprove}}</h3></alert></div>
+            <div class="col-md-3"></div>
+          </div>
+
+        </div>
       </div>
     </ba-card>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="nama">
     <ba-card title="Log Bimbingan Mahasiswa" baCardClass="with-scroll">
       <div>
 
@@ -96,17 +116,14 @@
           <div class="col-md-1 col-xs-2 text-center">
             <b>Tanggal</b>
           </div>
-          <div class="col-md-1 col-xs-2 text-center">
+          <div class="col-md-2 col-xs-2 text-center">
             <b>Tempat</b>
           </div>
           <div class="col-md-1 col-xs-2 text-center">
             <b>Jam</b>
           </div>
-          <div class="col-md-4 col-xs-2 text-center">
+          <div class="col-md-5 col-xs-2 text-center">
             <b>Topik Bimbingan</b>
-          </div>
-          <div class="col-md-1 col-xs-2 text-center">
-            <b>Status</b>
           </div>
           <div class="col-md-3 col-xs-2 text-center">
             <b>Action</b>
@@ -122,24 +139,21 @@
           <div class="col-md-1 col-xs-2">
             {{opt.tanggal}}
           </div>
-          <div class="col-md-1 col-xs-2">
+          <div class="col-md-2 col-xs-2">
             {{opt.tempat}}
           </div>
           <div class="col-md-1 col-xs-2">
             {{opt.jam.substr(0,5)}}
           </div>
-          <div class="col-md-4 col-xs-2">
+          <div class="col-md-5 col-xs-2">
             {{opt.topik}}
-          </div>
-          <div class="col-md-1 col-xs-2">
-            Status
           </div>
           <div class="col-md-3 col-xs-2 text-right">
             <button *ngIf="!opt.approval" class="btn btn-primary" (click)="approve(opt.id, opt.nim, 1)"><i class="ion-checkmark-round"></i>
-              <span style="padding-left:5px">Approve</span>
+              <span style="padding-left:5px">Setujui</span>
             </button>
             <button *ngIf="opt.approval" class="btn btn-danger" (click)="approve(opt.id, opt.nim,  0)"><i class="ion-close-round"></i>
-              <span style="padding-left:5px">Cancel</span>
+              <span style="padding-left:5px">Batalkan</span>
             </button>
             <button class="btn btn-info" (click)="lgModal.show()" (click)="lihat(opt.id)"><i class="ion-eye"></i> Lihat</button>
           </div>
