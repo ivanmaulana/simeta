@@ -135,6 +135,12 @@ export class DataService {
   public urlSidangPDF = 'http://localhost:2016/sidang/pdf/'+localStorage.getItem('id_token');
   public urlKelengkapanPDF = 'http://localhost:2016/keterangan/pdf/'+localStorage.getItem('id_token');
 
+
+
+  public urlLogin = 'http://simeta.apps.cs.ipb.ac.id/login/';
+
+  public linkRingkasan = 'http://simeta-api.apps.cs.ipb.ac.id/summary/all/'+localStorage.getItem('id_token');
+
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
 

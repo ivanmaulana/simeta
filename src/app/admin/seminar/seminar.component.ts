@@ -3,6 +3,7 @@ import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+import { IMyOptions } from 'mydatepicker';
 let Chart = require('chart.js');
 
 @Component({
@@ -21,6 +22,33 @@ export class seminarAdmin {
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
+  }
+
+  private myDatePickerOptions: IMyOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    editableDateField: false,
+    width: '220px',
+  };
+
+  d;
+  dateFormat;
+  tanggal;
+  onDateChanged(e) {
+    this.tanggal = e.formatted;
+  }
+
+  jenis_seminar;
+  test(e) {
+    console.log(e);
+    if(e.data.jenis_seminar.search("Mandiri") != -1) {
+      this.jenis_seminar = 3;
+    }
+    else if(e.data.jenis_seminar.search("Mini") != -1) {
+      this.jenis_seminar = 2;
+    }
+    else if(e.data.jenis_seminar.search("Konferensi") != -1) {
+      this.jenis_seminar = 1;
+    }
   }
 
   settings = {

@@ -54,15 +54,38 @@
     </ba-card>
   </div>
 
-  <ba-card title="Rekap File Kolokium" class="col-md-12" baCardClass="with-scroll table-panel">
+  <div class="col-md-12">
+    <ba-card title="Rekap File Kolokium" baCardClass="with-scroll table-panel">
+      <div class="row"><br /></div>
 
-    <div class="row">
-      <br />
+      <div class="row col-md-12" *ngIf="dataSeminarAll">
+        <ng2-smart-table (userRowSelect)="test($event)" (userRowSelect)="lgModal.show()" [settings]="settings" [source]="dataSeminarAll"></ng2-smart-table>
+      </div>
+    </ba-card>
+  </div>
+
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Detail Seminar</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="jenis_seminar == 3">
+          mandiri
+        </div>
+        <div *ngIf="jenis_seminar == 1">
+          konferensi
+        </div>
+        <div *ngIf="jenis_seminar == 2">
+          micon
+        </div>
+      </div>
     </div>
-
-    <div class="row col-md-12" *ngIf="dataSeminarAll">
-      <ng2-smart-table [settings]="settings" [source]="dataSeminarAll"></ng2-smart-table>
-    </div>
-  </ba-card>
-
+  </div>
 </div>

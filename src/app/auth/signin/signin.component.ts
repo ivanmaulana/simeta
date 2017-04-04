@@ -21,7 +21,7 @@ export class Signin {
   private role;
   jwtHelper: JwtHelper = new JwtHelper();
 
-  private urlLogin = 'http://simeta.apps.cs.ipb.ac.id/login/';
+  private urlLogin = 'http://172.18.79.15:3017/login/';
 
   constructor(private authHttp: AuthHttp, private http: Http, private toastr: ToastrService, private router: Router) {
 

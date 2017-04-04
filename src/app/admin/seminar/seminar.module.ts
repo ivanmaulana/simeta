@@ -8,6 +8,8 @@ import { routing }       from './seminar.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ModalModule } from 'ng2-bootstrap/modal';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     FormsModule,
     NgaModule,
     Ng2SmartTableModule,
+    ModalModule.forRoot(),
     AlertModule.forRoot(),
+    MyDatePickerModule,
     ChartsModule,
     routing
   ],
