@@ -18,7 +18,9 @@ const routes: Routes = [
       { path: 'sidang', loadChildren: () => System.import('./sidang/sidang.module') },
       { path: 'seminar/mandiri', loadChildren: () => System.import('./mandiri/mandiri.module') },
       { path: 'seminar/micon', loadChildren: () => System.import('./micon/micon.module') },
-      { path: 'seminar/konferensi', loadChildren: () => System.import('./konferensi/konferensi.module') },
+      { path: 'seminar/konferensi',
+      loadChildren: () => System.import('./konferensi/konferensi.module') },
+      { path: 'staff', loadChildren: () => System.import('./staff/staff.module') },
     ]
   }
 ];

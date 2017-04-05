@@ -63,9 +63,9 @@ type StoreType = {
     APP_PROVIDERS,
     AUTH_PROVIDERS,
     provideAuth({
-      headerName: "Authorization",
-      headerPrefix: "",
-      globalHeaders: [{'Content-Type':'application/json'}],
+      headerName: 'Authorization',
+      headerPrefix: '',
+      globalHeaders: [{'Content-Type' : 'application/json'}],
       noJwtError: true,
       noTokenScheme: true
     })

@@ -116,7 +116,18 @@ export const ADMIN_SIDEBAR_MENU = [
           }
         }
       },
-
+      {
+        path: 'staff',
+        data: {
+          menu: {
+            title: 'Staff',
+            icon: 'ion-person-add',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
     ]
   }
 ];
