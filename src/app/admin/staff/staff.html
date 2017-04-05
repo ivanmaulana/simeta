@@ -1,1 +1,136 @@
-Ini Staff
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status">
+  <ba-card title="Pengajuan TA" baCardClass="with-scroll">
+    <div *ngIf="staff">
+
+      <div class="text-right">
+        <button class="btn btn-lg btn-primary text-right" (click)="lgModal.show()">
+          <b>Tambah Staff</b>
+        </button>
+      </div>
+
+      <br />
+      <ng2-smart-table [settings]="settings" (userRowSelect)="test($event.data)" (userRowSelect)='lgModal.show()' [source]="staff"></ng2-smart-table>
+
+    </div>
+  </ba-card>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Tambah Staff</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class='row'>
+          <div class='col-md-12'>
+            <form (ngSubmit)='submit()'>
+              <div class='row'>
+                <div class='col-md-4'>
+                  <label><b>Username IPB</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1">@</span>
+                    <input type="text" class="form-control with-primary-addon" name='username' [(ngModel)]="username" placeholder="Username IPB" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class='col-md-2'>
+                  <label><b>Singkatan</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1"><i class="ion-pound"></i></span>
+                    <input type="text" class="form-control with-primary-addon" name='singkatan' [(ngModel)]="singkatan" placeholder="ARD" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class='col-md-6'>
+                  <label><b>Nama Staff Beserta Gelar</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1"><i class="ion-person"></i></span>
+                    <input type="text" class="form-control with-primary-addon" name='nama' [(ngModel)]="nama" placeholder="Nama Staff Beserta Gelar" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+              </div>
+              <div class='row'>
+                <br>
+              </div>
+              <div class='row'>
+                <div class='col-md-4'>
+                  <label><b>Email</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1"><i class="ion-email"></i></span>
+                    <input type="email" class="form-control with-primary-addon" name='email' [(ngModel)]="email" placeholder="Email" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class='col-md-4'>
+                  <label><b>No HP</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1"><i class="ion-android-call"></i></span>
+                    <input type="text" class="form-control with-primary-addon" name='hp' [(ngModel)]="hp" placeholder="No HP" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class='col-md-4'>
+                  <label><b>Nomor Induk Pegawai (NIP)</b></label>
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-success addon-left" id="basic-addon1"><i class="ion-card"></i></span>
+                    <input type="text" class="form-control with-primary-addon" name='nip' [(ngModel)]="nip" placeholder="Nomor Induk Pegawai (NIP)" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+              </div>
+              <div class='row'>
+                <br>
+              </div>
+              <div class='row'>
+                <div class='col-md-5'>
+                  <label class="label"><b>Pilihan Lab Keilmuan (Pilih salah satu)</b></label><br />
+                  <select class='form-control'>
+                    <option value="volvo" [selected]="lab == '0'" (click)='radioLab(1)'>Tidak ada</option>
+                    <option value="saab" [selected]="lab == '1'">Net Centric Computation</option>
+                    <option value="opel" [selected]="lab == '2'">Applied Computational Intelligence</option>
+                    <option value="audi" [selected]="lab == '3'">Software Engineering & Information System</option>
+                  </select>
+                </div>
+                <div class='col-md-1'></div>
+                <div class='col-md-6'>
+                  <label><b>Status Staff</b></label>
+                  <select class='form-control'>
+                    <option value="volvo" [selected]="role == '2'">Dosen</option>
+                    <option value="saab" [selected]="role == '1'">Admin</option>
+                    <option value="opel" [selected]="role == '4'">Komisi Pendidikan</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class='row'>
+                <br>
+              </div>
+            
+              <div class='row'>
+                <div class='col-md-12 text-right'>
+                  <button type='submit' class='btn btn-primary btn-md'>
+                    Simpan
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

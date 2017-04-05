@@ -28,9 +28,6 @@
     </div>
 
     <div *ngIf="!statusTa">
-      <!-- <div class="alert alert-info" role="alert">
-        Fitur ini sedang dalam perbaikan.
-      </div> -->
 
       <ba-card title="Pengajuan Topik">
         <form class="row form-inline">
@@ -148,7 +145,7 @@
                     class="form-control"
                     [typeaheadOptionsLimit]="5"
                     placeholder="Dosen Pembimbing Pilihan 1">
-                   <div *ngIf="typeaheadNoResults===true" class="" style="">
+                   <div *ngIf="typeaheadNoResults===true" class="">
                     <i class="glyphicon glyphicon-remove"></i> No Results Found
                   </div>
               </div>
@@ -199,7 +196,7 @@
                     class="form-control"
                     [typeaheadOptionsLimit]="5"
                     placeholder="Dosen Pembimbing Pilihan 2">
-                   <div *ngIf="typeaheadNoResults===true" class="" style="">
+                   <div *ngIf="typeaheadNoResults===true" class="">
                     <i class="glyphicon glyphicon-remove"></i> No Results Found
                   </div>
               </div>

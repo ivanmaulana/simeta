@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
-import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
+import { AuthHttp, JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class DataService {
@@ -135,11 +135,12 @@ export class DataService {
   public urlSidangPDF = 'http://localhost:2016/sidang/pdf/'+localStorage.getItem('id_token');
   public urlKelengkapanPDF = 'http://localhost:2016/keterangan/pdf/'+localStorage.getItem('id_token');
 
-
+  public urlExcel = 'http://simeta-api.apps.cs.ipb.ac.id/excel/';
 
   public urlLogin = 'http://simeta.apps.cs.ipb.ac.id/login/';
-
   public linkRingkasan = 'http://simeta-api.apps.cs.ipb.ac.id/summary/all/'+localStorage.getItem('id_token');
+
+  public urlStaff = 'http://localhost:2016/staff/';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();
