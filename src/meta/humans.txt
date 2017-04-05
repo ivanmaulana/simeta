@@ -3,12 +3,12 @@
 
 # TEAM
 
-  akveo.com
+  agri.web.id
 
 # THANKS
 
   <name>
-  Akveo Team
+  Ivan Maulana
 
 # TECHNOLOGY COLOPHON
 

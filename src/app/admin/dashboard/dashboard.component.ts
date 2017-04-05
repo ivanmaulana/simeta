@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { AuthHttp } from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
@@ -17,11 +17,9 @@ export class DashboardAdmin {
   noConn;
   status;
 
-
   linkSeminar = this.data.urlExcelSeminarSidang+localStorage.getItem('id_token');
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
-
 
   }
 
