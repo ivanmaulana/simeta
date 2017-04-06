@@ -117,6 +117,18 @@ export const ADMIN_SIDEBAR_MENU = [
         }
       },
       {
+        path: 'data',
+        data: {
+          menu: {
+            title: 'Data Mahasiswa',
+            icon: 'ion-loop',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'staff',
         data: {
           menu: {

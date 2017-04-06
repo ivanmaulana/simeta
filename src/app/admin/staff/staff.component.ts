@@ -5,7 +5,7 @@ import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'staff',
   encapsulation: ViewEncapsulation.None,
   providers: [DataService],
   styles: [require('./staff.scss')],

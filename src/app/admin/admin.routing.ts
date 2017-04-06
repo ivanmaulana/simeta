@@ -21,6 +21,7 @@ const routes: Routes = [
       { path: 'seminar/konferensi',
       loadChildren: () => System.import('./konferensi/konferensi.module') },
       { path: 'staff', loadChildren: () => System.import('./staff/staff.module') },
+      { path: 'data', loadChildren: () => System.import('./data/data.module') },
     ]
   }
 ];

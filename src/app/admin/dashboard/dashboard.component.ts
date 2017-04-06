@@ -23,6 +23,15 @@ export class DashboardAdmin {
 
   }
 
+  loading = true;
+  test() {
+    this.loading = false;
+
+    setTimeout(() => {
+      this.loading = true;
+    }, 2000);
+  }
+
   public pieChartType:string = 'pie';
   dataLabel = ['Sudah Upload', 'Belum Upload'];
 
