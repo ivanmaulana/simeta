@@ -17,7 +17,7 @@ export class DashboardAdmin {
   noConn;
   status;
 
-  linkSeminar = this.data.urlExcelSeminarSidang+localStorage.getItem('id_token');
+  linkSeminar = this.data.urlExcelSeminarSidang + localStorage.getItem('id_token');
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
@@ -129,7 +129,7 @@ export class DashboardAdmin {
           this.barChartData.push({data: this.dataSummary[this.tahunSummary[i]], label: 'Angkatan '+this.tahunSummary[i]});
         }
 
-    })
+    });
   }
 
   ngOnInit() {
@@ -157,7 +157,7 @@ export class DashboardAdmin {
         this.noConn = 1;
         this.showNoConn();
       }
-    }, 5000)
+    }, 5000);
   }
 
   refresh() {
@@ -171,7 +171,7 @@ export class DashboardAdmin {
   }
 
   showNoConn() {
-    this.toastr.warning("Error Connecting to Server", 'Error');
+    this.toastr.warning('Error Connecting to Server', 'Error');
   }
 
 }

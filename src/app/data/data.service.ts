@@ -141,6 +141,8 @@ export class DataService {
   public linkRingkasan = 'http://simeta-api.apps.cs.ipb.ac.id/summary/all/'+localStorage.getItem('id_token');
 
   public urlStaff = 'http://localhost:2016/staff/';
+  
+  public urlAdminData = 'http://localhost:2016/admin/data/';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

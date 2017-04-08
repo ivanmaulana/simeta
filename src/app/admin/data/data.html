@@ -1,1 +1,38 @@
-Ini Data Admin
+<div *ngIf="!status">
+  <div class="spinner" *ngIf="!noConn">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+  <div *ngIf="noConn">
+    <div class="text-center">
+      <h5 class="red">Error Connecting to Server</h5>
+      <button class="btn btn-danger" type="button" (click)="refresh()"><i class="ion-refresh"></i> Reload</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status" class="row">
+  <div class="col-md-12">
+    <div class="col-md-4">
+        <ba-card *ngIf="dataMahasiswa" title="Update Data Mahasiswa" baCardClass="with-scroll table-panel">
+            <h2>Jumlah Data Mahasiswa</h2>
+            <div *ngFor='let d of dataMahasiswa.data' class="row">
+                <div class="col-md-4"><h5>Tahun {{d.tahunmasuk}}</h5></div>
+                <div class="col-md-8"><h5>: <b>{{d.count}}</b></h5></div>
+            </div>
+
+            <h3 style="padding-top: 40px">Terakhir Update : <span class="text-danger">{{tanggal}}</span></h3>
+            <button *ngIf="!click" class='btn btn-primary btn-lg text-center' (click)="updateData()">
+                Update Data Mahasiswa
+            </button>
+
+            <button *ngIf="click"  class='btn btn-default btn-lg text-center'>
+                <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i> Sedang Update Data...
+            </button>
+
+            <p style="padding-top: 10px" *ngIf="show" class='text-danger'>Data sudah yang terbaru, tidak ada perubahan data.</p>
+        </ba-card>
+    </div>
+  </div>
+</div>
