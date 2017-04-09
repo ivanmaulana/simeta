@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Rx';
 import { AuthHttp } from 'angular2-jwt';
 import { Component, ViewEncapsulation } from '@angular/core';
 
@@ -89,10 +90,18 @@ export class StaffAdmin {
 
   submit() {
     let creds = JSON.stringify({username: this.username, nama: this.nama, singkatan: this.singkatan,
-                hp: this.hp, email: this.email, nip: this.nip, lab: this.lab, role: this.role});
+                no_hp: this.hp, email: this.email, nip: this.nip, lab: this.lab, role: this.role});
 
-    console.log(creds);
+    this.authHttp.post(this.data.urlAdminStaff, creds)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.showSuccess();
+      });
 
+  }
+
+  showSuccess() {
+    this.toastr.success('Success Update Staff', 'Success');
   }
 
   radioLab(input) {

@@ -143,6 +143,7 @@ export class DataService {
   public urlStaff = 'http://localhost:2016/staff/';
   
   public urlAdminData = 'http://localhost:2016/admin/data/';
+  public urlAdminStaff = 'http://localhost:2016/admin/staff/';
 
   public send = 1;
   jwtHelper: JwtHelper = new JwtHelper();

@@ -16,8 +16,12 @@
   <ba-card title="Pengajuan TA" baCardClass="with-scroll">
     <div *ngIf="staff">
 
+      <alert type="success">
+        <h5>Klik baris untuk mengubah data staff. Atau Klik Tambah Staff untuk menambah staff baru.</h5>
+      </alert>
+
       <div class="text-right">
-        <button class="btn btn-lg btn-primary text-right" (click)="lgModal.show()">
+        <button class="btn btn-lg btn-primary text-right" (click)="test(0)" (click)="lgModal.show()">
           <b>Tambah Staff</b>
         </button>
       </div>
