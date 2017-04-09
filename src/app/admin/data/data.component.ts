@@ -36,10 +36,12 @@ export class DataAdmin {
   updateData() {
     this.show = false;
     this.click = true;
+
     this.authHttp.get(this.data.urlAdminData + 'update')
     .map(res => res.json())
     .subscribe(data => {
       if (data.status) {
+
         this.click = false;
         this.showSuccess();
         this.dataMahasiswa = data;
@@ -53,7 +55,12 @@ export class DataAdmin {
                     ', ' + d.getHours() + ':' + d.getMinutes() + ' WIB';
 
       }
+    },
+    err => {
+      this.click = false;
+      this.showNoConn();
     });
+
   }
 
   getData() {

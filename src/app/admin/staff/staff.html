@@ -97,20 +97,20 @@
               <div class='row'>
                 <div class='col-md-5'>
                   <label class="label"><b>Pilihan Lab Keilmuan (Pilih salah satu)</b></label><br />
-                  <select class='form-control'>
-                    <option value="volvo" [selected]="lab == '0'" (click)='radioLab(1)'>Tidak ada</option>
-                    <option value="saab" [selected]="lab == '1'">Net Centric Computation</option>
-                    <option value="opel" [selected]="lab == '2'">Applied Computational Intelligence</option>
-                    <option value="audi" [selected]="lab == '3'">Software Engineering & Information System</option>
+                  <select class='form-control' name='lab' [(ngModel)]='lab' (ngModelChange)="radioLab($event)">
+                    <option value='0' [ngValue]='0' [selected]="lab == 0">Tidak ada</option>
+                    <option value='1' [ngValue]='1' [selected]="lab == 1">Net Centric Computation</option>
+                    <option value='2' [ngValue]='2' [selected]="lab == 2">Applied Computational Intelligence</option>
+                    <option value='3' [ngValue]='3' [selected]="lab == 3">Software Engineering & Information System</option>
                   </select>
                 </div>
                 <div class='col-md-1'></div>
                 <div class='col-md-6'>
                   <label><b>Status Staff</b></label>
-                  <select class='form-control'>
-                    <option value="volvo" [selected]="role == '2'">Dosen</option>
-                    <option value="saab" [selected]="role == '1'">Admin</option>
-                    <option value="opel" [selected]="role == '4'">Komisi Pendidikan</option>
+                  <select  name='role' [(ngModel)]='role' class='form-control' (ngModelChange)="radioRole($event)">
+                    <option [ngValue]='2' [selected]="role == 2">Dosen</option>
+                    <option [ngValue]='1' [selected]="role == 1">Admin</option>
+                    <option [ngValue]='4' [selected]="role == 4">Komisi Pendidikan</option>
                   </select>
                 </div>
               </div>

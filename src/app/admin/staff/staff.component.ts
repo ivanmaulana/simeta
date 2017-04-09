@@ -88,12 +88,19 @@ export class StaffAdmin {
   }
 
   submit() {
-    console.log('simpan');
+    let creds = JSON.stringify({username: this.username, nama: this.nama, singkatan: this.singkatan,
+                hp: this.hp, email: this.email, nip: this.nip, lab: this.lab, role: this.role});
+
+    console.log(creds);
+
   }
 
   radioLab(input) {
     this.lab = input;
-    console.log(input);
+  }
+
+  radioRole(input) {
+    this.role = input;
   }
 
     // -----------------------------
