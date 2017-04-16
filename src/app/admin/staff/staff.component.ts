@@ -4,6 +4,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'staff',
@@ -17,8 +18,6 @@ export class StaffAdmin {
   // cek koneksi
   noConn;
   status;
-
-  staff;
 
   settings = {
     columns: {
@@ -58,8 +57,13 @@ export class StaffAdmin {
   nip;
   role;
 
+  staff: LocalDataSource;
+
+  show = true;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
   }
+
 
   test(e) {
     this.username = '';
@@ -96,6 +100,15 @@ export class StaffAdmin {
       .map(res => res.json())
       .subscribe(data => {
         this.showSuccess();
+
+        this.show = false;
+        this.authHttp.get(this.data.urlStaff)
+          .map(res => res.json())
+          .subscribe( data1 => {
+            this.show = true;
+            this.staff = new LocalDataSource(data1);
+          });
+
       });
 
   }
@@ -112,7 +125,7 @@ export class StaffAdmin {
     this.role = input;
   }
 
-    // -----------------------------
+  // -----------------------------
   // TEMPLATE
 
   // DASHBOARD SERVICE
@@ -120,7 +133,7 @@ export class StaffAdmin {
     this.authHttp.get(this.data.urlStaff)
       .map(res => res.json())
       .subscribe( data => {
-        this.staff = data;
+        this.staff = new LocalDataSource(data);
       });
   }
 
