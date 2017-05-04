@@ -22,9 +22,9 @@
     </div><br><br>
   </div>
 
-  <div class="col-md-12" *ngIf="source">
+  <div class="col-md-12" *ngIf="dataMahasiswa">
     <ba-card title="Ringkasan Mahasiswa Bimbingan" baCardClass="with-scroll table-panel">
-      <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+      <ng2-smart-table [settings]="settings" [source]="dataMahasiswa"></ng2-smart-table>
     </ba-card>
   </div>
 

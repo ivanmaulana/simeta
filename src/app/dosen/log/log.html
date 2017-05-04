@@ -25,7 +25,7 @@
               class="form-control"
               style="position: absolute; z-index: 99 !important;"
               [(ngModel)]="selected"
-              [typeahead]="bimbingan"
+              [typeahead]="dataMahasiswa"
               (typeaheadOnSelect)="typeaheadOnSelect($event)"
               [typeaheadOptionsLimit]="7"
               [typeaheadOptionField]="'nama'">
@@ -254,11 +254,11 @@
           </div>
 
           <div class="col-md-12">
-            <textarea [(ngModel)]="balasan" style="height:150px;width:100%" class="form-control" placeholder="Ketik balasan"></textarea>
+            <textarea [(ngModel)]="balas" style="height:150px;width:100%" class="form-control" placeholder="Ketik balasan"></textarea>
           </div>
 
           <div class="col-md-12 text-right">
-            <br /><button (click)="balas(logDetail.id)" class="btn btn-md btn-primary">Balas</button>
+            <br /><button (click)="submit(logDetail.id)" class="btn btn-md btn-primary">Balas</button>
           </div>
 
         </div>

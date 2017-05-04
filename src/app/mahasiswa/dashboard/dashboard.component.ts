@@ -31,7 +31,7 @@ export class Dashboard {
 
   ngOnInit() {
     this.getConnection();
-    this.getStatus();
+    this.getDataMahasiswa();
   }
 
   getConnection() {
@@ -52,7 +52,7 @@ export class Dashboard {
     }, 5000)
   }
 
-  getStatus() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlStatus)
       .map(res => res.json())
       .subscribe(data => {
@@ -69,7 +69,7 @@ export class Dashboard {
 
   refresh() {
     this.getConnection();
-    this.getStatus();
+    this.getDataMahasiswa();
   }
 
   showNoConn() {

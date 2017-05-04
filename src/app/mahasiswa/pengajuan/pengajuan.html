@@ -240,7 +240,7 @@
             <p class="text-danger" *ngIf="!topik || !lab || !dosen_1">
               Silahkan Isi Semua Form
             </p>
-            <button [disabled]="!topik || !lab || !dosen_1" type="submit" class="btn btn-primary btn-lg" (click)="onSubmit()">Daftar</button>
+            <button [disabled]="!topik || !lab || !dosen_1" type="submit" class="btn btn-primary btn-lg" (click)="daftar()">Daftar</button>
           </div>
         </form>
         <!-- nim : {{nim}}<br />

@@ -91,7 +91,7 @@ export class Sidang {
       })
   }
 
-  submit() {
+  simpan() {
     let creds = JSON.stringify({topik: this.topik, tempat: this.tempat, tanggal: this.tanggal, jam: this.jam});
 
     this.authHttp.post(this.data.urlSidang, creds)
@@ -116,6 +116,7 @@ export class Sidang {
 
   uploadFile: any;
   hasBaseDropZoneOver: boolean = false;
+  makalah_sidang;
 
   private progress: number = 0;
   private response: any = {};
@@ -128,7 +129,7 @@ export class Sidang {
   sizeLimit = 30000000;
 
   makalah;
-  handleUpload(data: any): void {
+  uploadMakalah(data: any): void {
     if (data && data.response) {
       let data1 = JSON.parse(data.response);
       this.uploadFile = data1;
@@ -212,8 +213,8 @@ export class Sidang {
     }, 5000)
   }
 
-  penguji1;
-  penguji2;
+  penguji_ketua;
+  penguji_anggota;
   getDataMahasiswa(){
 
     this.authHttp.get(this.data.urlTa)
@@ -224,8 +225,8 @@ export class Sidang {
         this.dosen2 = data[0]['dosen2'];
         this.dosen_1 = data[0]['dosen_1'];
         this.dosen_2 = data[0]['dosen_2'];
-        this.penguji1 = data[0]['penguji1'];
-        this.penguji2 = data[0]['penguji2'];
+        this.penguji_ketua = data[0]['penguji1'];
+        this.penguji_anggota = data[0]['penguji2'];
       })
   }
 

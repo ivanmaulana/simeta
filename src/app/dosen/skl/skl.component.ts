@@ -20,7 +20,7 @@ export class sklDosen {
   response;
   message;
 
-  list;
+  dataMahasiswa;
 
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
@@ -87,19 +87,19 @@ export class sklDosen {
 
   // DASHBOARD SERVICE
 
-  getListSidang() {
+  getDataMahasiswa() {
 
     this.authHttp.get(this.data.urlAllMakalahSKLDosen)
       .map(res => res.json())
       .subscribe(data => {
-        this.list = data;
+        this.dataMahasiswa = data;
       })
 
   }
 
   ngOnInit() {
     this.getConnection();
-    this.getListSidang();
+    this.getDataMahasiswa();
     this.getDataSKL();
   }
 

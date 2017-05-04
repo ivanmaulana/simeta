@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
-
+import {DataService} from '../data/data.service';
 import {JwtHelper} from 'angular2-jwt';
 @Component({
   selector: 'admin',
@@ -25,9 +25,15 @@ import {JwtHelper} from 'angular2-jwt';
   `
 })
 export class Admin {
+
+  public id;
+  public nama;
+  public role;
+  public nip;
+
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private data: DataService) {
   }
 
   ngOnInit() {
@@ -41,9 +47,22 @@ export class Admin {
       else if (role === 2) {
         this.router.navigate(['/dosen']);
       }
+      else if (role === 4) {
+        this.getData(decode);
+      }
+      else if (role === 1) {
+        this.getData(decode);
+      }
     }
     else {
       this.router.navigate(['/auth']);
     }
   }
+
+  getData(decode) {
+    this.id = decode.id;
+    this.nama = decode.nama;
+    this.nip = decode.nip;
+  }
+
 }

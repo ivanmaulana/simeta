@@ -63,9 +63,9 @@ export class LogDosen {
 
   }
 
-  balasan;
-  balas(id){
-    let creds = JSON.stringify({topikId: id, jawaban: this.balasan});
+  balas;
+  submit(id){
+    let creds = JSON.stringify({topikId: id, jawaban: this.balas});
 
     this.authHttp.post(this.data.urlBalasDosen, creds)
       .map(res => res.json())
@@ -77,7 +77,7 @@ export class LogDosen {
         }
       )
 
-    this.balasan = "";
+    this.balas = "";
   }
 
   showSuccessBalas() {
@@ -177,12 +177,12 @@ export class LogDosen {
   // DEFAULT
 
   bimbinganMahasiswa = [];
-  bimbingan;
-  getBimbingan() {
+  dataMahasiswa;
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlAllMakalahBimbingan)
       .map(res => res.json())
       .subscribe(data => {
-        this.bimbingan = data;
+        this.dataMahasiswa = data;
         for(let i = 0; i < data.length; i++) {
           this.bimbinganMahasiswa.push(data[i].nama)
         }
@@ -190,7 +190,7 @@ export class LogDosen {
   }
 
   ngOnInit() {
-    this.getBimbingan();
+    this.getDataMahasiswa();
     this.getConnection();
     this.getLog();
   }
@@ -228,7 +228,7 @@ export class LogDosen {
   }
 
   refresh() {
-    this.getBimbingan();
+    this.getDataMahasiswa();
     this.getConnection();
     this.getLog();
   }

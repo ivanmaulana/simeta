@@ -61,12 +61,12 @@ export class DashboardDosen {
     }
   };
 
-  source;
-  dosenSummary() {
+  dataMahasiswa;
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlSummaryDosen)
       .map(res => res.json())
       .subscribe(data => {
-        this.source = data;
+        this.dataMahasiswa = data;
       })
   }
 
@@ -154,10 +154,17 @@ export class DashboardDosen {
   tahunSummary;
   dataSummary;
   totalSummary;
+  summary;
   getDataSummary() {
     this.authHttp.get(this.data.urlDosenSummary)
       .map(res => res.json())
       .subscribe(data => {
+
+        this.summary = [
+          data.total,
+          data.tahun,
+          data.data
+        ]
 
         this.totalSummary = data.total;
         this.tahunSummary = data.tahun;
@@ -172,7 +179,7 @@ export class DashboardDosen {
 
   ngOnInit() {
     this.getConnection();
-    this.dosenSummary();
+    this.getDataMahasiswa();
     this.getDataSummary();
     this.getDataPraseminar();
     this.getDataSeminar();
@@ -201,7 +208,7 @@ export class DashboardDosen {
 
   refresh() {
     this.getConnection();
-    this.dosenSummary();
+    this.getDataMahasiswa();
     this.getDataSummary();
     this.getDataPraseminar();
     this.getDataSeminar();

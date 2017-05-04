@@ -38,6 +38,7 @@ export class kolokiumAdmin {
   }
 
   source: LocalDataSource;
+  dataMahasiswa = this.source;
   konfirmasi = 0;
   nimKonfirmasi = '';
   dataChange;
@@ -184,7 +185,7 @@ export class kolokiumAdmin {
 
   uploadFile: any;
   hasBaseDropZoneOver: boolean = false;
-
+  private file;
   private progress: number = 0;
   private response: any = {};
 
@@ -237,7 +238,7 @@ export class kolokiumAdmin {
 
   // DASHBOARD SERVICE
   dataLabel = ['Sudah Upload', 'Belum Upload'];
-  getListKolokium() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlAllMakalahKolokium)
       .map(res => res.json())
       .subscribe(data => {
@@ -277,7 +278,7 @@ export class kolokiumAdmin {
 
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.getDataKolokium();
-    this.getListKolokium();
+    this.getDataMahasiswa();
     this.getSummaryKolokium();
     this.getConnection();
   }
@@ -302,7 +303,7 @@ export class kolokiumAdmin {
 
   refresh() {
     this.getDataKolokium();
-    this.getListKolokium();
+    this.getDataMahasiswa();
     this.getSummaryKolokium();
     this.getConnection();
   }

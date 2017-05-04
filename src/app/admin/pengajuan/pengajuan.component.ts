@@ -13,13 +13,13 @@ import { NgUploaderOptions } from 'ngx-uploader';
   styles: [require('./pengajuan.scss')],
   template: require('./pengajuan.html')
 })
-export class PengajuanAdmin {
+export class TA {
 
   // cek koneksi
   noConn;
   status;
 
-  pengajuan;
+  dataMahasiswa;
 
   settings = {
     columns: {
@@ -67,7 +67,7 @@ export class PengajuanAdmin {
     this.authHttp.get(this.data.urlListPengajuan)
       .map(res => res.json())
       .subscribe( data => {
-        this.pengajuan = data;
+        this.dataMahasiswa = data;
       });
   }
 

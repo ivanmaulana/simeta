@@ -17,9 +17,14 @@ export class Signin {
   private password;
 
   // jwt
-  private decode;
   private role;
+  private token;
+
+  private decode;
   jwtHelper: JwtHelper = new JwtHelper();
+
+  private noConn;
+  private status;
 
   private urlLogin = 'http://simeta.apps.cs.ipb.ac.id/login/';
 
@@ -32,11 +37,11 @@ export class Signin {
       this.decode = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
       this.role = this.decode.role;
 
-      this.checkStatus();
+      this.navigation();
     }
   }
 
-  submit() {
+  auth() {
 
     let creds = JSON.stringify({username: this.username, password: this.password});
 
@@ -49,15 +54,33 @@ export class Signin {
         }
         else {
           this.showSuccess();
+          this.token = data.token;
 
           localStorage.setItem('id_token', data.token);
           this.decode = this.jwtHelper.decodeToken(data.token);
           this.role = this.decode.role;
 
-          this.checkStatus();
+          this.navigation();
         }
 
       })
+  }
+
+  getConnection() {
+    this.noConn = 0;
+
+    this.authHttp.get('http://simeta-api.apps.cs.ipb.ac.id/test/')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.status = data['status'];
+      })
+
+    setTimeout(() => {
+      if (!this.status) {
+        this.status = 0;
+        this.noConn = 1;
+      }
+    }, 5000)
   }
 
   showError(message) {
@@ -68,7 +91,7 @@ export class Signin {
     this.toastr.success("Selamat datang di SIMETA Ilkom", 'Berhasil!');
   }
 
-  checkStatus() {
+  navigation() {
 
     if (this.role === 3) {
       this.router.navigate(['/mahasiswa']);

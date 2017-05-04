@@ -20,7 +20,7 @@ export class sidangAdmin {
   response;
   message;
 
-  list;
+  dataMahasiswa;
 
   today;
   tahun;
@@ -96,11 +96,11 @@ export class sidangAdmin {
   // -----------------------------
   // TEMPLATE
 
-  getListSidang() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlAllMakalahSidang)
       .map(res => res.json())
       .subscribe(data => {
-        this.list = data;
+        this.dataMahasiswa = data;
       })
   }
 
@@ -108,7 +108,7 @@ export class sidangAdmin {
     this.pilih_tahun = this.tahun;
     this.getConnection();
     this.getDataSidang();
-    this.getListSidang();
+    this.getDataMahasiswa();
   }
 
   getConnection() {
@@ -132,7 +132,7 @@ export class sidangAdmin {
   refresh() {
     this.getConnection();
     this.getDataSidang();
-    this.getListSidang();
+    this.getDataMahasiswa();
   }
 
   showNoConn() {

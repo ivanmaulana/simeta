@@ -150,8 +150,7 @@ export class praseminarAdmin {
     window.open('http://localhost:3000','_blank');
   }
 
-
-  simpan(){
+  submit(){
     let creds = JSON.stringify({active: this.active, jadwal_praseminar: this.jadwal, deadline: this.deadline});
 
     this.authHttp.put(this.data.urlPraseminar, creds)
@@ -249,7 +248,7 @@ export class praseminarAdmin {
     rangkuman = [];
     dataLabel = ['Sudah Upload', 'Belum Upload'];
     tampil;
-    getListPraseminar() {
+    getDataMahasiswa() {
       this.tampil = 0;
 
       this.authHttp.get(this.data.urlAllMakalahPraseminar)
@@ -289,7 +288,7 @@ export class praseminarAdmin {
     ngOnInit() {
       this.zone = new NgZone({ enableLongStackTrace: false });
       this.getDataPraseminar();
-      this.getListPraseminar();
+      this.getDataMahasiswa();
       this.getSummaryPraseminar();
       this.getConnection();
     }
@@ -314,7 +313,7 @@ export class praseminarAdmin {
 
     refresh() {
       this.getDataPraseminar();
-      this.getListPraseminar();
+      this.getDataMahasiswa();
       this.getSummaryPraseminar();
       this.getConnection();
     }

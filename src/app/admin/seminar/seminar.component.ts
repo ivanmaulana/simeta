@@ -96,20 +96,19 @@ export class seminarAdmin {
 
   tahunSeminar;
   dataSeminar;
-  jenisSeminar;
+  dataJenisSeminar;
   getDataSeminar() {
     this.authHttp.get(this.data.urlAdminSeminar)
       .map(res => res.json())
       .subscribe(data => {
         this.tahunSeminar = data.tahun;
         this.dataSeminar = data.data;
-
-        this.jenisSeminar = data.jenis;
+        this.dataJenisSeminar = data.jenis;
       })
   }
 
   dataSeminarAll;
-  getDataSeminarAll() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlSeminarAll)
       .map(res => res.json())
       .subscribe(data => {
@@ -122,7 +121,7 @@ export class seminarAdmin {
   ngOnInit() {
     this.getDataSeminar();
     this.getConnection();
-    this.getDataSeminarAll();
+    this.getDataMahasiswa();
   }
 
   getConnection() {
@@ -146,7 +145,7 @@ export class seminarAdmin {
   refresh() {
     this.getDataSeminar();
     this.getConnection();
-    this.getDataSeminarAll();
+    this.getDataMahasiswa();
   }
 
   showNoConn() {

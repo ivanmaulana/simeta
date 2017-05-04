@@ -40,14 +40,14 @@
           <br />
           <span class="text-center"><b>Tahun Angkatan :</b> {{i}}</span>
           <canvas baseChart
-                  [data]="jenisSeminar[i]"
+                  [data]="dataJenisSeminar[i]"
                   [labels]="dataLabelJenis"
                   [chartType]="pieChartType">
           </canvas><br />
-          Belum Seminar : <b>{{jenisSeminar[i][0]}}</b><br />
-          Seminar Konferensi : <b>{{jenisSeminar[i][1]}}</b><br />
-          Mini Conference : <b>{{jenisSeminar[i][2]}}</b><br />
-          Seminar Mandiri : <b>{{jenisSeminar[i][3]}}</b>
+          Belum Seminar : <b>{{dataJenisSeminar[i][0]}}</b><br />
+          Seminar Konferensi : <b>{{dataJenisSeminar[i][1]}}</b><br />
+          Mini Conference : <b>{{dataJenisSeminar[i][2]}}</b><br />
+          Seminar Mandiri : <b>{{dataJenisSeminar[i][3]}}</b>
         </div>
       </div>
       <br />

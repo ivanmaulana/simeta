@@ -113,6 +113,7 @@ export class DashboardAdmin {
     })
   }
 
+  summary;
   tahunSummary;
   dataSummary;
   totalSummary;
@@ -124,6 +125,12 @@ export class DashboardAdmin {
         this.totalSummary = data.total;
         this.tahunSummary = data.tahun;
         this.dataSummary = data.data;
+
+        this.summary = [
+          data.total,
+          data.tahun,
+          data.data
+        ]
 
         for(let i = 0; i < this.tahunSummary.length; i++) {
           this.barChartData.push({data: this.dataSummary[this.tahunSummary[i]], label: 'Angkatan '+this.tahunSummary[i]});

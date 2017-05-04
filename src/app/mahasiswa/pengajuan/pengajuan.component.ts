@@ -57,7 +57,7 @@ export class Pengajuan {
 
   }
 
-  onSubmit(){
+  daftar(){
     let koneksi = 0;
 
     this.authHttp.get(this.data.urlTest)

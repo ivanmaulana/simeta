@@ -24,6 +24,8 @@ export class miconAdmin {
   deadline;
   jadwal;
 
+  file;
+
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
 
   }

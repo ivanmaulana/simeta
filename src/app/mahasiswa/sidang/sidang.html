@@ -25,7 +25,7 @@
         <div class="col-md-12">
 
           <ba-card title="Pengajuan Sidang Tugas Akhir" baCardClass="with-scroll">
-            <form class="row form-inline" (ngSubmit)="submit()">
+            <form class="row form-inline" (ngSubmit)="simpan()">
 
               <!-- nama & nim-->
               <div class="col-md-12 col-xs-12">
@@ -78,10 +78,10 @@
 
               <div class="col-md-12">
                 <div class="col-md-5">
-                  <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji1}}</p>
+                  <p style="font-size:15px"><b>Penguji 1 </b>: {{penguji_ketua}}</p>
                 </div>
                 <div class="col-md-7" *ngIf="penguji2">
-                  <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji2}}</p>
+                  <p style="font-size:15px"><b>Penguji 2 </b>: {{penguji_anggota}}</p>
                 </div>
               </div>
 
@@ -157,7 +157,7 @@
                       <input class="button" type="file"
                              ngFileSelect
                              [options]="options"
-                             (onUpload)="handleUpload($event)"
+                             (onUpload)="uploadMakalah($event)"
                              (beforeUpload)="beforeUpload($event)">
                     </div>
                   </div>

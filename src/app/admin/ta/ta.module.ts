@@ -3,7 +3,7 @@ import { CommonModule }  from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 
-import { TaAdmin } from './ta.component';
+import { PenentuanTA } from './ta.component';
 import { routing }       from './ta.routing';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { NgUploaderModule } from 'ngx-uploader';
@@ -22,7 +22,7 @@ import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
     routing
   ],
   declarations: [
-    TaAdmin
+    PenentuanTA
   ],
   providers: [
   ]

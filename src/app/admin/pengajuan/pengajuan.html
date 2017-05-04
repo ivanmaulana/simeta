@@ -14,7 +14,7 @@
 
 <div *ngIf="status">
   <ba-card title="Pengajuan TA" baCardClass="with-scroll">
-    <div *ngIf="pengajuan">
+    <div *ngIf="dataMahasiswa">
 
       <div class="text-right">
         <button class="btn btn-primary text-right">
@@ -25,7 +25,7 @@
       </div>
 
       <br />
-      <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" [source]="pengajuan"></ng2-smart-table>
+      <ng2-smart-table [settings]="settings" (userRowSelect)="test($event)" [source]="dataMahasiswa"></ng2-smart-table>
 
     </div>
   </ba-card>

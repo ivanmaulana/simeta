@@ -20,7 +20,7 @@ export class sidangDosen {
   response;
   message;
 
-  list;
+  dataMahasiswa;
 
   today;
   tahun;
@@ -96,11 +96,11 @@ export class sidangDosen {
   // -----------------------------
   // TEMPLATE
 
-  getListSidang() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlAllMakalahSidangDosen)
       .map(res => res.json())
       .subscribe(data => {
-        this.list = data;
+        this.dataMahasiswa = data;
       })
   }
 
@@ -108,7 +108,7 @@ export class sidangDosen {
     this.pilih_tahun = this.tahun;
     this.getConnection();
     this.getDataSidang();
-    this.getListSidang();
+    this.getDataMahasiswa();
   }
 
   getConnection() {

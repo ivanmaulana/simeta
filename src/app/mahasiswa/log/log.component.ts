@@ -35,6 +35,7 @@ export class Log {
   private topik;
 
   private topik_log;
+  private log_id;
   private dosen_1;
   private dosen_2;
   private tempat;
@@ -71,8 +72,6 @@ export class Log {
     this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
 
   }
-
-
 
   private myDatePickerOptions: IMyOptions = {
     dateFormat: 'yyyy-mm-dd',

@@ -35,10 +35,9 @@ export class Kolokium {
   private dosen_2;
   private topik;
 
-
   private active;
   private deadline;
-  private jadwal;
+  private jadwal_kolokium;
   private response1;
   private link;
 
@@ -68,16 +67,16 @@ export class Kolokium {
       .map(res => res.json())
       .subscribe(data => {
         this.active = data[0]['active'];
-        this.jadwal = data[0]['jadwal_kolokium'];
+        this.jadwal_kolokium = data[0]['jadwal_kolokium'];
         this.deadline = data[0]['deadline'];
         this.link = 'http://simeta.apps.cs.ipb.ac.id/uploads/'+data[0]['file'];
 
-        if (this.jadwal) this.response1 = true;
+        if (this.jadwal_kolokium) this.response1 = true;
       })
   }
 
   date;
-  submit(){
+  simpan(){
     let creds = JSON.stringify({topik: this.topik, tanggal: this.date});
 
     this.authHttp.post(this.data.urlFileKolokium, creds)

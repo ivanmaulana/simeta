@@ -78,12 +78,12 @@ export class seminarDosen {
       })
   }
 
-  dataSeminarAll;
-  getDataSeminarAll() {
+  dataMahasiswa;
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlSeminarDosen)
       .map(res => res.json())
       .subscribe(data => {
-        this.dataSeminarAll = data;
+        this.dataMahasiswa = data;
       })
   }
 
@@ -93,7 +93,7 @@ export class seminarDosen {
   ngOnInit() {
     this.getDataSeminar();
     this.getConnection();
-    this.getDataSeminarAll();
+    this.getDataMahasiswa();
   }
 
   getConnection() {

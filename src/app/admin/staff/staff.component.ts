@@ -129,7 +129,7 @@ export class StaffAdmin {
   // TEMPLATE
 
   // DASHBOARD SERVICE
-  getDataPengajuan() {
+  getDataStaff() {
     this.authHttp.get(this.data.urlStaff)
       .map(res => res.json())
       .subscribe( data => {
@@ -138,7 +138,7 @@ export class StaffAdmin {
   }
 
   ngOnInit() {
-    this.getDataPengajuan();
+    this.getDataStaff();
     this.getConnection();
   }
 
@@ -162,7 +162,7 @@ export class StaffAdmin {
 
   refresh() {
     this.getConnection();
-    this.getDataPengajuan();
+    this.getDataStaff();
   }
 
   showNoConn() {

@@ -50,7 +50,7 @@ export class Profile {
 
   }
 
-  getProfile() {
+  getDataProfile() {
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.authHttp.get(this.data.urlProfile)
       .map(res => res.json())
@@ -195,7 +195,7 @@ export class Profile {
 
 
         if(this.statusTa) {
-          this.getProfile();
+          this.getDataProfile();
         }
       })
   }

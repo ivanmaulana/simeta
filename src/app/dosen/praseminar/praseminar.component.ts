@@ -24,7 +24,7 @@ export class praseminarDosen {
   response1;
   message;
 
-  list;
+  dataMahasiswa;
 
   today;
   tahun;
@@ -43,7 +43,7 @@ export class praseminarDosen {
 
   tahunPraseminar;
   dataPraseminar;
-  getDataSeminar() {
+  getDataPraseminar() {
     this.authHttp.get(this.data.urlDosenPraseminar)
       .map(res => res.json())
       .subscribe(data => {
@@ -52,8 +52,6 @@ export class praseminarDosen {
       })
   }
 
-
-
   // --------------------------------
   // TABLE
   temp;
@@ -61,11 +59,11 @@ export class praseminarDosen {
   onChange(e) {
     var y = e.target.value.substr(2,2);
 
-    this.list = [];
+    this.dataMahasiswa = [];
     for(let i = 0; i < this.temp.length; i++) {
       var x = this.temp[i].nim.substr(3,2);
       if(y == x) {
-        this.list.push(this.temp[i]);
+        this.dataMahasiswa.push(this.temp[i]);
       }
     }
   }
@@ -115,13 +113,13 @@ export class praseminarDosen {
 
   rangkuman = [];
   tampil;
-  getListKolokium() {
+  getDataMahasiswa() {
     this.tampil = 0;
 
     this.authHttp.get(this.data.urlAllMakalahPraseminarDosen)
       .map(res => res.json())
       .subscribe(data => {
-        this.list = data;
+        this.dataMahasiswa = data;
         this.temp = data;
         this.tahun_awal = data[0].tahun_masuk;
 
@@ -158,8 +156,8 @@ export class praseminarDosen {
   ngOnInit() {
     this.pilih_tahun = this.tahun;
     this.getConnection();
-    this.getListKolokium();
-    this.getDataSeminar();
+    this.getDataMahasiswa();
+    this.getDataPraseminar();
   }
 
   getConnection() {
@@ -182,8 +180,8 @@ export class praseminarDosen {
 
   refresh() {
     this.getConnection();
-    this.getDataSeminar();
-    this.getListKolokium();
+    this.getDataPraseminar();
+    this.getDataMahasiswa();
   }
 
   showNoConn() {

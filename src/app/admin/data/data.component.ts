@@ -29,7 +29,7 @@ export class DataAdmin {
   }
 
   ngOnInit() {
-    this.getData();
+    this.getDataMahasiswa();
     this.getConnection();
   }
 
@@ -63,7 +63,7 @@ export class DataAdmin {
 
   }
 
-  getData() {
+  getDataMahasiswa() {
     this.authHttp.get(this.data.urlAdminData)
     .map(res => res.json())
     .subscribe(data => {
@@ -95,7 +95,7 @@ export class DataAdmin {
   }
 
   refresh() {
-    this.getData();
+    this.getDataMahasiswa();
     this.getConnection();
   }
 

@@ -36,11 +36,12 @@ export class Praseminar {
   private dosen_2;
   private timestamp;
   private topik;
+  private makalah_praseminar;
 
 
   private active;
   private deadline;
-  private jadwal;
+  private jadwal_praseminar;
   private response1;
   private link;
 
@@ -69,15 +70,15 @@ export class Praseminar {
       .map(res => res.json())
       .subscribe(data => {
         this.active = data[0]['active'];
-        this.jadwal = data[0]['jadwal_praseminar'];
+        this.jadwal_praseminar = data[0]['jadwal_praseminar'];
         this.deadline = data[0]['deadline'];
         this.link = 'http://simeta.apps.cs.ipb.ac.id/uploads/'+data[0]['file'];
 
-        if (this.jadwal) this.response1 = true;
+        if (this.jadwal_praseminar) this.response1 = true;
       })
   }
 
-  submit(){
+  simpan(){
     let creds = JSON.stringify({topik: this.topik, tanggal: this.date});
 
     this.authHttp.post(this.data.urlFilePraseminar, creds)

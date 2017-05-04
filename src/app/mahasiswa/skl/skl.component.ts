@@ -48,6 +48,7 @@ export class Skl {
 
   d;
   dateFormat;
+  private tanggal_skl;
 
   onDateChanged(e) {
     this.tanggal = e.formatted;
@@ -107,6 +108,8 @@ export class Skl {
   sizeLimit = 30000000;
   hasBaseDropZoneOver: boolean = false;
   uploadFile: any;
+
+  private berkas_skl;
 
   private progress: number = 0;
   private response: any = {};

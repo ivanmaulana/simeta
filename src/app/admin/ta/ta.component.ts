@@ -14,7 +14,7 @@ import { TypeaheadMatch } from 'ng2-bootstrap/typeahead';
   styles: [require('./ta.scss')],
   template: require('./ta.html')
 })
-export class TaAdmin {
+export class PenentuanTA {
 
   // cek koneksi
   noConn;
