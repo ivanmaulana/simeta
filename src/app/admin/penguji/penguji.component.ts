@@ -136,19 +136,6 @@ export class PengujiAdmin {
   }
 
   simpan() {
-    if(this.dosen1 == "") {
-      this.dosen_1 = 0;
-    }
-    if(this.dosen2 == "") {
-      this.dosen_2 = 0;
-    }
-    if(this.penguji1 == "") {
-      this.penguji_1 = 0;
-    }
-    if(this.penguji2 == "") {
-      this.penguji_2 = 0;
-    }
-
     let creds;
     creds = JSON.stringify({nim: this.nim, topik: this.topik, lab: this.lab, dosen_1: this.dosen_1, dosen_2: this.dosen_2,
     penguji_1: this.penguji_1, penguji_2: this.penguji_2});

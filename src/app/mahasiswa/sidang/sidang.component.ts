@@ -1,19 +1,32 @@
-import {Component, ViewEncapsulation, NgZone} from '@angular/core';
+import {Component, ViewEncapsulation, NgZone, Directive} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
 import { ToastrService } from 'toastr-ng2';
 import { DataService } from '../../data/data.service';
 import {IMyOptions} from 'mydatepicker';
 import { NgUploaderOptions } from 'ngx-uploader';
+import { RadioControlValueAccessor } from '@angular/forms';
+import { RADIO_VALUE_ACCESSOR } from "@angular/forms/src/directives/radio_control_value_accessor";
 
 @Component({
-  selector: 'sidang',
+  selector: 'sidang',  
   encapsulation: ViewEncapsulation.None,
   providers: [DataService],
   styles: [require('./sidang.scss')],
   template: require('./sidang.html')
 })
+
+@Directive({
+  selector:
+     'input[type=radio][formControlName], input[type=radio][formControl], input[type=radio][ngModel]',
+  host: {'(change)':'(onChange)', '(blur)' : 'onTouched()'},
+  providers: [RADIO_VALUE_ACCESSOR]
+})
+
 export class Sidang {
+
+  jenisSidang = '1';
+
   ismeridian:boolean = false;
   isArrow:boolean = false;
   mytime:Date = new Date();
@@ -27,6 +40,7 @@ export class Sidang {
   statusSidang;
   statusSkl;
   statusTa;
+  
 
   // cek koneksi
   noConn;
@@ -52,6 +66,7 @@ export class Sidang {
   constructor(public authHttp: AuthHttp, public toastr: ToastrService, public data: DataService) {
     this.d = new Date();
     this.dateFormat = {date: {year: this.d.getFullYear(), month: this.d.getMonth() + 1, day: this.d.getDate()}};
+    console.log(this.jenisSidang)
 
   }
 

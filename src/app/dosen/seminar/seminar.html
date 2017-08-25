@@ -66,3 +66,64 @@
   </ba-card>
 
 </div>
+
+<div class="row">
+  <ba-card title="Pengajuan Seminar" baCardClass="with-scroll">
+    <div>
+
+
+      <div class="row col-md-12">
+        <div class="col-md-1 col-xs-2 text-center">
+          <b>NIM</b>
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          <b>Nama</b>
+        </div>
+        <div class="col-md-4 col-xs-2 text-center">
+          <b>Topik</b>
+        </div>
+        <div class="col-md-1 col-xs-2 text-center">
+          <b>Tanggal</b>
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          <b>Tempat</b>
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          <b>Persetujuan</b>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <hr /><br />
+        </div>
+      </div>
+      <div *ngFor="let opt of persetujuan;let i = index">
+        <div class="col-md-1 col-xs-2 text-center">
+          {{opt.nim}}
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          {{opt.nama}}
+        </div>
+        <div class="col-md-4 col-xs-2 text-center">
+          {{opt.topik}}
+        </div>
+        <div class="col-md-1 col-xs-2 text-center">
+          {{opt.tanggal}}
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          {{opt.tempat}}
+        </div>
+        <div class="col-md-2 col-xs-2 text-center">
+          <button *ngIf="!opt.konfirmasi" class="btn btn-primary" (click)="setuju(1,i)"><i class="ion-checkmark-round"></i>
+            <span style="padding-left:5px">Setujui</span>
+          </button>
+          <button *ngIf="opt.konfirmasi" class="btn btn-danger" (click)="setuju(0,i)"><i class="ion-close-round"></i>
+            <span style="padding-left:5px">Batalkan</span>
+          </button>
+        </div>
+
+        <div class="col-md-12 col-xs-12">
+          <hr />
+        </div>
+      </div>
+    </div>
+  </ba-card>
+</div>

@@ -87,6 +87,33 @@ export class seminarDosen {
       })
   }
 
+  persetujuan = [
+    {nim: 'G64140073', nama: 'Muhammad Murtadha R', topik: 'Data mining', tanggal:'27/8/2017', tempat:'Lab CI', konfirmasi: 0 },
+    {nim: 'G64140073', nama: 'Muhammad Murtadha R', topik: 'Data mining', tanggal:'27/8/2017', tempat:'Lab CI', konfirmasi: 0 },
+    {nim: 'G64140073', nama: 'Muhammad Murtadha R', topik: 'Data mining', tanggal:'27/8/2017', tempat:'Lab CI', konfirmasi: 0 },
+  ]
+
+  public waw = 0
+  setuju(value,nilai){
+
+      if(value == 0 ){
+        this.persetujuan[nilai].konfirmasi = 0
+      }
+      else{
+        this.persetujuan[nilai].konfirmasi = 1
+        this.showSuccessApprove();
+      }
+    
+  }
+
+  showSuccessApprove() {
+    this.toastr.success("Pengajuan disetujui", 'Success');
+  }
+
+  
+
+
+
 
   //---------------------------
 
